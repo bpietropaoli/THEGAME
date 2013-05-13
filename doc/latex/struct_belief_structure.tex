@@ -1,0 +1,68 @@
+\hypertarget{struct_belief_structure}{
+\section{BeliefStructure Struct Reference}
+\label{struct_belief_structure}\index{BeliefStructure@{BeliefStructure}}
+}
+
+
+{\ttfamily \#include $<$BeliefsFromSensors.h$>$}
+
+\subsection*{Data Fields}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{struct_belief_structure_abda30f5072e296ecb576bb168b274dfc}{
+char $\ast$ {\bfseries contextAttribute}}
+\label{struct_belief_structure_abda30f5072e296ecb576bb168b274dfc}
+
+\item 
+\hypertarget{struct_belief_structure_a9e6ca02dc7aaabc96de589b5c7bcb99c}{
+\hyperlink{struct_reference_list}{ReferenceList} {\bfseries refList}}
+\label{struct_belief_structure_a9e6ca02dc7aaabc96de589b5c7bcb99c}
+
+\item 
+\hypertarget{struct_belief_structure_a329d320fe175d571a90316b791dd19f4}{
+\hyperlink{struct_set}{Set} {\bfseries possibleValues}}
+\label{struct_belief_structure_a329d320fe175d571a90316b791dd19f4}
+
+\item 
+\hypertarget{struct_belief_structure_aba8e8435aca2a463a5ce6397b30a312c}{
+\hyperlink{struct_set}{Set} {\bfseries powerset}}
+\label{struct_belief_structure_aba8e8435aca2a463a5ce6397b30a312c}
+
+\item 
+\hypertarget{struct_belief_structure_acf801ab3729a6172e45f46561907f187}{
+\hyperlink{struct_sensor_beliefs}{SensorBeliefs} $\ast$ {\bfseries believes}}
+\label{struct_belief_structure_acf801ab3729a6172e45f46561907f187}
+
+\item 
+\hypertarget{struct_belief_structure_a24ec5da519b25f42047e73ec9093a6a8}{
+int {\bfseries nbSensors}}
+\label{struct_belief_structure_a24ec5da519b25f42047e73ec9093a6a8}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+The complete belief structure with all the believes of all the sensors on a specific context attribute. 
+\begin{DoxyParams}{Parameters}
+{\em contextAttribute} & The name of the context attribute \\
+\hline
+{\em refList} & The \hyperlink{struct_reference_list}{ReferenceList} corresponding to the real values of the context attribute \\
+\hline
+{\em possibleValues} & The set of all possible values for the context attribute \\
+\hline
+{\em powerset} & The set of all subsets of possible values \\
+\hline
+{\em believes} & The model of belief to get the context attribute value \\
+\hline
+{\em nbSensors} & The number of sensors in the structure \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 248 of file BeliefsFromSensors.h.
+
+
+
+The documentation for this struct was generated from the following file:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{_beliefs_from_sensors_8h}{BeliefsFromSensors.h}\end{DoxyCompactItemize}

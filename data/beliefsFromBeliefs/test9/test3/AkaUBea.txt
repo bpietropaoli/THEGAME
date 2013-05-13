@@ -1,0 +1,19 @@
+2 elements
+Aka
+Bea
+3 conversions
+2 elements
+Aka
+Bea
+0.9
+4 elements
+Aka
+Bea
+Coq
+Elf
+0.05
+3 elements
+Aka
+Bea
+Ion
+0.05

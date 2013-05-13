@@ -1,0 +1,2580 @@
+\hypertarget{_belief_functions_8c}{
+\section{BeliefFunctions.c File Reference}
+\label{_belief_functions_8c}\index{BeliefFunctions.c@{BeliefFunctions.c}}
+}
+
+
+CORE: Gives structures and main functions to manipulate belief functions.  
+
+
+{\ttfamily \#include \char`\"{}BeliefFunctions.h\char`\"{}}\par
+\subsection*{Functions}
+\begin{Indent}{\bf Utility functions}\par
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction} \hyperlink{_belief_functions_8c_ae248331ed725fe2bbba71abc0b397aab}{BF\_\-copyBeliefFunction} (const \hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction} m)
+\item 
+\hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction} \hyperlink{_belief_functions_8c_a4d6588a638f6d46006bb318534f3c239}{BF\_\-getVacuousBeliefFunction} (const int elementSize)
+\item 
+void \hyperlink{_belief_functions_8c_a29f2e14af48e088d4767db8780dbfae5}{BF\_\-cleanBeliefFunction} (\hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction} $\ast$bf)
+\item 
+void \hyperlink{_belief_functions_8c_a6f278db4319a28d8bb0785eb11365fb7}{BF\_\-normalize} (\hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction} $\ast$bf)
+\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}{\bf Combination rules}\par
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction} \hyperlink{_belief_functions_8c_ae9c77653874d4f79124d8c5398ab27c7}{BF\_\-fullDempsterCombination} (const \hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction} $\ast$m, const int nbM)
+\item 
+\hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction} \hyperlink{_belief_functions_8c_a34a15102ee96fc30396ef8972b99c440}{BF\_\-DempsterCombination} (const \hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction} m1, const \hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction} m2)
+\item 
+\hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction} \hyperlink{_belief_functions_8c_af8c9206eb7d71be3d73e191ff385ae8e}{BF\_\-fullSmetsCombination} (const \hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction} $\ast$m, const int nbM)
+\item 
+\hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction} \hyperlink{_belief_functions_8c_a3ad1d008ca28ff3283fe2160f4afd055}{BF\_\-SmetsCombination} (const \hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction} m1, const \hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction} m2)
+\item 
+\hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction} \hyperlink{_belief_functions_8c_a5c4cf84f84f1e7d0206d27c9de3ec200}{BF\_\-fullYagerCombination} (const \hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction} $\ast$m, const int nbM)
+\item 
+\hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction} \hyperlink{_belief_functions_8c_a7bb32c467a34487626b614047b0f2df1}{BF\_\-YagerCombination} (const \hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction} m1, const \hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction} m2)
+\item 
+\hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction} \hyperlink{_belief_functions_8c_abd20f57df8dbcb1f0a993d306ae09f95}{BF\_\-fullDuboisPradeCombination} (const \hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction} $\ast$m, const int nbM)
+\item 
+\hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction} \hyperlink{_belief_functions_8c_acb2a8407b0ca2125064bc521061d77a9}{BF\_\-DuboisPradeCombination} (const \hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction} m1, const \hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction} m2)
+\item 
+\hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction} \hyperlink{_belief_functions_8c_a4079d05bfe7228aa0b39aef482aeeff6}{BF\_\-fullAverageCombination} (const \hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction} $\ast$m, const int nbM)
+\item 
+\hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction} \hyperlink{_belief_functions_8c_a3c7b01c167b53cf6fa247ebfdf895bba}{BF\_\-averageCombination} (const \hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction} m1, const \hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction} m2)
+\item 
+\hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction} \hyperlink{_belief_functions_8c_acfb579e995e421f1d66c2ab40e7d1b8b}{BF\_\-fullMurphyCombination} (const \hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction} $\ast$m, const int nbM)
+\item 
+\hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction} \hyperlink{_belief_functions_8c_aab65a9c5918a398b1644d348977bb470}{BF\_\-MurphyCombination} (const \hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction} m1, const \hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction} m2)
+\item 
+\hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction} \hyperlink{_belief_functions_8c_a019e4cdeffb5c0a879667bf5a256b152}{BF\_\-fullChenCombination} (const \hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction} $\ast$m, const int nbM)
+\item 
+\hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction} \hyperlink{_belief_functions_8c_ab636b354ea45faf1057a46b7e70383eb}{BF\_\-fullCombination} (const \hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction} $\ast$m, const int nbM, const \hyperlink{_belief_functions_8h_ab080999db027db6a06de8c2a8b863dea}{BF\_\-CombinationRule} type)
+\item 
+\hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction} \hyperlink{_belief_functions_8c_a86176697067fe1ca4d4ace9f19bac86f}{BF\_\-combination} (const \hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction} m1, const \hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction} m2, const \hyperlink{_belief_functions_8h_ab080999db027db6a06de8c2a8b863dea}{BF\_\-CombinationRule} type)
+\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}{\bf Operations on belief functions}\par
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction} \hyperlink{_belief_functions_8c_a1390231c867ad0b64bbbfdb84f0f0609}{BF\_\-conditioning} (const \hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction} m, const \hyperlink{struct_sets___element}{Sets\_\-Element} e, const \hyperlink{struct_sets___set}{Sets\_\-Set} powerset)
+\item 
+\hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction} \hyperlink{_belief_functions_8c_abf0a8d648c8d2bc72f3cfe4fb2c705c9}{BF\_\-weakening} (const \hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction} m, const float alpha)
+\item 
+\hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction} \hyperlink{_belief_functions_8c_a6052d0e66126fed4aeac85ebde7dccd6}{BF\_\-discounting} (const \hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction} m, const float alpha)
+\item 
+\hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction} \hyperlink{_belief_functions_8c_a718e6a56345615b6eca40c4ca30da718}{BF\_\-difference} (const \hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction} m1, const \hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction} m2)
+\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}{\bf Function-\/and-\/element-\/dependant operations}\par
+\begin{DoxyCompactItemize}
+\item 
+float \hyperlink{_belief_functions_8c_a123a378cd1e859b2c9c2f5ea5bf52a83}{BF\_\-M} (const \hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction} m, const \hyperlink{struct_sets___element}{Sets\_\-Element} e)
+\item 
+float \hyperlink{_belief_functions_8c_a18dd76443e9e26bbecbe42bb082e1608}{BF\_\-bel} (const \hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction} m, const \hyperlink{struct_sets___element}{Sets\_\-Element} e)
+\item 
+float \hyperlink{_belief_functions_8c_a9ce98db63efd81734beb53780eb79785}{BF\_\-pl} (const \hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction} m, const \hyperlink{struct_sets___element}{Sets\_\-Element} e)
+\item 
+float \hyperlink{_belief_functions_8c_ab4c78af992436b5f25a61a4c86a7de99}{BF\_\-q} (const \hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction} m, const \hyperlink{struct_sets___element}{Sets\_\-Element} e)
+\item 
+float \hyperlink{_belief_functions_8c_af6255725c0925c21544a42927ed29594}{BF\_\-betP} (const \hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction} m, const \hyperlink{struct_sets___element}{Sets\_\-Element} e)
+\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}{\bf Function-\/dependant operations}\par
+\begin{DoxyCompactItemize}
+\item 
+float $\ast$ \hyperlink{_belief_functions_8c_a727046cee9478b0a8651e24f3c1b45f8}{BF\_\-autoConflict} (const \hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction} m, const int maxDegree)
+\item 
+float \hyperlink{_belief_functions_8c_a017715386951795b8e55cbd2b135b9e0}{BF\_\-specificity} (const \hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction} m)
+\item 
+float \hyperlink{_belief_functions_8c_a7bca4e5ed1078f33a1965d9adc7d0525}{BF\_\-nonSpecificity} (const \hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction} m)
+\item 
+float \hyperlink{_belief_functions_8c_ad51487a25d5574b6823dd71451346ec1}{BF\_\-discrepancy} (const \hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction} m)
+\item 
+float \hyperlink{_belief_functions_8c_a25cd6b7ef7c3c529076344b1f16dbff3}{BF\_\-distance} (const \hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction} m1, const \hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction} m2)
+\item 
+float \hyperlink{_belief_functions_8c_a20b2e52a17ee0d0a86abb3efa9bfb588}{BF\_\-globalDistance} (const \hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction} m, const \hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction} $\ast$s, const int nbBF)
+\item 
+float \hyperlink{_belief_functions_8c_a7375fa42bf0bb1ba30a6281e99f99f07}{BF\_\-similarity} (const \hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction} m1, const \hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction} m2)
+\item 
+float \hyperlink{_belief_functions_8c_a56cb1a1ca36e5a50b6220973abb1878d}{BF\_\-support} (const \hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction} ref, const \hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction} $\ast$m, const int nbM)
+\item 
+int \hyperlink{_belief_functions_8c_a4b119544f87b1f28ef442047a11c7940}{BF\_\-checkSum} (const \hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction} m)
+\item 
+int \hyperlink{_belief_functions_8c_a9c5f16b2daea7f1752524cdd64d38b1a}{BF\_\-checkValues} (const \hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction} m)
+\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}{\bf Decision support functions}\par
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{struct_b_f___focal_element}{BF\_\-FocalElement} \hyperlink{_belief_functions_8c_afdecbcdf545cd9c42e500695571bbe4d}{BF\_\-getMaxMass} (const \hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction} m, const int card)
+\item 
+\hyperlink{struct_b_f___focal_element}{BF\_\-FocalElement} \hyperlink{_belief_functions_8c_a169c05bfd3c73fa30ef8c7122e62f9b1}{BF\_\-getMinMass} (const \hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction} m, const int card)
+\item 
+\hyperlink{struct_b_f___focal_element}{BF\_\-FocalElement} \hyperlink{_belief_functions_8c_ae6a14956549de55a086cc7f7bef444b2}{BF\_\-getMaxBel} (const \hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction} m, const int card, const \hyperlink{struct_sets___set}{Sets\_\-Set} powerset)
+\item 
+\hyperlink{struct_b_f___focal_element}{BF\_\-FocalElement} \hyperlink{_belief_functions_8c_ad66ea683822e75a55048f3f384c49276}{BF\_\-getMinBel} (const \hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction} m, const int card, const \hyperlink{struct_sets___set}{Sets\_\-Set} powerset)
+\item 
+\hyperlink{struct_b_f___focal_element}{BF\_\-FocalElement} \hyperlink{_belief_functions_8c_af4c52bee417528d5a1efac43524948ba}{BF\_\-getMaxPl} (const \hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction} m, const int card, const \hyperlink{struct_sets___set}{Sets\_\-Set} powerset)
+\item 
+\hyperlink{struct_b_f___focal_element}{BF\_\-FocalElement} \hyperlink{_belief_functions_8c_af2593bde24b6b147b4db270221ec8e77}{BF\_\-getMinPl} (const \hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction} m, const int card, const \hyperlink{struct_sets___set}{Sets\_\-Set} powerset)
+\item 
+\hyperlink{struct_b_f___focal_element}{BF\_\-FocalElement} \hyperlink{_belief_functions_8c_ab74b959189b8ceb9a6ac3f9d8fc9f5b1}{BF\_\-getMaxBetP} (const \hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction} m, const int card, const \hyperlink{struct_sets___set}{Sets\_\-Set} powerset)
+\item 
+\hyperlink{struct_b_f___focal_element}{BF\_\-FocalElement} \hyperlink{_belief_functions_8c_a8b8e2f8c31a978a315a63a3396f18485}{BF\_\-getMinBetP} (const \hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction} m, const int card, const \hyperlink{struct_sets___set}{Sets\_\-Set} powerset)
+\item 
+int \hyperlink{_belief_functions_8c_aaf154ca9f6663bf79b12894c05cb1f16}{BF\_\-getNbMaxMass} (const \hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction} m, const int card)
+\item 
+int \hyperlink{_belief_functions_8c_a63ace25f467b238cca9675f64037d39d}{BF\_\-getNbMinMass} (const \hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction} m, const int card)
+\item 
+int \hyperlink{_belief_functions_8c_a8e1389b7734cc65a14eccdfad59ca9be}{BF\_\-getNbMaxBel} (const \hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction} m, const int card, const \hyperlink{struct_sets___set}{Sets\_\-Set} powerset)
+\item 
+int \hyperlink{_belief_functions_8c_a02040f201222353f89d276c68d651e37}{BF\_\-getNbMinBel} (const \hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction} m, const int card, const \hyperlink{struct_sets___set}{Sets\_\-Set} powerset)
+\item 
+int \hyperlink{_belief_functions_8c_a3c47967371d50a0e506a60a337ab40c3}{BF\_\-getNbMaxPl} (const \hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction} m, const int card, const \hyperlink{struct_sets___set}{Sets\_\-Set} powerset)
+\item 
+int \hyperlink{_belief_functions_8c_afabc41d74088c42650c4becffbbccdd2}{BF\_\-getNbMinPl} (const \hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction} m, const int card, const \hyperlink{struct_sets___set}{Sets\_\-Set} powerset)
+\item 
+int \hyperlink{_belief_functions_8c_a6b2a4a9ba9b09805a3da6a1b6b983486}{BF\_\-getNbMaxBetP} (const \hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction} m, const int card, const \hyperlink{struct_sets___set}{Sets\_\-Set} powerset)
+\item 
+int \hyperlink{_belief_functions_8c_af3ec5a692f270f5974b2aa2baed88fa0}{BF\_\-getNbMinBetP} (const \hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction} m, const int card, const \hyperlink{struct_sets___set}{Sets\_\-Set} powerset)
+\item 
+int \hyperlink{_belief_functions_8c_afbbec54bcca6905dd7864ab0982edace}{BF\_\-getQuickNbMaxMass} (const \hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction} m, const int card, float maxValue)
+\item 
+int \hyperlink{_belief_functions_8c_a36a983dcf4d91b5183c254a479904400}{BF\_\-getQuickNbMinMass} (const \hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction} m, const int card, float minValue)
+\item 
+int \hyperlink{_belief_functions_8c_a69ff11fb69f0d2fd280600bc773be0b0}{BF\_\-getQuickNbMaxBel} (const \hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction} m, const int card, const \hyperlink{struct_sets___set}{Sets\_\-Set} powerset, float maxValue)
+\item 
+int \hyperlink{_belief_functions_8c_a68a54d1b1e06b66f1d634b47d4fd2af0}{BF\_\-getQuickNbMinBel} (const \hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction} m, const int card, const \hyperlink{struct_sets___set}{Sets\_\-Set} powerset, float minValue)
+\item 
+int \hyperlink{_belief_functions_8c_aeddfb2d82c5058b15b08877e1f7be64e}{BF\_\-getQuickNbMaxPl} (const \hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction} m, const int card, const \hyperlink{struct_sets___set}{Sets\_\-Set} powerset, float maxValue)
+\item 
+int \hyperlink{_belief_functions_8c_a45838cf1932a7fa3e4521bb83cb188e3}{BF\_\-getQuickNbMinPl} (const \hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction} m, const int card, const \hyperlink{struct_sets___set}{Sets\_\-Set} powerset, float minValue)
+\item 
+int \hyperlink{_belief_functions_8c_af9afb5f1dd65a699b325fabdf30eaf57}{BF\_\-getQuickNbMaxBetP} (const \hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction} m, const int card, const \hyperlink{struct_sets___set}{Sets\_\-Set} powerset, float maxValue)
+\item 
+int \hyperlink{_belief_functions_8c_a1a30d8e068f393fd1afd408570c3586f}{BF\_\-getQuickNbMinBetP} (const \hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction} m, const int card, const \hyperlink{struct_sets___set}{Sets\_\-Set} powerset, float minValue)
+\item 
+\hyperlink{struct_b_f___focal_element}{BF\_\-FocalElement} $\ast$ \hyperlink{_belief_functions_8c_ae6a51a4d47214fd312b33e7a84a77355}{BF\_\-getListMaxMass} (const \hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction} m, const int card)
+\item 
+\hyperlink{struct_b_f___focal_element}{BF\_\-FocalElement} $\ast$ \hyperlink{_belief_functions_8c_a6b3f9dfe470c437b188049c1815b22b9}{BF\_\-getListMinMass} (const \hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction} m, const int card)
+\item 
+\hyperlink{struct_b_f___focal_element}{BF\_\-FocalElement} $\ast$ \hyperlink{_belief_functions_8c_a9ed943acd331068bcfd5de5c2f2bbf54}{BF\_\-getListMaxBel} (const \hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction} m, const int card, const \hyperlink{struct_sets___set}{Sets\_\-Set} powerset)
+\item 
+\hyperlink{struct_b_f___focal_element}{BF\_\-FocalElement} $\ast$ \hyperlink{_belief_functions_8c_a797c05db5cc7c3e2f57c80d48972c0e7}{BF\_\-getListMinBel} (const \hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction} m, const int card, const \hyperlink{struct_sets___set}{Sets\_\-Set} powerset)
+\item 
+\hyperlink{struct_b_f___focal_element}{BF\_\-FocalElement} $\ast$ \hyperlink{_belief_functions_8c_a57899674d608c4171d3a17434555bd38}{BF\_\-getListMaxPl} (const \hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction} m, const int card, const \hyperlink{struct_sets___set}{Sets\_\-Set} powerset)
+\item 
+\hyperlink{struct_b_f___focal_element}{BF\_\-FocalElement} $\ast$ \hyperlink{_belief_functions_8c_afbc034ed432ba110c9e6f9fd6e9b76ef}{BF\_\-getListMinPl} (const \hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction} m, const int card, const \hyperlink{struct_sets___set}{Sets\_\-Set} powerset)
+\item 
+\hyperlink{struct_b_f___focal_element}{BF\_\-FocalElement} $\ast$ \hyperlink{_belief_functions_8c_ac4db4d59f8b1a79e6c84dce2ed15e29c}{BF\_\-getListMaxBetP} (const \hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction} m, const int card, const \hyperlink{struct_sets___set}{Sets\_\-Set} powerset)
+\item 
+\hyperlink{struct_b_f___focal_element}{BF\_\-FocalElement} $\ast$ \hyperlink{_belief_functions_8c_a524985e65b3d2eb927f49e1cd0d98920}{BF\_\-getListMinBetP} (const \hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction} m, const int card, const \hyperlink{struct_sets___set}{Sets\_\-Set} powerset)
+\item 
+\hyperlink{struct_b_f___focal_element}{BF\_\-FocalElement} $\ast$ \hyperlink{_belief_functions_8c_aea57a55bfd8dca820045b0ade3d2e40d}{BF\_\-getQuickListMaxMass} (const \hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction} m, const int card, const float maxValue)
+\item 
+\hyperlink{struct_b_f___focal_element}{BF\_\-FocalElement} $\ast$ \hyperlink{_belief_functions_8c_a6036f0d29d16a53d50fb8cbcd5a2cea1}{BF\_\-getQuickListMinMass} (const \hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction} m, const int card, const float minValue)
+\item 
+\hyperlink{struct_b_f___focal_element}{BF\_\-FocalElement} $\ast$ \hyperlink{_belief_functions_8c_a3d64e9534605422aa8c52c3e21e5a71d}{BF\_\-getQuickListMaxBel} (const \hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction} m, const int card, const \hyperlink{struct_sets___set}{Sets\_\-Set} powerset, const float maxValue)
+\item 
+\hyperlink{struct_b_f___focal_element}{BF\_\-FocalElement} $\ast$ \hyperlink{_belief_functions_8c_ac062188b824dcbf7635237dfd31475fc}{BF\_\-getQuickListMinBel} (const \hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction} m, const int card, const \hyperlink{struct_sets___set}{Sets\_\-Set} powerset, const float minValue)
+\item 
+\hyperlink{struct_b_f___focal_element}{BF\_\-FocalElement} $\ast$ \hyperlink{_belief_functions_8c_a1cc231bbb149836c2a0498f46523c5f6}{BF\_\-getQuickListMaxPl} (const \hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction} m, const int card, const \hyperlink{struct_sets___set}{Sets\_\-Set} powerset, const float maxValue)
+\item 
+\hyperlink{struct_b_f___focal_element}{BF\_\-FocalElement} $\ast$ \hyperlink{_belief_functions_8c_ac0d2ebc6ef7012aa7aaaf2a3a4ea6111}{BF\_\-getQuickListMinPl} (const \hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction} m, const int card, const \hyperlink{struct_sets___set}{Sets\_\-Set} powerset, const float minValue)
+\item 
+\hyperlink{struct_b_f___focal_element}{BF\_\-FocalElement} $\ast$ \hyperlink{_belief_functions_8c_a4adb06181b557c846cc3db138cc1d024}{BF\_\-getQuickListMaxBetP} (const \hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction} m, const int card, const \hyperlink{struct_sets___set}{Sets\_\-Set} powerset, const float maxValue)
+\item 
+\hyperlink{struct_b_f___focal_element}{BF\_\-FocalElement} $\ast$ \hyperlink{_belief_functions_8c_a71c3160157ea78eed69ade99fdd1a92c}{BF\_\-getQuickListMinBetP} (const \hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction} m, const int card, const \hyperlink{struct_sets___set}{Sets\_\-Set} powerset, const float minValue)
+\item 
+\hyperlink{struct_b_f___focal_element}{BF\_\-FocalElement} $\ast$ \hyperlink{_belief_functions_8c_abf24629ed149e8615413bec148f04cb4}{BF\_\-getQuickerListMaxMass} (const \hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction} m, const int card, const float maxValue, const int nbMax)
+\item 
+\hyperlink{struct_b_f___focal_element}{BF\_\-FocalElement} $\ast$ \hyperlink{_belief_functions_8c_a41624db0962c9e24aa3b1af6bad2e121}{BF\_\-getQuickerListMinMass} (const \hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction} m, const int card, const float minValue, const int nbMin)
+\item 
+\hyperlink{struct_b_f___focal_element}{BF\_\-FocalElement} $\ast$ \hyperlink{_belief_functions_8c_add139e82190d797b8f1863848467dea9}{BF\_\-getQuickerListMaxBel} (const \hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction} m, const int card, const \hyperlink{struct_sets___set}{Sets\_\-Set} powerset, const float maxValue, const int nbMax)
+\item 
+\hyperlink{struct_b_f___focal_element}{BF\_\-FocalElement} $\ast$ \hyperlink{_belief_functions_8c_ace00a83049c264ef7f1596c46b339d4a}{BF\_\-getQuickerListMinBel} (const \hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction} m, const int card, const \hyperlink{struct_sets___set}{Sets\_\-Set} powerset, const float minValue, const int nbMin)
+\item 
+\hyperlink{struct_b_f___focal_element}{BF\_\-FocalElement} $\ast$ \hyperlink{_belief_functions_8c_a6ac5be2c9be1cd49ddceaa2e4c447010}{BF\_\-getQuickerListMaxPl} (const \hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction} m, const int card, const \hyperlink{struct_sets___set}{Sets\_\-Set} powerset, const float maxValue, const int nbMax)
+\item 
+\hyperlink{struct_b_f___focal_element}{BF\_\-FocalElement} $\ast$ \hyperlink{_belief_functions_8c_a86cce660c55ff2b1dd5c77e4fdf55bef}{BF\_\-getQuickerListMinPl} (const \hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction} m, const int card, const \hyperlink{struct_sets___set}{Sets\_\-Set} powerset, const float minValue, const int nbMin)
+\item 
+\hyperlink{struct_b_f___focal_element}{BF\_\-FocalElement} $\ast$ \hyperlink{_belief_functions_8c_aa6c538402564acc9ecbc202706953f9e}{BF\_\-getQuickerListMaxBetP} (const \hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction} m, const int card, const \hyperlink{struct_sets___set}{Sets\_\-Set} powerset, const float maxValue, const int nbMax)
+\item 
+\hyperlink{struct_b_f___focal_element}{BF\_\-FocalElement} $\ast$ \hyperlink{_belief_functions_8c_ac7548afe078a40401df5da1039efae4a}{BF\_\-getQuickerListMinBetP} (const \hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction} m, const int card, const \hyperlink{struct_sets___set}{Sets\_\-Set} powerset, const float minValue, const int nbMin)
+\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}{\bf Memory deallocation}\par
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{_belief_functions_8c_aa3c5107945acc34941aed1c7f7e04968}{BF\_\-freeBeliefFunction} (\hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction} $\ast$bf)
+\item 
+void \hyperlink{_belief_functions_8c_a4e12dcb5da2c769f13ef67ffafc9f1d7}{BF\_\-freeBeliefPoint} (\hyperlink{struct_b_f___focal_element}{BF\_\-FocalElement} $\ast$bp)
+\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}{\bf Conversion to string}\par
+\begin{DoxyCompactItemize}
+\item 
+char $\ast$ \hyperlink{_belief_functions_8c_a7ca111c373c8eff6c7b221aa3f6e9a0b}{BF\_\-beliefFunctionToString} (const \hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction} bf, const \hyperlink{struct_sets___reference_list}{Sets\_\-ReferenceList} rl)
+\item 
+char $\ast$ \hyperlink{_belief_functions_8c_a09113849ea5c4042faebfd9c2b53e1b5}{BF\_\-beliefFunctionToBitString} (const \hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction} bf)
+\end{DoxyCompactItemize}
+\end{Indent}
+
+
+\subsection{Detailed Description}
+CORE: Gives structures and main functions to manipulate belief functions. This module does not enable the building of belief functions but only to manipulate them! Thus, this module offers many functions to characterize, combine and discount belief functions. Some decision support functions have also been implemented in order to ease the decision making.\par
+\par
+ Different combination rules are implemented but one is free to implement some more.\par
+\par
+ If you have no idea to what corresponds exactly a function, you should refer to the given references.
+
+\begin{DoxyAuthor}{Author}
+Bastien Pietropaoli (\href{mailto:bastien.pietropaoli@inria.fr}{\tt bastien.pietropaoli@inria.fr}) 
+\end{DoxyAuthor}
+
+
+Definition in file \hyperlink{_belief_functions_8c_source}{BeliefFunctions.c}.
+
+
+
+\subsection{Function Documentation}
+\hypertarget{_belief_functions_8c_a727046cee9478b0a8651e24f3c1b45f8}{
+\index{BeliefFunctions.c@{BeliefFunctions.c}!BF\_\-autoConflict@{BF\_\-autoConflict}}
+\index{BF\_\-autoConflict@{BF\_\-autoConflict}!BeliefFunctions.c@{BeliefFunctions.c}}
+\subsubsection[{BF\_\-autoConflict}]{\setlength{\rightskip}{0pt plus 5cm}float$\ast$ BF\_\-autoConflict (
+\begin{DoxyParamCaption}
+\item[{const {\bf BF\_\-BeliefFunction}}]{m, }
+\item[{const int}]{maxDegree}
+\end{DoxyParamCaption}
+)}}
+\label{_belief_functions_8c_a727046cee9478b0a8651e24f3c1b45f8}
+Get the self-\/conflict generated by a \hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction} to a certain degree. The rule is defined in A. Martin 2009 (Modelisation et gestion du conflit dans la theorie des fonctions de croyance (French)). The combination rule used is the one defined above. 
+\begin{DoxyParams}{Parameters}
+{\em m} & The \hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction} to work on \\
+\hline
+{\em maxDegree} & The maximum degree of self-\/conflict required (the maximum of self-\/combination that will be done) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The list of values of the belief on the void set from 1st degree to maxDegree-\/th degree 
+\end{DoxyReturn}
+
+
+Definition at line 1417 of file BeliefFunctions.c.
+
+\hypertarget{_belief_functions_8c_a3c7b01c167b53cf6fa247ebfdf895bba}{
+\index{BeliefFunctions.c@{BeliefFunctions.c}!BF\_\-averageCombination@{BF\_\-averageCombination}}
+\index{BF\_\-averageCombination@{BF\_\-averageCombination}!BeliefFunctions.c@{BeliefFunctions.c}}
+\subsubsection[{BF\_\-averageCombination}]{\setlength{\rightskip}{0pt plus 5cm}{\bf BF\_\-BeliefFunction} BF\_\-averageCombination (
+\begin{DoxyParamCaption}
+\item[{const {\bf BF\_\-BeliefFunction}}]{m1, }
+\item[{const {\bf BF\_\-BeliefFunction}}]{m2}
+\end{DoxyParamCaption}
+)}}
+\label{_belief_functions_8c_a3c7b01c167b53cf6fa247ebfdf895bba}
+Combines two BeliefFunctions into one. The combination rule used is defined in C. K. Murphy 1999 (Combining belief functions when evidence conflicts). This rule consists in an average of the belief functions instead of the classical combination. 
+\begin{DoxyParams}{Parameters}
+{\em m1} & The first \hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction} to combine \\
+\hline
+{\em m2} & The second \hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction} to combine \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The resulting \hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction} corresponding to the accumulation of evidences 
+\end{DoxyReturn}
+
+
+Definition at line 722 of file BeliefFunctions.c.
+
+\hypertarget{_belief_functions_8c_a18dd76443e9e26bbecbe42bb082e1608}{
+\index{BeliefFunctions.c@{BeliefFunctions.c}!BF\_\-bel@{BF\_\-bel}}
+\index{BF\_\-bel@{BF\_\-bel}!BeliefFunctions.c@{BeliefFunctions.c}}
+\subsubsection[{BF\_\-bel}]{\setlength{\rightskip}{0pt plus 5cm}float BF\_\-bel (
+\begin{DoxyParamCaption}
+\item[{const {\bf BF\_\-BeliefFunction}}]{m, }
+\item[{const {\bf Sets\_\-Element}}]{e}
+\end{DoxyParamCaption}
+)}}
+\label{_belief_functions_8c_a18dd76443e9e26bbecbe42bb082e1608}
+Get the belief (or credibility) of an element given a \hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction}. The operation used is defined in P. Smets 1999 (The transferable belief model for belief representation). It reprensents a pessimistic probability of occurrence of an element. 
+\begin{DoxyParams}{Parameters}
+{\em m} & The \hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction} to work on \\
+\hline
+{\em e} & The element to work on \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The belief (or credibility) value associated to the element given the \hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction} 
+\end{DoxyReturn}
+
+
+Definition at line 1333 of file BeliefFunctions.c.
+
+\hypertarget{_belief_functions_8c_a09113849ea5c4042faebfd9c2b53e1b5}{
+\index{BeliefFunctions.c@{BeliefFunctions.c}!BF\_\-beliefFunctionToBitString@{BF\_\-beliefFunctionToBitString}}
+\index{BF\_\-beliefFunctionToBitString@{BF\_\-beliefFunctionToBitString}!BeliefFunctions.c@{BeliefFunctions.c}}
+\subsubsection[{BF\_\-beliefFunctionToBitString}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ BF\_\-beliefFunctionToBitString (
+\begin{DoxyParamCaption}
+\item[{const {\bf BF\_\-BeliefFunction}}]{bf}
+\end{DoxyParamCaption}
+)}}
+\label{_belief_functions_8c_a09113849ea5c4042faebfd9c2b53e1b5}
+Converts a \hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction} into a string ready to print where elements are given in their binary form. 
+\begin{DoxyParams}{Parameters}
+{\em bf} & The \hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction} to convert \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A string ready to print representing the \hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction}. Must be freed after use. 
+\end{DoxyReturn}
+
+
+Definition at line 2557 of file BeliefFunctions.c.
+
+\hypertarget{_belief_functions_8c_a7ca111c373c8eff6c7b221aa3f6e9a0b}{
+\index{BeliefFunctions.c@{BeliefFunctions.c}!BF\_\-beliefFunctionToString@{BF\_\-beliefFunctionToString}}
+\index{BF\_\-beliefFunctionToString@{BF\_\-beliefFunctionToString}!BeliefFunctions.c@{BeliefFunctions.c}}
+\subsubsection[{BF\_\-beliefFunctionToString}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ BF\_\-beliefFunctionToString (
+\begin{DoxyParamCaption}
+\item[{const {\bf BF\_\-BeliefFunction}}]{bf, }
+\item[{const {\bf Sets\_\-ReferenceList}}]{rl}
+\end{DoxyParamCaption}
+)}}
+\label{_belief_functions_8c_a7ca111c373c8eff6c7b221aa3f6e9a0b}
+Converts a \hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction} into a string ready to print. 
+\begin{DoxyParams}{Parameters}
+{\em bf} & The \hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction} to convert \\
+\hline
+{\em rl} & The ReferenceList containing the real values of the context attribute \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A string ready to print representing the \hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction}. Must be freed after use. 
+\end{DoxyReturn}
+
+
+Definition at line 2518 of file BeliefFunctions.c.
+
+\hypertarget{_belief_functions_8c_af6255725c0925c21544a42927ed29594}{
+\index{BeliefFunctions.c@{BeliefFunctions.c}!BF\_\-betP@{BF\_\-betP}}
+\index{BF\_\-betP@{BF\_\-betP}!BeliefFunctions.c@{BeliefFunctions.c}}
+\subsubsection[{BF\_\-betP}]{\setlength{\rightskip}{0pt plus 5cm}float BF\_\-betP (
+\begin{DoxyParamCaption}
+\item[{const {\bf BF\_\-BeliefFunction}}]{m, }
+\item[{const {\bf Sets\_\-Element}}]{e}
+\end{DoxyParamCaption}
+)}}
+\label{_belief_functions_8c_af6255725c0925c21544a42927ed29594}
+Get the pignistic (the bet) probability of an element given a \hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction}. The rule used is defined in P. Smets 1999 (The transferable belief model for belief representation). It represents neither a pessimistic nor an optimistic probability of occurrence of an element. Actually, bel(m,e) $<$ betP(m,e) $<$ pl(m,e). 
+\begin{DoxyParams}{Parameters}
+{\em m} & The \hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction} to work on \\
+\hline
+{\em e} & The Element to work on \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The pignistic probability of an element given the \hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction} 
+\end{DoxyReturn}
+
+
+Definition at line 1388 of file BeliefFunctions.c.
+
+\hypertarget{_belief_functions_8c_a4b119544f87b1f28ef442047a11c7940}{
+\index{BeliefFunctions.c@{BeliefFunctions.c}!BF\_\-checkSum@{BF\_\-checkSum}}
+\index{BF\_\-checkSum@{BF\_\-checkSum}!BeliefFunctions.c@{BeliefFunctions.c}}
+\subsubsection[{BF\_\-checkSum}]{\setlength{\rightskip}{0pt plus 5cm}int BF\_\-checkSum (
+\begin{DoxyParamCaption}
+\item[{const {\bf BF\_\-BeliefFunction}}]{m}
+\end{DoxyParamCaption}
+)}}
+\label{_belief_functions_8c_a4b119544f87b1f28ef442047a11c7940}
+Checks the sum of all beliefs on elements. 
+\begin{DoxyParams}{Parameters}
+{\em m} & The \hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction} to work on \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 if the sum is okay ( == 1), 1 if not 
+\end{DoxyReturn}
+
+
+Definition at line 1624 of file BeliefFunctions.c.
+
+\hypertarget{_belief_functions_8c_a9c5f16b2daea7f1752524cdd64d38b1a}{
+\index{BeliefFunctions.c@{BeliefFunctions.c}!BF\_\-checkValues@{BF\_\-checkValues}}
+\index{BF\_\-checkValues@{BF\_\-checkValues}!BeliefFunctions.c@{BeliefFunctions.c}}
+\subsubsection[{BF\_\-checkValues}]{\setlength{\rightskip}{0pt plus 5cm}int BF\_\-checkValues (
+\begin{DoxyParamCaption}
+\item[{const {\bf BF\_\-BeliefFunction}}]{m}
+\end{DoxyParamCaption}
+)}}
+\label{_belief_functions_8c_a9c5f16b2daea7f1752524cdd64d38b1a}
+Checks the values of the \hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction}. 
+\begin{DoxyParams}{Parameters}
+{\em m} & TheBeliefFunction to work on \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 if the values are okay, 1 if not 
+\end{DoxyReturn}
+
+
+Definition at line 1640 of file BeliefFunctions.c.
+
+\hypertarget{_belief_functions_8c_a29f2e14af48e088d4767db8780dbfae5}{
+\index{BeliefFunctions.c@{BeliefFunctions.c}!BF\_\-cleanBeliefFunction@{BF\_\-cleanBeliefFunction}}
+\index{BF\_\-cleanBeliefFunction@{BF\_\-cleanBeliefFunction}!BeliefFunctions.c@{BeliefFunctions.c}}
+\subsubsection[{BF\_\-cleanBeliefFunction}]{\setlength{\rightskip}{0pt plus 5cm}void BF\_\-cleanBeliefFunction (
+\begin{DoxyParamCaption}
+\item[{{\bf BF\_\-BeliefFunction} $\ast$}]{bf}
+\end{DoxyParamCaption}
+)}}
+\label{_belief_functions_8c_a29f2e14af48e088d4767db8780dbfae5}
+Cleans the \hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction} given from all the non-\/focal elements. If there are zeros, the list of \hyperlink{struct_b_f___focal_element}{BF\_\-FocalElement} is freed and replaced by a clean one. Thus, it modifies the given \hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction}. 
+\begin{DoxyParams}{Parameters}
+{\em bf} & A pointer to a \hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction} \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 85 of file BeliefFunctions.c.
+
+\hypertarget{_belief_functions_8c_a86176697067fe1ca4d4ace9f19bac86f}{
+\index{BeliefFunctions.c@{BeliefFunctions.c}!BF\_\-combination@{BF\_\-combination}}
+\index{BF\_\-combination@{BF\_\-combination}!BeliefFunctions.c@{BeliefFunctions.c}}
+\subsubsection[{BF\_\-combination}]{\setlength{\rightskip}{0pt plus 5cm}{\bf BF\_\-BeliefFunction} BF\_\-combination (
+\begin{DoxyParamCaption}
+\item[{const {\bf BF\_\-BeliefFunction}}]{m1, }
+\item[{const {\bf BF\_\-BeliefFunction}}]{m2, }
+\item[{const {\bf BF\_\-CombinationRule}}]{type}
+\end{DoxyParamCaption}
+)}}
+\label{_belief_functions_8c_a86176697067fe1ca4d4ace9f19bac86f}
+Combines two BeliefFunctions into one. The combination rule used depends on the given type of combination. You can get a list of those types in the CombinationRule enumeration. 
+\begin{DoxyParams}{Parameters}
+{\em m1} & The first \hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction} to combine \\
+\hline
+{\em m2} & The second \hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction} to combine \\
+\hline
+{\em bs} & The belief structure the functions are based on \\
+\hline
+{\em type} & The type of combination rule to use \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The resulting \hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction} corresponding to the accumulation of evidences 
+\end{DoxyReturn}
+
+
+Definition at line 968 of file BeliefFunctions.c.
+
+\hypertarget{_belief_functions_8c_a1390231c867ad0b64bbbfdb84f0f0609}{
+\index{BeliefFunctions.c@{BeliefFunctions.c}!BF\_\-conditioning@{BF\_\-conditioning}}
+\index{BF\_\-conditioning@{BF\_\-conditioning}!BeliefFunctions.c@{BeliefFunctions.c}}
+\subsubsection[{BF\_\-conditioning}]{\setlength{\rightskip}{0pt plus 5cm}{\bf BF\_\-BeliefFunction} BF\_\-conditioning (
+\begin{DoxyParamCaption}
+\item[{const {\bf BF\_\-BeliefFunction}}]{m, }
+\item[{const {\bf Sets\_\-Element}}]{e, }
+\item[{const {\bf Sets\_\-Set}}]{powerset}
+\end{DoxyParamCaption}
+)}}
+\label{_belief_functions_8c_a1390231c867ad0b64bbbfdb84f0f0609}
+Get the new resulting \hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction} knowing that an certain element is true. The rule used is defined in P. Smets 1999 (The transferable belief model for belief representation). 
+\begin{DoxyParams}{Parameters}
+{\em m} & The \hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction} to work on \\
+\hline
+{\em e} & The element which is true \\
+\hline
+{\em powerset} & The set of values the \hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction} is applied on \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A conditioned \hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction} knowing that e is true 
+\end{DoxyReturn}
+
+
+Definition at line 1007 of file BeliefFunctions.c.
+
+\hypertarget{_belief_functions_8c_ae248331ed725fe2bbba71abc0b397aab}{
+\index{BeliefFunctions.c@{BeliefFunctions.c}!BF\_\-copyBeliefFunction@{BF\_\-copyBeliefFunction}}
+\index{BF\_\-copyBeliefFunction@{BF\_\-copyBeliefFunction}!BeliefFunctions.c@{BeliefFunctions.c}}
+\subsubsection[{BF\_\-copyBeliefFunction}]{\setlength{\rightskip}{0pt plus 5cm}{\bf BF\_\-BeliefFunction} BF\_\-copyBeliefFunction (
+\begin{DoxyParamCaption}
+\item[{const {\bf BF\_\-BeliefFunction}}]{m}
+\end{DoxyParamCaption}
+)}}
+\label{_belief_functions_8c_ae248331ed725fe2bbba71abc0b397aab}
+Copies a \hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction}. 
+\begin{DoxyParams}{Parameters}
+{\em m} & The \hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction} to copy \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A new \hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction}. Must be freed after use. 
+\end{DoxyReturn}
+
+
+Definition at line 41 of file BeliefFunctions.c.
+
+\hypertarget{_belief_functions_8c_a34a15102ee96fc30396ef8972b99c440}{
+\index{BeliefFunctions.c@{BeliefFunctions.c}!BF\_\-DempsterCombination@{BF\_\-DempsterCombination}}
+\index{BF\_\-DempsterCombination@{BF\_\-DempsterCombination}!BeliefFunctions.c@{BeliefFunctions.c}}
+\subsubsection[{BF\_\-DempsterCombination}]{\setlength{\rightskip}{0pt plus 5cm}{\bf BF\_\-BeliefFunction} BF\_\-DempsterCombination (
+\begin{DoxyParamCaption}
+\item[{const {\bf BF\_\-BeliefFunction}}]{m1, }
+\item[{const {\bf BF\_\-BeliefFunction}}]{m2}
+\end{DoxyParamCaption}
+)}}
+\label{_belief_functions_8c_a34a15102ee96fc30396ef8972b99c440}
+Combines two BeliefFunctions into one. The combination rule used is the classical normalized Dempster rule of combination. 
+\begin{DoxyParams}{Parameters}
+{\em m1} & The first \hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction} to combine \\
+\hline
+{\em m2} & The second \hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction} to combine \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The resulting \hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction} corresponding to the accumulation of evidences 
+\end{DoxyReturn}
+
+
+Definition at line 185 of file BeliefFunctions.c.
+
+\hypertarget{_belief_functions_8c_a718e6a56345615b6eca40c4ca30da718}{
+\index{BeliefFunctions.c@{BeliefFunctions.c}!BF\_\-difference@{BF\_\-difference}}
+\index{BF\_\-difference@{BF\_\-difference}!BeliefFunctions.c@{BeliefFunctions.c}}
+\subsubsection[{BF\_\-difference}]{\setlength{\rightskip}{0pt plus 5cm}{\bf BF\_\-BeliefFunction} BF\_\-difference (
+\begin{DoxyParamCaption}
+\item[{const {\bf BF\_\-BeliefFunction}}]{m1, }
+\item[{const {\bf BF\_\-BeliefFunction}}]{m2}
+\end{DoxyParamCaption}
+)}}
+\label{_belief_functions_8c_a718e6a56345615b6eca40c4ca30da718}
+Get a vector (represented as a \hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction} but is NOT an actual one) of the difference of two BeliefFunctions. 
+\begin{DoxyParams}{Parameters}
+{\em m1} & The first \hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction} to work on \\
+\hline
+{\em m2} & The second \hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction} to work on \\
+\hline
+{\em powerset} & The set of all the elements the BeliefFunctions are applied on \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A fake \hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction} representing in fact the difference between m1 and m2. Must be freed after use. 
+\end{DoxyReturn}
+
+
+Definition at line 1267 of file BeliefFunctions.c.
+
+\hypertarget{_belief_functions_8c_a6052d0e66126fed4aeac85ebde7dccd6}{
+\index{BeliefFunctions.c@{BeliefFunctions.c}!BF\_\-discounting@{BF\_\-discounting}}
+\index{BF\_\-discounting@{BF\_\-discounting}!BeliefFunctions.c@{BeliefFunctions.c}}
+\subsubsection[{BF\_\-discounting}]{\setlength{\rightskip}{0pt plus 5cm}{\bf BF\_\-BeliefFunction} BF\_\-discounting (
+\begin{DoxyParamCaption}
+\item[{const {\bf BF\_\-BeliefFunction}}]{m, }
+\item[{const float}]{alpha}
+\end{DoxyParamCaption}
+)}}
+\label{_belief_functions_8c_a6052d0e66126fed4aeac85ebde7dccd6}
+Discounts a belief function given a coefficient alpha in \mbox{[}0,1\mbox{]}. All believes on focal elements will be multiplied by a factor of (1 -\/ alpha). The lost belief is transfered to the complete frame of discernment. 
+\begin{DoxyParams}{Parameters}
+{\em m} & The \hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction} to work on \\
+\hline
+{\em alpha} & The weakening coefficient \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The weakened \hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction} resulting from m and alpha. 
+\end{DoxyReturn}
+
+
+Definition at line 1179 of file BeliefFunctions.c.
+
+\hypertarget{_belief_functions_8c_ad51487a25d5574b6823dd71451346ec1}{
+\index{BeliefFunctions.c@{BeliefFunctions.c}!BF\_\-discrepancy@{BF\_\-discrepancy}}
+\index{BF\_\-discrepancy@{BF\_\-discrepancy}!BeliefFunctions.c@{BeliefFunctions.c}}
+\subsubsection[{BF\_\-discrepancy}]{\setlength{\rightskip}{0pt plus 5cm}float BF\_\-discrepancy (
+\begin{DoxyParamCaption}
+\item[{const {\bf BF\_\-BeliefFunction}}]{m}
+\end{DoxyParamCaption}
+)}}
+\label{_belief_functions_8c_ad51487a25d5574b6823dd71451346ec1}
+Get the discrepancy of a \hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction}. This is maximal for the uniform pignistic distribution over the set a possible values. The rule used is defined in P. Vannoorenberghe 2001 (State of the art on belief functions applied to data processing (French)). 
+\begin{DoxyParams}{Parameters}
+{\em m} & The \hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction} to work on \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The discrepancy value of the \hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction} 
+\end{DoxyReturn}
+
+
+Definition at line 1486 of file BeliefFunctions.c.
+
+\hypertarget{_belief_functions_8c_a25cd6b7ef7c3c529076344b1f16dbff3}{
+\index{BeliefFunctions.c@{BeliefFunctions.c}!BF\_\-distance@{BF\_\-distance}}
+\index{BF\_\-distance@{BF\_\-distance}!BeliefFunctions.c@{BeliefFunctions.c}}
+\subsubsection[{BF\_\-distance}]{\setlength{\rightskip}{0pt plus 5cm}float BF\_\-distance (
+\begin{DoxyParamCaption}
+\item[{const {\bf BF\_\-BeliefFunction}}]{m1, }
+\item[{const {\bf BF\_\-BeliefFunction}}]{m2}
+\end{DoxyParamCaption}
+)}}
+\label{_belief_functions_8c_a25cd6b7ef7c3c529076344b1f16dbff3}
+Get the distance between two BeliefFunctions. The rule used is defined in A. Martin 2009 (Modelisation et gestion du conflit dans la theorie des fonctions de croyance (French)). The distance can be a good characteristic of the conflict between two BeliefFunctions. 
+\begin{DoxyParams}{Parameters}
+{\em m1} & The first \hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction} to work on \\
+\hline
+{\em m2} & The second \hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction} to work on \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The distance between the two BeliefFunctions 
+\end{DoxyReturn}
+
+
+Definition at line 1497 of file BeliefFunctions.c.
+
+\hypertarget{_belief_functions_8c_acb2a8407b0ca2125064bc521061d77a9}{
+\index{BeliefFunctions.c@{BeliefFunctions.c}!BF\_\-DuboisPradeCombination@{BF\_\-DuboisPradeCombination}}
+\index{BF\_\-DuboisPradeCombination@{BF\_\-DuboisPradeCombination}!BeliefFunctions.c@{BeliefFunctions.c}}
+\subsubsection[{BF\_\-DuboisPradeCombination}]{\setlength{\rightskip}{0pt plus 5cm}{\bf BF\_\-BeliefFunction} BF\_\-DuboisPradeCombination (
+\begin{DoxyParamCaption}
+\item[{const {\bf BF\_\-BeliefFunction}}]{m1, }
+\item[{const {\bf BF\_\-BeliefFunction}}]{m2}
+\end{DoxyParamCaption}
+)}}
+\label{_belief_functions_8c_acb2a8407b0ca2125064bc521061d77a9}
+Combines two BeliefFunctions into one. The combination rule used is defined in D. Dubois \& H. Prade 1998 (Representation and combination of uncertainty with belief functions and possibility measures). In this rule, when two belief functions conflict, the mass is transfered to the union of the conflicting focal elements. 
+\begin{DoxyParams}{Parameters}
+{\em m1} & The first \hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction} to combine \\
+\hline
+{\em m2} & The second \hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction} to combine \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The resulting \hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction} corresponding to the accumulation of evidences 
+\end{DoxyReturn}
+
+
+Definition at line 567 of file BeliefFunctions.c.
+
+\hypertarget{_belief_functions_8c_aa3c5107945acc34941aed1c7f7e04968}{
+\index{BeliefFunctions.c@{BeliefFunctions.c}!BF\_\-freeBeliefFunction@{BF\_\-freeBeliefFunction}}
+\index{BF\_\-freeBeliefFunction@{BF\_\-freeBeliefFunction}!BeliefFunctions.c@{BeliefFunctions.c}}
+\subsubsection[{BF\_\-freeBeliefFunction}]{\setlength{\rightskip}{0pt plus 5cm}void BF\_\-freeBeliefFunction (
+\begin{DoxyParamCaption}
+\item[{{\bf BF\_\-BeliefFunction} $\ast$}]{bf}
+\end{DoxyParamCaption}
+)}}
+\label{_belief_functions_8c_aa3c5107945acc34941aed1c7f7e04968}
+Frees the memory used for the \hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction}. 
+\begin{DoxyParams}{Parameters}
+{\em bs} & A pointer to the \hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction} to free \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 2491 of file BeliefFunctions.c.
+
+\hypertarget{_belief_functions_8c_a4e12dcb5da2c769f13ef67ffafc9f1d7}{
+\index{BeliefFunctions.c@{BeliefFunctions.c}!BF\_\-freeBeliefPoint@{BF\_\-freeBeliefPoint}}
+\index{BF\_\-freeBeliefPoint@{BF\_\-freeBeliefPoint}!BeliefFunctions.c@{BeliefFunctions.c}}
+\subsubsection[{BF\_\-freeBeliefPoint}]{\setlength{\rightskip}{0pt plus 5cm}void BF\_\-freeBeliefPoint (
+\begin{DoxyParamCaption}
+\item[{{\bf BF\_\-FocalElement} $\ast$}]{bp}
+\end{DoxyParamCaption}
+)}}
+\label{_belief_functions_8c_a4e12dcb5da2c769f13ef67ffafc9f1d7}
+Frees the memory used for the \hyperlink{struct_b_f___focal_element}{BF\_\-FocalElement}. 
+\begin{DoxyParams}{Parameters}
+{\em bp} & A pointer to the \hyperlink{struct_b_f___focal_element}{BF\_\-FocalElement} to free \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 2501 of file BeliefFunctions.c.
+
+\hypertarget{_belief_functions_8c_a4079d05bfe7228aa0b39aef482aeeff6}{
+\index{BeliefFunctions.c@{BeliefFunctions.c}!BF\_\-fullAverageCombination@{BF\_\-fullAverageCombination}}
+\index{BF\_\-fullAverageCombination@{BF\_\-fullAverageCombination}!BeliefFunctions.c@{BeliefFunctions.c}}
+\subsubsection[{BF\_\-fullAverageCombination}]{\setlength{\rightskip}{0pt plus 5cm}{\bf BF\_\-BeliefFunction} BF\_\-fullAverageCombination (
+\begin{DoxyParamCaption}
+\item[{const {\bf BF\_\-BeliefFunction} $\ast$}]{m, }
+\item[{const int}]{nbM}
+\end{DoxyParamCaption}
+)}}
+\label{_belief_functions_8c_a4079d05bfe7228aa0b39aef482aeeff6}
+Combines a list of belief functions into one. The combination rule used is defined in C. K. Murphy 1999 (Combining belief functions when evidence conflicts). Here, a simple average of all the belief functions is done. 
+\begin{DoxyParams}{Parameters}
+{\em m} & A list of BeliefFunctions \\
+\hline
+{\em nbM} & The number of functions in the list \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The resulting \hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction} corresponding to the accumulation of evidences 
+\end{DoxyReturn}
+
+
+Definition at line 654 of file BeliefFunctions.c.
+
+\hypertarget{_belief_functions_8c_a019e4cdeffb5c0a879667bf5a256b152}{
+\index{BeliefFunctions.c@{BeliefFunctions.c}!BF\_\-fullChenCombination@{BF\_\-fullChenCombination}}
+\index{BF\_\-fullChenCombination@{BF\_\-fullChenCombination}!BeliefFunctions.c@{BeliefFunctions.c}}
+\subsubsection[{BF\_\-fullChenCombination}]{\setlength{\rightskip}{0pt plus 5cm}{\bf BF\_\-BeliefFunction} BF\_\-fullChenCombination (
+\begin{DoxyParamCaption}
+\item[{const {\bf BF\_\-BeliefFunction} $\ast$}]{m, }
+\item[{const int}]{nbM}
+\end{DoxyParamCaption}
+)}}
+\label{_belief_functions_8c_a019e4cdeffb5c0a879667bf5a256b152}
+Combines a list of belief functions into one. The combination rule used is defined in L-\/Z. Chen 2005 (A new fusion approach based on distance of evidences). This rule corresponds to a weighted average taking into account the credibility of each belief function among a set of belief functions. The Chen combination is not very useful with only two belief functions. This is why there is no binary Chen combination implementation. 
+\begin{DoxyParams}{Parameters}
+{\em m} & A list of BeliefFunctions \\
+\hline
+{\em nbM} & The number of functions in the list \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The resulting \hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction} corresponding to the accumulation of evidences 
+\end{DoxyReturn}
+
+
+Definition at line 851 of file BeliefFunctions.c.
+
+\hypertarget{_belief_functions_8c_ab636b354ea45faf1057a46b7e70383eb}{
+\index{BeliefFunctions.c@{BeliefFunctions.c}!BF\_\-fullCombination@{BF\_\-fullCombination}}
+\index{BF\_\-fullCombination@{BF\_\-fullCombination}!BeliefFunctions.c@{BeliefFunctions.c}}
+\subsubsection[{BF\_\-fullCombination}]{\setlength{\rightskip}{0pt plus 5cm}{\bf BF\_\-BeliefFunction} BF\_\-fullCombination (
+\begin{DoxyParamCaption}
+\item[{const {\bf BF\_\-BeliefFunction} $\ast$}]{m, }
+\item[{const int}]{nbM, }
+\item[{const {\bf BF\_\-CombinationRule}}]{type}
+\end{DoxyParamCaption}
+)}}
+\label{_belief_functions_8c_ab636b354ea45faf1057a46b7e70383eb}
+Combines a list of belief functions into one. The combination rule used depends on the given type of combination. You can get a list of those types in the CombinationRule enumeration. 
+\begin{DoxyParams}{Parameters}
+{\em m} & A list of BeliefFunctions \\
+\hline
+{\em nbM} & The number of functions in the list \\
+\hline
+{\em bs} & The belief structure the functions are based on \\
+\hline
+{\em type} & The type of combination rule to use \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The resulting \hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction} corresponding to the accumulation of evidences 
+\end{DoxyReturn}
+
+
+Definition at line 951 of file BeliefFunctions.c.
+
+\hypertarget{_belief_functions_8c_ae9c77653874d4f79124d8c5398ab27c7}{
+\index{BeliefFunctions.c@{BeliefFunctions.c}!BF\_\-fullDempsterCombination@{BF\_\-fullDempsterCombination}}
+\index{BF\_\-fullDempsterCombination@{BF\_\-fullDempsterCombination}!BeliefFunctions.c@{BeliefFunctions.c}}
+\subsubsection[{BF\_\-fullDempsterCombination}]{\setlength{\rightskip}{0pt plus 5cm}{\bf BF\_\-BeliefFunction} BF\_\-fullDempsterCombination (
+\begin{DoxyParamCaption}
+\item[{const {\bf BF\_\-BeliefFunction} $\ast$}]{m, }
+\item[{const int}]{nbM}
+\end{DoxyParamCaption}
+)}}
+\label{_belief_functions_8c_ae9c77653874d4f79124d8c5398ab27c7}
+Combines a list of belief functions into one. The combination rule used is the classical normalized Dempster rule of combination. 
+\begin{DoxyParams}{Parameters}
+{\em m} & A list of BeliefFunctions \\
+\hline
+{\em nbM} & The number of functions in the list \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The resulting \hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction} corresponding to the accumulation of evidences 
+\end{DoxyReturn}
+
+
+Definition at line 149 of file BeliefFunctions.c.
+
+\hypertarget{_belief_functions_8c_abd20f57df8dbcb1f0a993d306ae09f95}{
+\index{BeliefFunctions.c@{BeliefFunctions.c}!BF\_\-fullDuboisPradeCombination@{BF\_\-fullDuboisPradeCombination}}
+\index{BF\_\-fullDuboisPradeCombination@{BF\_\-fullDuboisPradeCombination}!BeliefFunctions.c@{BeliefFunctions.c}}
+\subsubsection[{BF\_\-fullDuboisPradeCombination}]{\setlength{\rightskip}{0pt plus 5cm}{\bf BF\_\-BeliefFunction} BF\_\-fullDuboisPradeCombination (
+\begin{DoxyParamCaption}
+\item[{const {\bf BF\_\-BeliefFunction} $\ast$}]{m, }
+\item[{const int}]{nbM}
+\end{DoxyParamCaption}
+)}}
+\label{_belief_functions_8c_abd20f57df8dbcb1f0a993d306ae09f95}
+Combines a list of belief functions into one. The combination rule used is defined in D. Dubois \& H. Prade 1998 (Representation and combination of uncertainty with belief functions and possibility measures). In this rule, when two belief functions conflict, the mass is transfered to the union of the conflicting focal elements. WARNING: This implementation is not the proper way of doing the fusion of more than 2 mass functions... (The order in which the mass functions are given does matter!) 
+\begin{DoxyParams}{Parameters}
+{\em m} & A list of BeliefFunctions \\
+\hline
+{\em nbM} & The number of functions in the list \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The resulting \hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction} corresponding to the accumulation of evidences 
+\end{DoxyReturn}
+
+
+Definition at line 532 of file BeliefFunctions.c.
+
+\hypertarget{_belief_functions_8c_acfb579e995e421f1d66c2ab40e7d1b8b}{
+\index{BeliefFunctions.c@{BeliefFunctions.c}!BF\_\-fullMurphyCombination@{BF\_\-fullMurphyCombination}}
+\index{BF\_\-fullMurphyCombination@{BF\_\-fullMurphyCombination}!BeliefFunctions.c@{BeliefFunctions.c}}
+\subsubsection[{BF\_\-fullMurphyCombination}]{\setlength{\rightskip}{0pt plus 5cm}{\bf BF\_\-BeliefFunction} BF\_\-fullMurphyCombination (
+\begin{DoxyParamCaption}
+\item[{const {\bf BF\_\-BeliefFunction} $\ast$}]{m, }
+\item[{const int}]{nbM}
+\end{DoxyParamCaption}
+)}}
+\label{_belief_functions_8c_acfb579e995e421f1d66c2ab40e7d1b8b}
+Combines a list of belief functions into one. The combination rule used is defined in C. K. Murphy 1999 (Combining belief functions when evidence conflicts). This combination is based on the average Murphy's combination. Then, nbM -\/ 1 Dempster's combinations of the average are performed to create a convergence. 
+\begin{DoxyParams}{Parameters}
+{\em m} & A list of BeliefFunctions \\
+\hline
+{\em nbM} & The number of functions in the list \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The resulting \hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction} corresponding to the accumulation of evidences 
+\end{DoxyReturn}
+
+
+Definition at line 783 of file BeliefFunctions.c.
+
+\hypertarget{_belief_functions_8c_af8c9206eb7d71be3d73e191ff385ae8e}{
+\index{BeliefFunctions.c@{BeliefFunctions.c}!BF\_\-fullSmetsCombination@{BF\_\-fullSmetsCombination}}
+\index{BF\_\-fullSmetsCombination@{BF\_\-fullSmetsCombination}!BeliefFunctions.c@{BeliefFunctions.c}}
+\subsubsection[{BF\_\-fullSmetsCombination}]{\setlength{\rightskip}{0pt plus 5cm}{\bf BF\_\-BeliefFunction} BF\_\-fullSmetsCombination (
+\begin{DoxyParamCaption}
+\item[{const {\bf BF\_\-BeliefFunction} $\ast$}]{m, }
+\item[{const int}]{nbM}
+\end{DoxyParamCaption}
+)}}
+\label{_belief_functions_8c_af8c9206eb7d71be3d73e191ff385ae8e}
+Combines a list of belief functions into one. The combination rule used is defined in P. Smets 1999 (The transferable belief model for belief representation). This is the same rule than the Dempster's one but without any normalization. Thus, the void element may have a non-\/null mass. 
+\begin{DoxyParams}{Parameters}
+{\em m} & A list of BeliefFunctions \\
+\hline
+{\em nbM} & The number of functions in the list \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The resulting \hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction} corresponding to the accumulation of evidences 
+\end{DoxyReturn}
+
+
+Definition at line 259 of file BeliefFunctions.c.
+
+\hypertarget{_belief_functions_8c_a5c4cf84f84f1e7d0206d27c9de3ec200}{
+\index{BeliefFunctions.c@{BeliefFunctions.c}!BF\_\-fullYagerCombination@{BF\_\-fullYagerCombination}}
+\index{BF\_\-fullYagerCombination@{BF\_\-fullYagerCombination}!BeliefFunctions.c@{BeliefFunctions.c}}
+\subsubsection[{BF\_\-fullYagerCombination}]{\setlength{\rightskip}{0pt plus 5cm}{\bf BF\_\-BeliefFunction} BF\_\-fullYagerCombination (
+\begin{DoxyParamCaption}
+\item[{const {\bf BF\_\-BeliefFunction} $\ast$}]{m, }
+\item[{const int}]{nbM}
+\end{DoxyParamCaption}
+)}}
+\label{_belief_functions_8c_a5c4cf84f84f1e7d0206d27c9de3ec200}
+Combines a list of belief functions into one. The combination rule used is defined in R.R. Yager 1987 (On the Dempster-\/Shager framework and new combination rules). The close-\/world assumption is done and thus, the mass given to the void element is transfered to the whole world. \par
+ CAUTION: This operation is not associative, thus, changing the belief functions order may change the final result! 
+\begin{DoxyParams}{Parameters}
+{\em m} & A list of BeliefFunctions \\
+\hline
+{\em nbM} & The number of functions in the list \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The resulting \hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction} corresponding to the accumulation of evidences 
+\end{DoxyReturn}
+
+
+Definition at line 418 of file BeliefFunctions.c.
+
+\hypertarget{_belief_functions_8c_a9ed943acd331068bcfd5de5c2f2bbf54}{
+\index{BeliefFunctions.c@{BeliefFunctions.c}!BF\_\-getListMaxBel@{BF\_\-getListMaxBel}}
+\index{BF\_\-getListMaxBel@{BF\_\-getListMaxBel}!BeliefFunctions.c@{BeliefFunctions.c}}
+\subsubsection[{BF\_\-getListMaxBel}]{\setlength{\rightskip}{0pt plus 5cm}{\bf BF\_\-FocalElement}$\ast$ BF\_\-getListMaxBel (
+\begin{DoxyParamCaption}
+\item[{const {\bf BF\_\-BeliefFunction}}]{m, }
+\item[{const int}]{card, }
+\item[{const {\bf Sets\_\-Set}}]{powerset}
+\end{DoxyParamCaption}
+)}}
+\label{_belief_functions_8c_a9ed943acd331068bcfd5de5c2f2bbf54}
+Get the list of focals corresponding to the maximum of belief (see bel())of the given \hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction}. The cardinality should be at least of 1 as the empty set is not considered. 
+\begin{DoxyParams}{Parameters}
+{\em m} & The \hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction} to work with \\
+\hline
+{\em card} & The maximum authorized cardinality of the Element corresponding to the max (0 = no card limit) \\
+\hline
+{\em powerset} & The powerset generated from the size of the elements \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A list of \hyperlink{struct_b_f___focal_element}{BF\_\-FocalElement} corresponding to the maximum of belief. Must be freed after use. Returns null if no Element fitting the cardinality constraint is found. 
+\end{DoxyReturn}
+
+
+Definition at line 2106 of file BeliefFunctions.c.
+
+\hypertarget{_belief_functions_8c_ac4db4d59f8b1a79e6c84dce2ed15e29c}{
+\index{BeliefFunctions.c@{BeliefFunctions.c}!BF\_\-getListMaxBetP@{BF\_\-getListMaxBetP}}
+\index{BF\_\-getListMaxBetP@{BF\_\-getListMaxBetP}!BeliefFunctions.c@{BeliefFunctions.c}}
+\subsubsection[{BF\_\-getListMaxBetP}]{\setlength{\rightskip}{0pt plus 5cm}{\bf BF\_\-FocalElement}$\ast$ BF\_\-getListMaxBetP (
+\begin{DoxyParamCaption}
+\item[{const {\bf BF\_\-BeliefFunction}}]{m, }
+\item[{const int}]{card, }
+\item[{const {\bf Sets\_\-Set}}]{powerset}
+\end{DoxyParamCaption}
+)}}
+\label{_belief_functions_8c_ac4db4d59f8b1a79e6c84dce2ed15e29c}
+Get the list of focals corresponding to the maximum of pignistic transformation (see betP()) of the given \hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction}. The cardinality should be at least of 1 as the empty set is not considered. 
+\begin{DoxyParams}{Parameters}
+{\em m} & The \hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction} to work with \\
+\hline
+{\em card} & The maximum authorized cardinality of the Element corresponding to the max (0 = no card limit) \\
+\hline
+{\em powerset} & The powerset generated from the size of the elements \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A list of \hyperlink{struct_b_f___focal_element}{BF\_\-FocalElement} corresponding to the maximum of pignistic transformation. Must be freed after use. Returns null if no Element fitting the cardinality constraint is found. 
+\end{DoxyReturn}
+
+
+Definition at line 2158 of file BeliefFunctions.c.
+
+\hypertarget{_belief_functions_8c_ae6a51a4d47214fd312b33e7a84a77355}{
+\index{BeliefFunctions.c@{BeliefFunctions.c}!BF\_\-getListMaxMass@{BF\_\-getListMaxMass}}
+\index{BF\_\-getListMaxMass@{BF\_\-getListMaxMass}!BeliefFunctions.c@{BeliefFunctions.c}}
+\subsubsection[{BF\_\-getListMaxMass}]{\setlength{\rightskip}{0pt plus 5cm}{\bf BF\_\-FocalElement}$\ast$ BF\_\-getListMaxMass (
+\begin{DoxyParamCaption}
+\item[{const {\bf BF\_\-BeliefFunction}}]{m, }
+\item[{const int}]{card}
+\end{DoxyParamCaption}
+)}}
+\label{_belief_functions_8c_ae6a51a4d47214fd312b33e7a84a77355}
+Get the list of focals corresponding to the maximum of mass of the given \hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction}. The cardinality should be at least of 1 as the empty set is not considered. 
+\begin{DoxyParams}{Parameters}
+{\em m} & The \hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction} to work with \\
+\hline
+{\em card} & The maximum authorized cardinality of the Element corresponding to the max (0 = no card limit) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A list of \hyperlink{struct_b_f___focal_element}{BF\_\-FocalElement} corresponding to the maximum of mass. Must be freed after use. Returns null if no Element fitting the cardinality constraint is found. 
+\end{DoxyReturn}
+
+
+Definition at line 2080 of file BeliefFunctions.c.
+
+\hypertarget{_belief_functions_8c_a57899674d608c4171d3a17434555bd38}{
+\index{BeliefFunctions.c@{BeliefFunctions.c}!BF\_\-getListMaxPl@{BF\_\-getListMaxPl}}
+\index{BF\_\-getListMaxPl@{BF\_\-getListMaxPl}!BeliefFunctions.c@{BeliefFunctions.c}}
+\subsubsection[{BF\_\-getListMaxPl}]{\setlength{\rightskip}{0pt plus 5cm}{\bf BF\_\-FocalElement}$\ast$ BF\_\-getListMaxPl (
+\begin{DoxyParamCaption}
+\item[{const {\bf BF\_\-BeliefFunction}}]{m, }
+\item[{const int}]{card, }
+\item[{const {\bf Sets\_\-Set}}]{powerset}
+\end{DoxyParamCaption}
+)}}
+\label{_belief_functions_8c_a57899674d608c4171d3a17434555bd38}
+Get the list of focals corresponding to the maximum of plausibility (see pl()) of the given \hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction}. The cardinality should be at least of 1 as the empty set is not considered. 
+\begin{DoxyParams}{Parameters}
+{\em m} & The \hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction} to work with \\
+\hline
+{\em card} & The maximum authorized cardinality of the Element corresponding to the max (0 = no card limit) \\
+\hline
+{\em powerset} & The powerset generated from the size of the elements \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A list of \hyperlink{struct_b_f___focal_element}{BF\_\-FocalElement} corresponding to the maximum of plausibility. Must be freed after use. Returns null if no Element fitting the cardinality constraint is found. 
+\end{DoxyReturn}
+
+
+Definition at line 2132 of file BeliefFunctions.c.
+
+\hypertarget{_belief_functions_8c_a797c05db5cc7c3e2f57c80d48972c0e7}{
+\index{BeliefFunctions.c@{BeliefFunctions.c}!BF\_\-getListMinBel@{BF\_\-getListMinBel}}
+\index{BF\_\-getListMinBel@{BF\_\-getListMinBel}!BeliefFunctions.c@{BeliefFunctions.c}}
+\subsubsection[{BF\_\-getListMinBel}]{\setlength{\rightskip}{0pt plus 5cm}{\bf BF\_\-FocalElement}$\ast$ BF\_\-getListMinBel (
+\begin{DoxyParamCaption}
+\item[{const {\bf BF\_\-BeliefFunction}}]{m, }
+\item[{const int}]{card, }
+\item[{const {\bf Sets\_\-Set}}]{powerset}
+\end{DoxyParamCaption}
+)}}
+\label{_belief_functions_8c_a797c05db5cc7c3e2f57c80d48972c0e7}
+Get the list of focals corresponding to the non-\/null minimum of belief (see bel()) of the given \hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction}. The cardinality should be at least of 1 as the empty set is not considered. 
+\begin{DoxyParams}{Parameters}
+{\em m} & The \hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction} to work with \\
+\hline
+{\em card} & The maximum authorized cardinality of the Element corresponding to the min (0 = no card limit) \\
+\hline
+{\em powerset} & The powerset generated from the size of the elements \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A list of \hyperlink{struct_b_f___focal_element}{BF\_\-FocalElement} corresponding to the minimum of belief. Must be freed after use. Returns null if no Element fitting the cardinality constraint is found. 
+\end{DoxyReturn}
+
+
+Definition at line 2119 of file BeliefFunctions.c.
+
+\hypertarget{_belief_functions_8c_a524985e65b3d2eb927f49e1cd0d98920}{
+\index{BeliefFunctions.c@{BeliefFunctions.c}!BF\_\-getListMinBetP@{BF\_\-getListMinBetP}}
+\index{BF\_\-getListMinBetP@{BF\_\-getListMinBetP}!BeliefFunctions.c@{BeliefFunctions.c}}
+\subsubsection[{BF\_\-getListMinBetP}]{\setlength{\rightskip}{0pt plus 5cm}{\bf BF\_\-FocalElement}$\ast$ BF\_\-getListMinBetP (
+\begin{DoxyParamCaption}
+\item[{const {\bf BF\_\-BeliefFunction}}]{m, }
+\item[{const int}]{card, }
+\item[{const {\bf Sets\_\-Set}}]{powerset}
+\end{DoxyParamCaption}
+)}}
+\label{_belief_functions_8c_a524985e65b3d2eb927f49e1cd0d98920}
+Get the list of focals corresponding to the non-\/null minimum of pignistic transformation (see betP()) of the given \hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction}. The cardinality should be at least of 1 as the empty set is not considered. 
+\begin{DoxyParams}{Parameters}
+{\em m} & The \hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction} to work with \\
+\hline
+{\em card} & The maximum authorized cardinality of the Element corresponding to the min (0 = no card limit) \\
+\hline
+{\em powerset} & The powerset generated from the size of the elements \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A list of \hyperlink{struct_b_f___focal_element}{BF\_\-FocalElement} corresponding to the minimum of pignistic transformation. Must be freed after use. Returns null if no Element fitting the cardinality constraint is found. 
+\end{DoxyReturn}
+
+
+Definition at line 2171 of file BeliefFunctions.c.
+
+\hypertarget{_belief_functions_8c_a6b3f9dfe470c437b188049c1815b22b9}{
+\index{BeliefFunctions.c@{BeliefFunctions.c}!BF\_\-getListMinMass@{BF\_\-getListMinMass}}
+\index{BF\_\-getListMinMass@{BF\_\-getListMinMass}!BeliefFunctions.c@{BeliefFunctions.c}}
+\subsubsection[{BF\_\-getListMinMass}]{\setlength{\rightskip}{0pt plus 5cm}{\bf BF\_\-FocalElement}$\ast$ BF\_\-getListMinMass (
+\begin{DoxyParamCaption}
+\item[{const {\bf BF\_\-BeliefFunction}}]{m, }
+\item[{const int}]{card}
+\end{DoxyParamCaption}
+)}}
+\label{_belief_functions_8c_a6b3f9dfe470c437b188049c1815b22b9}
+Get the list of focals corresponding to the non-\/null minimum of mass of the given \hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction}. The cardinality should be at least of 1 as the empty set is not considered. 
+\begin{DoxyParams}{Parameters}
+{\em m} & The \hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction} to work with \\
+\hline
+{\em card} & The maximum authorized cardinality of the Element corresponding to the min (0 = no card limit) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A list of \hyperlink{struct_b_f___focal_element}{BF\_\-FocalElement} corresponding to the minimum of mass. Must be freed after use. Returns null if no Element fitting the cardinality constraint is found. 
+\end{DoxyReturn}
+
+
+Definition at line 2093 of file BeliefFunctions.c.
+
+\hypertarget{_belief_functions_8c_afbc034ed432ba110c9e6f9fd6e9b76ef}{
+\index{BeliefFunctions.c@{BeliefFunctions.c}!BF\_\-getListMinPl@{BF\_\-getListMinPl}}
+\index{BF\_\-getListMinPl@{BF\_\-getListMinPl}!BeliefFunctions.c@{BeliefFunctions.c}}
+\subsubsection[{BF\_\-getListMinPl}]{\setlength{\rightskip}{0pt plus 5cm}{\bf BF\_\-FocalElement}$\ast$ BF\_\-getListMinPl (
+\begin{DoxyParamCaption}
+\item[{const {\bf BF\_\-BeliefFunction}}]{m, }
+\item[{const int}]{card, }
+\item[{const {\bf Sets\_\-Set}}]{powerset}
+\end{DoxyParamCaption}
+)}}
+\label{_belief_functions_8c_afbc034ed432ba110c9e6f9fd6e9b76ef}
+Get the list of focals corresponding to the non-\/null minimum of plausibility (see pl()) of the given \hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction}. The cardinality should be at least of 1 as the empty set is not considered. 
+\begin{DoxyParams}{Parameters}
+{\em m} & The \hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction} to work with \\
+\hline
+{\em card} & The maximum authorized cardinality of the Element corresponding to the min (0 = no card limit) \\
+\hline
+{\em powerset} & The powerset generated from the size of the elements \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A list of \hyperlink{struct_b_f___focal_element}{BF\_\-FocalElement} corresponding to the minimum of plausibility. Must be freed after use. Returns null if no Element fitting the cardinality constraint is found. 
+\end{DoxyReturn}
+
+
+Definition at line 2145 of file BeliefFunctions.c.
+
+\hypertarget{_belief_functions_8c_ae6a14956549de55a086cc7f7bef444b2}{
+\index{BeliefFunctions.c@{BeliefFunctions.c}!BF\_\-getMaxBel@{BF\_\-getMaxBel}}
+\index{BF\_\-getMaxBel@{BF\_\-getMaxBel}!BeliefFunctions.c@{BeliefFunctions.c}}
+\subsubsection[{BF\_\-getMaxBel}]{\setlength{\rightskip}{0pt plus 5cm}{\bf BF\_\-FocalElement} BF\_\-getMaxBel (
+\begin{DoxyParamCaption}
+\item[{const {\bf BF\_\-BeliefFunction}}]{m, }
+\item[{const int}]{card, }
+\item[{const {\bf Sets\_\-Set}}]{powerset}
+\end{DoxyParamCaption}
+)}}
+\label{_belief_functions_8c_ae6a14956549de55a086cc7f7bef444b2}
+Returns the \hyperlink{struct_b_f___focal_element}{BF\_\-FocalElement} corresponding to the maximum of belief (see bel()) of a \hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction}. The cardinality should be at least of 1 as the empty set is not considered. 
+\begin{DoxyParams}{Parameters}
+{\em m} & The \hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction} to work with \\
+\hline
+{\em card} & The maximum authorized cardinality of the Element corresponding to the max (0 = no card limit) \\
+\hline
+{\em powerset} & The powerset generated from the size of the elements \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The \hyperlink{struct_b_f___focal_element}{BF\_\-FocalElement} (Element + belief) corresponding to the maximum of belief. Must be freed after use. Returns a \hyperlink{struct_b_f___focal_element}{BF\_\-FocalElement} with a void Element (NULL, 0) if no element fitting the cardinality constraint is found. 
+\end{DoxyReturn}
+
+
+Definition at line 1709 of file BeliefFunctions.c.
+
+\hypertarget{_belief_functions_8c_ab74b959189b8ceb9a6ac3f9d8fc9f5b1}{
+\index{BeliefFunctions.c@{BeliefFunctions.c}!BF\_\-getMaxBetP@{BF\_\-getMaxBetP}}
+\index{BF\_\-getMaxBetP@{BF\_\-getMaxBetP}!BeliefFunctions.c@{BeliefFunctions.c}}
+\subsubsection[{BF\_\-getMaxBetP}]{\setlength{\rightskip}{0pt plus 5cm}{\bf BF\_\-FocalElement} BF\_\-getMaxBetP (
+\begin{DoxyParamCaption}
+\item[{const {\bf BF\_\-BeliefFunction}}]{m, }
+\item[{const int}]{card, }
+\item[{const {\bf Sets\_\-Set}}]{powerset}
+\end{DoxyParamCaption}
+)}}
+\label{_belief_functions_8c_ab74b959189b8ceb9a6ac3f9d8fc9f5b1}
+Returns the \hyperlink{struct_b_f___focal_element}{BF\_\-FocalElement} corresponding to the maximum of pignistic transformation (seep betP()) of a \hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction}. The cardinality should be at least of 1 as the empty set is not considered. 
+\begin{DoxyParams}{Parameters}
+{\em m} & The \hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction} to work with \\
+\hline
+{\em card} & The maximum authorized cardinality of the Element corresponding to the max (0 = no card limit) \\
+\hline
+{\em powerset} & The powerset generated from the size of the elements \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The \hyperlink{struct_b_f___focal_element}{BF\_\-FocalElement} (Element + pignistic) corresponding to the maximum of pignistic transformation. Must be freed after use. Returns a \hyperlink{struct_b_f___focal_element}{BF\_\-FocalElement} with a void Element (NULL, 0) if no element fitting the cardinality constraint is found. 
+\end{DoxyReturn}
+
+
+Definition at line 1804 of file BeliefFunctions.c.
+
+\hypertarget{_belief_functions_8c_afdecbcdf545cd9c42e500695571bbe4d}{
+\index{BeliefFunctions.c@{BeliefFunctions.c}!BF\_\-getMaxMass@{BF\_\-getMaxMass}}
+\index{BF\_\-getMaxMass@{BF\_\-getMaxMass}!BeliefFunctions.c@{BeliefFunctions.c}}
+\subsubsection[{BF\_\-getMaxMass}]{\setlength{\rightskip}{0pt plus 5cm}{\bf BF\_\-FocalElement} BF\_\-getMaxMass (
+\begin{DoxyParamCaption}
+\item[{const {\bf BF\_\-BeliefFunction}}]{m, }
+\item[{const int}]{card}
+\end{DoxyParamCaption}
+)}}
+\label{_belief_functions_8c_afdecbcdf545cd9c42e500695571bbe4d}
+Returns the \hyperlink{struct_b_f___focal_element}{BF\_\-FocalElement} corresponding to the maximum of mass of a \hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction}. The cardinality should be at least of 1 as the empty set is not considered. 
+\begin{DoxyParams}{Parameters}
+{\em m} & The \hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction} to work with \\
+\hline
+{\em card} & The maximum authorized cardinality of the Element corresponding to the max (0 = no card limit) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The \hyperlink{struct_b_f___focal_element}{BF\_\-FocalElement} (Element + mass) corresponding to the maximum of mass. Must be freed after use. Returns a \hyperlink{struct_b_f___focal_element}{BF\_\-FocalElement} with a void Element (NULL, 0) if no element fitting the cardinality constraint is found. 
+\end{DoxyReturn}
+
+
+Definition at line 1668 of file BeliefFunctions.c.
+
+\hypertarget{_belief_functions_8c_af4c52bee417528d5a1efac43524948ba}{
+\index{BeliefFunctions.c@{BeliefFunctions.c}!BF\_\-getMaxPl@{BF\_\-getMaxPl}}
+\index{BF\_\-getMaxPl@{BF\_\-getMaxPl}!BeliefFunctions.c@{BeliefFunctions.c}}
+\subsubsection[{BF\_\-getMaxPl}]{\setlength{\rightskip}{0pt plus 5cm}{\bf BF\_\-FocalElement} BF\_\-getMaxPl (
+\begin{DoxyParamCaption}
+\item[{const {\bf BF\_\-BeliefFunction}}]{m, }
+\item[{const int}]{card, }
+\item[{const {\bf Sets\_\-Set}}]{powerset}
+\end{DoxyParamCaption}
+)}}
+\label{_belief_functions_8c_af4c52bee417528d5a1efac43524948ba}
+Returns the \hyperlink{struct_b_f___focal_element}{BF\_\-FocalElement} corresponding to the maximum of plausibility (see pl()) of a \hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction}. The cardinality should be at least of 1 as the empty set is not considered. 
+\begin{DoxyParams}{Parameters}
+{\em m} & The \hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction} to work with \\
+\hline
+{\em card} & The maximum authorized cardinality of the Element corresponding to the max (0 = no card limit) \\
+\hline
+{\em powerset} & The powerset generated from the size of the elements \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The \hyperlink{struct_b_f___focal_element}{BF\_\-FocalElement} (Element + plausibility) corresponding to the maximum of plausibility. Must be freed after use. Returns a \hyperlink{struct_b_f___focal_element}{BF\_\-FocalElement} with a void Element (NULL, 0) if no element fitting the cardinality constraint is found. 
+\end{DoxyReturn}
+
+
+Definition at line 1757 of file BeliefFunctions.c.
+
+\hypertarget{_belief_functions_8c_ad66ea683822e75a55048f3f384c49276}{
+\index{BeliefFunctions.c@{BeliefFunctions.c}!BF\_\-getMinBel@{BF\_\-getMinBel}}
+\index{BF\_\-getMinBel@{BF\_\-getMinBel}!BeliefFunctions.c@{BeliefFunctions.c}}
+\subsubsection[{BF\_\-getMinBel}]{\setlength{\rightskip}{0pt plus 5cm}{\bf BF\_\-FocalElement} BF\_\-getMinBel (
+\begin{DoxyParamCaption}
+\item[{const {\bf BF\_\-BeliefFunction}}]{m, }
+\item[{const int}]{card, }
+\item[{const {\bf Sets\_\-Set}}]{powerset}
+\end{DoxyParamCaption}
+)}}
+\label{_belief_functions_8c_ad66ea683822e75a55048f3f384c49276}
+Returns the \hyperlink{struct_b_f___focal_element}{BF\_\-FocalElement} corresponding to the non-\/nul minimum of belief (see bel()) of a \hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction}. The cardinality should be at least of 1 as the empty set is not considered. 
+\begin{DoxyParams}{Parameters}
+{\em m} & The \hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction} to work with \\
+\hline
+{\em card} & The maximum authorized cardinality of the Element corresponding to the min (0 = no card limit) \\
+\hline
+{\em powerset} & The powerset generated from the size of the elements \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The \hyperlink{struct_b_f___focal_element}{BF\_\-FocalElement} (Element + belief) corresponding to the minimum of belief. Must be freed after use. Returns a \hyperlink{struct_b_f___focal_element}{BF\_\-FocalElement} with a void Element (NULL, 0) if no element fitting the cardinality constraint is found. 
+\end{DoxyReturn}
+
+
+Definition at line 1733 of file BeliefFunctions.c.
+
+\hypertarget{_belief_functions_8c_a8b8e2f8c31a978a315a63a3396f18485}{
+\index{BeliefFunctions.c@{BeliefFunctions.c}!BF\_\-getMinBetP@{BF\_\-getMinBetP}}
+\index{BF\_\-getMinBetP@{BF\_\-getMinBetP}!BeliefFunctions.c@{BeliefFunctions.c}}
+\subsubsection[{BF\_\-getMinBetP}]{\setlength{\rightskip}{0pt plus 5cm}{\bf BF\_\-FocalElement} BF\_\-getMinBetP (
+\begin{DoxyParamCaption}
+\item[{const {\bf BF\_\-BeliefFunction}}]{m, }
+\item[{const int}]{card, }
+\item[{const {\bf Sets\_\-Set}}]{powerset}
+\end{DoxyParamCaption}
+)}}
+\label{_belief_functions_8c_a8b8e2f8c31a978a315a63a3396f18485}
+Returns the \hyperlink{struct_b_f___focal_element}{BF\_\-FocalElement} corresponding to the non-\/null minimum of pignistic transformation (see betP()) of a \hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction}. The cardinality should be at least of 1 as the empty set is not considered. 
+\begin{DoxyParams}{Parameters}
+{\em m} & The \hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction} to work with \\
+\hline
+{\em card} & The maximum authorized cardinality of the Element corresponding to the min (0 = no card limit) \\
+\hline
+{\em powerset} & The powerset generated from the size of the elements \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The \hyperlink{struct_b_f___focal_element}{BF\_\-FocalElement} (Element + pignistic) corresponding to the minimum of pignistic transformation. Must be freed after use. Returns a \hyperlink{struct_b_f___focal_element}{BF\_\-FocalElement} with a void Element (NULL, 0) if no element fitting the cardinality constraint is found. 
+\end{DoxyReturn}
+
+
+Definition at line 1827 of file BeliefFunctions.c.
+
+\hypertarget{_belief_functions_8c_a169c05bfd3c73fa30ef8c7122e62f9b1}{
+\index{BeliefFunctions.c@{BeliefFunctions.c}!BF\_\-getMinMass@{BF\_\-getMinMass}}
+\index{BF\_\-getMinMass@{BF\_\-getMinMass}!BeliefFunctions.c@{BeliefFunctions.c}}
+\subsubsection[{BF\_\-getMinMass}]{\setlength{\rightskip}{0pt plus 5cm}{\bf BF\_\-FocalElement} BF\_\-getMinMass (
+\begin{DoxyParamCaption}
+\item[{const {\bf BF\_\-BeliefFunction}}]{m, }
+\item[{const int}]{card}
+\end{DoxyParamCaption}
+)}}
+\label{_belief_functions_8c_a169c05bfd3c73fa30ef8c7122e62f9b1}
+Returns the \hyperlink{struct_b_f___focal_element}{BF\_\-FocalElement} corresponding to the non-\/nul minimum of mass of a \hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction}. The cardinality should be at least of 1 as the empty set is not considered. 
+\begin{DoxyParams}{Parameters}
+{\em m} & The \hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction} to work with \\
+\hline
+{\em card} & The maximum authorized cardinality of the Element corresponding to the min (0 = no card limit) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The \hyperlink{struct_b_f___focal_element}{BF\_\-FocalElement} (Element + mass) corresponding to the minimum of mass. Must be freed after use. Returns a \hyperlink{struct_b_f___focal_element}{BF\_\-FocalElement} with a void Element (NULL, 0) if no element fitting the cardinality constraint is found. 
+\end{DoxyReturn}
+
+
+Definition at line 1688 of file BeliefFunctions.c.
+
+\hypertarget{_belief_functions_8c_af2593bde24b6b147b4db270221ec8e77}{
+\index{BeliefFunctions.c@{BeliefFunctions.c}!BF\_\-getMinPl@{BF\_\-getMinPl}}
+\index{BF\_\-getMinPl@{BF\_\-getMinPl}!BeliefFunctions.c@{BeliefFunctions.c}}
+\subsubsection[{BF\_\-getMinPl}]{\setlength{\rightskip}{0pt plus 5cm}{\bf BF\_\-FocalElement} BF\_\-getMinPl (
+\begin{DoxyParamCaption}
+\item[{const {\bf BF\_\-BeliefFunction}}]{m, }
+\item[{const int}]{card, }
+\item[{const {\bf Sets\_\-Set}}]{powerset}
+\end{DoxyParamCaption}
+)}}
+\label{_belief_functions_8c_af2593bde24b6b147b4db270221ec8e77}
+Returns the \hyperlink{struct_b_f___focal_element}{BF\_\-FocalElement} corresponding to the non-\/nul minimum of plausibility (see pl()) of a \hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction}. The cardinality should be at least of 1 as the empty set is not considered. 
+\begin{DoxyParams}{Parameters}
+{\em m} & The \hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction} to work with \\
+\hline
+{\em card} & The maximum authorized cardinality of the Element corresponding to the min (0 = no card limit) \\
+\hline
+{\em powerset} & The powerset generated from the size of the elements \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The \hyperlink{struct_b_f___focal_element}{BF\_\-FocalElement} (Element + plausibility) corresponding to the minimum of plausibility. Must be freed after use. Returns a \hyperlink{struct_b_f___focal_element}{BF\_\-FocalElement} with a void Element (NULL, 0) if no element fitting the cardinality constraint is found. 
+\end{DoxyReturn}
+
+
+Definition at line 1780 of file BeliefFunctions.c.
+
+\hypertarget{_belief_functions_8c_a8e1389b7734cc65a14eccdfad59ca9be}{
+\index{BeliefFunctions.c@{BeliefFunctions.c}!BF\_\-getNbMaxBel@{BF\_\-getNbMaxBel}}
+\index{BF\_\-getNbMaxBel@{BF\_\-getNbMaxBel}!BeliefFunctions.c@{BeliefFunctions.c}}
+\subsubsection[{BF\_\-getNbMaxBel}]{\setlength{\rightskip}{0pt plus 5cm}int BF\_\-getNbMaxBel (
+\begin{DoxyParamCaption}
+\item[{const {\bf BF\_\-BeliefFunction}}]{m, }
+\item[{const int}]{card, }
+\item[{const {\bf Sets\_\-Set}}]{powerset}
+\end{DoxyParamCaption}
+)}}
+\label{_belief_functions_8c_a8e1389b7734cc65a14eccdfad59ca9be}
+Returns the number of focals actually corresponding to the maximum of belief (see bel()) of the given \hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction}. The cardinality should be at least of 1 as the empty set is not considered. 
+\begin{DoxyParams}{Parameters}
+{\em m} & The \hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction} to work with \\
+\hline
+{\em card} & The maximum authorized cardinality of the Element corresponding to the max (0 = no card limit) \\
+\hline
+{\em powerset} & The powerset generated from the size of the elements \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The number of focals corresponding to the maximum of belief. Returns 0 if no element fitting the cardinality constraint is found. 
+\end{DoxyReturn}
+
+
+Definition at line 1874 of file BeliefFunctions.c.
+
+\hypertarget{_belief_functions_8c_a6b2a4a9ba9b09805a3da6a1b6b983486}{
+\index{BeliefFunctions.c@{BeliefFunctions.c}!BF\_\-getNbMaxBetP@{BF\_\-getNbMaxBetP}}
+\index{BF\_\-getNbMaxBetP@{BF\_\-getNbMaxBetP}!BeliefFunctions.c@{BeliefFunctions.c}}
+\subsubsection[{BF\_\-getNbMaxBetP}]{\setlength{\rightskip}{0pt plus 5cm}int BF\_\-getNbMaxBetP (
+\begin{DoxyParamCaption}
+\item[{const {\bf BF\_\-BeliefFunction}}]{m, }
+\item[{const int}]{card, }
+\item[{const {\bf Sets\_\-Set}}]{powerset}
+\end{DoxyParamCaption}
+)}}
+\label{_belief_functions_8c_a6b2a4a9ba9b09805a3da6a1b6b983486}
+Returns the number of focals actually corresponding to the maximum of pignistic transformation (see betP()) of the given \hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction}. The cardinality should be at least of 1 as the empty set is not considered. 
+\begin{DoxyParams}{Parameters}
+{\em m} & The \hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction} to work with \\
+\hline
+{\em card} & The maximum authorized cardinality of the Element corresponding to the max (0 = no card limit) \\
+\hline
+{\em powerset} & The powerset generated from the size of the elements \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The number of focals corresponding to the maximum of pignistic transformation. Returns 0 if no element fitting the cardinality constraint is found. 
+\end{DoxyReturn}
+
+
+Definition at line 1922 of file BeliefFunctions.c.
+
+\hypertarget{_belief_functions_8c_aaf154ca9f6663bf79b12894c05cb1f16}{
+\index{BeliefFunctions.c@{BeliefFunctions.c}!BF\_\-getNbMaxMass@{BF\_\-getNbMaxMass}}
+\index{BF\_\-getNbMaxMass@{BF\_\-getNbMaxMass}!BeliefFunctions.c@{BeliefFunctions.c}}
+\subsubsection[{BF\_\-getNbMaxMass}]{\setlength{\rightskip}{0pt plus 5cm}int BF\_\-getNbMaxMass (
+\begin{DoxyParamCaption}
+\item[{const {\bf BF\_\-BeliefFunction}}]{m, }
+\item[{const int}]{card}
+\end{DoxyParamCaption}
+)}}
+\label{_belief_functions_8c_aaf154ca9f6663bf79b12894c05cb1f16}
+Returns the number of focals actually corresponding to the maximum of mass of the given \hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction}. The cardinality should be at least of 1 as the empty set is not considered. 
+\begin{DoxyParams}{Parameters}
+{\em m} & The \hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction} to work with \\
+\hline
+{\em card} & The maximum authorized cardinality of the Element corresponding to the max (0 = no card limit) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The number of focals corresponding to the maximum of mass. Returns 0 if no element fitting the cardinality constraint is found. 
+\end{DoxyReturn}
+
+
+Definition at line 1851 of file BeliefFunctions.c.
+
+\hypertarget{_belief_functions_8c_a3c47967371d50a0e506a60a337ab40c3}{
+\index{BeliefFunctions.c@{BeliefFunctions.c}!BF\_\-getNbMaxPl@{BF\_\-getNbMaxPl}}
+\index{BF\_\-getNbMaxPl@{BF\_\-getNbMaxPl}!BeliefFunctions.c@{BeliefFunctions.c}}
+\subsubsection[{BF\_\-getNbMaxPl}]{\setlength{\rightskip}{0pt plus 5cm}int BF\_\-getNbMaxPl (
+\begin{DoxyParamCaption}
+\item[{const {\bf BF\_\-BeliefFunction}}]{m, }
+\item[{const int}]{card, }
+\item[{const {\bf Sets\_\-Set}}]{powerset}
+\end{DoxyParamCaption}
+)}}
+\label{_belief_functions_8c_a3c47967371d50a0e506a60a337ab40c3}
+Returns the number of focals actually corresponding to the maximum of plausibility (see pl()) of the given \hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction}. The cardinality should be at least of 1 as the empty set is not considered. 
+\begin{DoxyParams}{Parameters}
+{\em m} & The \hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction} to work with \\
+\hline
+{\em card} & The maximum authorized cardinality of the Element corresponding to the max (0 = no card limit) \\
+\hline
+{\em powerset} & The powerset generated from the size of the elements \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The number of focals corresponding to the maximum of plausibility. Returns 0 if no element fitting the cardinality constraint is found. 
+\end{DoxyReturn}
+
+
+Definition at line 1898 of file BeliefFunctions.c.
+
+\hypertarget{_belief_functions_8c_a02040f201222353f89d276c68d651e37}{
+\index{BeliefFunctions.c@{BeliefFunctions.c}!BF\_\-getNbMinBel@{BF\_\-getNbMinBel}}
+\index{BF\_\-getNbMinBel@{BF\_\-getNbMinBel}!BeliefFunctions.c@{BeliefFunctions.c}}
+\subsubsection[{BF\_\-getNbMinBel}]{\setlength{\rightskip}{0pt plus 5cm}int BF\_\-getNbMinBel (
+\begin{DoxyParamCaption}
+\item[{const {\bf BF\_\-BeliefFunction}}]{m, }
+\item[{const int}]{card, }
+\item[{const {\bf Sets\_\-Set}}]{powerset}
+\end{DoxyParamCaption}
+)}}
+\label{_belief_functions_8c_a02040f201222353f89d276c68d651e37}
+Returns the number of focals actually corresponding to the non-\/null minimum of belief (see bel()) of the given \hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction}. The cardinality should be at least of 1 as the empty set is not considered. 
+\begin{DoxyParams}{Parameters}
+{\em m} & The \hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction} to work with \\
+\hline
+{\em card} & The maximum authorized cardinality of the Element corresponding to the min (0 = no card limit) \\
+\hline
+{\em powerset} & The powerset generated from the size of the elements \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The number of focals corresponding to the minimum of belief. Returns 0 if no element fitting the cardinality constraint is found. 
+\end{DoxyReturn}
+
+
+Definition at line 1886 of file BeliefFunctions.c.
+
+\hypertarget{_belief_functions_8c_af3ec5a692f270f5974b2aa2baed88fa0}{
+\index{BeliefFunctions.c@{BeliefFunctions.c}!BF\_\-getNbMinBetP@{BF\_\-getNbMinBetP}}
+\index{BF\_\-getNbMinBetP@{BF\_\-getNbMinBetP}!BeliefFunctions.c@{BeliefFunctions.c}}
+\subsubsection[{BF\_\-getNbMinBetP}]{\setlength{\rightskip}{0pt plus 5cm}int BF\_\-getNbMinBetP (
+\begin{DoxyParamCaption}
+\item[{const {\bf BF\_\-BeliefFunction}}]{m, }
+\item[{const int}]{card, }
+\item[{const {\bf Sets\_\-Set}}]{powerset}
+\end{DoxyParamCaption}
+)}}
+\label{_belief_functions_8c_af3ec5a692f270f5974b2aa2baed88fa0}
+Returns the number of focals actually corresponding to the non-\/null minimum of pignistic transformation (see betP()) of the given \hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction}. The cardinality should be at least of 1 as the empty set is not considered. 
+\begin{DoxyParams}{Parameters}
+{\em m} & The \hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction} to work with \\
+\hline
+{\em card} & The maximum authorized cardinality of the Element corresponding to the min (0 = no card limit) \\
+\hline
+{\em powerset} & The powerset generated from the size of the elements \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The number of focals corresponding to the minimum of pignistic transformation. Returns 0 if no element fitting the cardinality constraint is found. 
+\end{DoxyReturn}
+
+
+Definition at line 1934 of file BeliefFunctions.c.
+
+\hypertarget{_belief_functions_8c_a63ace25f467b238cca9675f64037d39d}{
+\index{BeliefFunctions.c@{BeliefFunctions.c}!BF\_\-getNbMinMass@{BF\_\-getNbMinMass}}
+\index{BF\_\-getNbMinMass@{BF\_\-getNbMinMass}!BeliefFunctions.c@{BeliefFunctions.c}}
+\subsubsection[{BF\_\-getNbMinMass}]{\setlength{\rightskip}{0pt plus 5cm}int BF\_\-getNbMinMass (
+\begin{DoxyParamCaption}
+\item[{const {\bf BF\_\-BeliefFunction}}]{m, }
+\item[{const int}]{card}
+\end{DoxyParamCaption}
+)}}
+\label{_belief_functions_8c_a63ace25f467b238cca9675f64037d39d}
+Returns the number of focals actually corresponding to the non-\/null minimum of mass of the given \hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction}. The cardinality should be at least of 1 as the empty set is not considered. 
+\begin{DoxyParams}{Parameters}
+{\em m} & The \hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction} to work with \\
+\hline
+{\em card} & The maximum authorized cardinality of the Element corresponding to the min (0 = no card limit) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The number of focals corresponding to the minimum of mass. Returns 0 if no element fitting the cardinality constraint is found. 
+\end{DoxyReturn}
+
+
+Definition at line 1862 of file BeliefFunctions.c.
+
+\hypertarget{_belief_functions_8c_afabc41d74088c42650c4becffbbccdd2}{
+\index{BeliefFunctions.c@{BeliefFunctions.c}!BF\_\-getNbMinPl@{BF\_\-getNbMinPl}}
+\index{BF\_\-getNbMinPl@{BF\_\-getNbMinPl}!BeliefFunctions.c@{BeliefFunctions.c}}
+\subsubsection[{BF\_\-getNbMinPl}]{\setlength{\rightskip}{0pt plus 5cm}int BF\_\-getNbMinPl (
+\begin{DoxyParamCaption}
+\item[{const {\bf BF\_\-BeliefFunction}}]{m, }
+\item[{const int}]{card, }
+\item[{const {\bf Sets\_\-Set}}]{powerset}
+\end{DoxyParamCaption}
+)}}
+\label{_belief_functions_8c_afabc41d74088c42650c4becffbbccdd2}
+Returns the number of focals actually corresponding to the non-\/null minimum of plausibility (see pl()) of the given \hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction}. The cardinality should be at least of 1 as the empty set is not considered. 
+\begin{DoxyParams}{Parameters}
+{\em m} & The \hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction} to work with \\
+\hline
+{\em card} & The maximum authorized cardinality of the Element corresponding to the min (0 = no card limit) \\
+\hline
+{\em powerset} & The powerset generated from the size of the elements \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The number of focals corresponding to the minimum of plausibility. Returns 0 if no element fitting the cardinality constraint is found. 
+\end{DoxyReturn}
+
+
+Definition at line 1910 of file BeliefFunctions.c.
+
+\hypertarget{_belief_functions_8c_add139e82190d797b8f1863848467dea9}{
+\index{BeliefFunctions.c@{BeliefFunctions.c}!BF\_\-getQuickerListMaxBel@{BF\_\-getQuickerListMaxBel}}
+\index{BF\_\-getQuickerListMaxBel@{BF\_\-getQuickerListMaxBel}!BeliefFunctions.c@{BeliefFunctions.c}}
+\subsubsection[{BF\_\-getQuickerListMaxBel}]{\setlength{\rightskip}{0pt plus 5cm}{\bf BF\_\-FocalElement}$\ast$ BF\_\-getQuickerListMaxBel (
+\begin{DoxyParamCaption}
+\item[{const {\bf BF\_\-BeliefFunction}}]{m, }
+\item[{const int}]{card, }
+\item[{const {\bf Sets\_\-Set}}]{powerset, }
+\item[{const float}]{maxValue, }
+\item[{const int}]{nbMax}
+\end{DoxyParamCaption}
+)}}
+\label{_belief_functions_8c_add139e82190d797b8f1863848467dea9}
+Get the list of focals corresponding to the maximum of belief (see bel())of the given \hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction}. The cardinality should be at least of 1 as the empty set is not considered. 
+\begin{DoxyParams}{Parameters}
+{\em m} & The \hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction} to work with \\
+\hline
+{\em card} & The maximum authorized cardinality of the Element corresponding to the max (0 = no card limit) \\
+\hline
+{\em powerset} & The powerset generated from the size of the elements \\
+\hline
+{\em maxValue} & The known max value of the \hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction} \\
+\hline
+{\em nbMax} & The number of elements corresponding to the given max \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A list of \hyperlink{struct_b_f___focal_element}{BF\_\-FocalElement} corresponding to the maximum of belief. Must be freed after use. Returns null if no Element fitting the cardinality constraint is found. 
+\end{DoxyReturn}
+
+
+Definition at line 2322 of file BeliefFunctions.c.
+
+\hypertarget{_belief_functions_8c_aa6c538402564acc9ecbc202706953f9e}{
+\index{BeliefFunctions.c@{BeliefFunctions.c}!BF\_\-getQuickerListMaxBetP@{BF\_\-getQuickerListMaxBetP}}
+\index{BF\_\-getQuickerListMaxBetP@{BF\_\-getQuickerListMaxBetP}!BeliefFunctions.c@{BeliefFunctions.c}}
+\subsubsection[{BF\_\-getQuickerListMaxBetP}]{\setlength{\rightskip}{0pt plus 5cm}{\bf BF\_\-FocalElement}$\ast$ BF\_\-getQuickerListMaxBetP (
+\begin{DoxyParamCaption}
+\item[{const {\bf BF\_\-BeliefFunction}}]{m, }
+\item[{const int}]{card, }
+\item[{const {\bf Sets\_\-Set}}]{powerset, }
+\item[{const float}]{maxValue, }
+\item[{const int}]{nbMax}
+\end{DoxyParamCaption}
+)}}
+\label{_belief_functions_8c_aa6c538402564acc9ecbc202706953f9e}
+Get the list of focals corresponding to the maximum of pignistic transformation (see betP()) of the given \hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction}. The cardinality should be at least of 1 as the empty set is not considered. 
+\begin{DoxyParams}{Parameters}
+{\em m} & The \hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction} to work with \\
+\hline
+{\em card} & The maximum authorized cardinality of the Element corresponding to the max (0 = no card limit) \\
+\hline
+{\em powerset} & The powerset generated from the size of the elements \\
+\hline
+{\em maxValue} & The known max value of the \hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction} \\
+\hline
+{\em nbMax} & The number of elements corresponding to the given max \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A list of \hyperlink{struct_b_f___focal_element}{BF\_\-FocalElement} corresponding to the maximum of pignistic transformation. Must be freed after use. Returns null if no Element fitting the cardinality constraint is found. 
+\end{DoxyReturn}
+
+
+Definition at line 2426 of file BeliefFunctions.c.
+
+\hypertarget{_belief_functions_8c_abf24629ed149e8615413bec148f04cb4}{
+\index{BeliefFunctions.c@{BeliefFunctions.c}!BF\_\-getQuickerListMaxMass@{BF\_\-getQuickerListMaxMass}}
+\index{BF\_\-getQuickerListMaxMass@{BF\_\-getQuickerListMaxMass}!BeliefFunctions.c@{BeliefFunctions.c}}
+\subsubsection[{BF\_\-getQuickerListMaxMass}]{\setlength{\rightskip}{0pt plus 5cm}{\bf BF\_\-FocalElement}$\ast$ BF\_\-getQuickerListMaxMass (
+\begin{DoxyParamCaption}
+\item[{const {\bf BF\_\-BeliefFunction}}]{m, }
+\item[{const int}]{card, }
+\item[{const float}]{maxValue, }
+\item[{const int}]{nbMax}
+\end{DoxyParamCaption}
+)}}
+\label{_belief_functions_8c_abf24629ed149e8615413bec148f04cb4}
+Get the list of focals corresponding to the maximum of mass of the given \hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction}. The cardinality should be at least of 1 as the empty set is not considered. 
+\begin{DoxyParams}{Parameters}
+{\em m} & The \hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction} to work with \\
+\hline
+{\em card} & The maximum authorized cardinality of the Element corresponding to the max (0 = no card limit) \\
+\hline
+{\em maxValue} & The known max value of the \hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction} \\
+\hline
+{\em nbMax} & The number of elements corresponding to the given max \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A list of \hyperlink{struct_b_f___focal_element}{BF\_\-FocalElement} corresponding to the maximum of mass. Must be freed after use. Returns null if no Element fitting the cardinality constraint is found. 
+\end{DoxyReturn}
+
+
+Definition at line 2272 of file BeliefFunctions.c.
+
+\hypertarget{_belief_functions_8c_a6ac5be2c9be1cd49ddceaa2e4c447010}{
+\index{BeliefFunctions.c@{BeliefFunctions.c}!BF\_\-getQuickerListMaxPl@{BF\_\-getQuickerListMaxPl}}
+\index{BF\_\-getQuickerListMaxPl@{BF\_\-getQuickerListMaxPl}!BeliefFunctions.c@{BeliefFunctions.c}}
+\subsubsection[{BF\_\-getQuickerListMaxPl}]{\setlength{\rightskip}{0pt plus 5cm}{\bf BF\_\-FocalElement}$\ast$ BF\_\-getQuickerListMaxPl (
+\begin{DoxyParamCaption}
+\item[{const {\bf BF\_\-BeliefFunction}}]{m, }
+\item[{const int}]{card, }
+\item[{const {\bf Sets\_\-Set}}]{powerset, }
+\item[{const float}]{maxValue, }
+\item[{const int}]{nbMax}
+\end{DoxyParamCaption}
+)}}
+\label{_belief_functions_8c_a6ac5be2c9be1cd49ddceaa2e4c447010}
+Get the list of focals corresponding to the maximum of plausibility (see pl()) of the given \hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction}. The cardinality should be at least of 1 as the empty set is not considered. 
+\begin{DoxyParams}{Parameters}
+{\em m} & The \hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction} to work with \\
+\hline
+{\em card} & The maximum authorized cardinality of the Element corresponding to the max (0 = no card limit) \\
+\hline
+{\em powerset} & The powerset generated from the size of the elements \\
+\hline
+{\em maxValue} & The known max value of the \hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction} \\
+\hline
+{\em nbMax} & The number of elements corresponding to the given max \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A list of \hyperlink{struct_b_f___focal_element}{BF\_\-FocalElement} corresponding to the maximum of plausibility. Must be freed after use. Returns null if no Element fitting the cardinality constraint is found. 
+\end{DoxyReturn}
+
+
+Definition at line 2374 of file BeliefFunctions.c.
+
+\hypertarget{_belief_functions_8c_ace00a83049c264ef7f1596c46b339d4a}{
+\index{BeliefFunctions.c@{BeliefFunctions.c}!BF\_\-getQuickerListMinBel@{BF\_\-getQuickerListMinBel}}
+\index{BF\_\-getQuickerListMinBel@{BF\_\-getQuickerListMinBel}!BeliefFunctions.c@{BeliefFunctions.c}}
+\subsubsection[{BF\_\-getQuickerListMinBel}]{\setlength{\rightskip}{0pt plus 5cm}{\bf BF\_\-FocalElement}$\ast$ BF\_\-getQuickerListMinBel (
+\begin{DoxyParamCaption}
+\item[{const {\bf BF\_\-BeliefFunction}}]{m, }
+\item[{const int}]{card, }
+\item[{const {\bf Sets\_\-Set}}]{powerset, }
+\item[{const float}]{minValue, }
+\item[{const int}]{nbMin}
+\end{DoxyParamCaption}
+)}}
+\label{_belief_functions_8c_ace00a83049c264ef7f1596c46b339d4a}
+Get the list of focals corresponding to the non-\/null minimum of belief (see bel()) of the given \hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction}. The cardinality should be at least of 1 as the empty set is not considered. 
+\begin{DoxyParams}{Parameters}
+{\em m} & The \hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction} to work with \\
+\hline
+{\em card} & The maximum authorized cardinality of the Element corresponding to the min (0 = no card limit) \\
+\hline
+{\em powerset} & The powerset generated from the size of the elements \\
+\hline
+{\em minValue} & The known min value of the \hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction} \\
+\hline
+{\em nbMin} & The number of elements corresponding to the given min \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A list of \hyperlink{struct_b_f___focal_element}{BF\_\-FocalElement} corresponding to the minimum of belief. Must be freed after use. Returns null if no Element fitting the cardinality constraint is found. 
+\end{DoxyReturn}
+
+
+Definition at line 2348 of file BeliefFunctions.c.
+
+\hypertarget{_belief_functions_8c_ac7548afe078a40401df5da1039efae4a}{
+\index{BeliefFunctions.c@{BeliefFunctions.c}!BF\_\-getQuickerListMinBetP@{BF\_\-getQuickerListMinBetP}}
+\index{BF\_\-getQuickerListMinBetP@{BF\_\-getQuickerListMinBetP}!BeliefFunctions.c@{BeliefFunctions.c}}
+\subsubsection[{BF\_\-getQuickerListMinBetP}]{\setlength{\rightskip}{0pt plus 5cm}{\bf BF\_\-FocalElement}$\ast$ BF\_\-getQuickerListMinBetP (
+\begin{DoxyParamCaption}
+\item[{const {\bf BF\_\-BeliefFunction}}]{m, }
+\item[{const int}]{card, }
+\item[{const {\bf Sets\_\-Set}}]{powerset, }
+\item[{const float}]{minValue, }
+\item[{const int}]{nbMin}
+\end{DoxyParamCaption}
+)}}
+\label{_belief_functions_8c_ac7548afe078a40401df5da1039efae4a}
+Get the list of focals corresponding to the non-\/null minimum of pignistic transformation (see betP()) of the given \hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction}. The cardinality should be at least of 1 as the empty set is not considered. 
+\begin{DoxyParams}{Parameters}
+{\em m} & The \hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction} to work with \\
+\hline
+{\em card} & The maximum authorized cardinality of the Element corresponding to the min (0 = no card limit) \\
+\hline
+{\em powerset} & The powerset generated from the size of the elements \\
+\hline
+{\em minValue} & The known min value of the \hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction} \\
+\hline
+{\em nbMin} & The number of elements corresponding to the given min \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A list of \hyperlink{struct_b_f___focal_element}{BF\_\-FocalElement} corresponding to the minimum of pignistic transformation. Must be freed after use. Returns null if no Element fitting the cardinality constraint is found. 
+\end{DoxyReturn}
+
+
+Definition at line 2452 of file BeliefFunctions.c.
+
+\hypertarget{_belief_functions_8c_a41624db0962c9e24aa3b1af6bad2e121}{
+\index{BeliefFunctions.c@{BeliefFunctions.c}!BF\_\-getQuickerListMinMass@{BF\_\-getQuickerListMinMass}}
+\index{BF\_\-getQuickerListMinMass@{BF\_\-getQuickerListMinMass}!BeliefFunctions.c@{BeliefFunctions.c}}
+\subsubsection[{BF\_\-getQuickerListMinMass}]{\setlength{\rightskip}{0pt plus 5cm}{\bf BF\_\-FocalElement}$\ast$ BF\_\-getQuickerListMinMass (
+\begin{DoxyParamCaption}
+\item[{const {\bf BF\_\-BeliefFunction}}]{m, }
+\item[{const int}]{card, }
+\item[{const float}]{minValue, }
+\item[{const int}]{nbMin}
+\end{DoxyParamCaption}
+)}}
+\label{_belief_functions_8c_a41624db0962c9e24aa3b1af6bad2e121}
+Get the list of focals corresponding to the non-\/null minimum of mass of the given \hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction}. The cardinality should be at least of 1 as the empty set is not considered. 
+\begin{DoxyParams}{Parameters}
+{\em m} & The \hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction} to work with \\
+\hline
+{\em card} & The maximum authorized cardinality of the Element corresponding to the min (0 = no card limit) \\
+\hline
+{\em minValue} & The known min value of the \hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction} \\
+\hline
+{\em nbMin} & The number of elements corresponding to the given min \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A list of \hyperlink{struct_b_f___focal_element}{BF\_\-FocalElement} corresponding to the minimum of mass. Must be freed after use. Returns null if no Element fitting the cardinality constraint is found. 
+\end{DoxyReturn}
+
+
+Definition at line 2297 of file BeliefFunctions.c.
+
+\hypertarget{_belief_functions_8c_a86cce660c55ff2b1dd5c77e4fdf55bef}{
+\index{BeliefFunctions.c@{BeliefFunctions.c}!BF\_\-getQuickerListMinPl@{BF\_\-getQuickerListMinPl}}
+\index{BF\_\-getQuickerListMinPl@{BF\_\-getQuickerListMinPl}!BeliefFunctions.c@{BeliefFunctions.c}}
+\subsubsection[{BF\_\-getQuickerListMinPl}]{\setlength{\rightskip}{0pt plus 5cm}{\bf BF\_\-FocalElement}$\ast$ BF\_\-getQuickerListMinPl (
+\begin{DoxyParamCaption}
+\item[{const {\bf BF\_\-BeliefFunction}}]{m, }
+\item[{const int}]{card, }
+\item[{const {\bf Sets\_\-Set}}]{powerset, }
+\item[{const float}]{minValue, }
+\item[{const int}]{nbMin}
+\end{DoxyParamCaption}
+)}}
+\label{_belief_functions_8c_a86cce660c55ff2b1dd5c77e4fdf55bef}
+Get the list of focals corresponding to the non-\/null minimum of plausibility (see pl()) of the given \hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction}. The cardinality should be at least of 1 as the empty set is not considered. 
+\begin{DoxyParams}{Parameters}
+{\em m} & The \hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction} to work with \\
+\hline
+{\em card} & The maximum authorized cardinality of the Element corresponding to the min (0 = no card limit) \\
+\hline
+{\em powerset} & The powerset generated from the size of the elements \\
+\hline
+{\em minValue} & The known min value of the \hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction} \\
+\hline
+{\em nbMin} & The number of elements corresponding to the given min \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A list of \hyperlink{struct_b_f___focal_element}{BF\_\-FocalElement} corresponding to the minimum of plausibility. Must be freed after use. Returns null if no Element fitting the cardinality constraint is found. 
+\end{DoxyReturn}
+
+
+Definition at line 2400 of file BeliefFunctions.c.
+
+\hypertarget{_belief_functions_8c_a3d64e9534605422aa8c52c3e21e5a71d}{
+\index{BeliefFunctions.c@{BeliefFunctions.c}!BF\_\-getQuickListMaxBel@{BF\_\-getQuickListMaxBel}}
+\index{BF\_\-getQuickListMaxBel@{BF\_\-getQuickListMaxBel}!BeliefFunctions.c@{BeliefFunctions.c}}
+\subsubsection[{BF\_\-getQuickListMaxBel}]{\setlength{\rightskip}{0pt plus 5cm}{\bf BF\_\-FocalElement}$\ast$ BF\_\-getQuickListMaxBel (
+\begin{DoxyParamCaption}
+\item[{const {\bf BF\_\-BeliefFunction}}]{m, }
+\item[{const int}]{card, }
+\item[{const {\bf Sets\_\-Set}}]{powerset, }
+\item[{const float}]{maxValue}
+\end{DoxyParamCaption}
+)}}
+\label{_belief_functions_8c_a3d64e9534605422aa8c52c3e21e5a71d}
+Get the list of focals corresponding to the maximum of belief (see bel())of the given \hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction}. The cardinality should be at least of 1 as the empty set is not considered. 
+\begin{DoxyParams}{Parameters}
+{\em m} & The \hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction} to work with \\
+\hline
+{\em card} & The maximum authorized cardinality of the Element corresponding to the max (0 = no card limit) \\
+\hline
+{\em powerset} & The powerset generated from the size of the elements \\
+\hline
+{\em maxValue} & The known max value of the \hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction} \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A list of \hyperlink{struct_b_f___focal_element}{BF\_\-FocalElement} corresponding to the maximum of belief. Must be freed after use. Returns null if no Element fitting the cardinality constraint is found. 
+\end{DoxyReturn}
+
+
+Definition at line 2206 of file BeliefFunctions.c.
+
+\hypertarget{_belief_functions_8c_a4adb06181b557c846cc3db138cc1d024}{
+\index{BeliefFunctions.c@{BeliefFunctions.c}!BF\_\-getQuickListMaxBetP@{BF\_\-getQuickListMaxBetP}}
+\index{BF\_\-getQuickListMaxBetP@{BF\_\-getQuickListMaxBetP}!BeliefFunctions.c@{BeliefFunctions.c}}
+\subsubsection[{BF\_\-getQuickListMaxBetP}]{\setlength{\rightskip}{0pt plus 5cm}{\bf BF\_\-FocalElement}$\ast$ BF\_\-getQuickListMaxBetP (
+\begin{DoxyParamCaption}
+\item[{const {\bf BF\_\-BeliefFunction}}]{m, }
+\item[{const int}]{card, }
+\item[{const {\bf Sets\_\-Set}}]{powerset, }
+\item[{const float}]{maxValue}
+\end{DoxyParamCaption}
+)}}
+\label{_belief_functions_8c_a4adb06181b557c846cc3db138cc1d024}
+Get the list of focals corresponding to the maximum of pignistic transformation (see betP()) of the given \hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction}. The cardinality should be at least of 1 as the empty set is not considered. 
+\begin{DoxyParams}{Parameters}
+{\em m} & The \hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction} to work with \\
+\hline
+{\em card} & The maximum authorized cardinality of the Element corresponding to the max (0 = no card limit) \\
+\hline
+{\em powerset} & The powerset generated from the size of the elements \\
+\hline
+{\em maxValue} & The known max value of the \hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction} \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A list of \hyperlink{struct_b_f___focal_element}{BF\_\-FocalElement} corresponding to the maximum of pignistic transformation. Must be freed after use. Returns null if no Element fitting the cardinality constraint is found. 
+\end{DoxyReturn}
+
+
+Definition at line 2250 of file BeliefFunctions.c.
+
+\hypertarget{_belief_functions_8c_aea57a55bfd8dca820045b0ade3d2e40d}{
+\index{BeliefFunctions.c@{BeliefFunctions.c}!BF\_\-getQuickListMaxMass@{BF\_\-getQuickListMaxMass}}
+\index{BF\_\-getQuickListMaxMass@{BF\_\-getQuickListMaxMass}!BeliefFunctions.c@{BeliefFunctions.c}}
+\subsubsection[{BF\_\-getQuickListMaxMass}]{\setlength{\rightskip}{0pt plus 5cm}{\bf BF\_\-FocalElement}$\ast$ BF\_\-getQuickListMaxMass (
+\begin{DoxyParamCaption}
+\item[{const {\bf BF\_\-BeliefFunction}}]{m, }
+\item[{const int}]{card, }
+\item[{const float}]{maxValue}
+\end{DoxyParamCaption}
+)}}
+\label{_belief_functions_8c_aea57a55bfd8dca820045b0ade3d2e40d}
+Get the list of focals corresponding to the maximum of mass of the given \hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction}. The cardinality should be at least of 1 as the empty set is not considered. 
+\begin{DoxyParams}{Parameters}
+{\em m} & The \hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction} to work with \\
+\hline
+{\em card} & The maximum authorized cardinality of the Element corresponding to the max (0 = no card limit) \\
+\hline
+{\em maxValue} & The known max value of the \hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction} \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A list of \hyperlink{struct_b_f___focal_element}{BF\_\-FocalElement} corresponding to the maximum of mass. Must be freed after use. Returns null if no Element fitting the cardinality constraint is found. 
+\end{DoxyReturn}
+
+
+Definition at line 2184 of file BeliefFunctions.c.
+
+\hypertarget{_belief_functions_8c_a1cc231bbb149836c2a0498f46523c5f6}{
+\index{BeliefFunctions.c@{BeliefFunctions.c}!BF\_\-getQuickListMaxPl@{BF\_\-getQuickListMaxPl}}
+\index{BF\_\-getQuickListMaxPl@{BF\_\-getQuickListMaxPl}!BeliefFunctions.c@{BeliefFunctions.c}}
+\subsubsection[{BF\_\-getQuickListMaxPl}]{\setlength{\rightskip}{0pt plus 5cm}{\bf BF\_\-FocalElement}$\ast$ BF\_\-getQuickListMaxPl (
+\begin{DoxyParamCaption}
+\item[{const {\bf BF\_\-BeliefFunction}}]{m, }
+\item[{const int}]{card, }
+\item[{const {\bf Sets\_\-Set}}]{powerset, }
+\item[{const float}]{maxValue}
+\end{DoxyParamCaption}
+)}}
+\label{_belief_functions_8c_a1cc231bbb149836c2a0498f46523c5f6}
+Get the list of focals corresponding to the maximum of plausibility (see pl()) of the given \hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction}. The cardinality should be at least of 1 as the empty set is not considered. 
+\begin{DoxyParams}{Parameters}
+{\em m} & The \hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction} to work with \\
+\hline
+{\em card} & The maximum authorized cardinality of the Element corresponding to the max (0 = no card limit) \\
+\hline
+{\em powerset} & The powerset generated from the size of the elements \\
+\hline
+{\em maxValue} & The known max value of the \hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction} \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A list of \hyperlink{struct_b_f___focal_element}{BF\_\-FocalElement} corresponding to the maximum of plausibility. Must be freed after use. Returns null if no Element fitting the cardinality constraint is found. 
+\end{DoxyReturn}
+
+
+Definition at line 2228 of file BeliefFunctions.c.
+
+\hypertarget{_belief_functions_8c_ac062188b824dcbf7635237dfd31475fc}{
+\index{BeliefFunctions.c@{BeliefFunctions.c}!BF\_\-getQuickListMinBel@{BF\_\-getQuickListMinBel}}
+\index{BF\_\-getQuickListMinBel@{BF\_\-getQuickListMinBel}!BeliefFunctions.c@{BeliefFunctions.c}}
+\subsubsection[{BF\_\-getQuickListMinBel}]{\setlength{\rightskip}{0pt plus 5cm}{\bf BF\_\-FocalElement}$\ast$ BF\_\-getQuickListMinBel (
+\begin{DoxyParamCaption}
+\item[{const {\bf BF\_\-BeliefFunction}}]{m, }
+\item[{const int}]{card, }
+\item[{const {\bf Sets\_\-Set}}]{powerset, }
+\item[{const float}]{minValue}
+\end{DoxyParamCaption}
+)}}
+\label{_belief_functions_8c_ac062188b824dcbf7635237dfd31475fc}
+Get the list of focals corresponding to the non-\/null minimum of belief (see bel()) of the given \hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction}. The cardinality should be at least of 1 as the empty set is not considered. 
+\begin{DoxyParams}{Parameters}
+{\em m} & The \hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction} to work with \\
+\hline
+{\em card} & The maximum authorized cardinality of the Element corresponding to the min (0 = no card limit) \\
+\hline
+{\em powerset} & The powerset generated from the size of the elements \\
+\hline
+{\em minValue} & The known min value of the \hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction} \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A list of \hyperlink{struct_b_f___focal_element}{BF\_\-FocalElement} corresponding to the minimum of belief. Must be freed after use. Returns null if no Element fitting the cardinality constraint is found. 
+\end{DoxyReturn}
+
+
+Definition at line 2217 of file BeliefFunctions.c.
+
+\hypertarget{_belief_functions_8c_a71c3160157ea78eed69ade99fdd1a92c}{
+\index{BeliefFunctions.c@{BeliefFunctions.c}!BF\_\-getQuickListMinBetP@{BF\_\-getQuickListMinBetP}}
+\index{BF\_\-getQuickListMinBetP@{BF\_\-getQuickListMinBetP}!BeliefFunctions.c@{BeliefFunctions.c}}
+\subsubsection[{BF\_\-getQuickListMinBetP}]{\setlength{\rightskip}{0pt plus 5cm}{\bf BF\_\-FocalElement}$\ast$ BF\_\-getQuickListMinBetP (
+\begin{DoxyParamCaption}
+\item[{const {\bf BF\_\-BeliefFunction}}]{m, }
+\item[{const int}]{card, }
+\item[{const {\bf Sets\_\-Set}}]{powerset, }
+\item[{const float}]{minValue}
+\end{DoxyParamCaption}
+)}}
+\label{_belief_functions_8c_a71c3160157ea78eed69ade99fdd1a92c}
+Get the list of focals corresponding to the non-\/null minimum of pignistic transformation (see betP()) of the given \hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction}. The cardinality should be at least of 1 as the empty set is not considered. 
+\begin{DoxyParams}{Parameters}
+{\em m} & The \hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction} to work with \\
+\hline
+{\em card} & The maximum authorized cardinality of the Element corresponding to the min (0 = no card limit) \\
+\hline
+{\em powerset} & The powerset generated from the size of the elements \\
+\hline
+{\em minValue} & The known min value of the \hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction} \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A list of \hyperlink{struct_b_f___focal_element}{BF\_\-FocalElement} corresponding to the minimum of pignistic transformation. Must be freed after use. Returns null if no Element fitting the cardinality constraint is found. 
+\end{DoxyReturn}
+
+
+Definition at line 2261 of file BeliefFunctions.c.
+
+\hypertarget{_belief_functions_8c_a6036f0d29d16a53d50fb8cbcd5a2cea1}{
+\index{BeliefFunctions.c@{BeliefFunctions.c}!BF\_\-getQuickListMinMass@{BF\_\-getQuickListMinMass}}
+\index{BF\_\-getQuickListMinMass@{BF\_\-getQuickListMinMass}!BeliefFunctions.c@{BeliefFunctions.c}}
+\subsubsection[{BF\_\-getQuickListMinMass}]{\setlength{\rightskip}{0pt plus 5cm}{\bf BF\_\-FocalElement}$\ast$ BF\_\-getQuickListMinMass (
+\begin{DoxyParamCaption}
+\item[{const {\bf BF\_\-BeliefFunction}}]{m, }
+\item[{const int}]{card, }
+\item[{const float}]{minValue}
+\end{DoxyParamCaption}
+)}}
+\label{_belief_functions_8c_a6036f0d29d16a53d50fb8cbcd5a2cea1}
+Get the list of focals corresponding to the non-\/null minimum of mass of the given \hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction}. The cardinality should be at least of 1 as the empty set is not considered. 
+\begin{DoxyParams}{Parameters}
+{\em m} & The \hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction} to work with \\
+\hline
+{\em card} & The maximum authorized cardinality of the Element corresponding to the min (0 = no card limit) \\
+\hline
+{\em minValue} & The known min value of the \hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction} \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A list of \hyperlink{struct_b_f___focal_element}{BF\_\-FocalElement} corresponding to the minimum of mass. Must be freed after use. Returns null if no Element fitting the cardinality constraint is found. 
+\end{DoxyReturn}
+
+
+Definition at line 2195 of file BeliefFunctions.c.
+
+\hypertarget{_belief_functions_8c_ac0d2ebc6ef7012aa7aaaf2a3a4ea6111}{
+\index{BeliefFunctions.c@{BeliefFunctions.c}!BF\_\-getQuickListMinPl@{BF\_\-getQuickListMinPl}}
+\index{BF\_\-getQuickListMinPl@{BF\_\-getQuickListMinPl}!BeliefFunctions.c@{BeliefFunctions.c}}
+\subsubsection[{BF\_\-getQuickListMinPl}]{\setlength{\rightskip}{0pt plus 5cm}{\bf BF\_\-FocalElement}$\ast$ BF\_\-getQuickListMinPl (
+\begin{DoxyParamCaption}
+\item[{const {\bf BF\_\-BeliefFunction}}]{m, }
+\item[{const int}]{card, }
+\item[{const {\bf Sets\_\-Set}}]{powerset, }
+\item[{const float}]{minValue}
+\end{DoxyParamCaption}
+)}}
+\label{_belief_functions_8c_ac0d2ebc6ef7012aa7aaaf2a3a4ea6111}
+Get the list of focals corresponding to the non-\/null minimum of plausibility (see pl()) of the given \hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction}. The cardinality should be at least of 1 as the empty set is not considered. 
+\begin{DoxyParams}{Parameters}
+{\em m} & The \hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction} to work with \\
+\hline
+{\em card} & The maximum authorized cardinality of the Element corresponding to the min (0 = no card limit) \\
+\hline
+{\em powerset} & The powerset generated from the size of the elements \\
+\hline
+{\em minValue} & The known min value of the \hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction} \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A list of \hyperlink{struct_b_f___focal_element}{BF\_\-FocalElement} corresponding to the minimum of plausibility. Must be freed after use. Returns null if no Element fitting the cardinality constraint is found. 
+\end{DoxyReturn}
+
+
+Definition at line 2239 of file BeliefFunctions.c.
+
+\hypertarget{_belief_functions_8c_a69ff11fb69f0d2fd280600bc773be0b0}{
+\index{BeliefFunctions.c@{BeliefFunctions.c}!BF\_\-getQuickNbMaxBel@{BF\_\-getQuickNbMaxBel}}
+\index{BF\_\-getQuickNbMaxBel@{BF\_\-getQuickNbMaxBel}!BeliefFunctions.c@{BeliefFunctions.c}}
+\subsubsection[{BF\_\-getQuickNbMaxBel}]{\setlength{\rightskip}{0pt plus 5cm}int BF\_\-getQuickNbMaxBel (
+\begin{DoxyParamCaption}
+\item[{const {\bf BF\_\-BeliefFunction}}]{m, }
+\item[{const int}]{card, }
+\item[{const {\bf Sets\_\-Set}}]{powerset, }
+\item[{float}]{maxValue}
+\end{DoxyParamCaption}
+)}}
+\label{_belief_functions_8c_a69ff11fb69f0d2fd280600bc773be0b0}
+Returns the number of focals actually corresponding to the maximum of belief (see bel()) of the given \hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction}. The cardinality should be at least of 1 as the empty set is not considered. 
+\begin{DoxyParams}{Parameters}
+{\em m} & The \hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction} to work with \\
+\hline
+{\em card} & The maximum authorized cardinality of the Element corresponding to the max (0 = no card limit) \\
+\hline
+{\em powerset} & The powerset generated from the size of the elements \\
+\hline
+{\em maxValue} & The known max value of the \hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction} \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The number of focals corresponding to the maximum of belief. Returns 0 if no element fitting the cardinality constraint is found. 
+\end{DoxyReturn}
+
+
+Definition at line 1978 of file BeliefFunctions.c.
+
+\hypertarget{_belief_functions_8c_af9afb5f1dd65a699b325fabdf30eaf57}{
+\index{BeliefFunctions.c@{BeliefFunctions.c}!BF\_\-getQuickNbMaxBetP@{BF\_\-getQuickNbMaxBetP}}
+\index{BF\_\-getQuickNbMaxBetP@{BF\_\-getQuickNbMaxBetP}!BeliefFunctions.c@{BeliefFunctions.c}}
+\subsubsection[{BF\_\-getQuickNbMaxBetP}]{\setlength{\rightskip}{0pt plus 5cm}int BF\_\-getQuickNbMaxBetP (
+\begin{DoxyParamCaption}
+\item[{const {\bf BF\_\-BeliefFunction}}]{m, }
+\item[{const int}]{card, }
+\item[{const {\bf Sets\_\-Set}}]{powerset, }
+\item[{float}]{maxValue}
+\end{DoxyParamCaption}
+)}}
+\label{_belief_functions_8c_af9afb5f1dd65a699b325fabdf30eaf57}
+Returns the number of focals actually corresponding to the maximum of pignistic transformation (see betP()) of the given \hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction}. The cardinality should be at least of 1 as the empty set is not considered. 
+\begin{DoxyParams}{Parameters}
+{\em m} & The \hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction} to work with \\
+\hline
+{\em card} & The maximum authorized cardinality of the Element corresponding to the max (0 = no card limit) \\
+\hline
+{\em powerset} & The powerset generated from the size of the elements \\
+\hline
+{\em maxValue} & The known max value of the \hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction} \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The number of focals corresponding to the maximum of pignistic transformation. Returns 0 if no element fitting the cardinality constraint is found. 
+\end{DoxyReturn}
+
+
+Definition at line 2046 of file BeliefFunctions.c.
+
+\hypertarget{_belief_functions_8c_afbbec54bcca6905dd7864ab0982edace}{
+\index{BeliefFunctions.c@{BeliefFunctions.c}!BF\_\-getQuickNbMaxMass@{BF\_\-getQuickNbMaxMass}}
+\index{BF\_\-getQuickNbMaxMass@{BF\_\-getQuickNbMaxMass}!BeliefFunctions.c@{BeliefFunctions.c}}
+\subsubsection[{BF\_\-getQuickNbMaxMass}]{\setlength{\rightskip}{0pt plus 5cm}int BF\_\-getQuickNbMaxMass (
+\begin{DoxyParamCaption}
+\item[{const {\bf BF\_\-BeliefFunction}}]{m, }
+\item[{const int}]{card, }
+\item[{float}]{maxValue}
+\end{DoxyParamCaption}
+)}}
+\label{_belief_functions_8c_afbbec54bcca6905dd7864ab0982edace}
+Returns the number of focals actually corresponding to the maximum of mass of the given \hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction}. The cardinality should be at least of 1 as the empty set is not considered. 
+\begin{DoxyParams}{Parameters}
+{\em m} & The \hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction} to work with \\
+\hline
+{\em card} & The maximum authorized cardinality of the Element corresponding to the max (0 = no card limit) \\
+\hline
+{\em maxValue} & The known max value of the \hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction} \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The number of focals corresponding to the maximum of mass. Returns 0 if no element fitting the cardinality constraint is found. 
+\end{DoxyReturn}
+
+
+Definition at line 1946 of file BeliefFunctions.c.
+
+\hypertarget{_belief_functions_8c_aeddfb2d82c5058b15b08877e1f7be64e}{
+\index{BeliefFunctions.c@{BeliefFunctions.c}!BF\_\-getQuickNbMaxPl@{BF\_\-getQuickNbMaxPl}}
+\index{BF\_\-getQuickNbMaxPl@{BF\_\-getQuickNbMaxPl}!BeliefFunctions.c@{BeliefFunctions.c}}
+\subsubsection[{BF\_\-getQuickNbMaxPl}]{\setlength{\rightskip}{0pt plus 5cm}int BF\_\-getQuickNbMaxPl (
+\begin{DoxyParamCaption}
+\item[{const {\bf BF\_\-BeliefFunction}}]{m, }
+\item[{const int}]{card, }
+\item[{const {\bf Sets\_\-Set}}]{powerset, }
+\item[{float}]{maxValue}
+\end{DoxyParamCaption}
+)}}
+\label{_belief_functions_8c_aeddfb2d82c5058b15b08877e1f7be64e}
+Returns the number of focals actually corresponding to the maximum of plausibility (see pl()) of the given \hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction}. The cardinality should be at least of 1 as the empty set is not considered. 
+\begin{DoxyParams}{Parameters}
+{\em m} & The \hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction} to work with \\
+\hline
+{\em card} & The maximum authorized cardinality of the Element corresponding to the max (0 = no card limit) \\
+\hline
+{\em powerset} & The powerset generated from the size of the elements \\
+\hline
+{\em maxValue} & The known max value of the \hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction} \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The number of focals corresponding to the maximum of plausibility. Returns 0 if no element fitting the cardinality constraint is found. 
+\end{DoxyReturn}
+
+
+Definition at line 2012 of file BeliefFunctions.c.
+
+\hypertarget{_belief_functions_8c_a68a54d1b1e06b66f1d634b47d4fd2af0}{
+\index{BeliefFunctions.c@{BeliefFunctions.c}!BF\_\-getQuickNbMinBel@{BF\_\-getQuickNbMinBel}}
+\index{BF\_\-getQuickNbMinBel@{BF\_\-getQuickNbMinBel}!BeliefFunctions.c@{BeliefFunctions.c}}
+\subsubsection[{BF\_\-getQuickNbMinBel}]{\setlength{\rightskip}{0pt plus 5cm}int BF\_\-getQuickNbMinBel (
+\begin{DoxyParamCaption}
+\item[{const {\bf BF\_\-BeliefFunction}}]{m, }
+\item[{const int}]{card, }
+\item[{const {\bf Sets\_\-Set}}]{powerset, }
+\item[{float}]{minValue}
+\end{DoxyParamCaption}
+)}}
+\label{_belief_functions_8c_a68a54d1b1e06b66f1d634b47d4fd2af0}
+Returns the number of focals actually corresponding to the non-\/null minimum of belief (see bel()) of the given \hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction}. The cardinality should be at least of 1 as the empty set is not considered. 
+\begin{DoxyParams}{Parameters}
+{\em m} & The \hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction} to work with \\
+\hline
+{\em card} & The maximum authorized cardinality of the Element corresponding to the max (0 = no card limit) \\
+\hline
+{\em powerset} & The powerset generated from the size of the elements \\
+\hline
+{\em minValue} & The known min value of the \hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction} \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The number of focals corresponding to the minimum of belief. Returns 0 if no element fitting the cardinality constraint is found. 
+\end{DoxyReturn}
+
+
+Definition at line 1995 of file BeliefFunctions.c.
+
+\hypertarget{_belief_functions_8c_a1a30d8e068f393fd1afd408570c3586f}{
+\index{BeliefFunctions.c@{BeliefFunctions.c}!BF\_\-getQuickNbMinBetP@{BF\_\-getQuickNbMinBetP}}
+\index{BF\_\-getQuickNbMinBetP@{BF\_\-getQuickNbMinBetP}!BeliefFunctions.c@{BeliefFunctions.c}}
+\subsubsection[{BF\_\-getQuickNbMinBetP}]{\setlength{\rightskip}{0pt plus 5cm}int BF\_\-getQuickNbMinBetP (
+\begin{DoxyParamCaption}
+\item[{const {\bf BF\_\-BeliefFunction}}]{m, }
+\item[{const int}]{card, }
+\item[{const {\bf Sets\_\-Set}}]{powerset, }
+\item[{float}]{minValue}
+\end{DoxyParamCaption}
+)}}
+\label{_belief_functions_8c_a1a30d8e068f393fd1afd408570c3586f}
+Returns the number of focals actually corresponding to the non-\/null minimum of pignistic transformation (see betP()) of the given \hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction}. The cardinality should be at least of 1 as the empty set is not considered. 
+\begin{DoxyParams}{Parameters}
+{\em m} & The \hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction} to work with \\
+\hline
+{\em card} & The maximum authorized cardinality of the Element corresponding to the max (0 = no card limit) \\
+\hline
+{\em powerset} & The powerset generated from the size of the elements \\
+\hline
+{\em minValue} & The known max value of the \hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction} \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The number of focals corresponding to the minimum of pignistic transformation. Returns 0 if no element fitting the cardinality constraint is found. 
+\end{DoxyReturn}
+
+
+Definition at line 2063 of file BeliefFunctions.c.
+
+\hypertarget{_belief_functions_8c_a36a983dcf4d91b5183c254a479904400}{
+\index{BeliefFunctions.c@{BeliefFunctions.c}!BF\_\-getQuickNbMinMass@{BF\_\-getQuickNbMinMass}}
+\index{BF\_\-getQuickNbMinMass@{BF\_\-getQuickNbMinMass}!BeliefFunctions.c@{BeliefFunctions.c}}
+\subsubsection[{BF\_\-getQuickNbMinMass}]{\setlength{\rightskip}{0pt plus 5cm}int BF\_\-getQuickNbMinMass (
+\begin{DoxyParamCaption}
+\item[{const {\bf BF\_\-BeliefFunction}}]{m, }
+\item[{const int}]{card, }
+\item[{float}]{minValue}
+\end{DoxyParamCaption}
+)}}
+\label{_belief_functions_8c_a36a983dcf4d91b5183c254a479904400}
+Returns the number of focals actually corresponding to the non-\/null minimum of mass of the given \hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction}. The cardinality should be at least of 1 as the empty set is not considered. 
+\begin{DoxyParams}{Parameters}
+{\em m} & The \hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction} to work with \\
+\hline
+{\em card} & The maximum authorized cardinality of the Element corresponding to the max (0 = no card limit) \\
+\hline
+{\em minValue} & The known min value of the \hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction} \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The number of focals corresponding to the minimum of mass. Returns 0 if no element fitting the cardinality constraint is found. 
+\end{DoxyReturn}
+
+
+Definition at line 1962 of file BeliefFunctions.c.
+
+\hypertarget{_belief_functions_8c_a45838cf1932a7fa3e4521bb83cb188e3}{
+\index{BeliefFunctions.c@{BeliefFunctions.c}!BF\_\-getQuickNbMinPl@{BF\_\-getQuickNbMinPl}}
+\index{BF\_\-getQuickNbMinPl@{BF\_\-getQuickNbMinPl}!BeliefFunctions.c@{BeliefFunctions.c}}
+\subsubsection[{BF\_\-getQuickNbMinPl}]{\setlength{\rightskip}{0pt plus 5cm}int BF\_\-getQuickNbMinPl (
+\begin{DoxyParamCaption}
+\item[{const {\bf BF\_\-BeliefFunction}}]{m, }
+\item[{const int}]{card, }
+\item[{const {\bf Sets\_\-Set}}]{powerset, }
+\item[{float}]{minValue}
+\end{DoxyParamCaption}
+)}}
+\label{_belief_functions_8c_a45838cf1932a7fa3e4521bb83cb188e3}
+Returns the number of focals actually corresponding to the non-\/null minimum of plausibility (see pl()) of the given \hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction}. The cardinality should be at least of 1 as the empty set is not considered. 
+\begin{DoxyParams}{Parameters}
+{\em m} & The \hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction} to work with \\
+\hline
+{\em card} & The maximum authorized cardinality of the Element corresponding to the max (0 = no card limit) \\
+\hline
+{\em powerset} & The powerset generated from the size of the elements \\
+\hline
+{\em minValue} & The known max value of the \hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction} \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The number of focals corresponding to the minimum of plausibility. Returns 0 if no element fitting the cardinality constraint is found. 
+\end{DoxyReturn}
+
+
+Definition at line 2029 of file BeliefFunctions.c.
+
+\hypertarget{_belief_functions_8c_a4d6588a638f6d46006bb318534f3c239}{
+\index{BeliefFunctions.c@{BeliefFunctions.c}!BF\_\-getVacuousBeliefFunction@{BF\_\-getVacuousBeliefFunction}}
+\index{BF\_\-getVacuousBeliefFunction@{BF\_\-getVacuousBeliefFunction}!BeliefFunctions.c@{BeliefFunctions.c}}
+\subsubsection[{BF\_\-getVacuousBeliefFunction}]{\setlength{\rightskip}{0pt plus 5cm}{\bf BF\_\-BeliefFunction} BF\_\-getVacuousBeliefFunction (
+\begin{DoxyParamCaption}
+\item[{const int}]{elementSize}
+\end{DoxyParamCaption}
+)}}
+\label{_belief_functions_8c_a4d6588a638f6d46006bb318534f3c239}
+Creates and return a vacuous \hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction} 
+\begin{DoxyParams}{Parameters}
+{\em elementSize} & The number of bits used to represend elements \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A vacuous \hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction}. Must be freed after use. 
+\end{DoxyReturn}
+
+
+Definition at line 63 of file BeliefFunctions.c.
+
+\hypertarget{_belief_functions_8c_a20b2e52a17ee0d0a86abb3efa9bfb588}{
+\index{BeliefFunctions.c@{BeliefFunctions.c}!BF\_\-globalDistance@{BF\_\-globalDistance}}
+\index{BF\_\-globalDistance@{BF\_\-globalDistance}!BeliefFunctions.c@{BeliefFunctions.c}}
+\subsubsection[{BF\_\-globalDistance}]{\setlength{\rightskip}{0pt plus 5cm}float BF\_\-globalDistance (
+\begin{DoxyParamCaption}
+\item[{const {\bf BF\_\-BeliefFunction}}]{m, }
+\item[{const {\bf BF\_\-BeliefFunction} $\ast$}]{s, }
+\item[{const int}]{nbBF}
+\end{DoxyParamCaption}
+)}}
+\label{_belief_functions_8c_a20b2e52a17ee0d0a86abb3efa9bfb588}
+Get the global distance between a \hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction} and a set of BeliefFunctions. The rule used is defined in A. Martin 2009 (Modelisation et gestion du conflit dans la theorie des fonctions de croyance (French)). The \hyperlink{}{distance()} is what is is used to characterize the conflict between a \hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction} and the given set. 
+\begin{DoxyParams}{Parameters}
+{\em m} & The \hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction} to work on \\
+\hline
+{\em s} & The set of BeliefFunctions to work on (m should be included in) \\
+\hline
+{\em nbBF} & The number of BeliefFunctions contained in the given set \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The global distance between the \hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction} m and a \hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction} set s. 
+\end{DoxyReturn}
+
+
+Definition at line 1575 of file BeliefFunctions.c.
+
+\hypertarget{_belief_functions_8c_a123a378cd1e859b2c9c2f5ea5bf52a83}{
+\index{BeliefFunctions.c@{BeliefFunctions.c}!BF\_\-M@{BF\_\-M}}
+\index{BF\_\-M@{BF\_\-M}!BeliefFunctions.c@{BeliefFunctions.c}}
+\subsubsection[{BF\_\-M}]{\setlength{\rightskip}{0pt plus 5cm}float BF\_\-M (
+\begin{DoxyParamCaption}
+\item[{const {\bf BF\_\-BeliefFunction}}]{m, }
+\item[{const {\bf Sets\_\-Element}}]{e}
+\end{DoxyParamCaption}
+)}}
+\label{_belief_functions_8c_a123a378cd1e859b2c9c2f5ea5bf52a83}
+Get the belief on a element. 
+\begin{DoxyParams}{Parameters}
+{\em m} & The \hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction} to work on \\
+\hline
+{\em e} & The element whose belief we want on \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+m(e), the belief on the element e from the belief function m. 
+\end{DoxyReturn}
+
+
+Definition at line 1322 of file BeliefFunctions.c.
+
+\hypertarget{_belief_functions_8c_aab65a9c5918a398b1644d348977bb470}{
+\index{BeliefFunctions.c@{BeliefFunctions.c}!BF\_\-MurphyCombination@{BF\_\-MurphyCombination}}
+\index{BF\_\-MurphyCombination@{BF\_\-MurphyCombination}!BeliefFunctions.c@{BeliefFunctions.c}}
+\subsubsection[{BF\_\-MurphyCombination}]{\setlength{\rightskip}{0pt plus 5cm}{\bf BF\_\-BeliefFunction} BF\_\-MurphyCombination (
+\begin{DoxyParamCaption}
+\item[{const {\bf BF\_\-BeliefFunction}}]{m1, }
+\item[{const {\bf BF\_\-BeliefFunction}}]{m2}
+\end{DoxyParamCaption}
+)}}
+\label{_belief_functions_8c_aab65a9c5918a398b1644d348977bb470}
+Combines two BeliefFunctions into one. The combination rule used is defined in C. K. Murphy 1999 (Combining belief functions when evidence conflicts). This rule consists in an average of the belief functions followed by a classical Dempster combination. 
+\begin{DoxyParams}{Parameters}
+{\em m1} & The first \hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction} to combine \\
+\hline
+{\em m2} & The second \hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction} to combine \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The resulting \hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction} corresponding to the accumulation of evidences 
+\end{DoxyReturn}
+
+
+Definition at line 821 of file BeliefFunctions.c.
+
+\hypertarget{_belief_functions_8c_a7bca4e5ed1078f33a1965d9adc7d0525}{
+\index{BeliefFunctions.c@{BeliefFunctions.c}!BF\_\-nonSpecificity@{BF\_\-nonSpecificity}}
+\index{BF\_\-nonSpecificity@{BF\_\-nonSpecificity}!BeliefFunctions.c@{BeliefFunctions.c}}
+\subsubsection[{BF\_\-nonSpecificity}]{\setlength{\rightskip}{0pt plus 5cm}float BF\_\-nonSpecificity (
+\begin{DoxyParamCaption}
+\item[{const {\bf BF\_\-BeliefFunction}}]{m}
+\end{DoxyParamCaption}
+)}}
+\label{_belief_functions_8c_a7bca4e5ed1078f33a1965d9adc7d0525}
+Get the non-\/specificity of a \hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction}. The rule used is defined in Dubois \& Prade 1985 (A note on measures of specificity for fuzzy sets). 
+\begin{DoxyParams}{Parameters}
+{\em m} & The \hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction} to work on \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The non-\/specificity value of the \hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction} 
+\end{DoxyReturn}
+
+
+Definition at line 1468 of file BeliefFunctions.c.
+
+\hypertarget{_belief_functions_8c_a6f278db4319a28d8bb0785eb11365fb7}{
+\index{BeliefFunctions.c@{BeliefFunctions.c}!BF\_\-normalize@{BF\_\-normalize}}
+\index{BF\_\-normalize@{BF\_\-normalize}!BeliefFunctions.c@{BeliefFunctions.c}}
+\subsubsection[{BF\_\-normalize}]{\setlength{\rightskip}{0pt plus 5cm}void BF\_\-normalize (
+\begin{DoxyParamCaption}
+\item[{{\bf BF\_\-BeliefFunction} $\ast$}]{bf}
+\end{DoxyParamCaption}
+)}}
+\label{_belief_functions_8c_a6f278db4319a28d8bb0785eb11365fb7}
+Normalizes the given \hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction}. It modifies it. 
+\begin{DoxyParams}{Parameters}
+{\em bf} & The \hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction} to normalize. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 118 of file BeliefFunctions.c.
+
+\hypertarget{_belief_functions_8c_a9ce98db63efd81734beb53780eb79785}{
+\index{BeliefFunctions.c@{BeliefFunctions.c}!BF\_\-pl@{BF\_\-pl}}
+\index{BF\_\-pl@{BF\_\-pl}!BeliefFunctions.c@{BeliefFunctions.c}}
+\subsubsection[{BF\_\-pl}]{\setlength{\rightskip}{0pt plus 5cm}float BF\_\-pl (
+\begin{DoxyParamCaption}
+\item[{const {\bf BF\_\-BeliefFunction}}]{m, }
+\item[{const {\bf Sets\_\-Element}}]{e}
+\end{DoxyParamCaption}
+)}}
+\label{_belief_functions_8c_a9ce98db63efd81734beb53780eb79785}
+Get the plausibility of an element given a \hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction}. The operation used is defined in P. Smets 1999 (The transferable belief model for belief representation). It represents an optimistic probability of occurrence of an element. 
+\begin{DoxyParams}{Parameters}
+{\em m} & The \hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction} to work on \\
+\hline
+{\em e} & The Element to work on \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The plausibility value associated to the element given the \hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction} 
+\end{DoxyReturn}
+
+
+Definition at line 1353 of file BeliefFunctions.c.
+
+\hypertarget{_belief_functions_8c_ab4c78af992436b5f25a61a4c86a7de99}{
+\index{BeliefFunctions.c@{BeliefFunctions.c}!BF\_\-q@{BF\_\-q}}
+\index{BF\_\-q@{BF\_\-q}!BeliefFunctions.c@{BeliefFunctions.c}}
+\subsubsection[{BF\_\-q}]{\setlength{\rightskip}{0pt plus 5cm}float BF\_\-q (
+\begin{DoxyParamCaption}
+\item[{const {\bf BF\_\-BeliefFunction}}]{m, }
+\item[{const {\bf Sets\_\-Element}}]{e}
+\end{DoxyParamCaption}
+)}}
+\label{_belief_functions_8c_ab4c78af992436b5f25a61a4c86a7de99}
+Get the commonality of an element given a \hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction}. The operation used is defined in P. Smets 1998 (The transferable belief model for quantified belief representation). The commonality values are the eigenvalues of the Dempsterian specialization matrix. 
+\begin{DoxyParams}{Parameters}
+{\em m} & The \hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction} to work on \\
+\hline
+{\em e} & The Element to work on \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The commonality value associated to the element given the \hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction} 
+\end{DoxyReturn}
+
+
+Definition at line 1375 of file BeliefFunctions.c.
+
+\hypertarget{_belief_functions_8c_a7375fa42bf0bb1ba30a6281e99f99f07}{
+\index{BeliefFunctions.c@{BeliefFunctions.c}!BF\_\-similarity@{BF\_\-similarity}}
+\index{BF\_\-similarity@{BF\_\-similarity}!BeliefFunctions.c@{BeliefFunctions.c}}
+\subsubsection[{BF\_\-similarity}]{\setlength{\rightskip}{0pt plus 5cm}float BF\_\-similarity (
+\begin{DoxyParamCaption}
+\item[{const {\bf BF\_\-BeliefFunction}}]{m1, }
+\item[{const {\bf BF\_\-BeliefFunction}}]{m2}
+\end{DoxyParamCaption}
+)}}
+\label{_belief_functions_8c_a7375fa42bf0bb1ba30a6281e99f99f07}
+Get the similarity between two BeliefFunctions. It can be representative of the agreement between two bodies of evidence. This rule is defined in L.-\/Z. Chen 2005 (A new fusion approach based on distance of evidence). 
+\begin{DoxyParams}{Parameters}
+{\em m1} & The first \hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction} to work on \\
+\hline
+{\em m2} & The second \hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction} to work on \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The similarity between the two BeliefFunctions, 0 meaning no similarity, 1 meaning identical. 
+\end{DoxyReturn}
+
+
+Definition at line 1595 of file BeliefFunctions.c.
+
+\hypertarget{_belief_functions_8c_a3ad1d008ca28ff3283fe2160f4afd055}{
+\index{BeliefFunctions.c@{BeliefFunctions.c}!BF\_\-SmetsCombination@{BF\_\-SmetsCombination}}
+\index{BF\_\-SmetsCombination@{BF\_\-SmetsCombination}!BeliefFunctions.c@{BeliefFunctions.c}}
+\subsubsection[{BF\_\-SmetsCombination}]{\setlength{\rightskip}{0pt plus 5cm}{\bf BF\_\-BeliefFunction} BF\_\-SmetsCombination (
+\begin{DoxyParamCaption}
+\item[{const {\bf BF\_\-BeliefFunction}}]{m1, }
+\item[{const {\bf BF\_\-BeliefFunction}}]{m2}
+\end{DoxyParamCaption}
+)}}
+\label{_belief_functions_8c_a3ad1d008ca28ff3283fe2160f4afd055}
+Combines two BeliefFunctions into one. The combination rule used is defined in P. Smets 1999 (The transferable belief model for belief representation). This is the same rule than the Dempster's one but without any normalization. Thus, the void element may have a non-\/null mass. 
+\begin{DoxyParams}{Parameters}
+{\em m1} & The first \hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction} to combine \\
+\hline
+{\em m2} & The second \hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction} to combine \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The resulting \hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction} corresponding to the accumulation of evidences 
+\end{DoxyReturn}
+
+
+Definition at line 294 of file BeliefFunctions.c.
+
+\hypertarget{_belief_functions_8c_a017715386951795b8e55cbd2b135b9e0}{
+\index{BeliefFunctions.c@{BeliefFunctions.c}!BF\_\-specificity@{BF\_\-specificity}}
+\index{BF\_\-specificity@{BF\_\-specificity}!BeliefFunctions.c@{BeliefFunctions.c}}
+\subsubsection[{BF\_\-specificity}]{\setlength{\rightskip}{0pt plus 5cm}float BF\_\-specificity (
+\begin{DoxyParamCaption}
+\item[{const {\bf BF\_\-BeliefFunction}}]{m}
+\end{DoxyParamCaption}
+)}}
+\label{_belief_functions_8c_a017715386951795b8e55cbd2b135b9e0}
+Get the specificity of a \hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction}. The rule used is defined in A. Martin 2009 (Modelisation et gestion du conflit dans la theorie des fonctions de croyance (French)). The rule enable to characterize the partial ignorance of the system given by a \hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction}. 
+\begin{DoxyParams}{Parameters}
+{\em m} & The \hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction} to work on \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The specificity value of the \hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction} 
+\end{DoxyReturn}
+
+
+Definition at line 1449 of file BeliefFunctions.c.
+
+\hypertarget{_belief_functions_8c_a56cb1a1ca36e5a50b6220973abb1878d}{
+\index{BeliefFunctions.c@{BeliefFunctions.c}!BF\_\-support@{BF\_\-support}}
+\index{BF\_\-support@{BF\_\-support}!BeliefFunctions.c@{BeliefFunctions.c}}
+\subsubsection[{BF\_\-support}]{\setlength{\rightskip}{0pt plus 5cm}float BF\_\-support (
+\begin{DoxyParamCaption}
+\item[{const {\bf BF\_\-BeliefFunction}}]{ref, }
+\item[{const {\bf BF\_\-BeliefFunction} $\ast$}]{m, }
+\item[{const int}]{nbM}
+\end{DoxyParamCaption}
+)}}
+\label{_belief_functions_8c_a56cb1a1ca36e5a50b6220973abb1878d}
+Get the support degree given to a \hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction} by a set of BeliefFunctions. The \hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction} used as a reference should be included in the set. This value is the sum of the similarity of ref with the functions of the given set. 
+\begin{DoxyParams}{Parameters}
+{\em ref} & The \hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction} used as reference \\
+\hline
+{\em m} & The set of BeliefFunctions that may support ref or not \\
+\hline
+{\em nbM} & The number of BeliefFunctions in the set \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The support degree of ref among the set m. 
+\end{DoxyReturn}
+
+
+Definition at line 1605 of file BeliefFunctions.c.
+
+\hypertarget{_belief_functions_8c_abf0a8d648c8d2bc72f3cfe4fb2c705c9}{
+\index{BeliefFunctions.c@{BeliefFunctions.c}!BF\_\-weakening@{BF\_\-weakening}}
+\index{BF\_\-weakening@{BF\_\-weakening}!BeliefFunctions.c@{BeliefFunctions.c}}
+\subsubsection[{BF\_\-weakening}]{\setlength{\rightskip}{0pt plus 5cm}{\bf BF\_\-BeliefFunction} BF\_\-weakening (
+\begin{DoxyParamCaption}
+\item[{const {\bf BF\_\-BeliefFunction}}]{m, }
+\item[{const float}]{alpha}
+\end{DoxyParamCaption}
+)}}
+\label{_belief_functions_8c_abf0a8d648c8d2bc72f3cfe4fb2c705c9}
+Weakens a belief function given a coefficient alpha in \mbox{[}0,1\mbox{]}. All believes on focal elements will be multiplied by a factor of (1 -\/ alpha). The lost belief is transfered to the void focal element. 
+\begin{DoxyParams}{Parameters}
+{\em m} & The \hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction} to work on \\
+\hline
+{\em alpha} & The weakening coefficient \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The weakened \hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction} resulting from m and alpha. 
+\end{DoxyReturn}
+
+
+Definition at line 1099 of file BeliefFunctions.c.
+
+\hypertarget{_belief_functions_8c_a7bb32c467a34487626b614047b0f2df1}{
+\index{BeliefFunctions.c@{BeliefFunctions.c}!BF\_\-YagerCombination@{BF\_\-YagerCombination}}
+\index{BF\_\-YagerCombination@{BF\_\-YagerCombination}!BeliefFunctions.c@{BeliefFunctions.c}}
+\subsubsection[{BF\_\-YagerCombination}]{\setlength{\rightskip}{0pt plus 5cm}{\bf BF\_\-BeliefFunction} BF\_\-YagerCombination (
+\begin{DoxyParamCaption}
+\item[{const {\bf BF\_\-BeliefFunction}}]{m1, }
+\item[{const {\bf BF\_\-BeliefFunction}}]{m2}
+\end{DoxyParamCaption}
+)}}
+\label{_belief_functions_8c_a7bb32c467a34487626b614047b0f2df1}
+Combines two BeliefFunctions into one. The combination rule used is defined in R.R. Yager 1987 (On the Dempster-\/Shager framework and new combination rules). The close-\/world assumption is done and thus, the mass given to the void element is transfered to the whole world. 
+\begin{DoxyParams}{Parameters}
+{\em m1} & The first \hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction} to combine \\
+\hline
+{\em m2} & The second \hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction} to combine \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The resulting \hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction} corresponding to the accumulation of evidences 
+\end{DoxyReturn}
+
+
+Definition at line 453 of file BeliefFunctions.c.
+

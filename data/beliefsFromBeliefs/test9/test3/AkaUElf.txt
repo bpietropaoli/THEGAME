@@ -1,0 +1,19 @@
+2 elements
+Aka
+Elf
+3 conversions
+2 elements
+Aka
+Elf
+0.9
+4 elements
+Aka
+Elf
+Coq
+Hub
+0.05
+3 elements
+Aka
+Elf
+Ion
+0.05

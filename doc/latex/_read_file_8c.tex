@@ -1,0 +1,105 @@
+\hypertarget{_read_file_8c}{
+\section{ReadFile.c File Reference}
+\label{_read_file_8c}\index{ReadFile.c@{ReadFile.c}}
+}
+
+
+UTILITY: A module to ease file reading.  
+
+
+{\ttfamily \#include \char`\"{}ReadFile.h\char`\"{}}\par
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{_read_file_8c_a357e8438f0a9b6e26f22b944492928d2}{ReadFile\_\-countLines} (const char $\ast$fileName)
+\item 
+int $\ast$ \hyperlink{_read_file_8c_a86e0cf29c3fd90c8571c9d58c94d605b}{ReadFile\_\-charsPerLine} (const char $\ast$fileName, const int nbLines)
+\item 
+char $\ast$$\ast$ \hyperlink{_read_file_8c_ac695f2572380e2f96ae143be783f203b}{ReadFile\_\-readLines} (const char $\ast$fileName, const int nbLines, const int $\ast$charsPerLine)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+UTILITY: A module to ease file reading. \begin{DoxyAuthor}{Author}
+Bastien Pietropaoli (\href{mailto:bastien.pietropaoli@inria.fr}{\tt bastien.pietropaoli@inria.fr}) 
+\end{DoxyAuthor}
+
+
+Definition in file \hyperlink{_read_file_8c_source}{ReadFile.c}.
+
+
+
+\subsection{Function Documentation}
+\hypertarget{_read_file_8c_a86e0cf29c3fd90c8571c9d58c94d605b}{
+\index{ReadFile.c@{ReadFile.c}!ReadFile\_\-charsPerLine@{ReadFile\_\-charsPerLine}}
+\index{ReadFile\_\-charsPerLine@{ReadFile\_\-charsPerLine}!ReadFile.c@{ReadFile.c}}
+\subsubsection[{ReadFile\_\-charsPerLine}]{\setlength{\rightskip}{0pt plus 5cm}int$\ast$ ReadFile\_\-charsPerLine (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{fileName, }
+\item[{const int}]{nbLines}
+\end{DoxyParamCaption}
+)}}
+\label{_read_file_8c_a86e0cf29c3fd90c8571c9d58c94d605b}
+Counts the number of characters per line of the file. 
+\begin{DoxyParams}{Parameters}
+{\em fileName} & The name of the file to study \\
+\hline
+{\em nbLines} & The number of lines in the file \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A pointer to a list of integer representing the number of characters per line. NULL if error. CAUTION: Don't forget to free list when it 's not needed anymore! 
+\end{DoxyReturn}
+
+
+Definition at line 61 of file ReadFile.c.
+
+\hypertarget{_read_file_8c_a357e8438f0a9b6e26f22b944492928d2}{
+\index{ReadFile.c@{ReadFile.c}!ReadFile\_\-countLines@{ReadFile\_\-countLines}}
+\index{ReadFile\_\-countLines@{ReadFile\_\-countLines}!ReadFile.c@{ReadFile.c}}
+\subsubsection[{ReadFile\_\-countLines}]{\setlength{\rightskip}{0pt plus 5cm}int ReadFile\_\-countLines (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{fileName}
+\end{DoxyParamCaption}
+)}}
+\label{_read_file_8c_a357e8438f0a9b6e26f22b944492928d2}
+Counts the number of lines in the file. Actually, it counts the number of occurrence of the character '\par
+'. 
+\begin{DoxyParams}{Parameters}
+{\em fileName} & The name of the file to study \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The number of lines in the file 
+\end{DoxyReturn}
+
+
+Definition at line 29 of file ReadFile.c.
+
+\hypertarget{_read_file_8c_ac695f2572380e2f96ae143be783f203b}{
+\index{ReadFile.c@{ReadFile.c}!ReadFile\_\-readLines@{ReadFile\_\-readLines}}
+\index{ReadFile\_\-readLines@{ReadFile\_\-readLines}!ReadFile.c@{ReadFile.c}}
+\subsubsection[{ReadFile\_\-readLines}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$$\ast$ ReadFile\_\-readLines (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{fileName, }
+\item[{const int}]{nbLines, }
+\item[{const int $\ast$}]{charsPerLine}
+\end{DoxyParamCaption}
+)}}
+\label{_read_file_8c_ac695f2572380e2f96ae143be783f203b}
+Reads the lines of a file. 
+\begin{DoxyParams}{Parameters}
+{\em fileName} & The name of the file to read \\
+\hline
+{\em nbLines} & The number of lines in this file \\
+\hline
+{\em charsPerLine} & The number of characters per line \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A list a strings representing the different lines of the file. NULL if error. CAUTION: Don't forget to free everything when it's not need anymore! 
+\end{DoxyReturn}
+
+
+Definition at line 108 of file ReadFile.c.
+

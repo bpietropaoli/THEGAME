@@ -1,0 +1,68 @@
+\hypertarget{struct_b_f_s___sensor_beliefs}{
+\section{BFS\_\-SensorBeliefs Struct Reference}
+\label{struct_b_f_s___sensor_beliefs}\index{BFS\_\-SensorBeliefs@{BFS\_\-SensorBeliefs}}
+}
+
+
+{\ttfamily \#include $<$BeliefsFromSensors.h$>$}
+
+\subsection*{Data Fields}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{struct_b_f_s___sensor_beliefs_a0e4608088550200592587c681b7a8f74}{
+char $\ast$ {\bfseries sensorType}}
+\label{struct_b_f_s___sensor_beliefs_a0e4608088550200592587c681b7a8f74}
+
+\item 
+\hypertarget{struct_b_f_s___sensor_beliefs_a818a0088a0be15ad2dcf2295bc4780e8}{
+\hyperlink{struct_b_f_s___part_of_belief}{BFS\_\-PartOfBelief} $\ast$ {\bfseries beliefOnElements}}
+\label{struct_b_f_s___sensor_beliefs_a818a0088a0be15ad2dcf2295bc4780e8}
+
+\item 
+\hypertarget{struct_b_f_s___sensor_beliefs_af154415155c6b73acc53d18de0c615d9}{
+int {\bfseries nbFocal}}
+\label{struct_b_f_s___sensor_beliefs_af154415155c6b73acc53d18de0c615d9}
+
+\item 
+\hypertarget{struct_b_f_s___sensor_beliefs_ad4238c5803b0f94646e98aaed76db68f}{
+\hyperlink{struct_b_f_s___option}{BFS\_\-Option} $\ast$ {\bfseries options}}
+\label{struct_b_f_s___sensor_beliefs_ad4238c5803b0f94646e98aaed76db68f}
+
+\item 
+\hypertarget{struct_b_f_s___sensor_beliefs_a8356fb2585c0c61557ab4dce52070743}{
+int {\bfseries nbOptions}}
+\label{struct_b_f_s___sensor_beliefs_a8356fb2585c0c61557ab4dce52070743}
+
+\item 
+\hypertarget{struct_b_f_s___sensor_beliefs_a5e8366f2f98089ee4e325dbabb598efc}{
+\hyperlink{_beliefs_from_sensors_8h_aa63e28a9dbd4627103f9bd3211cbcd6e}{BFS\_\-OptionFlags} {\bfseries optionFlags}}
+\label{struct_b_f_s___sensor_beliefs_a5e8366f2f98089ee4e325dbabb598efc}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+A set of functions (each one associated to a specific value) associated to a sensor type. 
+\begin{DoxyParams}{Parameters}
+{\em sensorType} & The type of sensor \\
+\hline
+{\em beliefOnElements} & The set of functions representing the belief of the sensor on different focal elements \\
+\hline
+{\em nbFocal} & The number of focal elements for the sensor \\
+\hline
+{\em options} & A list of options to apply when building the belief from sensor measures \\
+\hline
+{\em nbOptions} & The number of options applied \\
+\hline
+{\em optionFlags} & The flags to save the different option types \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 268 of file BeliefsFromSensors.h.
+
+
+
+The documentation for this struct was generated from the following file:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{_beliefs_from_sensors_8h}{BeliefsFromSensors.h}\end{DoxyCompactItemize}

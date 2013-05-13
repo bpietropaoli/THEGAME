@@ -1,0 +1,64 @@
+\hypertarget{_beliefs_from_randomness_8h}{
+\section{BeliefsFromRandomness.h File Reference}
+\label{_beliefs_from_randomness_8h}\index{BeliefsFromRandomness.h@{BeliefsFromRandomness.h}}
+}
+
+
+APPLICATION: Gives structures and main functions to create random belief functions.  
+
+
+{\ttfamily \#include $<$stdio.h$>$}\par
+{\ttfamily \#include $<$stdint.h$>$}\par
+{\ttfamily \#include $<$stdlib.h$>$}\par
+{\ttfamily \#include $<$string.h$>$}\par
+{\ttfamily \#include $<$math.h$>$}\par
+{\ttfamily \#include $<$time.h$>$}\par
+{\ttfamily \#include $<$ctype.h$>$}\par
+{\ttfamily \#include \char`\"{}config.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}Sets.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}BeliefFunctions.h\char`\"{}}\par
+\subsection*{Functions}
+\begin{Indent}{\bf Utility functions}\par
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{_beliefs_from_randomness_8h_a4a6f961a70f4e8919ff6ca9313bb94bf}{BFR\_\-generateRandomSeed} ()
+\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}{\bf Random generators}\par
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{_beliefs_from_randomness_8h_aaa6c6360c4d88dc7ab57edf6240463e9}{
+\hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction} {\bfseries BFR\_\-getCrappyRandomBelief} (const int elementSize)}
+\label{_beliefs_from_randomness_8h_aaa6c6360c4d88dc7ab57edf6240463e9}
+
+\end{DoxyCompactItemize}
+\end{Indent}
+
+
+\subsection{Detailed Description}
+APPLICATION: Gives structures and main functions to create random belief functions. This module provides with methods to randomly generate mass functions. It is roughly based on common algorithms to do so. An interesting paper on the subject is \char`\"{}Random Generation of Mass Functions:
+ A Short Howto\char`\"{} by Thomas Burger and Sébastien Destercke (2012).
+
+\begin{DoxyAuthor}{Author}
+Bastien Pietropaoli (\href{mailto:bastien.pietropaoli@inria.fr}{\tt bastien.pietropaoli@inria.fr}) 
+\end{DoxyAuthor}
+
+
+Definition in file \hyperlink{_beliefs_from_randomness_8h_source}{BeliefsFromRandomness.h}.
+
+
+
+\subsection{Function Documentation}
+\hypertarget{_beliefs_from_randomness_8h_a4a6f961a70f4e8919ff6ca9313bb94bf}{
+\index{BeliefsFromRandomness.h@{BeliefsFromRandomness.h}!BFR\_\-generateRandomSeed@{BFR\_\-generateRandomSeed}}
+\index{BFR\_\-generateRandomSeed@{BFR\_\-generateRandomSeed}!BeliefsFromRandomness.h@{BeliefsFromRandomness.h}}
+\subsubsection[{BFR\_\-generateRandomSeed}]{\setlength{\rightskip}{0pt plus 5cm}void BFR\_\-generateRandomSeed (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}
+\label{_beliefs_from_randomness_8h_a4a6f961a70f4e8919ff6ca9313bb94bf}
+Generates a seed based on the date and the hour. This function should be called each time a new seed is required. 
+
+Definition at line 39 of file BeliefsFromRandomness.c.
+

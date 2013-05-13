@@ -1,0 +1,7 @@
+1 element
+yes
+3 points
+0 0
+100 1
+200 0
+
