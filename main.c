@@ -29,7 +29,7 @@
 #include "Tests.h"
 
 int main(){
-	int nbIterations = 100;
+	int nbIterations = 10000;
 	int write = 1;
 	int okay = 0;
 	

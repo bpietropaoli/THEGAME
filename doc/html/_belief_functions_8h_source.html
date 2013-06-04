@@ -19,7 +19,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname">THE GAME&#160;<span id="projectnumber">v0.5.1b</span></div>
+   <div id="projectname">THE GAME&#160;<span id="projectnumber">v0.5.1d</span></div>
    <div id="projectbrief">THeory of Evidence in a lanGuage Adapted for Many Embedded systems</div>
   </td>
  </tr>
@@ -62,279 +62,276 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div>
 <div class="contents">
 <a href="_belief_functions_8h.html">Go to the documentation of this file.</a><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 <span class="comment">/*</span>
-<a name="l00002"></a>00002 <span class="comment"> * This file is part of THE GAME implementation of the theory of belief functions.</span>
-<a name="l00003"></a>00003 <span class="comment"> * </span>
-<a name="l00004"></a>00004 <span class="comment"> * Copyright (C) 2011-2012 Bastien Pietropaoli</span>
-<a name="l00005"></a>00005 <span class="comment"> * </span>
-<a name="l00006"></a>00006 <span class="comment"> * THE GAME is free software: you can redistribute it and/or modify</span>
-<a name="l00007"></a>00007 <span class="comment"> * it under the terms of the GNU General Public License as published by</span>
-<a name="l00008"></a>00008 <span class="comment"> * the Free Software Foundation, either version 3 of the License, or</span>
-<a name="l00009"></a>00009 <span class="comment"> * (at your option) any later version.</span>
-<a name="l00010"></a>00010 <span class="comment"> * </span>
-<a name="l00011"></a>00011 <span class="comment"> * THE GAME is distributed in the hope that it will be useful,</span>
-<a name="l00012"></a>00012 <span class="comment"> * but WITHOUT ANY WARRANTY; without even the implied warranty of</span>
-<a name="l00013"></a>00013 <span class="comment"> * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the</span>
-<a name="l00014"></a>00014 <span class="comment"> * GNU General Public License for more details.</span>
-<a name="l00015"></a>00015 <span class="comment"> * </span>
-<a name="l00016"></a>00016 <span class="comment"> * You should have received a copy of the GNU General Public License</span>
-<a name="l00017"></a>00017 <span class="comment"> * along with THE GAME.  If not, see &lt;http://www.gnu.org/licenses/&gt;.</span>
-<a name="l00018"></a>00018 <span class="comment"> */</span>
-<a name="l00019"></a>00019 
-<a name="l00020"></a>00020  
-<a name="l00021"></a>00021 <span class="preprocessor">#ifndef DEF_BELIEFFUNCTIONS</span>
-<a name="l00022"></a>00022 <span class="preprocessor"></span><span class="preprocessor">#define DEF_BELIEFFUNCTIONS</span>
-<a name="l00023"></a>00023 <span class="preprocessor"></span><span class="preprocessor">#include &lt;stdio.h&gt;</span>
-<a name="l00024"></a>00024 <span class="preprocessor">#include &lt;stdlib.h&gt;</span>
-<a name="l00025"></a>00025 <span class="preprocessor">#include &lt;string.h&gt;</span>
-<a name="l00026"></a>00026 <span class="preprocessor">#include &lt;math.h&gt;</span>
-<a name="l00027"></a>00027 <span class="preprocessor">#include &quot;<a class="code" href="config_8h.html" title="UTILITY: A file to config the compilation.">config.h</a>&quot;</span>
-<a name="l00028"></a>00028 <span class="preprocessor">#include &quot;<a class="code" href="_read_directory_8h.html" title="UTILITY: A module to ease the manipulation of directories.">ReadDirectory.h</a>&quot;</span>
-<a name="l00029"></a>00029 <span class="preprocessor">#include &quot;<a class="code" href="_read_file_8h.html" title="UTILITY: A module to ease file reading.">ReadFile.h</a>&quot;</span>
-<a name="l00030"></a>00030 <span class="preprocessor">#include &quot;<a class="code" href="_sets_8h.html" title="CORE: Implements the basics required to work on sets and elements in the theory of belief functions...">Sets.h</a>&quot;</span>
-<a name="l00031"></a>00031 
-<a name="l00048"></a><a class="code" href="_belief_functions_8h.html#a1a12712ab9a7a233852e56f33dd399d0">00048</a> <span class="preprocessor">#define BF_PRECISION 0.000002</span>
-<a name="l00049"></a>00049 <span class="preprocessor"></span>
-<a name="l00050"></a>00050 
-<a name="l00051"></a>00051 <span class="comment">/*</span>
-<a name="l00052"></a>00052 <span class="comment">  +------------+</span>
-<a name="l00053"></a>00053 <span class="comment">  | STRUCTURES |</span>
-<a name="l00054"></a>00054 <span class="comment">  +------------+</span>
-<a name="l00055"></a>00055 <span class="comment">*/</span>
+<a name="l00002"></a>00002 <span class="comment"> * Copyright 2011-2013, EDF. This software was developed with the collaboration of INRIA (Bastien Pietropaoli)</span>
+<a name="l00003"></a>00003 <span class="comment"> *</span>
+<a name="l00004"></a>00004 <span class="comment"> * Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);</span>
+<a name="l00005"></a>00005 <span class="comment"> * you may not use this file except in compliance with the License.</span>
+<a name="l00006"></a>00006 <span class="comment"> * You may obtain a copy of the License at</span>
+<a name="l00007"></a>00007 <span class="comment"> *</span>
+<a name="l00008"></a>00008 <span class="comment"> *     http://www.apache.org/licenses/LICENSE-2.0</span>
+<a name="l00009"></a>00009 <span class="comment"> *</span>
+<a name="l00010"></a>00010 <span class="comment"> * Unless required by applicable law or agreed to in writing, software</span>
+<a name="l00011"></a>00011 <span class="comment"> * distributed under the License is distributed on an &quot;AS IS&quot; BASIS,</span>
+<a name="l00012"></a>00012 <span class="comment"> * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.</span>
+<a name="l00013"></a>00013 <span class="comment"> * See the License for the specific language governing permissions and</span>
+<a name="l00014"></a>00014 <span class="comment"> * limitations under the License.</span>
+<a name="l00015"></a>00015 <span class="comment"> */</span>
+<a name="l00016"></a>00016 
+<a name="l00017"></a>00017  
+<a name="l00018"></a>00018 <span class="preprocessor">#ifndef DEF_BELIEFFUNCTIONS</span>
+<a name="l00019"></a>00019 <span class="preprocessor"></span><span class="preprocessor">#define DEF_BELIEFFUNCTIONS</span>
+<a name="l00020"></a>00020 <span class="preprocessor"></span><span class="preprocessor">#include &lt;stdio.h&gt;</span>
+<a name="l00021"></a>00021 <span class="preprocessor">#include &lt;stdlib.h&gt;</span>
+<a name="l00022"></a>00022 <span class="preprocessor">#include &lt;string.h&gt;</span>
+<a name="l00023"></a>00023 <span class="preprocessor">#include &lt;math.h&gt;</span>
+<a name="l00024"></a>00024 <span class="preprocessor">#include &quot;<a class="code" href="config_8h.html" title="UTILITY: A file to config the compilation.">config.h</a>&quot;</span>
+<a name="l00025"></a>00025 <span class="preprocessor">#include &quot;<a class="code" href="_read_directory_8h.html" title="UTILITY: A module to ease the manipulation of directories.">ReadDirectory.h</a>&quot;</span>
+<a name="l00026"></a>00026 <span class="preprocessor">#include &quot;<a class="code" href="_read_file_8h.html" title="UTILITY: A module to ease file reading.">ReadFile.h</a>&quot;</span>
+<a name="l00027"></a>00027 <span class="preprocessor">#include &quot;<a class="code" href="_sets_8h.html" title="CORE: Implements the basics required to work on sets and elements in the theory of belief functions...">Sets.h</a>&quot;</span>
+<a name="l00028"></a>00028 
+<a name="l00045"></a><a class="code" href="_belief_functions_8h.html#a1a12712ab9a7a233852e56f33dd399d0">00045</a> <span class="preprocessor">#define BF_PRECISION 0.000002</span>
+<a name="l00046"></a>00046 <span class="preprocessor"></span>
+<a name="l00047"></a>00047 
+<a name="l00048"></a>00048 <span class="comment">/*</span>
+<a name="l00049"></a>00049 <span class="comment">  +------------+</span>
+<a name="l00050"></a>00050 <span class="comment">  | STRUCTURES |</span>
+<a name="l00051"></a>00051 <span class="comment">  +------------+</span>
+<a name="l00052"></a>00052 <span class="comment">*/</span>
+<a name="l00053"></a>00053 
+<a name="l00054"></a>00054 
+<a name="l00055"></a>00055 <span class="comment">/* !!! The actual belief !!! */</span>
 <a name="l00056"></a>00056 
 <a name="l00057"></a>00057 
-<a name="l00058"></a>00058 <span class="comment">/* !!! The actual belief !!! */</span>
-<a name="l00059"></a>00059 
-<a name="l00060"></a>00060 
-<a name="l00067"></a><a class="code" href="struct_b_f___focal_element.html">00067</a> <span class="keyword">struct </span><a class="code" href="struct_b_f___focal_element.html">BF_FocalElement</a>{
-<a name="l00068"></a>00068     <a class="code" href="struct_sets___element.html">Sets_Element</a> element;
-<a name="l00069"></a>00069     <span class="keywordtype">float</span> beliefValue;
-<a name="l00070"></a>00070 };
-<a name="l00071"></a>00071 <span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="struct_b_f___focal_element.html">BF_FocalElement</a> <a class="code" href="struct_b_f___focal_element.html">BF_FocalElement</a>;
-<a name="l00072"></a>00072 
-<a name="l00073"></a>00073 
-<a name="l00085"></a><a class="code" href="struct_b_f___belief_function.html">00085</a> <span class="keyword">struct </span><a class="code" href="struct_b_f___belief_function.html">BF_BeliefFunction</a>{
-<a name="l00086"></a>00086     <a class="code" href="struct_b_f___focal_element.html">BF_FocalElement</a> *focals;
-<a name="l00087"></a>00087     <span class="keywordtype">int</span> nbFocals;
-<a name="l00088"></a>00088     <span class="keywordtype">int</span> elementSize;
-<a name="l00089"></a>00089 };
-<a name="l00090"></a>00090 <span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="struct_b_f___belief_function.html">BF_BeliefFunction</a> <a class="code" href="struct_b_f___belief_function.html">BF_BeliefFunction</a>;
-<a name="l00091"></a>00091 
-<a name="l00092"></a>00092 
-<a name="l00093"></a>00093 <span class="comment">/*</span>
-<a name="l00094"></a>00094 <span class="comment">  +--------------+</span>
-<a name="l00095"></a>00095 <span class="comment">  | ENUMERATIONS |</span>
-<a name="l00096"></a>00096 <span class="comment">  +--------------+</span>
-<a name="l00097"></a>00097 <span class="comment">*/</span>
-<a name="l00098"></a>00098 
-<a name="l00104"></a><a class="code" href="_belief_functions_8h.html#ab080999db027db6a06de8c2a8b863dea">00104</a> <span class="keyword">enum</span> <a class="code" href="_belief_functions_8h.html#ab080999db027db6a06de8c2a8b863dea">BF_CombinationRule</a>
-<a name="l00105"></a>00105 {
-<a name="l00106"></a>00106     DEMPSTER,
-<a name="l00107"></a>00107     SMETS,
-<a name="l00108"></a>00108     YAGER,
-<a name="l00109"></a>00109     DUBOISPRADE,
-<a name="l00110"></a>00110     MURPHY,
-<a name="l00111"></a>00111     CHEN,
-<a name="l00112"></a>00112     AVERAGE
-<a name="l00113"></a>00113 };
-<a name="l00114"></a>00114 <span class="keyword">typedef</span> <span class="keyword">enum</span> <a class="code" href="_belief_functions_8h.html#ab080999db027db6a06de8c2a8b863dea">BF_CombinationRule</a> <a class="code" href="_belief_functions_8h.html#ab080999db027db6a06de8c2a8b863dea">BF_CombinationRule</a>;
-<a name="l00115"></a>00115 
-<a name="l00116"></a>00116 
-<a name="l00117"></a>00117 <span class="comment">/*</span>
-<a name="l00118"></a>00118 <span class="comment">  +-----------+</span>
-<a name="l00119"></a>00119 <span class="comment">  | FUNCTIONS |</span>
-<a name="l00120"></a>00120 <span class="comment">  +-----------+</span>
-<a name="l00121"></a>00121 <span class="comment">*/</span>
-<a name="l00122"></a>00122 
-<a name="l00123"></a>00123 
-<a name="l00134"></a>00134 <a class="code" href="struct_b_f___belief_function.html">BF_BeliefFunction</a> <a class="code" href="_belief_functions_8c.html#ae248331ed725fe2bbba71abc0b397aab">BF_copyBeliefFunction</a>(<span class="keyword">const</span> <a class="code" href="struct_b_f___belief_function.html">BF_BeliefFunction</a> m);
-<a name="l00135"></a>00135 
-<a name="l00141"></a>00141 <a class="code" href="struct_b_f___belief_function.html">BF_BeliefFunction</a> <a class="code" href="_belief_functions_8c.html#a4d6588a638f6d46006bb318534f3c239">BF_getVacuousBeliefFunction</a>(<span class="keyword">const</span> <span class="keywordtype">int</span> elementSize);
-<a name="l00142"></a>00142 
-<a name="l00149"></a>00149 <span class="keywordtype">void</span> <a class="code" href="_belief_functions_8c.html#a29f2e14af48e088d4767db8780dbfae5">BF_cleanBeliefFunction</a>(<a class="code" href="struct_b_f___belief_function.html">BF_BeliefFunction</a>* bf);
-<a name="l00150"></a>00150 
-<a name="l00155"></a>00155 <span class="keywordtype">void</span> <a class="code" href="_belief_functions_8c.html#a6f278db4319a28d8bb0785eb11365fb7">BF_normalize</a>(<a class="code" href="struct_b_f___belief_function.html">BF_BeliefFunction</a>* bf);
-<a name="l00156"></a>00156 
-<a name="l00160"></a>00160 <span class="comment">/* !!! Operation on beliefs !!! */</span>
-<a name="l00161"></a>00161 
-<a name="l00174"></a>00174 <a class="code" href="struct_b_f___belief_function.html">BF_BeliefFunction</a> <a class="code" href="_belief_functions_8c.html#ae9c77653874d4f79124d8c5398ab27c7">BF_fullDempsterCombination</a>(<span class="keyword">const</span> <a class="code" href="struct_b_f___belief_function.html">BF_BeliefFunction</a>* m, <span class="keyword">const</span> <span class="keywordtype">int</span> nbM);
-<a name="l00175"></a>00175 
-<a name="l00183"></a>00183 <a class="code" href="struct_b_f___belief_function.html">BF_BeliefFunction</a> <a class="code" href="_belief_functions_8c.html#a34a15102ee96fc30396ef8972b99c440">BF_DempsterCombination</a>(<span class="keyword">const</span> <a class="code" href="struct_b_f___belief_function.html">BF_BeliefFunction</a> m1, <span class="keyword">const</span> <a class="code" href="struct_b_f___belief_function.html">BF_BeliefFunction</a> m2);
-<a name="l00184"></a>00184 
-<a name="l00194"></a>00194 <a class="code" href="struct_b_f___belief_function.html">BF_BeliefFunction</a> <a class="code" href="_belief_functions_8c.html#af8c9206eb7d71be3d73e191ff385ae8e">BF_fullSmetsCombination</a>(<span class="keyword">const</span> <a class="code" href="struct_b_f___belief_function.html">BF_BeliefFunction</a>* m, <span class="keyword">const</span> <span class="keywordtype">int</span> nbM);
-<a name="l00195"></a>00195 
-<a name="l00205"></a>00205 <a class="code" href="struct_b_f___belief_function.html">BF_BeliefFunction</a> <a class="code" href="_belief_functions_8c.html#a3ad1d008ca28ff3283fe2160f4afd055">BF_SmetsCombination</a>(<span class="keyword">const</span> <a class="code" href="struct_b_f___belief_function.html">BF_BeliefFunction</a> m1, <span class="keyword">const</span> <a class="code" href="struct_b_f___belief_function.html">BF_BeliefFunction</a> m2);
-<a name="l00206"></a>00206 
-<a name="l00218"></a>00218 <a class="code" href="struct_b_f___belief_function.html">BF_BeliefFunction</a> <a class="code" href="_belief_functions_8c.html#a5c4cf84f84f1e7d0206d27c9de3ec200">BF_fullYagerCombination</a>(<span class="keyword">const</span> <a class="code" href="struct_b_f___belief_function.html">BF_BeliefFunction</a>* m, <span class="keyword">const</span> <span class="keywordtype">int</span> nbM);
-<a name="l00219"></a>00219 
-<a name="l00229"></a>00229 <a class="code" href="struct_b_f___belief_function.html">BF_BeliefFunction</a> <a class="code" href="_belief_functions_8c.html#a7bb32c467a34487626b614047b0f2df1">BF_YagerCombination</a>(<span class="keyword">const</span> <a class="code" href="struct_b_f___belief_function.html">BF_BeliefFunction</a> m1, <span class="keyword">const</span> <a class="code" href="struct_b_f___belief_function.html">BF_BeliefFunction</a> m2);
-<a name="l00230"></a>00230 
-<a name="l00242"></a>00242 <a class="code" href="struct_b_f___belief_function.html">BF_BeliefFunction</a> <a class="code" href="_belief_functions_8c.html#abd20f57df8dbcb1f0a993d306ae09f95">BF_fullDuboisPradeCombination</a>(<span class="keyword">const</span> <a class="code" href="struct_b_f___belief_function.html">BF_BeliefFunction</a>* m, <span class="keyword">const</span> <span class="keywordtype">int</span> nbM);
-<a name="l00243"></a>00243 
-<a name="l00253"></a>00253 <a class="code" href="struct_b_f___belief_function.html">BF_BeliefFunction</a> <a class="code" href="_belief_functions_8c.html#acb2a8407b0ca2125064bc521061d77a9">BF_DuboisPradeCombination</a>(<span class="keyword">const</span> <a class="code" href="struct_b_f___belief_function.html">BF_BeliefFunction</a> m1, <span class="keyword">const</span> <a class="code" href="struct_b_f___belief_function.html">BF_BeliefFunction</a> m2);
-<a name="l00254"></a>00254 
-<a name="l00263"></a>00263 <a class="code" href="struct_b_f___belief_function.html">BF_BeliefFunction</a> <a class="code" href="_belief_functions_8c.html#a4079d05bfe7228aa0b39aef482aeeff6">BF_fullAverageCombination</a>(<span class="keyword">const</span> <a class="code" href="struct_b_f___belief_function.html">BF_BeliefFunction</a>* m, <span class="keyword">const</span> <span class="keywordtype">int</span> nbM);
-<a name="l00264"></a>00264 
-<a name="l00274"></a>00274 <a class="code" href="struct_b_f___belief_function.html">BF_BeliefFunction</a> <a class="code" href="_belief_functions_8c.html#a3c7b01c167b53cf6fa247ebfdf895bba">BF_averageCombination</a>(<span class="keyword">const</span> <a class="code" href="struct_b_f___belief_function.html">BF_BeliefFunction</a> m1, <span class="keyword">const</span> <a class="code" href="struct_b_f___belief_function.html">BF_BeliefFunction</a> m2);
-<a name="l00275"></a>00275 
-<a name="l00285"></a>00285 <a class="code" href="struct_b_f___belief_function.html">BF_BeliefFunction</a> <a class="code" href="_belief_functions_8c.html#acfb579e995e421f1d66c2ab40e7d1b8b">BF_fullMurphyCombination</a>(<span class="keyword">const</span> <a class="code" href="struct_b_f___belief_function.html">BF_BeliefFunction</a>* m, <span class="keyword">const</span> <span class="keywordtype">int</span> nbM);
-<a name="l00286"></a>00286 
-<a name="l00296"></a>00296 <a class="code" href="struct_b_f___belief_function.html">BF_BeliefFunction</a> <a class="code" href="_belief_functions_8c.html#aab65a9c5918a398b1644d348977bb470">BF_MurphyCombination</a>(<span class="keyword">const</span> <a class="code" href="struct_b_f___belief_function.html">BF_BeliefFunction</a> m1, <span class="keyword">const</span> <a class="code" href="struct_b_f___belief_function.html">BF_BeliefFunction</a> m2);
-<a name="l00297"></a>00297 
-<a name="l00309"></a>00309 <a class="code" href="struct_b_f___belief_function.html">BF_BeliefFunction</a> <a class="code" href="_belief_functions_8c.html#a019e4cdeffb5c0a879667bf5a256b152">BF_fullChenCombination</a>(<span class="keyword">const</span> <a class="code" href="struct_b_f___belief_function.html">BF_BeliefFunction</a>* m, <span class="keyword">const</span> <span class="keywordtype">int</span> nbM);
-<a name="l00310"></a>00310 
-<a name="l00321"></a>00321 <a class="code" href="struct_b_f___belief_function.html">BF_BeliefFunction</a> <a class="code" href="_belief_functions_8c.html#ab636b354ea45faf1057a46b7e70383eb">BF_fullCombination</a>(<span class="keyword">const</span> <a class="code" href="struct_b_f___belief_function.html">BF_BeliefFunction</a>* m, <span class="keyword">const</span> <span class="keywordtype">int</span> nbM, <span class="keyword">const</span> <a class="code" href="_belief_functions_8h.html#ab080999db027db6a06de8c2a8b863dea">BF_CombinationRule</a> type);
-<a name="l00322"></a>00322 
-<a name="l00333"></a>00333 <a class="code" href="struct_b_f___belief_function.html">BF_BeliefFunction</a> <a class="code" href="_belief_functions_8c.html#a86176697067fe1ca4d4ace9f19bac86f">BF_combination</a>(<span class="keyword">const</span> <a class="code" href="struct_b_f___belief_function.html">BF_BeliefFunction</a> m1, <span class="keyword">const</span> <a class="code" href="struct_b_f___belief_function.html">BF_BeliefFunction</a> m2, <span class="keyword">const</span> <a class="code" href="_belief_functions_8h.html#ab080999db027db6a06de8c2a8b863dea">BF_CombinationRule</a> type);
-<a name="l00334"></a>00334 
-<a name="l00351"></a>00351 <a class="code" href="struct_b_f___belief_function.html">BF_BeliefFunction</a> <a class="code" href="_belief_functions_8c.html#a1390231c867ad0b64bbbfdb84f0f0609">BF_conditioning</a>(<span class="keyword">const</span> <a class="code" href="struct_b_f___belief_function.html">BF_BeliefFunction</a> m, <span class="keyword">const</span> <a class="code" href="struct_sets___element.html">Sets_Element</a> e, <span class="keyword">const</span> <a class="code" href="struct_sets___set.html">Sets_Set</a> powerset);
-<a name="l00352"></a>00352 
-<a name="l00361"></a>00361 <a class="code" href="struct_b_f___belief_function.html">BF_BeliefFunction</a> <a class="code" href="_belief_functions_8c.html#abf0a8d648c8d2bc72f3cfe4fb2c705c9">BF_weakening</a>(<span class="keyword">const</span> <a class="code" href="struct_b_f___belief_function.html">BF_BeliefFunction</a> m, <span class="keyword">const</span> <span class="keywordtype">float</span> alpha);
-<a name="l00362"></a>00362 
-<a name="l00371"></a>00371 <a class="code" href="struct_b_f___belief_function.html">BF_BeliefFunction</a> <a class="code" href="_belief_functions_8c.html#a6052d0e66126fed4aeac85ebde7dccd6">BF_discounting</a>(<span class="keyword">const</span> <a class="code" href="struct_b_f___belief_function.html">BF_BeliefFunction</a> m, <span class="keyword">const</span> <span class="keywordtype">float</span> alpha);
-<a name="l00372"></a>00372 
-<a name="l00382"></a>00382 <a class="code" href="struct_b_f___belief_function.html">BF_BeliefFunction</a> <a class="code" href="_belief_functions_8c.html#a718e6a56345615b6eca40c4ca30da718">BF_difference</a>(<span class="keyword">const</span> <a class="code" href="struct_b_f___belief_function.html">BF_BeliefFunction</a> m1, <span class="keyword">const</span> <a class="code" href="struct_b_f___belief_function.html">BF_BeliefFunction</a> m2);
-<a name="l00383"></a>00383 
-<a name="l00397"></a>00397 <span class="keywordtype">float</span> <a class="code" href="_belief_functions_8c.html#a123a378cd1e859b2c9c2f5ea5bf52a83">BF_M</a>(<span class="keyword">const</span> <a class="code" href="struct_b_f___belief_function.html">BF_BeliefFunction</a> m, <span class="keyword">const</span> <a class="code" href="struct_sets___element.html">Sets_Element</a> e);
-<a name="l00398"></a>00398 
-<a name="l00408"></a>00408 <span class="keywordtype">float</span> <a class="code" href="_belief_functions_8c.html#a18dd76443e9e26bbecbe42bb082e1608">BF_bel</a>(<span class="keyword">const</span> <a class="code" href="struct_b_f___belief_function.html">BF_BeliefFunction</a> m, <span class="keyword">const</span> <a class="code" href="struct_sets___element.html">Sets_Element</a> e);
-<a name="l00409"></a>00409 
-<a name="l00419"></a>00419 <span class="keywordtype">float</span> <a class="code" href="_belief_functions_8c.html#a9ce98db63efd81734beb53780eb79785">BF_pl</a>(<span class="keyword">const</span> <a class="code" href="struct_b_f___belief_function.html">BF_BeliefFunction</a> m, <span class="keyword">const</span> <a class="code" href="struct_sets___element.html">Sets_Element</a> e);
-<a name="l00420"></a>00420 
-<a name="l00430"></a>00430 <span class="keywordtype">float</span> <a class="code" href="_belief_functions_8c.html#ab4c78af992436b5f25a61a4c86a7de99">BF_q</a>(<span class="keyword">const</span> <a class="code" href="struct_b_f___belief_function.html">BF_BeliefFunction</a> m, <span class="keyword">const</span> <a class="code" href="struct_sets___element.html">Sets_Element</a> e);
-<a name="l00431"></a>00431 
-<a name="l00441"></a>00441 <span class="keywordtype">float</span> <a class="code" href="_belief_functions_8c.html#af6255725c0925c21544a42927ed29594">BF_betP</a>(<span class="keyword">const</span> <a class="code" href="struct_b_f___belief_function.html">BF_BeliefFunction</a> m, <span class="keyword">const</span> <a class="code" href="struct_sets___element.html">Sets_Element</a> e);
-<a name="l00442"></a>00442 
-<a name="l00461"></a>00461 <span class="keywordtype">float</span>* <a class="code" href="_belief_functions_8c.html#a727046cee9478b0a8651e24f3c1b45f8">BF_autoConflict</a>(<span class="keyword">const</span> <a class="code" href="struct_b_f___belief_function.html">BF_BeliefFunction</a> m, <span class="keyword">const</span> <span class="keywordtype">int</span> maxDegree);
-<a name="l00462"></a>00462 
-<a name="l00471"></a>00471 <span class="keywordtype">float</span> <a class="code" href="_belief_functions_8c.html#a017715386951795b8e55cbd2b135b9e0">BF_specificity</a>(<span class="keyword">const</span> <a class="code" href="struct_b_f___belief_function.html">BF_BeliefFunction</a> m);
-<a name="l00472"></a>00472 
-<a name="l00479"></a>00479 <span class="keywordtype">float</span> <a class="code" href="_belief_functions_8c.html#a7bca4e5ed1078f33a1965d9adc7d0525">BF_nonSpecificity</a>(<span class="keyword">const</span> <a class="code" href="struct_b_f___belief_function.html">BF_BeliefFunction</a> m);
-<a name="l00480"></a>00480 
-<a name="l00489"></a>00489 <span class="keywordtype">float</span> <a class="code" href="_belief_functions_8c.html#ad51487a25d5574b6823dd71451346ec1">BF_discrepancy</a>(<span class="keyword">const</span> <a class="code" href="struct_b_f___belief_function.html">BF_BeliefFunction</a> m);
-<a name="l00490"></a>00490 
-<a name="l00500"></a>00500 <span class="keywordtype">float</span> <a class="code" href="_belief_functions_8c.html#a25cd6b7ef7c3c529076344b1f16dbff3">BF_distance</a>(<span class="keyword">const</span> <a class="code" href="struct_b_f___belief_function.html">BF_BeliefFunction</a> m1, <span class="keyword">const</span> <a class="code" href="struct_b_f___belief_function.html">BF_BeliefFunction</a> m2);
-<a name="l00501"></a>00501 
-<a name="l00512"></a>00512 <span class="keywordtype">float</span> <a class="code" href="_belief_functions_8c.html#a20b2e52a17ee0d0a86abb3efa9bfb588">BF_globalDistance</a>(<span class="keyword">const</span> <a class="code" href="struct_b_f___belief_function.html">BF_BeliefFunction</a> m, <span class="keyword">const</span> <a class="code" href="struct_b_f___belief_function.html">BF_BeliefFunction</a>* s, <span class="keyword">const</span> <span class="keywordtype">int</span> nbBF);
-<a name="l00513"></a>00513 
-<a name="l00522"></a>00522 <span class="keywordtype">float</span> <a class="code" href="_belief_functions_8c.html#a7375fa42bf0bb1ba30a6281e99f99f07">BF_similarity</a>(<span class="keyword">const</span> <a class="code" href="struct_b_f___belief_function.html">BF_BeliefFunction</a> m1, <span class="keyword">const</span> <a class="code" href="struct_b_f___belief_function.html">BF_BeliefFunction</a> m2);
-<a name="l00523"></a>00523 
-<a name="l00533"></a>00533 <span class="keywordtype">float</span> <a class="code" href="_belief_functions_8c.html#a56cb1a1ca36e5a50b6220973abb1878d">BF_support</a>(<span class="keyword">const</span> <a class="code" href="struct_b_f___belief_function.html">BF_BeliefFunction</a> ref, <span class="keyword">const</span> <a class="code" href="struct_b_f___belief_function.html">BF_BeliefFunction</a>* m, <span class="keyword">const</span> <span class="keywordtype">int</span> nbM);
-<a name="l00534"></a>00534 
-<a name="l00540"></a>00540 <span class="keywordtype">int</span> <a class="code" href="_belief_functions_8c.html#a4b119544f87b1f28ef442047a11c7940">BF_checkSum</a>(<span class="keyword">const</span> <a class="code" href="struct_b_f___belief_function.html">BF_BeliefFunction</a> m);
-<a name="l00541"></a>00541 
-<a name="l00547"></a>00547 <span class="keywordtype">int</span> <a class="code" href="_belief_functions_8c.html#a9c5f16b2daea7f1752524cdd64d38b1a">BF_checkValues</a>(<span class="keyword">const</span> <a class="code" href="struct_b_f___belief_function.html">BF_BeliefFunction</a> m);
-<a name="l00548"></a>00548 
-<a name="l00564"></a>00564 <a class="code" href="struct_b_f___focal_element.html">BF_FocalElement</a> <a class="code" href="_belief_functions_8c.html#afdecbcdf545cd9c42e500695571bbe4d">BF_getMaxMass</a>(<span class="keyword">const</span> <a class="code" href="struct_b_f___belief_function.html">BF_BeliefFunction</a> m, <span class="keyword">const</span> <span class="keywordtype">int</span> card);
-<a name="l00565"></a>00565 
-<a name="l00574"></a>00574 <a class="code" href="struct_b_f___focal_element.html">BF_FocalElement</a> <a class="code" href="_belief_functions_8c.html#a169c05bfd3c73fa30ef8c7122e62f9b1">BF_getMinMass</a>(<span class="keyword">const</span> <a class="code" href="struct_b_f___belief_function.html">BF_BeliefFunction</a> m, <span class="keyword">const</span> <span class="keywordtype">int</span> card);
-<a name="l00575"></a>00575 
-<a name="l00585"></a>00585 <a class="code" href="struct_b_f___focal_element.html">BF_FocalElement</a> <a class="code" href="_belief_functions_8c.html#ae6a14956549de55a086cc7f7bef444b2">BF_getMaxBel</a>(<span class="keyword">const</span> <a class="code" href="struct_b_f___belief_function.html">BF_BeliefFunction</a> m, <span class="keyword">const</span> <span class="keywordtype">int</span> card, <span class="keyword">const</span> <a class="code" href="struct_sets___set.html">Sets_Set</a> powerset);
-<a name="l00586"></a>00586 
-<a name="l00596"></a>00596 <a class="code" href="struct_b_f___focal_element.html">BF_FocalElement</a> <a class="code" href="_belief_functions_8c.html#ad66ea683822e75a55048f3f384c49276">BF_getMinBel</a>(<span class="keyword">const</span> <a class="code" href="struct_b_f___belief_function.html">BF_BeliefFunction</a> m, <span class="keyword">const</span> <span class="keywordtype">int</span> card, <span class="keyword">const</span> <a class="code" href="struct_sets___set.html">Sets_Set</a> powerset);
-<a name="l00597"></a>00597 
-<a name="l00607"></a>00607 <a class="code" href="struct_b_f___focal_element.html">BF_FocalElement</a> <a class="code" href="_belief_functions_8c.html#af4c52bee417528d5a1efac43524948ba">BF_getMaxPl</a>(<span class="keyword">const</span> <a class="code" href="struct_b_f___belief_function.html">BF_BeliefFunction</a> m, <span class="keyword">const</span> <span class="keywordtype">int</span> card, <span class="keyword">const</span> <a class="code" href="struct_sets___set.html">Sets_Set</a> powerset);
-<a name="l00608"></a>00608 
-<a name="l00618"></a>00618 <a class="code" href="struct_b_f___focal_element.html">BF_FocalElement</a> <a class="code" href="_belief_functions_8c.html#af2593bde24b6b147b4db270221ec8e77">BF_getMinPl</a>(<span class="keyword">const</span> <a class="code" href="struct_b_f___belief_function.html">BF_BeliefFunction</a> m, <span class="keyword">const</span> <span class="keywordtype">int</span> card, <span class="keyword">const</span> <a class="code" href="struct_sets___set.html">Sets_Set</a> powerset);
-<a name="l00619"></a>00619 
-<a name="l00629"></a>00629 <a class="code" href="struct_b_f___focal_element.html">BF_FocalElement</a> <a class="code" href="_belief_functions_8c.html#ab74b959189b8ceb9a6ac3f9d8fc9f5b1">BF_getMaxBetP</a>(<span class="keyword">const</span> <a class="code" href="struct_b_f___belief_function.html">BF_BeliefFunction</a> m, <span class="keyword">const</span> <span class="keywordtype">int</span> card, <span class="keyword">const</span> <a class="code" href="struct_sets___set.html">Sets_Set</a> powerset);
-<a name="l00630"></a>00630 
-<a name="l00640"></a>00640 <a class="code" href="struct_b_f___focal_element.html">BF_FocalElement</a> <a class="code" href="_belief_functions_8c.html#a8b8e2f8c31a978a315a63a3396f18485">BF_getMinBetP</a>(<span class="keyword">const</span> <a class="code" href="struct_b_f___belief_function.html">BF_BeliefFunction</a> m, <span class="keyword">const</span> <span class="keywordtype">int</span> card, <span class="keyword">const</span> <a class="code" href="struct_sets___set.html">Sets_Set</a> powerset);
-<a name="l00641"></a>00641 
-<a name="l00650"></a>00650 <span class="keywordtype">int</span> <a class="code" href="_belief_functions_8c.html#aaf154ca9f6663bf79b12894c05cb1f16">BF_getNbMaxMass</a>(<span class="keyword">const</span> <a class="code" href="struct_b_f___belief_function.html">BF_BeliefFunction</a> m, <span class="keyword">const</span> <span class="keywordtype">int</span> card);
-<a name="l00651"></a>00651 
-<a name="l00660"></a>00660 <span class="keywordtype">int</span> <a class="code" href="_belief_functions_8c.html#a63ace25f467b238cca9675f64037d39d">BF_getNbMinMass</a>(<span class="keyword">const</span> <a class="code" href="struct_b_f___belief_function.html">BF_BeliefFunction</a> m, <span class="keyword">const</span> <span class="keywordtype">int</span> card);
-<a name="l00661"></a>00661 
-<a name="l00671"></a>00671 <span class="keywordtype">int</span> <a class="code" href="_belief_functions_8c.html#a8e1389b7734cc65a14eccdfad59ca9be">BF_getNbMaxBel</a>(<span class="keyword">const</span> <a class="code" href="struct_b_f___belief_function.html">BF_BeliefFunction</a> m, <span class="keyword">const</span> <span class="keywordtype">int</span> card, <span class="keyword">const</span> <a class="code" href="struct_sets___set.html">Sets_Set</a> powerset);
-<a name="l00672"></a>00672 
-<a name="l00682"></a>00682 <span class="keywordtype">int</span> <a class="code" href="_belief_functions_8c.html#a02040f201222353f89d276c68d651e37">BF_getNbMinBel</a>(<span class="keyword">const</span> <a class="code" href="struct_b_f___belief_function.html">BF_BeliefFunction</a> m, <span class="keyword">const</span> <span class="keywordtype">int</span> card, <span class="keyword">const</span> <a class="code" href="struct_sets___set.html">Sets_Set</a> powerset);
-<a name="l00683"></a>00683 
-<a name="l00693"></a>00693 <span class="keywordtype">int</span> <a class="code" href="_belief_functions_8c.html#a3c47967371d50a0e506a60a337ab40c3">BF_getNbMaxPl</a>(<span class="keyword">const</span> <a class="code" href="struct_b_f___belief_function.html">BF_BeliefFunction</a> m, <span class="keyword">const</span> <span class="keywordtype">int</span> card, <span class="keyword">const</span> <a class="code" href="struct_sets___set.html">Sets_Set</a> powerset);
-<a name="l00694"></a>00694 
-<a name="l00704"></a>00704 <span class="keywordtype">int</span> <a class="code" href="_belief_functions_8c.html#afabc41d74088c42650c4becffbbccdd2">BF_getNbMinPl</a>(<span class="keyword">const</span> <a class="code" href="struct_b_f___belief_function.html">BF_BeliefFunction</a> m, <span class="keyword">const</span> <span class="keywordtype">int</span> card, <span class="keyword">const</span> <a class="code" href="struct_sets___set.html">Sets_Set</a> powerset);
-<a name="l00705"></a>00705 
-<a name="l00715"></a>00715 <span class="keywordtype">int</span> <a class="code" href="_belief_functions_8c.html#a6b2a4a9ba9b09805a3da6a1b6b983486">BF_getNbMaxBetP</a>(<span class="keyword">const</span> <a class="code" href="struct_b_f___belief_function.html">BF_BeliefFunction</a> m, <span class="keyword">const</span> <span class="keywordtype">int</span> card, <span class="keyword">const</span> <a class="code" href="struct_sets___set.html">Sets_Set</a> powerset);
-<a name="l00716"></a>00716 
-<a name="l00726"></a>00726 <span class="keywordtype">int</span> <a class="code" href="_belief_functions_8c.html#af3ec5a692f270f5974b2aa2baed88fa0">BF_getNbMinBetP</a>(<span class="keyword">const</span> <a class="code" href="struct_b_f___belief_function.html">BF_BeliefFunction</a> m, <span class="keyword">const</span> <span class="keywordtype">int</span> card, <span class="keyword">const</span> <a class="code" href="struct_sets___set.html">Sets_Set</a> powerset);
-<a name="l00727"></a>00727 
-<a name="l00737"></a>00737 <span class="keywordtype">int</span> <a class="code" href="_belief_functions_8c.html#afbbec54bcca6905dd7864ab0982edace">BF_getQuickNbMaxMass</a>(<span class="keyword">const</span> <a class="code" href="struct_b_f___belief_function.html">BF_BeliefFunction</a> m, <span class="keyword">const</span> <span class="keywordtype">int</span> card, <span class="keywordtype">float</span> maxValue);
-<a name="l00738"></a>00738 
-<a name="l00748"></a>00748 <span class="keywordtype">int</span> <a class="code" href="_belief_functions_8c.html#a36a983dcf4d91b5183c254a479904400">BF_getQuickNbMinMass</a>(<span class="keyword">const</span> <a class="code" href="struct_b_f___belief_function.html">BF_BeliefFunction</a> m, <span class="keyword">const</span> <span class="keywordtype">int</span> card, <span class="keywordtype">float</span> minValue);
-<a name="l00749"></a>00749 
-<a name="l00760"></a>00760 <span class="keywordtype">int</span> <a class="code" href="_belief_functions_8c.html#a69ff11fb69f0d2fd280600bc773be0b0">BF_getQuickNbMaxBel</a>(<span class="keyword">const</span> <a class="code" href="struct_b_f___belief_function.html">BF_BeliefFunction</a> m, <span class="keyword">const</span> <span class="keywordtype">int</span> card, <span class="keyword">const</span> <a class="code" href="struct_sets___set.html">Sets_Set</a> powerset, <span class="keywordtype">float</span> maxValue);
-<a name="l00761"></a>00761 
-<a name="l00772"></a>00772 <span class="keywordtype">int</span> <a class="code" href="_belief_functions_8c.html#a68a54d1b1e06b66f1d634b47d4fd2af0">BF_getQuickNbMinBel</a>(<span class="keyword">const</span> <a class="code" href="struct_b_f___belief_function.html">BF_BeliefFunction</a> m, <span class="keyword">const</span> <span class="keywordtype">int</span> card, <span class="keyword">const</span> <a class="code" href="struct_sets___set.html">Sets_Set</a> powerset, <span class="keywordtype">float</span> minValue);
-<a name="l00773"></a>00773 
-<a name="l00784"></a>00784 <span class="keywordtype">int</span> <a class="code" href="_belief_functions_8c.html#aeddfb2d82c5058b15b08877e1f7be64e">BF_getQuickNbMaxPl</a>(<span class="keyword">const</span> <a class="code" href="struct_b_f___belief_function.html">BF_BeliefFunction</a> m, <span class="keyword">const</span> <span class="keywordtype">int</span> card, <span class="keyword">const</span> <a class="code" href="struct_sets___set.html">Sets_Set</a> powerset, <span class="keywordtype">float</span> maxValue);
-<a name="l00785"></a>00785 
-<a name="l00796"></a>00796 <span class="keywordtype">int</span> <a class="code" href="_belief_functions_8c.html#a45838cf1932a7fa3e4521bb83cb188e3">BF_getQuickNbMinPl</a>(<span class="keyword">const</span> <a class="code" href="struct_b_f___belief_function.html">BF_BeliefFunction</a> m, <span class="keyword">const</span> <span class="keywordtype">int</span> card, <span class="keyword">const</span> <a class="code" href="struct_sets___set.html">Sets_Set</a> powerset, <span class="keywordtype">float</span> minValue);
-<a name="l00797"></a>00797 
-<a name="l00808"></a>00808 <span class="keywordtype">int</span> <a class="code" href="_belief_functions_8c.html#af9afb5f1dd65a699b325fabdf30eaf57">BF_getQuickNbMaxBetP</a>(<span class="keyword">const</span> <a class="code" href="struct_b_f___belief_function.html">BF_BeliefFunction</a> m, <span class="keyword">const</span> <span class="keywordtype">int</span> card, <span class="keyword">const</span> <a class="code" href="struct_sets___set.html">Sets_Set</a> powerset, <span class="keywordtype">float</span> maxValue);
-<a name="l00809"></a>00809 
-<a name="l00820"></a>00820 <span class="keywordtype">int</span> <a class="code" href="_belief_functions_8c.html#a1a30d8e068f393fd1afd408570c3586f">BF_getQuickNbMinBetP</a>(<span class="keyword">const</span> <a class="code" href="struct_b_f___belief_function.html">BF_BeliefFunction</a> m, <span class="keyword">const</span> <span class="keywordtype">int</span> card, <span class="keyword">const</span> <a class="code" href="struct_sets___set.html">Sets_Set</a> powerset, <span class="keywordtype">float</span> minValue);
-<a name="l00821"></a>00821 
-<a name="l00830"></a>00830 <a class="code" href="struct_b_f___focal_element.html">BF_FocalElement</a>* <a class="code" href="_belief_functions_8c.html#ae6a51a4d47214fd312b33e7a84a77355">BF_getListMaxMass</a>(<span class="keyword">const</span> <a class="code" href="struct_b_f___belief_function.html">BF_BeliefFunction</a> m, <span class="keyword">const</span> <span class="keywordtype">int</span> card);
-<a name="l00831"></a>00831 
-<a name="l00840"></a>00840 <a class="code" href="struct_b_f___focal_element.html">BF_FocalElement</a>* <a class="code" href="_belief_functions_8c.html#a6b3f9dfe470c437b188049c1815b22b9">BF_getListMinMass</a>(<span class="keyword">const</span> <a class="code" href="struct_b_f___belief_function.html">BF_BeliefFunction</a> m, <span class="keyword">const</span> <span class="keywordtype">int</span> card);
-<a name="l00841"></a>00841 
-<a name="l00851"></a>00851 <a class="code" href="struct_b_f___focal_element.html">BF_FocalElement</a>* <a class="code" href="_belief_functions_8c.html#a9ed943acd331068bcfd5de5c2f2bbf54">BF_getListMaxBel</a>(<span class="keyword">const</span> <a class="code" href="struct_b_f___belief_function.html">BF_BeliefFunction</a> m, <span class="keyword">const</span> <span class="keywordtype">int</span> card, <span class="keyword">const</span> <a class="code" href="struct_sets___set.html">Sets_Set</a> powerset);
-<a name="l00852"></a>00852 
-<a name="l00862"></a>00862 <a class="code" href="struct_b_f___focal_element.html">BF_FocalElement</a>* <a class="code" href="_belief_functions_8c.html#a797c05db5cc7c3e2f57c80d48972c0e7">BF_getListMinBel</a>(<span class="keyword">const</span> <a class="code" href="struct_b_f___belief_function.html">BF_BeliefFunction</a> m, <span class="keyword">const</span> <span class="keywordtype">int</span> card, <span class="keyword">const</span> <a class="code" href="struct_sets___set.html">Sets_Set</a> powerset);
-<a name="l00863"></a>00863 
-<a name="l00873"></a>00873 <a class="code" href="struct_b_f___focal_element.html">BF_FocalElement</a>* <a class="code" href="_belief_functions_8c.html#a57899674d608c4171d3a17434555bd38">BF_getListMaxPl</a>(<span class="keyword">const</span> <a class="code" href="struct_b_f___belief_function.html">BF_BeliefFunction</a> m, <span class="keyword">const</span> <span class="keywordtype">int</span> card, <span class="keyword">const</span> <a class="code" href="struct_sets___set.html">Sets_Set</a> powerset);
-<a name="l00874"></a>00874 
-<a name="l00884"></a>00884 <a class="code" href="struct_b_f___focal_element.html">BF_FocalElement</a>* <a class="code" href="_belief_functions_8c.html#afbc034ed432ba110c9e6f9fd6e9b76ef">BF_getListMinPl</a>(<span class="keyword">const</span> <a class="code" href="struct_b_f___belief_function.html">BF_BeliefFunction</a> m, <span class="keyword">const</span> <span class="keywordtype">int</span> card, <span class="keyword">const</span> <a class="code" href="struct_sets___set.html">Sets_Set</a> powerset);
-<a name="l00885"></a>00885 
-<a name="l00895"></a>00895 <a class="code" href="struct_b_f___focal_element.html">BF_FocalElement</a>* <a class="code" href="_belief_functions_8c.html#ac4db4d59f8b1a79e6c84dce2ed15e29c">BF_getListMaxBetP</a>(<span class="keyword">const</span> <a class="code" href="struct_b_f___belief_function.html">BF_BeliefFunction</a> m, <span class="keyword">const</span> <span class="keywordtype">int</span> card, <span class="keyword">const</span> <a class="code" href="struct_sets___set.html">Sets_Set</a> powerset);
-<a name="l00896"></a>00896 
-<a name="l00906"></a>00906 <a class="code" href="struct_b_f___focal_element.html">BF_FocalElement</a>* <a class="code" href="_belief_functions_8c.html#a524985e65b3d2eb927f49e1cd0d98920">BF_getListMinBetP</a>(<span class="keyword">const</span> <a class="code" href="struct_b_f___belief_function.html">BF_BeliefFunction</a> m, <span class="keyword">const</span> <span class="keywordtype">int</span> card, <span class="keyword">const</span> <a class="code" href="struct_sets___set.html">Sets_Set</a> powerset);
-<a name="l00907"></a>00907 
-<a name="l00917"></a>00917 <a class="code" href="struct_b_f___focal_element.html">BF_FocalElement</a>* <a class="code" href="_belief_functions_8c.html#aea57a55bfd8dca820045b0ade3d2e40d">BF_getQuickListMaxMass</a>(<span class="keyword">const</span> <a class="code" href="struct_b_f___belief_function.html">BF_BeliefFunction</a> m, <span class="keyword">const</span> <span class="keywordtype">int</span> card, <span class="keyword">const</span> <span class="keywordtype">float</span> maxValue);
-<a name="l00918"></a>00918 
-<a name="l00928"></a>00928 <a class="code" href="struct_b_f___focal_element.html">BF_FocalElement</a>* <a class="code" href="_belief_functions_8c.html#a6036f0d29d16a53d50fb8cbcd5a2cea1">BF_getQuickListMinMass</a>(<span class="keyword">const</span> <a class="code" href="struct_b_f___belief_function.html">BF_BeliefFunction</a> m, <span class="keyword">const</span> <span class="keywordtype">int</span> card, <span class="keyword">const</span> <span class="keywordtype">float</span> minValue);
-<a name="l00929"></a>00929 
-<a name="l00940"></a>00940 <a class="code" href="struct_b_f___focal_element.html">BF_FocalElement</a>* <a class="code" href="_belief_functions_8c.html#a3d64e9534605422aa8c52c3e21e5a71d">BF_getQuickListMaxBel</a>(<span class="keyword">const</span> <a class="code" href="struct_b_f___belief_function.html">BF_BeliefFunction</a> m, <span class="keyword">const</span> <span class="keywordtype">int</span> card, <span class="keyword">const</span> <a class="code" href="struct_sets___set.html">Sets_Set</a> powerset, <span class="keyword">const</span> <span class="keywordtype">float</span> maxValue);
-<a name="l00941"></a>00941 
-<a name="l00952"></a>00952 <a class="code" href="struct_b_f___focal_element.html">BF_FocalElement</a>* <a class="code" href="_belief_functions_8c.html#ac062188b824dcbf7635237dfd31475fc">BF_getQuickListMinBel</a>(<span class="keyword">const</span> <a class="code" href="struct_b_f___belief_function.html">BF_BeliefFunction</a> m, <span class="keyword">const</span> <span class="keywordtype">int</span> card, <span class="keyword">const</span> <a class="code" href="struct_sets___set.html">Sets_Set</a> powerset, <span class="keyword">const</span> <span class="keywordtype">float</span> minValue);
-<a name="l00953"></a>00953 
-<a name="l00964"></a>00964 <a class="code" href="struct_b_f___focal_element.html">BF_FocalElement</a>* <a class="code" href="_belief_functions_8c.html#a1cc231bbb149836c2a0498f46523c5f6">BF_getQuickListMaxPl</a>(<span class="keyword">const</span> <a class="code" href="struct_b_f___belief_function.html">BF_BeliefFunction</a> m, <span class="keyword">const</span> <span class="keywordtype">int</span> card, <span class="keyword">const</span> <a class="code" href="struct_sets___set.html">Sets_Set</a> powerset, <span class="keyword">const</span> <span class="keywordtype">float</span> maxValue);
-<a name="l00965"></a>00965 
-<a name="l00976"></a>00976 <a class="code" href="struct_b_f___focal_element.html">BF_FocalElement</a>* <a class="code" href="_belief_functions_8c.html#ac0d2ebc6ef7012aa7aaaf2a3a4ea6111">BF_getQuickListMinPl</a>(<span class="keyword">const</span> <a class="code" href="struct_b_f___belief_function.html">BF_BeliefFunction</a> m, <span class="keyword">const</span> <span class="keywordtype">int</span> card, <span class="keyword">const</span> <a class="code" href="struct_sets___set.html">Sets_Set</a> powerset, <span class="keyword">const</span> <span class="keywordtype">float</span> minValue);
-<a name="l00977"></a>00977 
-<a name="l00988"></a>00988 <a class="code" href="struct_b_f___focal_element.html">BF_FocalElement</a>* <a class="code" href="_belief_functions_8c.html#a4adb06181b557c846cc3db138cc1d024">BF_getQuickListMaxBetP</a>(<span class="keyword">const</span> <a class="code" href="struct_b_f___belief_function.html">BF_BeliefFunction</a> m, <span class="keyword">const</span> <span class="keywordtype">int</span> card, <span class="keyword">const</span> <a class="code" href="struct_sets___set.html">Sets_Set</a> powerset, <span class="keyword">const</span> <span class="keywordtype">float</span> maxValue);
-<a name="l00989"></a>00989 
-<a name="l01000"></a>01000 <a class="code" href="struct_b_f___focal_element.html">BF_FocalElement</a>* <a class="code" href="_belief_functions_8c.html#a71c3160157ea78eed69ade99fdd1a92c">BF_getQuickListMinBetP</a>(<span class="keyword">const</span> <a class="code" href="struct_b_f___belief_function.html">BF_BeliefFunction</a> m, <span class="keyword">const</span> <span class="keywordtype">int</span> card, <span class="keyword">const</span> <a class="code" href="struct_sets___set.html">Sets_Set</a> powerset, <span class="keyword">const</span> <span class="keywordtype">float</span> minValue);
-<a name="l01001"></a>01001 
-<a name="l01012"></a>01012 <a class="code" href="struct_b_f___focal_element.html">BF_FocalElement</a>* <a class="code" href="_belief_functions_8c.html#abf24629ed149e8615413bec148f04cb4">BF_getQuickerListMaxMass</a>(<span class="keyword">const</span> <a class="code" href="struct_b_f___belief_function.html">BF_BeliefFunction</a> m, <span class="keyword">const</span> <span class="keywordtype">int</span> card, <span class="keyword">const</span> <span class="keywordtype">float</span> maxValue, <span class="keyword">const</span> <span class="keywordtype">int</span> nbMax);
-<a name="l01013"></a>01013 
-<a name="l01024"></a>01024 <a class="code" href="struct_b_f___focal_element.html">BF_FocalElement</a>* <a class="code" href="_belief_functions_8c.html#a41624db0962c9e24aa3b1af6bad2e121">BF_getQuickerListMinMass</a>(<span class="keyword">const</span> <a class="code" href="struct_b_f___belief_function.html">BF_BeliefFunction</a> m, <span class="keyword">const</span> <span class="keywordtype">int</span> card, <span class="keyword">const</span> <span class="keywordtype">float</span> minValue, <span class="keyword">const</span> <span class="keywordtype">int</span> nbMin);
-<a name="l01025"></a>01025 
-<a name="l01037"></a>01037 <a class="code" href="struct_b_f___focal_element.html">BF_FocalElement</a>* <a class="code" href="_belief_functions_8c.html#add139e82190d797b8f1863848467dea9">BF_getQuickerListMaxBel</a>(<span class="keyword">const</span> <a class="code" href="struct_b_f___belief_function.html">BF_BeliefFunction</a> m, <span class="keyword">const</span> <span class="keywordtype">int</span> card, <span class="keyword">const</span> <a class="code" href="struct_sets___set.html">Sets_Set</a> powerset, <span class="keyword">const</span> <span class="keywordtype">float</span> maxValue, <span class="keyword">const</span> <span class="keywordtype">int</span> nbMax);
-<a name="l01038"></a>01038 
-<a name="l01050"></a>01050 <a class="code" href="struct_b_f___focal_element.html">BF_FocalElement</a>* <a class="code" href="_belief_functions_8c.html#ace00a83049c264ef7f1596c46b339d4a">BF_getQuickerListMinBel</a>(<span class="keyword">const</span> <a class="code" href="struct_b_f___belief_function.html">BF_BeliefFunction</a> m, <span class="keyword">const</span> <span class="keywordtype">int</span> card, <span class="keyword">const</span> <a class="code" href="struct_sets___set.html">Sets_Set</a> powerset, <span class="keyword">const</span> <span class="keywordtype">float</span> minValue, <span class="keyword">const</span> <span class="keywordtype">int</span> nbMin);
-<a name="l01051"></a>01051 
-<a name="l01063"></a>01063 <a class="code" href="struct_b_f___focal_element.html">BF_FocalElement</a>* <a class="code" href="_belief_functions_8c.html#a6ac5be2c9be1cd49ddceaa2e4c447010">BF_getQuickerListMaxPl</a>(<span class="keyword">const</span> <a class="code" href="struct_b_f___belief_function.html">BF_BeliefFunction</a> m, <span class="keyword">const</span> <span class="keywordtype">int</span> card, <span class="keyword">const</span> <a class="code" href="struct_sets___set.html">Sets_Set</a> powerset, <span class="keyword">const</span> <span class="keywordtype">float</span> maxValue, <span class="keyword">const</span> <span class="keywordtype">int</span> nbMax);
-<a name="l01064"></a>01064 
-<a name="l01076"></a>01076 <a class="code" href="struct_b_f___focal_element.html">BF_FocalElement</a>* <a class="code" href="_belief_functions_8c.html#a86cce660c55ff2b1dd5c77e4fdf55bef">BF_getQuickerListMinPl</a>(<span class="keyword">const</span> <a class="code" href="struct_b_f___belief_function.html">BF_BeliefFunction</a> m, <span class="keyword">const</span> <span class="keywordtype">int</span> card, <span class="keyword">const</span> <a class="code" href="struct_sets___set.html">Sets_Set</a> powerset, <span class="keyword">const</span> <span class="keywordtype">float</span> minValue, <span class="keyword">const</span> <span class="keywordtype">int</span> nbMin);
-<a name="l01077"></a>01077 
-<a name="l01089"></a>01089 <a class="code" href="struct_b_f___focal_element.html">BF_FocalElement</a>* <a class="code" href="_belief_functions_8c.html#aa6c538402564acc9ecbc202706953f9e">BF_getQuickerListMaxBetP</a>(<span class="keyword">const</span> <a class="code" href="struct_b_f___belief_function.html">BF_BeliefFunction</a> m, <span class="keyword">const</span> <span class="keywordtype">int</span> card, <span class="keyword">const</span> <a class="code" href="struct_sets___set.html">Sets_Set</a> powerset, <span class="keyword">const</span> <span class="keywordtype">float</span> maxValue, <span class="keyword">const</span> <span class="keywordtype">int</span> nbMax);
-<a name="l01090"></a>01090 
-<a name="l01102"></a>01102 <a class="code" href="struct_b_f___focal_element.html">BF_FocalElement</a>* <a class="code" href="_belief_functions_8c.html#ac7548afe078a40401df5da1039efae4a">BF_getQuickerListMinBetP</a>(<span class="keyword">const</span> <a class="code" href="struct_b_f___belief_function.html">BF_BeliefFunction</a> m, <span class="keyword">const</span> <span class="keywordtype">int</span> card, <span class="keyword">const</span> <a class="code" href="struct_sets___set.html">Sets_Set</a> powerset, <span class="keyword">const</span> <span class="keywordtype">float</span> minValue, <span class="keyword">const</span> <span class="keywordtype">int</span> nbMin);
-<a name="l01103"></a>01103 
-<a name="l01106"></a>01106 <span class="comment">/* !!! Deallocate memory given to believes !!! */</span>
-<a name="l01107"></a>01107 
-<a name="l01117"></a>01117 <span class="keywordtype">void</span> <a class="code" href="_belief_functions_8c.html#aa3c5107945acc34941aed1c7f7e04968">BF_freeBeliefFunction</a>(<a class="code" href="struct_b_f___belief_function.html">BF_BeliefFunction</a>* bf);
-<a name="l01118"></a>01118 
-<a name="l01123"></a>01123 <span class="keywordtype">void</span> <a class="code" href="_belief_functions_8c.html#a4e12dcb5da2c769f13ef67ffafc9f1d7">BF_freeBeliefPoint</a>(<a class="code" href="struct_b_f___focal_element.html">BF_FocalElement</a> *bp);
-<a name="l01124"></a>01124 
-<a name="l01127"></a>01127 <span class="comment">/* !!! Conversion into strings !!! */</span>
-<a name="l01128"></a>01128 
-<a name="l01141"></a>01141 <span class="keywordtype">char</span>* <a class="code" href="_belief_functions_8c.html#a7ca111c373c8eff6c7b221aa3f6e9a0b">BF_beliefFunctionToString</a>(<span class="keyword">const</span> <a class="code" href="struct_b_f___belief_function.html">BF_BeliefFunction</a> bf, <span class="keyword">const</span> <a class="code" href="struct_sets___reference_list.html">Sets_ReferenceList</a> rl);
-<a name="l01142"></a>01142 
-<a name="l01150"></a>01150 <span class="keywordtype">char</span>* <a class="code" href="_belief_functions_8c.html#a09113849ea5c4042faebfd9c2b53e1b5">BF_beliefFunctionToBitString</a>(<span class="keyword">const</span> <a class="code" href="struct_b_f___belief_function.html">BF_BeliefFunction</a> bf);
-<a name="l01151"></a>01151 
-<a name="l01154"></a>01154 <span class="preprocessor">#endif</span>
-<a name="l01155"></a>01155 <span class="preprocessor"></span>
-<a name="l01156"></a>01156 
+<a name="l00064"></a><a class="code" href="struct_b_f___focal_element.html">00064</a> <span class="keyword">struct </span><a class="code" href="struct_b_f___focal_element.html">BF_FocalElement</a>{
+<a name="l00065"></a>00065     <a class="code" href="struct_sets___element.html">Sets_Element</a> element;
+<a name="l00066"></a>00066     <span class="keywordtype">float</span> beliefValue;
+<a name="l00067"></a>00067 };
+<a name="l00068"></a>00068 <span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="struct_b_f___focal_element.html">BF_FocalElement</a> <a class="code" href="struct_b_f___focal_element.html">BF_FocalElement</a>;
+<a name="l00069"></a>00069 
+<a name="l00070"></a>00070 
+<a name="l00082"></a><a class="code" href="struct_b_f___belief_function.html">00082</a> <span class="keyword">struct </span><a class="code" href="struct_b_f___belief_function.html">BF_BeliefFunction</a>{
+<a name="l00083"></a>00083     <a class="code" href="struct_b_f___focal_element.html">BF_FocalElement</a> *focals;
+<a name="l00084"></a>00084     <span class="keywordtype">int</span> nbFocals;
+<a name="l00085"></a>00085     <span class="keywordtype">int</span> elementSize;
+<a name="l00086"></a>00086 };
+<a name="l00087"></a>00087 <span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="struct_b_f___belief_function.html">BF_BeliefFunction</a> <a class="code" href="struct_b_f___belief_function.html">BF_BeliefFunction</a>;
+<a name="l00088"></a>00088 
+<a name="l00089"></a>00089 
+<a name="l00090"></a>00090 <span class="comment">/*</span>
+<a name="l00091"></a>00091 <span class="comment">  +--------------+</span>
+<a name="l00092"></a>00092 <span class="comment">  | ENUMERATIONS |</span>
+<a name="l00093"></a>00093 <span class="comment">  +--------------+</span>
+<a name="l00094"></a>00094 <span class="comment">*/</span>
+<a name="l00095"></a>00095 
+<a name="l00101"></a><a class="code" href="_belief_functions_8h.html#ab080999db027db6a06de8c2a8b863dea">00101</a> <span class="keyword">enum</span> <a class="code" href="_belief_functions_8h.html#ab080999db027db6a06de8c2a8b863dea">BF_CombinationRule</a>
+<a name="l00102"></a>00102 {
+<a name="l00103"></a>00103     DEMPSTER,
+<a name="l00104"></a>00104     SMETS,
+<a name="l00105"></a>00105     YAGER,
+<a name="l00106"></a>00106     DUBOISPRADE,
+<a name="l00107"></a>00107     MURPHY,
+<a name="l00108"></a>00108     CHEN,
+<a name="l00109"></a>00109     AVERAGE
+<a name="l00110"></a>00110 };
+<a name="l00111"></a>00111 <span class="keyword">typedef</span> <span class="keyword">enum</span> <a class="code" href="_belief_functions_8h.html#ab080999db027db6a06de8c2a8b863dea">BF_CombinationRule</a> <a class="code" href="_belief_functions_8h.html#ab080999db027db6a06de8c2a8b863dea">BF_CombinationRule</a>;
+<a name="l00112"></a>00112 
+<a name="l00113"></a>00113 
+<a name="l00114"></a>00114 <span class="comment">/*</span>
+<a name="l00115"></a>00115 <span class="comment">  +-----------+</span>
+<a name="l00116"></a>00116 <span class="comment">  | FUNCTIONS |</span>
+<a name="l00117"></a>00117 <span class="comment">  +-----------+</span>
+<a name="l00118"></a>00118 <span class="comment">*/</span>
+<a name="l00119"></a>00119 
+<a name="l00120"></a>00120 
+<a name="l00131"></a>00131 <a class="code" href="struct_b_f___belief_function.html">BF_BeliefFunction</a> <a class="code" href="_belief_functions_8c.html#ae248331ed725fe2bbba71abc0b397aab">BF_copyBeliefFunction</a>(<span class="keyword">const</span> <a class="code" href="struct_b_f___belief_function.html">BF_BeliefFunction</a> m);
+<a name="l00132"></a>00132 
+<a name="l00138"></a>00138 <a class="code" href="struct_b_f___belief_function.html">BF_BeliefFunction</a> <a class="code" href="_belief_functions_8c.html#a4d6588a638f6d46006bb318534f3c239">BF_getVacuousBeliefFunction</a>(<span class="keyword">const</span> <span class="keywordtype">int</span> elementSize);
+<a name="l00139"></a>00139 
+<a name="l00146"></a>00146 <span class="keywordtype">void</span> <a class="code" href="_belief_functions_8c.html#a29f2e14af48e088d4767db8780dbfae5">BF_cleanBeliefFunction</a>(<a class="code" href="struct_b_f___belief_function.html">BF_BeliefFunction</a>* bf);
+<a name="l00147"></a>00147 
+<a name="l00152"></a>00152 <span class="keywordtype">void</span> <a class="code" href="_belief_functions_8c.html#a6f278db4319a28d8bb0785eb11365fb7">BF_normalize</a>(<a class="code" href="struct_b_f___belief_function.html">BF_BeliefFunction</a>* bf);
+<a name="l00153"></a>00153 
+<a name="l00157"></a>00157 <span class="comment">/* !!! Operation on beliefs !!! */</span>
+<a name="l00158"></a>00158 
+<a name="l00171"></a>00171 <a class="code" href="struct_b_f___belief_function.html">BF_BeliefFunction</a> <a class="code" href="_belief_functions_8c.html#ae9c77653874d4f79124d8c5398ab27c7">BF_fullDempsterCombination</a>(<span class="keyword">const</span> <a class="code" href="struct_b_f___belief_function.html">BF_BeliefFunction</a>* m, <span class="keyword">const</span> <span class="keywordtype">int</span> nbM);
+<a name="l00172"></a>00172 
+<a name="l00180"></a>00180 <a class="code" href="struct_b_f___belief_function.html">BF_BeliefFunction</a> <a class="code" href="_belief_functions_8c.html#a34a15102ee96fc30396ef8972b99c440">BF_DempsterCombination</a>(<span class="keyword">const</span> <a class="code" href="struct_b_f___belief_function.html">BF_BeliefFunction</a> m1, <span class="keyword">const</span> <a class="code" href="struct_b_f___belief_function.html">BF_BeliefFunction</a> m2);
+<a name="l00181"></a>00181 
+<a name="l00191"></a>00191 <a class="code" href="struct_b_f___belief_function.html">BF_BeliefFunction</a> <a class="code" href="_belief_functions_8c.html#af8c9206eb7d71be3d73e191ff385ae8e">BF_fullSmetsCombination</a>(<span class="keyword">const</span> <a class="code" href="struct_b_f___belief_function.html">BF_BeliefFunction</a>* m, <span class="keyword">const</span> <span class="keywordtype">int</span> nbM);
+<a name="l00192"></a>00192 
+<a name="l00202"></a>00202 <a class="code" href="struct_b_f___belief_function.html">BF_BeliefFunction</a> <a class="code" href="_belief_functions_8c.html#a3ad1d008ca28ff3283fe2160f4afd055">BF_SmetsCombination</a>(<span class="keyword">const</span> <a class="code" href="struct_b_f___belief_function.html">BF_BeliefFunction</a> m1, <span class="keyword">const</span> <a class="code" href="struct_b_f___belief_function.html">BF_BeliefFunction</a> m2);
+<a name="l00203"></a>00203 
+<a name="l00215"></a>00215 <a class="code" href="struct_b_f___belief_function.html">BF_BeliefFunction</a> <a class="code" href="_belief_functions_8c.html#a5c4cf84f84f1e7d0206d27c9de3ec200">BF_fullYagerCombination</a>(<span class="keyword">const</span> <a class="code" href="struct_b_f___belief_function.html">BF_BeliefFunction</a>* m, <span class="keyword">const</span> <span class="keywordtype">int</span> nbM);
+<a name="l00216"></a>00216 
+<a name="l00226"></a>00226 <a class="code" href="struct_b_f___belief_function.html">BF_BeliefFunction</a> <a class="code" href="_belief_functions_8c.html#a7bb32c467a34487626b614047b0f2df1">BF_YagerCombination</a>(<span class="keyword">const</span> <a class="code" href="struct_b_f___belief_function.html">BF_BeliefFunction</a> m1, <span class="keyword">const</span> <a class="code" href="struct_b_f___belief_function.html">BF_BeliefFunction</a> m2);
+<a name="l00227"></a>00227 
+<a name="l00239"></a>00239 <a class="code" href="struct_b_f___belief_function.html">BF_BeliefFunction</a> <a class="code" href="_belief_functions_8c.html#abd20f57df8dbcb1f0a993d306ae09f95">BF_fullDuboisPradeCombination</a>(<span class="keyword">const</span> <a class="code" href="struct_b_f___belief_function.html">BF_BeliefFunction</a>* m, <span class="keyword">const</span> <span class="keywordtype">int</span> nbM);
+<a name="l00240"></a>00240 
+<a name="l00250"></a>00250 <a class="code" href="struct_b_f___belief_function.html">BF_BeliefFunction</a> <a class="code" href="_belief_functions_8c.html#acb2a8407b0ca2125064bc521061d77a9">BF_DuboisPradeCombination</a>(<span class="keyword">const</span> <a class="code" href="struct_b_f___belief_function.html">BF_BeliefFunction</a> m1, <span class="keyword">const</span> <a class="code" href="struct_b_f___belief_function.html">BF_BeliefFunction</a> m2);
+<a name="l00251"></a>00251 
+<a name="l00260"></a>00260 <a class="code" href="struct_b_f___belief_function.html">BF_BeliefFunction</a> <a class="code" href="_belief_functions_8c.html#a4079d05bfe7228aa0b39aef482aeeff6">BF_fullAverageCombination</a>(<span class="keyword">const</span> <a class="code" href="struct_b_f___belief_function.html">BF_BeliefFunction</a>* m, <span class="keyword">const</span> <span class="keywordtype">int</span> nbM);
+<a name="l00261"></a>00261 
+<a name="l00271"></a>00271 <a class="code" href="struct_b_f___belief_function.html">BF_BeliefFunction</a> <a class="code" href="_belief_functions_8c.html#a3c7b01c167b53cf6fa247ebfdf895bba">BF_averageCombination</a>(<span class="keyword">const</span> <a class="code" href="struct_b_f___belief_function.html">BF_BeliefFunction</a> m1, <span class="keyword">const</span> <a class="code" href="struct_b_f___belief_function.html">BF_BeliefFunction</a> m2);
+<a name="l00272"></a>00272 
+<a name="l00282"></a>00282 <a class="code" href="struct_b_f___belief_function.html">BF_BeliefFunction</a> <a class="code" href="_belief_functions_8c.html#acfb579e995e421f1d66c2ab40e7d1b8b">BF_fullMurphyCombination</a>(<span class="keyword">const</span> <a class="code" href="struct_b_f___belief_function.html">BF_BeliefFunction</a>* m, <span class="keyword">const</span> <span class="keywordtype">int</span> nbM);
+<a name="l00283"></a>00283 
+<a name="l00293"></a>00293 <a class="code" href="struct_b_f___belief_function.html">BF_BeliefFunction</a> <a class="code" href="_belief_functions_8c.html#aab65a9c5918a398b1644d348977bb470">BF_MurphyCombination</a>(<span class="keyword">const</span> <a class="code" href="struct_b_f___belief_function.html">BF_BeliefFunction</a> m1, <span class="keyword">const</span> <a class="code" href="struct_b_f___belief_function.html">BF_BeliefFunction</a> m2);
+<a name="l00294"></a>00294 
+<a name="l00306"></a>00306 <a class="code" href="struct_b_f___belief_function.html">BF_BeliefFunction</a> <a class="code" href="_belief_functions_8c.html#a019e4cdeffb5c0a879667bf5a256b152">BF_fullChenCombination</a>(<span class="keyword">const</span> <a class="code" href="struct_b_f___belief_function.html">BF_BeliefFunction</a>* m, <span class="keyword">const</span> <span class="keywordtype">int</span> nbM);
+<a name="l00307"></a>00307 
+<a name="l00318"></a>00318 <a class="code" href="struct_b_f___belief_function.html">BF_BeliefFunction</a> <a class="code" href="_belief_functions_8c.html#ab636b354ea45faf1057a46b7e70383eb">BF_fullCombination</a>(<span class="keyword">const</span> <a class="code" href="struct_b_f___belief_function.html">BF_BeliefFunction</a>* m, <span class="keyword">const</span> <span class="keywordtype">int</span> nbM, <span class="keyword">const</span> <a class="code" href="_belief_functions_8h.html#ab080999db027db6a06de8c2a8b863dea">BF_CombinationRule</a> type);
+<a name="l00319"></a>00319 
+<a name="l00330"></a>00330 <a class="code" href="struct_b_f___belief_function.html">BF_BeliefFunction</a> <a class="code" href="_belief_functions_8c.html#a86176697067fe1ca4d4ace9f19bac86f">BF_combination</a>(<span class="keyword">const</span> <a class="code" href="struct_b_f___belief_function.html">BF_BeliefFunction</a> m1, <span class="keyword">const</span> <a class="code" href="struct_b_f___belief_function.html">BF_BeliefFunction</a> m2, <span class="keyword">const</span> <a class="code" href="_belief_functions_8h.html#ab080999db027db6a06de8c2a8b863dea">BF_CombinationRule</a> type);
+<a name="l00331"></a>00331 
+<a name="l00348"></a>00348 <a class="code" href="struct_b_f___belief_function.html">BF_BeliefFunction</a> <a class="code" href="_belief_functions_8c.html#a1390231c867ad0b64bbbfdb84f0f0609">BF_conditioning</a>(<span class="keyword">const</span> <a class="code" href="struct_b_f___belief_function.html">BF_BeliefFunction</a> m, <span class="keyword">const</span> <a class="code" href="struct_sets___element.html">Sets_Element</a> e, <span class="keyword">const</span> <a class="code" href="struct_sets___set.html">Sets_Set</a> powerset);
+<a name="l00349"></a>00349 
+<a name="l00358"></a>00358 <a class="code" href="struct_b_f___belief_function.html">BF_BeliefFunction</a> <a class="code" href="_belief_functions_8c.html#abf0a8d648c8d2bc72f3cfe4fb2c705c9">BF_weakening</a>(<span class="keyword">const</span> <a class="code" href="struct_b_f___belief_function.html">BF_BeliefFunction</a> m, <span class="keyword">const</span> <span class="keywordtype">float</span> alpha);
+<a name="l00359"></a>00359 
+<a name="l00368"></a>00368 <a class="code" href="struct_b_f___belief_function.html">BF_BeliefFunction</a> <a class="code" href="_belief_functions_8c.html#a6052d0e66126fed4aeac85ebde7dccd6">BF_discounting</a>(<span class="keyword">const</span> <a class="code" href="struct_b_f___belief_function.html">BF_BeliefFunction</a> m, <span class="keyword">const</span> <span class="keywordtype">float</span> alpha);
+<a name="l00369"></a>00369 
+<a name="l00379"></a>00379 <a class="code" href="struct_b_f___belief_function.html">BF_BeliefFunction</a> <a class="code" href="_belief_functions_8c.html#a718e6a56345615b6eca40c4ca30da718">BF_difference</a>(<span class="keyword">const</span> <a class="code" href="struct_b_f___belief_function.html">BF_BeliefFunction</a> m1, <span class="keyword">const</span> <a class="code" href="struct_b_f___belief_function.html">BF_BeliefFunction</a> m2);
+<a name="l00380"></a>00380 
+<a name="l00394"></a>00394 <span class="keywordtype">float</span> <a class="code" href="_belief_functions_8c.html#a123a378cd1e859b2c9c2f5ea5bf52a83">BF_M</a>(<span class="keyword">const</span> <a class="code" href="struct_b_f___belief_function.html">BF_BeliefFunction</a> m, <span class="keyword">const</span> <a class="code" href="struct_sets___element.html">Sets_Element</a> e);
+<a name="l00395"></a>00395 
+<a name="l00405"></a>00405 <span class="keywordtype">float</span> <a class="code" href="_belief_functions_8c.html#a18dd76443e9e26bbecbe42bb082e1608">BF_bel</a>(<span class="keyword">const</span> <a class="code" href="struct_b_f___belief_function.html">BF_BeliefFunction</a> m, <span class="keyword">const</span> <a class="code" href="struct_sets___element.html">Sets_Element</a> e);
+<a name="l00406"></a>00406 
+<a name="l00416"></a>00416 <span class="keywordtype">float</span> <a class="code" href="_belief_functions_8c.html#a9ce98db63efd81734beb53780eb79785">BF_pl</a>(<span class="keyword">const</span> <a class="code" href="struct_b_f___belief_function.html">BF_BeliefFunction</a> m, <span class="keyword">const</span> <a class="code" href="struct_sets___element.html">Sets_Element</a> e);
+<a name="l00417"></a>00417 
+<a name="l00427"></a>00427 <span class="keywordtype">float</span> <a class="code" href="_belief_functions_8c.html#ab4c78af992436b5f25a61a4c86a7de99">BF_q</a>(<span class="keyword">const</span> <a class="code" href="struct_b_f___belief_function.html">BF_BeliefFunction</a> m, <span class="keyword">const</span> <a class="code" href="struct_sets___element.html">Sets_Element</a> e);
+<a name="l00428"></a>00428 
+<a name="l00438"></a>00438 <span class="keywordtype">float</span> <a class="code" href="_belief_functions_8c.html#af6255725c0925c21544a42927ed29594">BF_betP</a>(<span class="keyword">const</span> <a class="code" href="struct_b_f___belief_function.html">BF_BeliefFunction</a> m, <span class="keyword">const</span> <a class="code" href="struct_sets___element.html">Sets_Element</a> e);
+<a name="l00439"></a>00439 
+<a name="l00458"></a>00458 <span class="keywordtype">float</span>* <a class="code" href="_belief_functions_8c.html#a727046cee9478b0a8651e24f3c1b45f8">BF_autoConflict</a>(<span class="keyword">const</span> <a class="code" href="struct_b_f___belief_function.html">BF_BeliefFunction</a> m, <span class="keyword">const</span> <span class="keywordtype">int</span> maxDegree);
+<a name="l00459"></a>00459 
+<a name="l00468"></a>00468 <span class="keywordtype">float</span> <a class="code" href="_belief_functions_8c.html#a017715386951795b8e55cbd2b135b9e0">BF_specificity</a>(<span class="keyword">const</span> <a class="code" href="struct_b_f___belief_function.html">BF_BeliefFunction</a> m);
+<a name="l00469"></a>00469 
+<a name="l00476"></a>00476 <span class="keywordtype">float</span> <a class="code" href="_belief_functions_8c.html#a7bca4e5ed1078f33a1965d9adc7d0525">BF_nonSpecificity</a>(<span class="keyword">const</span> <a class="code" href="struct_b_f___belief_function.html">BF_BeliefFunction</a> m);
+<a name="l00477"></a>00477 
+<a name="l00486"></a>00486 <span class="keywordtype">float</span> <a class="code" href="_belief_functions_8c.html#ad51487a25d5574b6823dd71451346ec1">BF_discrepancy</a>(<span class="keyword">const</span> <a class="code" href="struct_b_f___belief_function.html">BF_BeliefFunction</a> m);
+<a name="l00487"></a>00487 
+<a name="l00497"></a>00497 <span class="keywordtype">float</span> <a class="code" href="_belief_functions_8c.html#a25cd6b7ef7c3c529076344b1f16dbff3">BF_distance</a>(<span class="keyword">const</span> <a class="code" href="struct_b_f___belief_function.html">BF_BeliefFunction</a> m1, <span class="keyword">const</span> <a class="code" href="struct_b_f___belief_function.html">BF_BeliefFunction</a> m2);
+<a name="l00498"></a>00498 
+<a name="l00509"></a>00509 <span class="keywordtype">float</span> <a class="code" href="_belief_functions_8c.html#a20b2e52a17ee0d0a86abb3efa9bfb588">BF_globalDistance</a>(<span class="keyword">const</span> <a class="code" href="struct_b_f___belief_function.html">BF_BeliefFunction</a> m, <span class="keyword">const</span> <a class="code" href="struct_b_f___belief_function.html">BF_BeliefFunction</a>* s, <span class="keyword">const</span> <span class="keywordtype">int</span> nbBF);
+<a name="l00510"></a>00510 
+<a name="l00519"></a>00519 <span class="keywordtype">float</span> <a class="code" href="_belief_functions_8c.html#a7375fa42bf0bb1ba30a6281e99f99f07">BF_similarity</a>(<span class="keyword">const</span> <a class="code" href="struct_b_f___belief_function.html">BF_BeliefFunction</a> m1, <span class="keyword">const</span> <a class="code" href="struct_b_f___belief_function.html">BF_BeliefFunction</a> m2);
+<a name="l00520"></a>00520 
+<a name="l00530"></a>00530 <span class="keywordtype">float</span> <a class="code" href="_belief_functions_8c.html#a56cb1a1ca36e5a50b6220973abb1878d">BF_support</a>(<span class="keyword">const</span> <a class="code" href="struct_b_f___belief_function.html">BF_BeliefFunction</a> ref, <span class="keyword">const</span> <a class="code" href="struct_b_f___belief_function.html">BF_BeliefFunction</a>* m, <span class="keyword">const</span> <span class="keywordtype">int</span> nbM);
+<a name="l00531"></a>00531 
+<a name="l00537"></a>00537 <span class="keywordtype">int</span> <a class="code" href="_belief_functions_8c.html#a4b119544f87b1f28ef442047a11c7940">BF_checkSum</a>(<span class="keyword">const</span> <a class="code" href="struct_b_f___belief_function.html">BF_BeliefFunction</a> m);
+<a name="l00538"></a>00538 
+<a name="l00544"></a>00544 <span class="keywordtype">int</span> <a class="code" href="_belief_functions_8c.html#a9c5f16b2daea7f1752524cdd64d38b1a">BF_checkValues</a>(<span class="keyword">const</span> <a class="code" href="struct_b_f___belief_function.html">BF_BeliefFunction</a> m);
+<a name="l00545"></a>00545 
+<a name="l00561"></a>00561 <a class="code" href="struct_b_f___focal_element.html">BF_FocalElement</a> <a class="code" href="_belief_functions_8c.html#afdecbcdf545cd9c42e500695571bbe4d">BF_getMaxMass</a>(<span class="keyword">const</span> <a class="code" href="struct_b_f___belief_function.html">BF_BeliefFunction</a> m, <span class="keyword">const</span> <span class="keywordtype">int</span> card);
+<a name="l00562"></a>00562 
+<a name="l00571"></a>00571 <a class="code" href="struct_b_f___focal_element.html">BF_FocalElement</a> <a class="code" href="_belief_functions_8c.html#a169c05bfd3c73fa30ef8c7122e62f9b1">BF_getMinMass</a>(<span class="keyword">const</span> <a class="code" href="struct_b_f___belief_function.html">BF_BeliefFunction</a> m, <span class="keyword">const</span> <span class="keywordtype">int</span> card);
+<a name="l00572"></a>00572 
+<a name="l00582"></a>00582 <a class="code" href="struct_b_f___focal_element.html">BF_FocalElement</a> <a class="code" href="_belief_functions_8c.html#ae6a14956549de55a086cc7f7bef444b2">BF_getMaxBel</a>(<span class="keyword">const</span> <a class="code" href="struct_b_f___belief_function.html">BF_BeliefFunction</a> m, <span class="keyword">const</span> <span class="keywordtype">int</span> card, <span class="keyword">const</span> <a class="code" href="struct_sets___set.html">Sets_Set</a> powerset);
+<a name="l00583"></a>00583 
+<a name="l00593"></a>00593 <a class="code" href="struct_b_f___focal_element.html">BF_FocalElement</a> <a class="code" href="_belief_functions_8c.html#ad66ea683822e75a55048f3f384c49276">BF_getMinBel</a>(<span class="keyword">const</span> <a class="code" href="struct_b_f___belief_function.html">BF_BeliefFunction</a> m, <span class="keyword">const</span> <span class="keywordtype">int</span> card, <span class="keyword">const</span> <a class="code" href="struct_sets___set.html">Sets_Set</a> powerset);
+<a name="l00594"></a>00594 
+<a name="l00604"></a>00604 <a class="code" href="struct_b_f___focal_element.html">BF_FocalElement</a> <a class="code" href="_belief_functions_8c.html#af4c52bee417528d5a1efac43524948ba">BF_getMaxPl</a>(<span class="keyword">const</span> <a class="code" href="struct_b_f___belief_function.html">BF_BeliefFunction</a> m, <span class="keyword">const</span> <span class="keywordtype">int</span> card, <span class="keyword">const</span> <a class="code" href="struct_sets___set.html">Sets_Set</a> powerset);
+<a name="l00605"></a>00605 
+<a name="l00615"></a>00615 <a class="code" href="struct_b_f___focal_element.html">BF_FocalElement</a> <a class="code" href="_belief_functions_8c.html#af2593bde24b6b147b4db270221ec8e77">BF_getMinPl</a>(<span class="keyword">const</span> <a class="code" href="struct_b_f___belief_function.html">BF_BeliefFunction</a> m, <span class="keyword">const</span> <span class="keywordtype">int</span> card, <span class="keyword">const</span> <a class="code" href="struct_sets___set.html">Sets_Set</a> powerset);
+<a name="l00616"></a>00616 
+<a name="l00626"></a>00626 <a class="code" href="struct_b_f___focal_element.html">BF_FocalElement</a> <a class="code" href="_belief_functions_8c.html#ab74b959189b8ceb9a6ac3f9d8fc9f5b1">BF_getMaxBetP</a>(<span class="keyword">const</span> <a class="code" href="struct_b_f___belief_function.html">BF_BeliefFunction</a> m, <span class="keyword">const</span> <span class="keywordtype">int</span> card, <span class="keyword">const</span> <a class="code" href="struct_sets___set.html">Sets_Set</a> powerset);
+<a name="l00627"></a>00627 
+<a name="l00637"></a>00637 <a class="code" href="struct_b_f___focal_element.html">BF_FocalElement</a> <a class="code" href="_belief_functions_8c.html#a8b8e2f8c31a978a315a63a3396f18485">BF_getMinBetP</a>(<span class="keyword">const</span> <a class="code" href="struct_b_f___belief_function.html">BF_BeliefFunction</a> m, <span class="keyword">const</span> <span class="keywordtype">int</span> card, <span class="keyword">const</span> <a class="code" href="struct_sets___set.html">Sets_Set</a> powerset);
+<a name="l00638"></a>00638 
+<a name="l00647"></a>00647 <span class="keywordtype">int</span> <a class="code" href="_belief_functions_8c.html#aaf154ca9f6663bf79b12894c05cb1f16">BF_getNbMaxMass</a>(<span class="keyword">const</span> <a class="code" href="struct_b_f___belief_function.html">BF_BeliefFunction</a> m, <span class="keyword">const</span> <span class="keywordtype">int</span> card);
+<a name="l00648"></a>00648 
+<a name="l00657"></a>00657 <span class="keywordtype">int</span> <a class="code" href="_belief_functions_8c.html#a63ace25f467b238cca9675f64037d39d">BF_getNbMinMass</a>(<span class="keyword">const</span> <a class="code" href="struct_b_f___belief_function.html">BF_BeliefFunction</a> m, <span class="keyword">const</span> <span class="keywordtype">int</span> card);
+<a name="l00658"></a>00658 
+<a name="l00668"></a>00668 <span class="keywordtype">int</span> <a class="code" href="_belief_functions_8c.html#a8e1389b7734cc65a14eccdfad59ca9be">BF_getNbMaxBel</a>(<span class="keyword">const</span> <a class="code" href="struct_b_f___belief_function.html">BF_BeliefFunction</a> m, <span class="keyword">const</span> <span class="keywordtype">int</span> card, <span class="keyword">const</span> <a class="code" href="struct_sets___set.html">Sets_Set</a> powerset);
+<a name="l00669"></a>00669 
+<a name="l00679"></a>00679 <span class="keywordtype">int</span> <a class="code" href="_belief_functions_8c.html#a02040f201222353f89d276c68d651e37">BF_getNbMinBel</a>(<span class="keyword">const</span> <a class="code" href="struct_b_f___belief_function.html">BF_BeliefFunction</a> m, <span class="keyword">const</span> <span class="keywordtype">int</span> card, <span class="keyword">const</span> <a class="code" href="struct_sets___set.html">Sets_Set</a> powerset);
+<a name="l00680"></a>00680 
+<a name="l00690"></a>00690 <span class="keywordtype">int</span> <a class="code" href="_belief_functions_8c.html#a3c47967371d50a0e506a60a337ab40c3">BF_getNbMaxPl</a>(<span class="keyword">const</span> <a class="code" href="struct_b_f___belief_function.html">BF_BeliefFunction</a> m, <span class="keyword">const</span> <span class="keywordtype">int</span> card, <span class="keyword">const</span> <a class="code" href="struct_sets___set.html">Sets_Set</a> powerset);
+<a name="l00691"></a>00691 
+<a name="l00701"></a>00701 <span class="keywordtype">int</span> <a class="code" href="_belief_functions_8c.html#afabc41d74088c42650c4becffbbccdd2">BF_getNbMinPl</a>(<span class="keyword">const</span> <a class="code" href="struct_b_f___belief_function.html">BF_BeliefFunction</a> m, <span class="keyword">const</span> <span class="keywordtype">int</span> card, <span class="keyword">const</span> <a class="code" href="struct_sets___set.html">Sets_Set</a> powerset);
+<a name="l00702"></a>00702 
+<a name="l00712"></a>00712 <span class="keywordtype">int</span> <a class="code" href="_belief_functions_8c.html#a6b2a4a9ba9b09805a3da6a1b6b983486">BF_getNbMaxBetP</a>(<span class="keyword">const</span> <a class="code" href="struct_b_f___belief_function.html">BF_BeliefFunction</a> m, <span class="keyword">const</span> <span class="keywordtype">int</span> card, <span class="keyword">const</span> <a class="code" href="struct_sets___set.html">Sets_Set</a> powerset);
+<a name="l00713"></a>00713 
+<a name="l00723"></a>00723 <span class="keywordtype">int</span> <a class="code" href="_belief_functions_8c.html#af3ec5a692f270f5974b2aa2baed88fa0">BF_getNbMinBetP</a>(<span class="keyword">const</span> <a class="code" href="struct_b_f___belief_function.html">BF_BeliefFunction</a> m, <span class="keyword">const</span> <span class="keywordtype">int</span> card, <span class="keyword">const</span> <a class="code" href="struct_sets___set.html">Sets_Set</a> powerset);
+<a name="l00724"></a>00724 
+<a name="l00734"></a>00734 <span class="keywordtype">int</span> <a class="code" href="_belief_functions_8c.html#afbbec54bcca6905dd7864ab0982edace">BF_getQuickNbMaxMass</a>(<span class="keyword">const</span> <a class="code" href="struct_b_f___belief_function.html">BF_BeliefFunction</a> m, <span class="keyword">const</span> <span class="keywordtype">int</span> card, <span class="keywordtype">float</span> maxValue);
+<a name="l00735"></a>00735 
+<a name="l00745"></a>00745 <span class="keywordtype">int</span> <a class="code" href="_belief_functions_8c.html#a36a983dcf4d91b5183c254a479904400">BF_getQuickNbMinMass</a>(<span class="keyword">const</span> <a class="code" href="struct_b_f___belief_function.html">BF_BeliefFunction</a> m, <span class="keyword">const</span> <span class="keywordtype">int</span> card, <span class="keywordtype">float</span> minValue);
+<a name="l00746"></a>00746 
+<a name="l00757"></a>00757 <span class="keywordtype">int</span> <a class="code" href="_belief_functions_8c.html#a69ff11fb69f0d2fd280600bc773be0b0">BF_getQuickNbMaxBel</a>(<span class="keyword">const</span> <a class="code" href="struct_b_f___belief_function.html">BF_BeliefFunction</a> m, <span class="keyword">const</span> <span class="keywordtype">int</span> card, <span class="keyword">const</span> <a class="code" href="struct_sets___set.html">Sets_Set</a> powerset, <span class="keywordtype">float</span> maxValue);
+<a name="l00758"></a>00758 
+<a name="l00769"></a>00769 <span class="keywordtype">int</span> <a class="code" href="_belief_functions_8c.html#a68a54d1b1e06b66f1d634b47d4fd2af0">BF_getQuickNbMinBel</a>(<span class="keyword">const</span> <a class="code" href="struct_b_f___belief_function.html">BF_BeliefFunction</a> m, <span class="keyword">const</span> <span class="keywordtype">int</span> card, <span class="keyword">const</span> <a class="code" href="struct_sets___set.html">Sets_Set</a> powerset, <span class="keywordtype">float</span> minValue);
+<a name="l00770"></a>00770 
+<a name="l00781"></a>00781 <span class="keywordtype">int</span> <a class="code" href="_belief_functions_8c.html#aeddfb2d82c5058b15b08877e1f7be64e">BF_getQuickNbMaxPl</a>(<span class="keyword">const</span> <a class="code" href="struct_b_f___belief_function.html">BF_BeliefFunction</a> m, <span class="keyword">const</span> <span class="keywordtype">int</span> card, <span class="keyword">const</span> <a class="code" href="struct_sets___set.html">Sets_Set</a> powerset, <span class="keywordtype">float</span> maxValue);
+<a name="l00782"></a>00782 
+<a name="l00793"></a>00793 <span class="keywordtype">int</span> <a class="code" href="_belief_functions_8c.html#a45838cf1932a7fa3e4521bb83cb188e3">BF_getQuickNbMinPl</a>(<span class="keyword">const</span> <a class="code" href="struct_b_f___belief_function.html">BF_BeliefFunction</a> m, <span class="keyword">const</span> <span class="keywordtype">int</span> card, <span class="keyword">const</span> <a class="code" href="struct_sets___set.html">Sets_Set</a> powerset, <span class="keywordtype">float</span> minValue);
+<a name="l00794"></a>00794 
+<a name="l00805"></a>00805 <span class="keywordtype">int</span> <a class="code" href="_belief_functions_8c.html#af9afb5f1dd65a699b325fabdf30eaf57">BF_getQuickNbMaxBetP</a>(<span class="keyword">const</span> <a class="code" href="struct_b_f___belief_function.html">BF_BeliefFunction</a> m, <span class="keyword">const</span> <span class="keywordtype">int</span> card, <span class="keyword">const</span> <a class="code" href="struct_sets___set.html">Sets_Set</a> powerset, <span class="keywordtype">float</span> maxValue);
+<a name="l00806"></a>00806 
+<a name="l00817"></a>00817 <span class="keywordtype">int</span> <a class="code" href="_belief_functions_8c.html#a1a30d8e068f393fd1afd408570c3586f">BF_getQuickNbMinBetP</a>(<span class="keyword">const</span> <a class="code" href="struct_b_f___belief_function.html">BF_BeliefFunction</a> m, <span class="keyword">const</span> <span class="keywordtype">int</span> card, <span class="keyword">const</span> <a class="code" href="struct_sets___set.html">Sets_Set</a> powerset, <span class="keywordtype">float</span> minValue);
+<a name="l00818"></a>00818 
+<a name="l00827"></a>00827 <a class="code" href="struct_b_f___focal_element.html">BF_FocalElement</a>* <a class="code" href="_belief_functions_8c.html#ae6a51a4d47214fd312b33e7a84a77355">BF_getListMaxMass</a>(<span class="keyword">const</span> <a class="code" href="struct_b_f___belief_function.html">BF_BeliefFunction</a> m, <span class="keyword">const</span> <span class="keywordtype">int</span> card);
+<a name="l00828"></a>00828 
+<a name="l00837"></a>00837 <a class="code" href="struct_b_f___focal_element.html">BF_FocalElement</a>* <a class="code" href="_belief_functions_8c.html#a6b3f9dfe470c437b188049c1815b22b9">BF_getListMinMass</a>(<span class="keyword">const</span> <a class="code" href="struct_b_f___belief_function.html">BF_BeliefFunction</a> m, <span class="keyword">const</span> <span class="keywordtype">int</span> card);
+<a name="l00838"></a>00838 
+<a name="l00848"></a>00848 <a class="code" href="struct_b_f___focal_element.html">BF_FocalElement</a>* <a class="code" href="_belief_functions_8c.html#a9ed943acd331068bcfd5de5c2f2bbf54">BF_getListMaxBel</a>(<span class="keyword">const</span> <a class="code" href="struct_b_f___belief_function.html">BF_BeliefFunction</a> m, <span class="keyword">const</span> <span class="keywordtype">int</span> card, <span class="keyword">const</span> <a class="code" href="struct_sets___set.html">Sets_Set</a> powerset);
+<a name="l00849"></a>00849 
+<a name="l00859"></a>00859 <a class="code" href="struct_b_f___focal_element.html">BF_FocalElement</a>* <a class="code" href="_belief_functions_8c.html#a797c05db5cc7c3e2f57c80d48972c0e7">BF_getListMinBel</a>(<span class="keyword">const</span> <a class="code" href="struct_b_f___belief_function.html">BF_BeliefFunction</a> m, <span class="keyword">const</span> <span class="keywordtype">int</span> card, <span class="keyword">const</span> <a class="code" href="struct_sets___set.html">Sets_Set</a> powerset);
+<a name="l00860"></a>00860 
+<a name="l00870"></a>00870 <a class="code" href="struct_b_f___focal_element.html">BF_FocalElement</a>* <a class="code" href="_belief_functions_8c.html#a57899674d608c4171d3a17434555bd38">BF_getListMaxPl</a>(<span class="keyword">const</span> <a class="code" href="struct_b_f___belief_function.html">BF_BeliefFunction</a> m, <span class="keyword">const</span> <span class="keywordtype">int</span> card, <span class="keyword">const</span> <a class="code" href="struct_sets___set.html">Sets_Set</a> powerset);
+<a name="l00871"></a>00871 
+<a name="l00881"></a>00881 <a class="code" href="struct_b_f___focal_element.html">BF_FocalElement</a>* <a class="code" href="_belief_functions_8c.html#afbc034ed432ba110c9e6f9fd6e9b76ef">BF_getListMinPl</a>(<span class="keyword">const</span> <a class="code" href="struct_b_f___belief_function.html">BF_BeliefFunction</a> m, <span class="keyword">const</span> <span class="keywordtype">int</span> card, <span class="keyword">const</span> <a class="code" href="struct_sets___set.html">Sets_Set</a> powerset);
+<a name="l00882"></a>00882 
+<a name="l00892"></a>00892 <a class="code" href="struct_b_f___focal_element.html">BF_FocalElement</a>* <a class="code" href="_belief_functions_8c.html#ac4db4d59f8b1a79e6c84dce2ed15e29c">BF_getListMaxBetP</a>(<span class="keyword">const</span> <a class="code" href="struct_b_f___belief_function.html">BF_BeliefFunction</a> m, <span class="keyword">const</span> <span class="keywordtype">int</span> card, <span class="keyword">const</span> <a class="code" href="struct_sets___set.html">Sets_Set</a> powerset);
+<a name="l00893"></a>00893 
+<a name="l00903"></a>00903 <a class="code" href="struct_b_f___focal_element.html">BF_FocalElement</a>* <a class="code" href="_belief_functions_8c.html#a524985e65b3d2eb927f49e1cd0d98920">BF_getListMinBetP</a>(<span class="keyword">const</span> <a class="code" href="struct_b_f___belief_function.html">BF_BeliefFunction</a> m, <span class="keyword">const</span> <span class="keywordtype">int</span> card, <span class="keyword">const</span> <a class="code" href="struct_sets___set.html">Sets_Set</a> powerset);
+<a name="l00904"></a>00904 
+<a name="l00914"></a>00914 <a class="code" href="struct_b_f___focal_element.html">BF_FocalElement</a>* <a class="code" href="_belief_functions_8c.html#aea57a55bfd8dca820045b0ade3d2e40d">BF_getQuickListMaxMass</a>(<span class="keyword">const</span> <a class="code" href="struct_b_f___belief_function.html">BF_BeliefFunction</a> m, <span class="keyword">const</span> <span class="keywordtype">int</span> card, <span class="keyword">const</span> <span class="keywordtype">float</span> maxValue);
+<a name="l00915"></a>00915 
+<a name="l00925"></a>00925 <a class="code" href="struct_b_f___focal_element.html">BF_FocalElement</a>* <a class="code" href="_belief_functions_8c.html#a6036f0d29d16a53d50fb8cbcd5a2cea1">BF_getQuickListMinMass</a>(<span class="keyword">const</span> <a class="code" href="struct_b_f___belief_function.html">BF_BeliefFunction</a> m, <span class="keyword">const</span> <span class="keywordtype">int</span> card, <span class="keyword">const</span> <span class="keywordtype">float</span> minValue);
+<a name="l00926"></a>00926 
+<a name="l00937"></a>00937 <a class="code" href="struct_b_f___focal_element.html">BF_FocalElement</a>* <a class="code" href="_belief_functions_8c.html#a3d64e9534605422aa8c52c3e21e5a71d">BF_getQuickListMaxBel</a>(<span class="keyword">const</span> <a class="code" href="struct_b_f___belief_function.html">BF_BeliefFunction</a> m, <span class="keyword">const</span> <span class="keywordtype">int</span> card, <span class="keyword">const</span> <a class="code" href="struct_sets___set.html">Sets_Set</a> powerset, <span class="keyword">const</span> <span class="keywordtype">float</span> maxValue);
+<a name="l00938"></a>00938 
+<a name="l00949"></a>00949 <a class="code" href="struct_b_f___focal_element.html">BF_FocalElement</a>* <a class="code" href="_belief_functions_8c.html#ac062188b824dcbf7635237dfd31475fc">BF_getQuickListMinBel</a>(<span class="keyword">const</span> <a class="code" href="struct_b_f___belief_function.html">BF_BeliefFunction</a> m, <span class="keyword">const</span> <span class="keywordtype">int</span> card, <span class="keyword">const</span> <a class="code" href="struct_sets___set.html">Sets_Set</a> powerset, <span class="keyword">const</span> <span class="keywordtype">float</span> minValue);
+<a name="l00950"></a>00950 
+<a name="l00961"></a>00961 <a class="code" href="struct_b_f___focal_element.html">BF_FocalElement</a>* <a class="code" href="_belief_functions_8c.html#a1cc231bbb149836c2a0498f46523c5f6">BF_getQuickListMaxPl</a>(<span class="keyword">const</span> <a class="code" href="struct_b_f___belief_function.html">BF_BeliefFunction</a> m, <span class="keyword">const</span> <span class="keywordtype">int</span> card, <span class="keyword">const</span> <a class="code" href="struct_sets___set.html">Sets_Set</a> powerset, <span class="keyword">const</span> <span class="keywordtype">float</span> maxValue);
+<a name="l00962"></a>00962 
+<a name="l00973"></a>00973 <a class="code" href="struct_b_f___focal_element.html">BF_FocalElement</a>* <a class="code" href="_belief_functions_8c.html#ac0d2ebc6ef7012aa7aaaf2a3a4ea6111">BF_getQuickListMinPl</a>(<span class="keyword">const</span> <a class="code" href="struct_b_f___belief_function.html">BF_BeliefFunction</a> m, <span class="keyword">const</span> <span class="keywordtype">int</span> card, <span class="keyword">const</span> <a class="code" href="struct_sets___set.html">Sets_Set</a> powerset, <span class="keyword">const</span> <span class="keywordtype">float</span> minValue);
+<a name="l00974"></a>00974 
+<a name="l00985"></a>00985 <a class="code" href="struct_b_f___focal_element.html">BF_FocalElement</a>* <a class="code" href="_belief_functions_8c.html#a4adb06181b557c846cc3db138cc1d024">BF_getQuickListMaxBetP</a>(<span class="keyword">const</span> <a class="code" href="struct_b_f___belief_function.html">BF_BeliefFunction</a> m, <span class="keyword">const</span> <span class="keywordtype">int</span> card, <span class="keyword">const</span> <a class="code" href="struct_sets___set.html">Sets_Set</a> powerset, <span class="keyword">const</span> <span class="keywordtype">float</span> maxValue);
+<a name="l00986"></a>00986 
+<a name="l00997"></a>00997 <a class="code" href="struct_b_f___focal_element.html">BF_FocalElement</a>* <a class="code" href="_belief_functions_8c.html#a71c3160157ea78eed69ade99fdd1a92c">BF_getQuickListMinBetP</a>(<span class="keyword">const</span> <a class="code" href="struct_b_f___belief_function.html">BF_BeliefFunction</a> m, <span class="keyword">const</span> <span class="keywordtype">int</span> card, <span class="keyword">const</span> <a class="code" href="struct_sets___set.html">Sets_Set</a> powerset, <span class="keyword">const</span> <span class="keywordtype">float</span> minValue);
+<a name="l00998"></a>00998 
+<a name="l01009"></a>01009 <a class="code" href="struct_b_f___focal_element.html">BF_FocalElement</a>* <a class="code" href="_belief_functions_8c.html#abf24629ed149e8615413bec148f04cb4">BF_getQuickerListMaxMass</a>(<span class="keyword">const</span> <a class="code" href="struct_b_f___belief_function.html">BF_BeliefFunction</a> m, <span class="keyword">const</span> <span class="keywordtype">int</span> card, <span class="keyword">const</span> <span class="keywordtype">float</span> maxValue, <span class="keyword">const</span> <span class="keywordtype">int</span> nbMax);
+<a name="l01010"></a>01010 
+<a name="l01021"></a>01021 <a class="code" href="struct_b_f___focal_element.html">BF_FocalElement</a>* <a class="code" href="_belief_functions_8c.html#a41624db0962c9e24aa3b1af6bad2e121">BF_getQuickerListMinMass</a>(<span class="keyword">const</span> <a class="code" href="struct_b_f___belief_function.html">BF_BeliefFunction</a> m, <span class="keyword">const</span> <span class="keywordtype">int</span> card, <span class="keyword">const</span> <span class="keywordtype">float</span> minValue, <span class="keyword">const</span> <span class="keywordtype">int</span> nbMin);
+<a name="l01022"></a>01022 
+<a name="l01034"></a>01034 <a class="code" href="struct_b_f___focal_element.html">BF_FocalElement</a>* <a class="code" href="_belief_functions_8c.html#add139e82190d797b8f1863848467dea9">BF_getQuickerListMaxBel</a>(<span class="keyword">const</span> <a class="code" href="struct_b_f___belief_function.html">BF_BeliefFunction</a> m, <span class="keyword">const</span> <span class="keywordtype">int</span> card, <span class="keyword">const</span> <a class="code" href="struct_sets___set.html">Sets_Set</a> powerset, <span class="keyword">const</span> <span class="keywordtype">float</span> maxValue, <span class="keyword">const</span> <span class="keywordtype">int</span> nbMax);
+<a name="l01035"></a>01035 
+<a name="l01047"></a>01047 <a class="code" href="struct_b_f___focal_element.html">BF_FocalElement</a>* <a class="code" href="_belief_functions_8c.html#ace00a83049c264ef7f1596c46b339d4a">BF_getQuickerListMinBel</a>(<span class="keyword">const</span> <a class="code" href="struct_b_f___belief_function.html">BF_BeliefFunction</a> m, <span class="keyword">const</span> <span class="keywordtype">int</span> card, <span class="keyword">const</span> <a class="code" href="struct_sets___set.html">Sets_Set</a> powerset, <span class="keyword">const</span> <span class="keywordtype">float</span> minValue, <span class="keyword">const</span> <span class="keywordtype">int</span> nbMin);
+<a name="l01048"></a>01048 
+<a name="l01060"></a>01060 <a class="code" href="struct_b_f___focal_element.html">BF_FocalElement</a>* <a class="code" href="_belief_functions_8c.html#a6ac5be2c9be1cd49ddceaa2e4c447010">BF_getQuickerListMaxPl</a>(<span class="keyword">const</span> <a class="code" href="struct_b_f___belief_function.html">BF_BeliefFunction</a> m, <span class="keyword">const</span> <span class="keywordtype">int</span> card, <span class="keyword">const</span> <a class="code" href="struct_sets___set.html">Sets_Set</a> powerset, <span class="keyword">const</span> <span class="keywordtype">float</span> maxValue, <span class="keyword">const</span> <span class="keywordtype">int</span> nbMax);
+<a name="l01061"></a>01061 
+<a name="l01073"></a>01073 <a class="code" href="struct_b_f___focal_element.html">BF_FocalElement</a>* <a class="code" href="_belief_functions_8c.html#a86cce660c55ff2b1dd5c77e4fdf55bef">BF_getQuickerListMinPl</a>(<span class="keyword">const</span> <a class="code" href="struct_b_f___belief_function.html">BF_BeliefFunction</a> m, <span class="keyword">const</span> <span class="keywordtype">int</span> card, <span class="keyword">const</span> <a class="code" href="struct_sets___set.html">Sets_Set</a> powerset, <span class="keyword">const</span> <span class="keywordtype">float</span> minValue, <span class="keyword">const</span> <span class="keywordtype">int</span> nbMin);
+<a name="l01074"></a>01074 
+<a name="l01086"></a>01086 <a class="code" href="struct_b_f___focal_element.html">BF_FocalElement</a>* <a class="code" href="_belief_functions_8c.html#aa6c538402564acc9ecbc202706953f9e">BF_getQuickerListMaxBetP</a>(<span class="keyword">const</span> <a class="code" href="struct_b_f___belief_function.html">BF_BeliefFunction</a> m, <span class="keyword">const</span> <span class="keywordtype">int</span> card, <span class="keyword">const</span> <a class="code" href="struct_sets___set.html">Sets_Set</a> powerset, <span class="keyword">const</span> <span class="keywordtype">float</span> maxValue, <span class="keyword">const</span> <span class="keywordtype">int</span> nbMax);
+<a name="l01087"></a>01087 
+<a name="l01099"></a>01099 <a class="code" href="struct_b_f___focal_element.html">BF_FocalElement</a>* <a class="code" href="_belief_functions_8c.html#ac7548afe078a40401df5da1039efae4a">BF_getQuickerListMinBetP</a>(<span class="keyword">const</span> <a class="code" href="struct_b_f___belief_function.html">BF_BeliefFunction</a> m, <span class="keyword">const</span> <span class="keywordtype">int</span> card, <span class="keyword">const</span> <a class="code" href="struct_sets___set.html">Sets_Set</a> powerset, <span class="keyword">const</span> <span class="keywordtype">float</span> minValue, <span class="keyword">const</span> <span class="keywordtype">int</span> nbMin);
+<a name="l01100"></a>01100 
+<a name="l01103"></a>01103 <span class="comment">/* !!! Deallocate memory given to believes !!! */</span>
+<a name="l01104"></a>01104 
+<a name="l01114"></a>01114 <span class="keywordtype">void</span> <a class="code" href="_belief_functions_8c.html#aa3c5107945acc34941aed1c7f7e04968">BF_freeBeliefFunction</a>(<a class="code" href="struct_b_f___belief_function.html">BF_BeliefFunction</a>* bf);
+<a name="l01115"></a>01115 
+<a name="l01120"></a>01120 <span class="keywordtype">void</span> <a class="code" href="_belief_functions_8c.html#a4e12dcb5da2c769f13ef67ffafc9f1d7">BF_freeBeliefPoint</a>(<a class="code" href="struct_b_f___focal_element.html">BF_FocalElement</a> *bp);
+<a name="l01121"></a>01121 
+<a name="l01124"></a>01124 <span class="comment">/* !!! Conversion into strings !!! */</span>
+<a name="l01125"></a>01125 
+<a name="l01138"></a>01138 <span class="keywordtype">char</span>* <a class="code" href="_belief_functions_8c.html#a7ca111c373c8eff6c7b221aa3f6e9a0b">BF_beliefFunctionToString</a>(<span class="keyword">const</span> <a class="code" href="struct_b_f___belief_function.html">BF_BeliefFunction</a> bf, <span class="keyword">const</span> <a class="code" href="struct_sets___reference_list.html">Sets_ReferenceList</a> rl);
+<a name="l01139"></a>01139 
+<a name="l01147"></a>01147 <span class="keywordtype">char</span>* <a class="code" href="_belief_functions_8c.html#a09113849ea5c4042faebfd9c2b53e1b5">BF_beliefFunctionToBitString</a>(<span class="keyword">const</span> <a class="code" href="struct_b_f___belief_function.html">BF_BeliefFunction</a> bf);
+<a name="l01148"></a>01148 
+<a name="l01151"></a>01151 <span class="preprocessor">#endif</span>
+<a name="l01152"></a>01152 <span class="preprocessor"></span>
+<a name="l01153"></a>01153 
 </pre></div></div>
 </div>
 <!--- window showing the filter options -->
@@ -351,7 +348,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </iframe>
 </div>
 
-<hr class="footer"/><address class="footer"><small>Generated on Mon Nov 26 2012 14:43:28 for THE GAME by&#160;
+<hr class="footer"/><address class="footer"><small>Generated on Tue Jun 4 2013 13:57:38 for THE GAME by&#160;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.3 </small></address>
 </body>

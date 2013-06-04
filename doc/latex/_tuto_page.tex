@@ -1,0 +1,60 @@
+This page is still under construction.\hypertarget{_tuto_page_ref_hard}{}\section{Starting the hard way}\label{_tuto_page_ref_hard}
+I know some people like to code the hard way. If you want to build everything by yourself, this is an example of how it is possible to build a mass function from scratch. It also presents how to combine mass functions. (Note that if you keep the -\/pedantic option in the makefile, you should write the comments using /$\ast$ comments instead of // comments.) 
+\begin{DoxyCode}
+ BF_BeliefFunction m, m2, m3;
+ char* str = NULL;
+ char bits[2], bits2[2];
+
+ //A two bits element:
+ bits[0] = 1;
+ bits[1] = 1;
+ 
+ //Another two bits element: 
+ bits2[0] = 1;
+ bits2[1] = 0;
+ 
+ //Building a mass function the hard way: 
+ m.elementSize = 2;
+ m.nbFocals = 2;
+ m.focals = malloc(sizeof(BF_FocalElement) * 2);
+ m.focals[0].element = Sets_createElementFromBits(bits, 2);
+ m.focals[0].beliefValue = 0.3;
+ m.focals[1].element = Sets_createElementFromBits(bits2, 2);
+ m.focals[1].beliefValue = 0.7;
+ 
+ //Printing the mass function: 
+ str = BF_beliefFunctionToBitString(m);
+ printf("m = \n%s\n", str);
+ free(str);
+ 
+ //Combination of mass functions: 
+ m2 = BF_DempsterCombination(m, m);
+ m3 = BF_DempsterCombination(m2, m);
+ 
+ //Printing the result of combination: 
+ str = BF_beliefFunctionToBitString(m2);
+ printf("m2 = \n%s\n", str);
+ free(str);
+ 
+ str = BF_beliefFunctionToBitString(m3);
+ printf("m3 = \n%s\n", str);
+ free(str);
+ 
+ //Freeing mass functions: 
+ BF_freeBeliefFunction(&m);
+ BF_freeBeliefFunction(&m2);
+ BF_freeBeliefFunction(&m3);
+\end{DoxyCode}
+\hypertarget{_tuto_page_Tuto_contact}{}\section{Contact}\label{_tuto_page_Tuto_contact}
+Bastien Pietropaoli \par
+ Ph.D. student \par
+ INRIA, Rennes -\/ Bretagne Atlantique \par
+ ACES Team \par
+
+
+{\bfseries Email:} \par
+ \href{mailto:bastien.pietropaoli@inria.fr}{\tt bastien.pietropaoli@inria.fr} \par
+ \href{mailto:bastien.pietropaoli@gmail.com}{\tt bastien.pietropaoli@gmail.com} \par
+
+
+Copyright 2011-\/2013, EDF. This software was developed with the collaboration of INRIA (Bastien Pietropaoli) 

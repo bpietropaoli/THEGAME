@@ -112,11 +112,20 @@
  *
  * The file config.h enables the configuration of compilation (Windows/Unix and debug or not).
  * Once you are sure that everything is okay (sufficient memory, valid files, valid models), you can
- * comment the DEBUG, CHECK_SUM, CHECK_VALUES, CHECK_MODELS and CHECK_COMPATIBILITY defines to gain in performance.@n
- * The makefile is here to help you to compile everything. Replace the main by yours and just do a "make".
+ * comment the DEBUG, CHECK_SUM, CHECK_VALUES, CHECK_MODELS and CHECK_COMPATIBILITY defines to gain in performance. @n
+ * The makefile is here to help you to compile everything. Replace the main by yours and just do a "make". The default
+ * compilation options are quite constraining so feel free to remove some on them such as -pedantic...
  * 
  * If this is the first time you use this library, please have a look at the documentation or refer to the 
- * raw code given in Tests.c to see how the functions are used and called.
+ * raw code given in Tests.c to see how the functions are used and called (a tutorial page is coming!).
+ *
+ * @section ref_philo Philosophy of the implementation
+ * It seems important to me to give more precision on how to use this little library and how it has been implemented.
+ *
+ * The main idea in this library is that I don't want to lose any information at any time. Thus, all the functions that could modify mass 
+ * functions create new ones instead! You have to free every new mass function that has been created. To create copies of mass function,
+ * there is a function called BF_copyBeliefFunction() which creates a hard copy of the given mass function. That is why most functions work
+ * with structures instead of pointers on structures.
  *
  * @section ref_sec Main References
  * @li A. Appriou - Formulation et traitement de l'incertain en analyse multi-senseurs -
@@ -264,6 +273,7 @@
  * @li Implement new applicative modules
  * @li Implement other theories (multi-frame functions, continuous belief function, DSmT, etc...)
  * @li Add some tools to build belief functions (randomly, from certain files, from statistics, etc...)
+ * @li Write a tutorial page explaining the basics of the theory and how to start using the library.
  *
  * @section Todo_contact Contact
  * Bastien Pietropaoli @n
@@ -285,6 +295,96 @@
  * http://en.wikipedia.org/wiki/The_Game_(mind_game)
  *
  * @section Origin_contact Contact
+ * Bastien Pietropaoli @n
+ * Ph.D. student @n
+ * INRIA, Rennes - Bretagne Atlantique @n
+ * ACES Team @n
+ *
+ * @b Email: @n
+ * bastien.pietropaoli@inria.fr @n
+ * bastien.pietropaoli@gmail.com @n
+ *
+ * Copyright 2011-2013, EDF. This software was developed with the collaboration of INRIA (Bastien Pietropaoli)
+ */
+ 
+/**
+ * @page FAQ_page FAQ
+ * As sometimes, we got a question, the frequently asked question section may contain the answer we are looking for.
+ *
+ * @section FAQ_character The names of my states are badly cut or contain ^M characters
+ * This is due to the end of line character difference between Windows and Linux/MacOS. It counts for two characters on certain systems and for only one on others.
+ * To correct this, you can try to compile with another system variable (WINDOWS or LINUX).
+ *
+ * For Linux users, it is also possible to get a package called "tofrodos" which enables to convert files from windows to linux format and vice versa.
+ *
+ * @section FAQ_contact Contact
+ * Bastien Pietropaoli @n
+ * Ph.D. student @n
+ * INRIA, Rennes - Bretagne Atlantique @n
+ * ACES Team @n
+ *
+ * @b Email: @n
+ * bastien.pietropaoli@inria.fr @n
+ * bastien.pietropaoli@gmail.com @n
+ *
+ * Copyright 2011-2013, EDF. This software was developed with the collaboration of INRIA (Bastien Pietropaoli)
+ */
+ 
+/**
+ * @page Tuto_page Quick start and tutorial
+ * This page is still under construction.
+ *
+ * @section ref_hard Starting the hard way
+ * I know some people like to code the hard way. If you want to build everything by yourself, this is an example of how it is possible to 
+ * build a mass function from scratch. It also presents how to combine mass functions. (Note that if you keep the -pedantic option in the makefile,
+ * you should write the comments using /* comments instead of // comments.)
+ * @code
+ * BF_BeliefFunction m, m2, m3;
+ * char* str = NULL;
+ * char bits[2], bits2[2];
+ *
+ * //A two bits element:
+ * bits[0] = 1;
+ * bits[1] = 1;
+ * 
+ * //Another two bits element: 
+ * bits2[0] = 1;
+ * bits2[1] = 0;
+ * 
+ * //Building a mass function the hard way: 
+ * m.elementSize = 2;
+ * m.nbFocals = 2;
+ * m.focals = malloc(sizeof(BF_FocalElement) * 2);
+ * m.focals[0].element = Sets_createElementFromBits(bits, 2);
+ * m.focals[0].beliefValue = 0.3;
+ * m.focals[1].element = Sets_createElementFromBits(bits2, 2);
+ * m.focals[1].beliefValue = 0.7;
+ * 
+ * //Printing the mass function: 
+ * str = BF_beliefFunctionToBitString(m);
+ * printf("m = \n%s\n", str);
+ * free(str);
+ * 
+ * //Combination of mass functions: 
+ * m2 = BF_DempsterCombination(m, m);
+ * m3 = BF_DempsterCombination(m2, m);
+ * 
+ * //Printing the result of combination: 
+ * str = BF_beliefFunctionToBitString(m2);
+ * printf("m2 = \n%s\n", str);
+ * free(str);
+ * 
+ * str = BF_beliefFunctionToBitString(m3);
+ * printf("m3 = \n%s\n", str);
+ * free(str);
+ * 
+ * //Freeing mass functions: 
+ * BF_freeBeliefFunction(&m);
+ * BF_freeBeliefFunction(&m2);
+ * BF_freeBeliefFunction(&m3);
+ * @endcode
+ * 
+ * @section Tuto_contact Contact
  * Bastien Pietropaoli @n
  * Ph.D. student @n
  * INRIA, Rennes - Bretagne Atlantique @n

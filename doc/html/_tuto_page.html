@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
-<title>THE GAME: TODO Page</title>
+<title>THE GAME: Quick start and tutorial</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/search.js"></script>
@@ -53,22 +53,57 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div>
 <div class="header">
   <div class="headertitle">
-<h1>TODO Page </h1>  </div>
+<h1>Quick start and tutorial </h1>  </div>
 </div>
 <div class="contents">
-<div class="textblock"><h2><a class="anchor" id="TODO_Intro"></a>
-Introduction</h2>
-<p>If you feel in the mood to enjoy some C code, on this page, you can find a list a things to do to improve this library.</p>
-<h2><a class="anchor" id="Todo_list"></a>
-Todo list</h2>
-<ul>
-<li>Implement new combination rules (PCR5/6, Florea, etc...) </li>
-<li>Implement new applicative modules </li>
-<li>Implement other theories (multi-frame functions, continuous belief function, DSmT, etc...) </li>
-<li>Add some tools to build belief functions (randomly, from certain files, from statistics, etc...) </li>
-<li>Write a tutorial page explaining the basics of the theory and how to start using the library.</li>
-</ul>
-<h2><a class="anchor" id="Todo_contact"></a>
+<div class="textblock"><p>This page is still under construction.</p>
+<h2><a class="anchor" id="ref_hard"></a>
+Starting the hard way</h2>
+<p>I know some people like to code the hard way. If you want to build everything by yourself, this is an example of how it is possible to build a mass function from scratch. It also presents how to combine mass functions. (Note that if you keep the -pedantic option in the makefile, you should write the comments using /* comments instead of // comments.) </p>
+<div class="fragment"><pre class="fragment"> <a class="code" href="struct_b_f___belief_function.html">BF_BeliefFunction</a> m, m2, m3;
+ <span class="keywordtype">char</span>* str = NULL;
+ <span class="keywordtype">char</span> bits[2], bits2[2];
+
+ <span class="comment">//A two bits element:</span>
+ bits[0] = 1;
+ bits[1] = 1;
+ 
+ <span class="comment">//Another two bits element: </span>
+ bits2[0] = 1;
+ bits2[1] = 0;
+ 
+ <span class="comment">//Building a mass function the hard way: </span>
+ m.elementSize = 2;
+ m.nbFocals = 2;
+ m.focals = malloc(<span class="keyword">sizeof</span>(<a class="code" href="struct_b_f___focal_element.html">BF_FocalElement</a>) * 2);
+ m.focals[0].element = <a class="code" href="_sets_8c.html#a734e81728f1e2e9fab1b86045dcc42d4">Sets_createElementFromBits</a>(bits, 2);
+ m.focals[0].beliefValue = 0.3;
+ m.focals[1].element = <a class="code" href="_sets_8c.html#a734e81728f1e2e9fab1b86045dcc42d4">Sets_createElementFromBits</a>(bits2, 2);
+ m.focals[1].beliefValue = 0.7;
+ 
+ <span class="comment">//Printing the mass function: </span>
+ str = <a class="code" href="_belief_functions_8c.html#a09113849ea5c4042faebfd9c2b53e1b5">BF_beliefFunctionToBitString</a>(m);
+ printf(<span class="stringliteral">&quot;m = \n%s\n&quot;</span>, str);
+ free(str);
+ 
+ <span class="comment">//Combination of mass functions: </span>
+ m2 = <a class="code" href="_belief_functions_8c.html#a34a15102ee96fc30396ef8972b99c440">BF_DempsterCombination</a>(m, m);
+ m3 = <a class="code" href="_belief_functions_8c.html#a34a15102ee96fc30396ef8972b99c440">BF_DempsterCombination</a>(m2, m);
+ 
+ <span class="comment">//Printing the result of combination: </span>
+ str = <a class="code" href="_belief_functions_8c.html#a09113849ea5c4042faebfd9c2b53e1b5">BF_beliefFunctionToBitString</a>(m2);
+ printf(<span class="stringliteral">&quot;m2 = \n%s\n&quot;</span>, str);
+ free(str);
+ 
+ str = <a class="code" href="_belief_functions_8c.html#a09113849ea5c4042faebfd9c2b53e1b5">BF_beliefFunctionToBitString</a>(m3);
+ printf(<span class="stringliteral">&quot;m3 = \n%s\n&quot;</span>, str);
+ free(str);
+ 
+ <span class="comment">//Freeing mass functions: </span>
+ <a class="code" href="_belief_functions_8c.html#aa3c5107945acc34941aed1c7f7e04968">BF_freeBeliefFunction</a>(&amp;m);
+ <a class="code" href="_belief_functions_8c.html#aa3c5107945acc34941aed1c7f7e04968">BF_freeBeliefFunction</a>(&amp;m2);
+ <a class="code" href="_belief_functions_8c.html#aa3c5107945acc34941aed1c7f7e04968">BF_freeBeliefFunction</a>(&amp;m3);
+</pre></div><h2><a class="anchor" id="Tuto_contact"></a>
 Contact</h2>
 <p>Bastien Pietropaoli <br/>
  Ph.D. student <br/>
