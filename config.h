@@ -337,7 +337,7 @@
  * @section ref_hard Starting the hard way
  * I know some people like to code the hard way. If you want to build everything by yourself, this is an example of how it is possible to 
  * build a mass function from scratch. It also presents how to combine mass functions. (Note that if you keep the -pedantic option in the makefile,
- * you should write the comments using /* comments instead of // comments.)
+ * you should write the comments using /(*) comments instead of // comments.)
  * @code
  * BF_BeliefFunction m, m2, m3;
  * char* str = NULL;

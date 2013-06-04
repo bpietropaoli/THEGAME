@@ -847,9 +847,9 @@ void Tests_tempo_specificity(){
 	 * Behavior - State changes *
 	 ****************************/
 	
-	sprintf(path, "./data/results/tempo-spec/Tempo-Specificity - State changes");
+	sprintf(path, "./data/results/tempo-spec/Temporization-Specificity - State changes");
 	f3 = fopen(path, "w");
-	sprintf(path, "./data/results/tempo-spec-temoin/Tempo-Specificity - State changes");
+	sprintf(path, "./data/results/tempo-spec-temoin/Temporization-Specificity - State changes");
 	f2 = fopen(path, "w");
 	
     /*With tempo: */
@@ -3226,7 +3226,7 @@ int Tests_runTests(int nbIterations, int write){
 	Tests_tempo_specificity();
 	printf("...Done!\n\n");
     
-    /printf("Tests of beliefs from beliefs...\n");
+    printf("Tests of beliefs from beliefs...\n");
     Tests_beliefsFromBeliefs();
     printf("...Done!\n\n");
 
