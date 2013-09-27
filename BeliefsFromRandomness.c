@@ -57,13 +57,13 @@ BF_BeliefFunction BFR_getCrappyRandomBelief(const int elementSize){
 	int *elementNumbers = NULL;
 	
 	bf.elementSize = elementSize;
-	bf.nbFocals = rand() % (int)(pow(2, elementSize) - 1) + 1;
+	bf.nbFocals = rand() % (int)(pow(2, elementSize));
 	bf.focals = malloc(sizeof(BF_FocalElement) * bf.nbFocals);
 	elementNumbers = malloc(sizeof(int) * bf.nbFocals);
 	for(i = 0; i < bf.nbFocals; i++){
 		valid = 0;
 		while(!valid){
-			elementNumbers[i] = rand() % (int)(pow(2, elementSize) - 1) + 1;
+			elementNumbers[i] = rand() % (int)(pow(2, elementSize));
 			valid = 1;
 			for(j = 0; j < i; j++){
 				if(elementNumbers[i] == elementNumbers[j]){
@@ -80,6 +80,40 @@ BF_BeliefFunction BFR_getCrappyRandomBelief(const int elementSize){
 	
 	return bf;
 }
+
+
+BF_BeliefFunction BFR_getCrappyRandomBeliefWithFixedNbFocals(const int elementSize, const int nbFocals){
+	BF_BeliefFunction bf = {NULL, 0, 0};
+	int valid = 0;
+	int i = 0, j = 0;
+	int *elementNumbers = NULL;
+	
+	if(nbFocals <= pow(2, elementSize)){
+		bf.elementSize = elementSize;
+		bf.nbFocals = nbFocals;
+		bf.focals = malloc(sizeof(BF_FocalElement) * nbFocals);
+		elementNumbers = malloc(sizeof(int) * nbFocals);
+		for(i = 0; i < bf.nbFocals; i++){
+			valid = 0;
+			while(!valid){
+				elementNumbers[i] = rand() % (int)(pow(2, elementSize));
+				valid = 1;
+				for(j = 0; j < i; j++){
+					if(elementNumbers[i] == elementNumbers[j]){
+						valid = 0;
+					}
+				}
+			}
+			bf.focals[i].element = Sets_elementFromNumber(elementNumbers[i], elementSize);
+			bf.focals[i].beliefValue = (float)rand() / RAND_MAX;
+		}
+		free(elementNumbers);
+		BF_normalize(&bf);
+	}
+	
+	return bf;
+}
+
 
 /**@}*/
 

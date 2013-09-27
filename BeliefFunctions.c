@@ -206,9 +206,11 @@ BF_BeliefFunction BF_DempsterCombination(const BF_BeliefFunction m1, const BF_Be
 
     /*Get the Smets combination:*/
     combined = BF_SmetsCombination(m1, m2);
+    #ifdef CHECK_SUM
     if(BF_checkSum(combined)){
         printf("debug: in BF_DempsterCombination(), bad sum from SmetsCombination() !\n");
     }
+    #endif
     emptySet = Sets_getEmptyElement(m1.elementSize);
     voidMass = BF_M(combined, emptySet);
     /*Normalize with the void mass:*/

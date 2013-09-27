@@ -19,7 +19,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname">THE GAME&#160;<span id="projectnumber">v0.5.1d</span></div>
+   <div id="projectname">THE GAME&#160;<span id="projectnumber">v0.5.1e</span></div>
    <div id="projectbrief">THeory of Evidence in a lanGuage Adapted for Many Embedded systems</div>
   </td>
  </tr>
@@ -90,20 +90,20 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00043"></a>00043       srand(tm-&gt;tm_sec + tm-&gt;tm_min*60 + tm-&gt;tm_hour*3600 + tm-&gt;tm_mday*86400);
 <a name="l00044"></a>00044 }
 <a name="l00045"></a>00045 
-<a name="l00053"></a>00053 <a class="code" href="struct_b_f___belief_function.html">BF_BeliefFunction</a> BFR_getCrappyRandomBelief(<span class="keyword">const</span> <span class="keywordtype">int</span> elementSize){
+<a name="l00053"></a><a class="code" href="_beliefs_from_randomness_8h.html#aaa6c6360c4d88dc7ab57edf6240463e9">00053</a> <a class="code" href="struct_b_f___belief_function.html">BF_BeliefFunction</a> <a class="code" href="_beliefs_from_randomness_8c.html#aaa6c6360c4d88dc7ab57edf6240463e9">BFR_getCrappyRandomBelief</a>(<span class="keyword">const</span> <span class="keywordtype">int</span> elementSize){
 <a name="l00054"></a>00054       <a class="code" href="struct_b_f___belief_function.html">BF_BeliefFunction</a> bf;
 <a name="l00055"></a>00055       <span class="keywordtype">int</span> valid = 0;
 <a name="l00056"></a>00056       <span class="keywordtype">int</span> i = 0, j = 0;
 <a name="l00057"></a>00057       <span class="keywordtype">int</span> *elementNumbers = NULL;
 <a name="l00058"></a>00058       
 <a name="l00059"></a>00059       bf.elementSize = elementSize;
-<a name="l00060"></a>00060       bf.nbFocals = rand() % (int)(pow(2, elementSize) - 1) + 1;
+<a name="l00060"></a>00060       bf.nbFocals = rand() % (int)(pow(2, elementSize));
 <a name="l00061"></a>00061       bf.focals = malloc(<span class="keyword">sizeof</span>(<a class="code" href="struct_b_f___focal_element.html">BF_FocalElement</a>) * bf.nbFocals);
 <a name="l00062"></a>00062       elementNumbers = malloc(<span class="keyword">sizeof</span>(<span class="keywordtype">int</span>) * bf.nbFocals);
 <a name="l00063"></a>00063       <span class="keywordflow">for</span>(i = 0; i &lt; bf.nbFocals; i++){
 <a name="l00064"></a>00064             valid = 0;
 <a name="l00065"></a>00065             <span class="keywordflow">while</span>(!valid){
-<a name="l00066"></a>00066                   elementNumbers[i] = rand() % (int)(pow(2, elementSize) - 1) + 1;
+<a name="l00066"></a>00066                   elementNumbers[i] = rand() % (int)(pow(2, elementSize));
 <a name="l00067"></a>00067                   valid = 1;
 <a name="l00068"></a>00068                   <span class="keywordflow">for</span>(j = 0; j &lt; i; j++){
 <a name="l00069"></a>00069                         <span class="keywordflow">if</span>(elementNumbers[i] == elementNumbers[j]){
@@ -121,6 +121,40 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00081"></a>00081       <span class="keywordflow">return</span> bf;
 <a name="l00082"></a>00082 }
 <a name="l00083"></a>00083 
+<a name="l00084"></a>00084 
+<a name="l00085"></a><a class="code" href="_beliefs_from_randomness_8h.html#af7cb0cf2489f355c4c1fcaacbe6b3a39">00085</a> <a class="code" href="struct_b_f___belief_function.html">BF_BeliefFunction</a> <a class="code" href="_beliefs_from_randomness_8c.html#af7cb0cf2489f355c4c1fcaacbe6b3a39">BFR_getCrappyRandomBeliefWithFixedNbFocals</a>(<span class="keyword">const</span> <span class="keywordtype">int</span> elementSize, <span class="keyword">const</span> <span class="keywordtype">int</span> nbFocals){
+<a name="l00086"></a>00086       <a class="code" href="struct_b_f___belief_function.html">BF_BeliefFunction</a> bf = {NULL, 0, 0};
+<a name="l00087"></a>00087       <span class="keywordtype">int</span> valid = 0;
+<a name="l00088"></a>00088       <span class="keywordtype">int</span> i = 0, j = 0;
+<a name="l00089"></a>00089       <span class="keywordtype">int</span> *elementNumbers = NULL;
+<a name="l00090"></a>00090       
+<a name="l00091"></a>00091       <span class="keywordflow">if</span>(nbFocals &lt;= pow(2, elementSize)){
+<a name="l00092"></a>00092             bf.elementSize = elementSize;
+<a name="l00093"></a>00093             bf.nbFocals = nbFocals;
+<a name="l00094"></a>00094             bf.focals = malloc(<span class="keyword">sizeof</span>(<a class="code" href="struct_b_f___focal_element.html">BF_FocalElement</a>) * nbFocals);
+<a name="l00095"></a>00095             elementNumbers = malloc(<span class="keyword">sizeof</span>(<span class="keywordtype">int</span>) * nbFocals);
+<a name="l00096"></a>00096             <span class="keywordflow">for</span>(i = 0; i &lt; bf.nbFocals; i++){
+<a name="l00097"></a>00097                   valid = 0;
+<a name="l00098"></a>00098                   <span class="keywordflow">while</span>(!valid){
+<a name="l00099"></a>00099                         elementNumbers[i] = rand() % (int)(pow(2, elementSize));
+<a name="l00100"></a>00100                         valid = 1;
+<a name="l00101"></a>00101                         <span class="keywordflow">for</span>(j = 0; j &lt; i; j++){
+<a name="l00102"></a>00102                               <span class="keywordflow">if</span>(elementNumbers[i] == elementNumbers[j]){
+<a name="l00103"></a>00103                                     valid = 0;
+<a name="l00104"></a>00104                               }
+<a name="l00105"></a>00105                         }
+<a name="l00106"></a>00106                   }
+<a name="l00107"></a>00107                   bf.focals[i].element = <a class="code" href="_sets_8c.html#ab9ee97ae54608f3fb5784b29503d62b6">Sets_elementFromNumber</a>(elementNumbers[i], elementSize);
+<a name="l00108"></a>00108                   bf.focals[i].beliefValue = (float)rand() / RAND_MAX;
+<a name="l00109"></a>00109             }
+<a name="l00110"></a>00110             free(elementNumbers);
+<a name="l00111"></a>00111             <a class="code" href="_belief_functions_8c.html#a6f278db4319a28d8bb0785eb11365fb7">BF_normalize</a>(&amp;bf);
+<a name="l00112"></a>00112       }
+<a name="l00113"></a>00113       
+<a name="l00114"></a>00114       <span class="keywordflow">return</span> bf;
+<a name="l00115"></a>00115 }
+<a name="l00116"></a>00116 
+<a name="l00117"></a>00117 
 </pre></div></div>
 </div>
 <!--- window showing the filter options -->
@@ -137,7 +171,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </iframe>
 </div>
 
-<hr class="footer"/><address class="footer"><small>Generated on Tue Jun 4 2013 13:57:38 for THE GAME by&#160;
+<hr class="footer"/><address class="footer"><small>Generated on Fri Sep 27 2013 14:57:24 for THE GAME by&#160;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.3 </small></address>
 </body>

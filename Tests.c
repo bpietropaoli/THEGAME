@@ -31,7 +31,6 @@ void Tests_typicalProblem(BFS_BeliefStructure bs, char** sensorTypes, double* se
     char *str = NULL, *str2 = NULL;
     float* conflict = NULL;
     FILE* f = NULL;
-    float number = 0;
 	
 	if(write){
 		f = fopen("data/results/bench-data.txt", "a");
@@ -106,10 +105,10 @@ void Tests_typicalProblem(BFS_BeliefStructure bs, char** sensorTypes, double* se
 		BF_freeBeliefFunction(&bf2);
 		/*Computations on evidences: */
 		for(j = 0; j<nbSensors; j++){
-		    number = BF_globalDistance(evidences[j], evidences, nbSensors);
-		    number = BF_specificity(evidences[j]);
-		    number = BF_nonSpecificity(evidences[j]);
-		    number = BF_discrepancy(evidences[j]);
+		    BF_globalDistance(evidences[j], evidences, nbSensors);
+		    BF_specificity(evidences[j]);
+		    BF_nonSpecificity(evidences[j]);
+		    BF_discrepancy(evidences[j]);
 
 		    bf2 = BF_conditioning(evidences[j], bs.powerset.elements[bs.powerset.card/2], bs.powerset);
 		    BF_freeBeliefFunction(&bf2);
@@ -118,10 +117,10 @@ void Tests_typicalProblem(BFS_BeliefStructure bs, char** sensorTypes, double* se
 		    free(conflict);
 
 		    for(i = 0; i<evidences[j].nbFocals; i++){
-		        number = BF_bel(evidences[j], evidences[j].focals[i].element);
-		        number = BF_betP(evidences[j], evidences[j].focals[i].element);
-		        number = BF_pl(evidences[j], evidences[j].focals[i].element);
-		        number = BF_q(evidences[j], evidences[j].focals[i].element);
+		        BF_bel(evidences[j], evidences[j].focals[i].element);
+		        BF_betP(evidences[j], evidences[j].focals[i].element);
+		        BF_pl(evidences[j], evidences[j].focals[i].element);
+		        BF_q(evidences[j], evidences[j].focals[i].element);
 		    }
 		}
 
@@ -1851,6 +1850,13 @@ void Tests_tempo_fusion(){
 			sprintf(path, "./data/results/tempo-fusion/Real state changes - R%d-B0.%d", (int)pow(2, l), k);
 			f3 = fopen(path, "w");
 			sprintf(path, "./data/results/tempo-fusion-temoin/Real state changes - R%d-B0.%d", (int)pow(2, l), k);
+
+
+
+
+
+
+
 			f2 = fopen(path, "w");
 			/* Believing... */
 			for(i = 0; i < 15; i++){
@@ -2586,6 +2592,7 @@ void Test_beliefFunctions(){
 
     fprintf(f,"*******************************\n");
     fprintf(f,"Test of discounting():\n");
+
     fprintf(f,"*******************************\n");
     /*Discount: */
     bf2 = BF_discounting(evidences[0], 0.1);
@@ -3194,20 +3201,29 @@ void Test_beliefFunctions(){
 
 int Tests_runTests(int nbIterations, int write){
     BFS_BeliefStructure bs, bs2, bs3, bs4;
-    int i = 0;
-    FILE* f = NULL;
+    int i = 0, j = 0, k = 0, l = 0;
+    FILE *f = NULL, *f2 = NULL, *f3 = NULL, *f4 = NULL;
     double* sensorMeasures = NULL;
     char** sensorTypes = NULL;
 
     clock_t start, end, st, en;
     float execTime = 0;
+    float execTimeDempster = 0;
+    float execTimeDuboisPrade = 0;
+    float execTimeAverage = 0;
+    float execTimeMurphy = 0;
+    
+    int elementSizes[4] = {8, 32, 128, 512};
+    int nbFocals[7] = {2, 4, 8, 16, 32, 64, 128};
+    int nbIt = 0;
+    BF_BeliefFunction m1, m2, m;
 
 
     start = clock();
 
 	printf("Tests of beliefs from randomness... (takes several minutes)\n");
 	BFR_generateRandomSeed();
-	Tests_beliefsFromRandomness(100 * nbIterations);
+	Tests_beliefsFromRandomness(10 * nbIterations);
 	printf("...Done!\n\n");
 	
 	printf("Tests of beliefs from sensors...\n");
@@ -3229,7 +3245,112 @@ int Tests_runTests(int nbIterations, int write){
     printf("Tests of beliefs from beliefs...\n");
     Tests_beliefsFromBeliefs();
     printf("...Done!\n\n");
+    
+    /********************************************
+     *                                          *
+     *           COMBINATIONS BENCH             *
+     *                                          *
+     ********************************************/
+    
+    f = fopen("data/results/benchDempster.txt", "w");
+    if(f == NULL){
+        printf("Cannot open the file data/results/benchDempster.txt...\n");
+        exit(EXIT_FAILURE);
+    }
+    
+    f2 = fopen("data/results/benchDuboisPrade.txt", "w");
+    if(f2 == NULL){
+        printf("Cannot open the file data/results/benchDuboisPrade.txt...\n");
+        exit(EXIT_FAILURE);
+    }
+    
+    f3 = fopen("data/results/benchAverage.txt", "w");
+    if(f3 == NULL){
+        printf("Cannot open the file data/results/benchAverage.txt...\n");
+        exit(EXIT_FAILURE);
+    }
+    
+    f4 = fopen("data/results/benchMurphy.txt", "w");
+    if(f4 == NULL){
+        printf("Cannot open the file data/results/benchMurphy.txt...\n");
+        exit(EXIT_FAILURE);
+    }
+    
+    printf("Combination's rule bench...\n");
+    
+    for(i = 0; i < 4; i++){
+    	for(j = 0; j < 7; j++){
+    		execTimeDempster = 0;
+    		execTimeDuboisPrade = 0;
+    		execTimeAverage = 0;
+    		execTimeMurphy = 0;
+    		if(j == 0 || j == 1){
+    			nbIt = nbIterations * 10;
+    		}
+    		else if(j > 3){
+    			nbIt = nbIterations/100;
+    		}
+    		else {
+    			nbIt = nbIterations;
+    		}
+    		for(k = 0; k < nbIt; k++){
+    			m1 = BFR_getCrappyRandomBeliefWithFixedNbFocals(elementSizes[i], nbFocals[j]);
+    			m2 = BFR_getCrappyRandomBeliefWithFixedNbFocals(elementSizes[i], nbFocals[j]);
 
+    			st = clock();
+    			for(l = 0; l < 10; l++){
+					m = BF_combination(m1, m2, DEMPSTER);
+					BF_freeBeliefFunction(&m);
+				}
+    			en = clock();
+    			execTimeDempster += ((float)(en - st))/CLOCKS_PER_SEC;
+    			
+    			
+    			st = clock();
+    			for(l = 0; l < 10; l++){
+					m = BF_combination(m1, m2, DUBOISPRADE);
+					BF_freeBeliefFunction(&m);
+				}
+    			en = clock();
+    			execTimeDuboisPrade += ((float)(en - st))/CLOCKS_PER_SEC;
+    	
+    			
+    			st = clock();
+    			for(l = 0; l < 10; l++){
+    				m = BF_combination(m1, m2, AVERAGE);
+    				BF_freeBeliefFunction(&m);
+    			}
+    			en = clock();
+    			execTimeAverage += ((float)(en - st))/CLOCKS_PER_SEC;
+    			
+    			
+    			st = clock();
+    			for(l = 0; l < 10; l++){
+					m = BF_combination(m1, m2, MURPHY);
+					BF_freeBeliefFunction(&m);
+				}
+    			en = clock();
+    			execTimeMurphy += ((float)(en - st))/CLOCKS_PER_SEC;
+    			
+    			BF_freeBeliefFunction(&m1);
+    			BF_freeBeliefFunction(&m2);
+    			
+    		}
+    		fprintf(f, "Dempster, nbIterations = %8d, nbFocals = %4d, elementSize = %4d, totalTime = %10f, averageTime = %10f\n", (nbIt*10), nbFocals[j], elementSizes[i], execTimeDempster, execTimeDempster/(nbIt*10));
+    		fprintf(f2, "DuboisPrade, nbIterations = %8d, nbFocals = %4d, elementSize = %4d, totalTime = %10f, averageTime = %10f\n", (nbIt*10), nbFocals[j], elementSizes[i], execTimeDuboisPrade, execTimeDuboisPrade/(nbIt*10));
+    		fprintf(f3, "Average, nbIterations = %8d, nbFocals = %4d, elementSize = %4d, totalTime = %10f, averageTime = %10f\n", (nbIt*10), nbFocals[j], elementSizes[i], execTimeAverage, execTimeAverage/(nbIt*10));
+    		fprintf(f4, "Murphy, nbIterations = %8d, nbFocals = %4d, elementSize = %4d, totalTime = %10f, averageTime = %10f\n", (nbIt*10), nbFocals[j], elementSizes[i], execTimeMurphy, execTimeMurphy/(nbIt*10));
+    	}
+    }
+    
+    printf("...Done!\n\n");
+    
+    fclose(f);
+    fclose(f2);
+    fclose(f3);
+    fclose(f4);
+   
+    
 
 	/********************************************
 	 *                                          *

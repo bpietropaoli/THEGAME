@@ -660,11 +660,11 @@ BF_BeliefFunction BFS_temporization_specificity(const BF_BeliefFunction oldOne, 
     BF_BeliefFunction temp = {NULL, 0, 0};
     BF_BeliefFunction result = {NULL, 0, 0};
     struct timespec newTime;
+    #ifdef DEBUG
     int error = 0;
     
     /*Get the new time: */
     error = clock_gettime(CLOCK_ID, &newTime);
-    #ifdef DEBUG
     if(error){
     	switch(errno){
     		case EFAULT: 
@@ -704,11 +704,11 @@ BF_BeliefFunction BFS_temporization_fusion(const BF_BeliefFunction oldOne, const
     BF_BeliefFunction temp = {NULL, 0, 0};
     BF_BeliefFunction result = {NULL, 0, 0};
     struct timespec newTime;
+    #ifdef DEBUG
     int error = 0;
     
     /*Get the new time: */
     error = clock_gettime(CLOCK_ID, &newTime);
-    #ifdef DEBUG
     if(error){
     	switch(errno){
     		case EFAULT: 
@@ -717,7 +717,7 @@ BF_BeliefFunction BFS_temporization_fusion(const BF_BeliefFunction oldOne, const
     			break;
     		case EINVAL: 
     			printf("debug: In BFS_temporization_specificity(), the clock had a problem...\n");
-    			printf("debug: \"The clk_id specified is not supported on this system.\"\n");
+    			printf("debug: \"The clock_id specified is not supported on this system.\"\n");
     		break;
     	}
     }

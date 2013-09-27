@@ -58,9 +58,23 @@ void BFR_generateRandomSeed();
  */
 
 /**
- *
+ * Generates a crappy random belief function with a random number of focals elements,
+ * random focal elements and random mass values. It is crap as the mass values and the
+ * size of focal elements are not well distributed.
+ * @param elementSize The number of possible states/worlds.
+ * @return A random belief function. 
  */
 BF_BeliefFunction BFR_getCrappyRandomBelief(const int elementSize);
+
+/**
+ * Generates a crappy random belief function with a fixed number of focal elements but those
+ * elements and their mass values are random. A constraint nbFocals <= 2^elementSize has to
+ * be respected. Returns a null BF_BeliefFunction if not.
+ * @param elementSize The number of possible states/worlds.
+ * @param nbFocals The number of focal elements wanted.
+ * @param A random belief function.
+ */
+BF_BeliefFunction BFR_getCrappyRandomBeliefWithFixedNbFocals(const int elementSize, const int nbFocals);
 
 /**@}*/
 

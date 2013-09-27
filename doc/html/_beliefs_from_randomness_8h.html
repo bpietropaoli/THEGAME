@@ -19,7 +19,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname">THE GAME&#160;<span id="projectnumber">v0.5.1d</span></div>
+   <div id="projectname">THE GAME&#160;<span id="projectnumber">v0.5.1e</span></div>
    <div id="projectbrief">THeory of Evidence in a lanGuage Adapted for Many Embedded systems</div>
   </td>
  </tr>
@@ -83,8 +83,8 @@ Functions</h2></td></tr>
 <tr><td colspan="2"><div class="groupHeader">Utility functions</div></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_beliefs_from_randomness_8h.html#a4a6f961a70f4e8919ff6ca9313bb94bf">BFR_generateRandomSeed</a> ()</td></tr>
 <tr><td colspan="2"><div class="groupHeader">Random generators</div></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aaa6c6360c4d88dc7ab57edf6240463e9"></a><!-- doxytag: member="BeliefsFromRandomness.h::BFR_getCrappyRandomBelief" ref="aaa6c6360c4d88dc7ab57edf6240463e9" args="(const int elementSize)" -->
-<a class="el" href="struct_b_f___belief_function.html">BF_BeliefFunction</a>&#160;</td><td class="memItemRight" valign="bottom"><b>BFR_getCrappyRandomBelief</b> (const int elementSize)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_b_f___belief_function.html">BF_BeliefFunction</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_beliefs_from_randomness_8h.html#aaa6c6360c4d88dc7ab57edf6240463e9">BFR_getCrappyRandomBelief</a> (const int elementSize)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_b_f___belief_function.html">BF_BeliefFunction</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_beliefs_from_randomness_8h.html#af7cb0cf2489f355c4c1fcaacbe6b3a39">BFR_getCrappyRandomBeliefWithFixedNbFocals</a> (const int elementSize, const int nbFocals)</td></tr>
 </table>
 <hr/><a name="_details"></a><h2>Detailed Description</h2>
 <div class="textblock"><p>APPLICATION: Gives structures and main functions to create random belief functions. </p>
@@ -113,6 +113,71 @@ Functions</h2></td></tr>
 
 </div>
 </div>
+<a class="anchor" id="aaa6c6360c4d88dc7ab57edf6240463e9"></a><!-- doxytag: member="BeliefsFromRandomness.h::BFR_getCrappyRandomBelief" ref="aaa6c6360c4d88dc7ab57edf6240463e9" args="(const int elementSize)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="struct_b_f___belief_function.html">BF_BeliefFunction</a> BFR_getCrappyRandomBelief </td>
+          <td>(</td>
+          <td class="paramtype">const int&#160;</td>
+          <td class="paramname"><em>elementSize</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Generates a crappy random belief function with a random number of focals elements, random focal elements and random mass values. It is crap as the mass values and the size of focal elements are not well distributed. </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">elementSize</td><td>The number of possible states/worlds. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd>A random belief function. </dd></dl>
+
+<p>Definition at line <a class="el" href="_beliefs_from_randomness_8c_source.html#l00053">53</a> of file <a class="el" href="_beliefs_from_randomness_8c_source.html">BeliefsFromRandomness.c</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="af7cb0cf2489f355c4c1fcaacbe6b3a39"></a><!-- doxytag: member="BeliefsFromRandomness.h::BFR_getCrappyRandomBeliefWithFixedNbFocals" ref="af7cb0cf2489f355c4c1fcaacbe6b3a39" args="(const int elementSize, const int nbFocals)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="struct_b_f___belief_function.html">BF_BeliefFunction</a> BFR_getCrappyRandomBeliefWithFixedNbFocals </td>
+          <td>(</td>
+          <td class="paramtype">const int&#160;</td>
+          <td class="paramname"><em>elementSize</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const int&#160;</td>
+          <td class="paramname"><em>nbFocals</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Generates a crappy random belief function with a fixed number of focal elements but those elements and their mass values are random. A constraint nbFocals &lt;= 2^elementSize has to be respected. Returns a null <a class="el" href="struct_b_f___belief_function.html">BF_BeliefFunction</a> if not. </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">elementSize</td><td>The number of possible states/worlds. </td></tr>
+    <tr><td class="paramname">nbFocals</td><td>The number of focal elements wanted. </td></tr>
+    <tr><td class="paramname">A</td><td>random belief function. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Definition at line <a class="el" href="_beliefs_from_randomness_8c_source.html#l00085">85</a> of file <a class="el" href="_beliefs_from_randomness_8c_source.html">BeliefsFromRandomness.c</a>.</p>
+
+</div>
+</div>
 </div>
 <!--- window showing the filter options -->
 <div id="MSearchSelectWindow"
@@ -128,7 +193,7 @@ Functions</h2></td></tr>
 </iframe>
 </div>
 
-<hr class="footer"/><address class="footer"><small>Generated on Tue Jun 4 2013 13:57:39 for THE GAME by&#160;
+<hr class="footer"/><address class="footer"><small>Generated on Fri Sep 27 2013 14:57:25 for THE GAME by&#160;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.3 </small></address>
 </body>

@@ -18,10 +18,9 @@ void \hyperlink{_beliefs_from_randomness_8c_a4a6f961a70f4e8919ff6ca9313bb94bf}{B
 \begin{Indent}{\bf Random generators}\par
 \begin{DoxyCompactItemize}
 \item 
-\hypertarget{_beliefs_from_randomness_8c_aaa6c6360c4d88dc7ab57edf6240463e9}{
-\hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction} {\bfseries BFR\_\-getCrappyRandomBelief} (const int elementSize)}
-\label{_beliefs_from_randomness_8c_aaa6c6360c4d88dc7ab57edf6240463e9}
-
+\hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction} \hyperlink{_beliefs_from_randomness_8c_aaa6c6360c4d88dc7ab57edf6240463e9}{BFR\_\-getCrappyRandomBelief} (const int elementSize)
+\item 
+\hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction} \hyperlink{_beliefs_from_randomness_8c_af7cb0cf2489f355c4c1fcaacbe6b3a39}{BFR\_\-getCrappyRandomBeliefWithFixedNbFocals} (const int elementSize, const int nbFocals)
 \end{DoxyCompactItemize}
 \end{Indent}
 
@@ -52,4 +51,48 @@ Definition in file \hyperlink{_beliefs_from_randomness_8c_source}{BeliefsFromRan
 Generates a seed based on the date and the hour. This function should be called each time a new seed is required. 
 
 Definition at line 36 of file BeliefsFromRandomness.c.
+
+\hypertarget{_beliefs_from_randomness_8c_aaa6c6360c4d88dc7ab57edf6240463e9}{
+\index{BeliefsFromRandomness.c@{BeliefsFromRandomness.c}!BFR\_\-getCrappyRandomBelief@{BFR\_\-getCrappyRandomBelief}}
+\index{BFR\_\-getCrappyRandomBelief@{BFR\_\-getCrappyRandomBelief}!BeliefsFromRandomness.c@{BeliefsFromRandomness.c}}
+\subsubsection[{BFR\_\-getCrappyRandomBelief}]{\setlength{\rightskip}{0pt plus 5cm}{\bf BF\_\-BeliefFunction} BFR\_\-getCrappyRandomBelief (
+\begin{DoxyParamCaption}
+\item[{const int}]{elementSize}
+\end{DoxyParamCaption}
+)}}
+\label{_beliefs_from_randomness_8c_aaa6c6360c4d88dc7ab57edf6240463e9}
+Generates a crappy random belief function with a random number of focals elements, random focal elements and random mass values. It is crap as the mass values and the size of focal elements are not well distributed. 
+\begin{DoxyParams}{Parameters}
+{\em elementSize} & The number of possible states/worlds. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A random belief function. 
+\end{DoxyReturn}
+
+
+Definition at line 53 of file BeliefsFromRandomness.c.
+
+\hypertarget{_beliefs_from_randomness_8c_af7cb0cf2489f355c4c1fcaacbe6b3a39}{
+\index{BeliefsFromRandomness.c@{BeliefsFromRandomness.c}!BFR\_\-getCrappyRandomBeliefWithFixedNbFocals@{BFR\_\-getCrappyRandomBeliefWithFixedNbFocals}}
+\index{BFR\_\-getCrappyRandomBeliefWithFixedNbFocals@{BFR\_\-getCrappyRandomBeliefWithFixedNbFocals}!BeliefsFromRandomness.c@{BeliefsFromRandomness.c}}
+\subsubsection[{BFR\_\-getCrappyRandomBeliefWithFixedNbFocals}]{\setlength{\rightskip}{0pt plus 5cm}{\bf BF\_\-BeliefFunction} BFR\_\-getCrappyRandomBeliefWithFixedNbFocals (
+\begin{DoxyParamCaption}
+\item[{const int}]{elementSize, }
+\item[{const int}]{nbFocals}
+\end{DoxyParamCaption}
+)}}
+\label{_beliefs_from_randomness_8c_af7cb0cf2489f355c4c1fcaacbe6b3a39}
+Generates a crappy random belief function with a fixed number of focal elements but those elements and their mass values are random. A constraint nbFocals $<$= 2$^\wedge$elementSize has to be respected. Returns a null \hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction} if not. 
+\begin{DoxyParams}{Parameters}
+{\em elementSize} & The number of possible states/worlds. \\
+\hline
+{\em nbFocals} & The number of focal elements wanted. \\
+\hline
+{\em A} & random belief function. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 85 of file BeliefsFromRandomness.c.
 
