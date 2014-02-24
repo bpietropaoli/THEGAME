@@ -1,376 +1,351 @@
-\hypertarget{_beliefs_from_beliefs_8c}{
-\section{BeliefsFromBeliefs.c File Reference}
-\label{_beliefs_from_beliefs_8c}\index{BeliefsFromBeliefs.c@{BeliefsFromBeliefs.c}}
+\hypertarget{_beliefs_from_beliefs_8c}{\section{/home/arichez/git/\-T\-H\-E\-G\-A\-M\-E/src/main/c/\-Beliefs\-From\-Beliefs.c File Reference}
+\label{_beliefs_from_beliefs_8c}\index{/home/arichez/git/\-T\-H\-E\-G\-A\-M\-E/src/main/c/\-Beliefs\-From\-Beliefs.\-c@{/home/arichez/git/\-T\-H\-E\-G\-A\-M\-E/src/main/c/\-Beliefs\-From\-Beliefs.\-c}}
 }
 
 
-APPLICATION: Gives structures and main functions to create belief functions from belief functions.  
+A\-P\-P\-L\-I\-C\-A\-T\-I\-O\-N\-: Gives structures and main functions to create belief functions from belief functions.  
 
 
-{\ttfamily \#include \char`\"{}BeliefsFromBeliefs.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}Beliefs\-From\-Beliefs.\-h\char`\"{}}\\*
 \subsection*{Functions}
 \begin{Indent}{\bf Loading a model}\par
 \begin{DoxyCompactItemize}
 \item 
-\hyperlink{struct_b_f_b___belief_structure}{BFB\_\-BeliefStructure} \hyperlink{_beliefs_from_beliefs_8c_a358a86a0cec5273ecd0e8d2df61f7f6b}{BFB\_\-loadBeliefStructure} (const char $\ast$frameName)
+\hyperlink{struct_b_f_b___belief_structure}{B\-F\-B\-\_\-\-Belief\-Structure} \hyperlink{_beliefs_from_beliefs_8c_a358a86a0cec5273ecd0e8d2df61f7f6b}{B\-F\-B\-\_\-load\-Belief\-Structure} (const char $\ast$frame\-Name)
 \item 
-\hyperlink{struct_b_f_b___belief_from_belief}{BFB\_\-BeliefFromBelief} \hyperlink{_beliefs_from_beliefs_8c_aa704c173cca5cb1876736276edc0c19e}{BFB\_\-loadBeliefFromBelief} (const char $\ast$frameOfOrigin, const char $\ast$path, const \hyperlink{struct_sets___reference_list}{Sets\_\-ReferenceList} rl)
+\hyperlink{struct_b_f_b___belief_from_belief}{B\-F\-B\-\_\-\-Belief\-From\-Belief} \hyperlink{_beliefs_from_beliefs_8c_aa704c173cca5cb1876736276edc0c19e}{B\-F\-B\-\_\-load\-Belief\-From\-Belief} (const char $\ast$frame\-Of\-Origin, const char $\ast$path, const \hyperlink{struct_sets___reference_list}{Sets\-\_\-\-Reference\-List} rl)
 \item 
-\hyperlink{struct_b_f_b___belief_vector}{BFB\_\-BeliefVector} \hyperlink{_beliefs_from_beliefs_8c_a4d9476c19e67118e5dc2fd4ceac263b8}{BFB\_\-loadBeliefVector} (const char $\ast$fileName, const \hyperlink{struct_sets___reference_list}{Sets\_\-ReferenceList} rlFrom, const \hyperlink{struct_sets___reference_list}{Sets\_\-ReferenceList} rlTo)
+\hyperlink{struct_b_f_b___belief_vector}{B\-F\-B\-\_\-\-Belief\-Vector} \hyperlink{_beliefs_from_beliefs_8c_a4d9476c19e67118e5dc2fd4ceac263b8}{B\-F\-B\-\_\-load\-Belief\-Vector} (const char $\ast$file\-Name, const \hyperlink{struct_sets___reference_list}{Sets\-\_\-\-Reference\-List} rl\-From, const \hyperlink{struct_sets___reference_list}{Sets\-\_\-\-Reference\-List} rl\-To)
 \end{DoxyCompactItemize}
 \end{Indent}
 \begin{Indent}{\bf Building belief functions}\par
 \begin{DoxyCompactItemize}
 \item 
-\hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction} $\ast$ \hyperlink{_beliefs_from_beliefs_8c_a306716b7e873338dc4e51610631d5143}{BFB\_\-believeFromBeliefs} (const \hyperlink{struct_b_f_b___belief_structure}{BFB\_\-BeliefStructure} bs, const char $\ast$const $\ast$const frameNames, const \hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction} $\ast$from, const int nbBF)
+\hyperlink{struct_b_f___belief_function}{B\-F\-\_\-\-Belief\-Function} $\ast$ \hyperlink{_beliefs_from_beliefs_8c_a306716b7e873338dc4e51610631d5143}{B\-F\-B\-\_\-believe\-From\-Beliefs} (const \hyperlink{struct_b_f_b___belief_structure}{B\-F\-B\-\_\-\-Belief\-Structure} bs, const char $\ast$const $\ast$const frame\-Names, const \hyperlink{struct_b_f___belief_function}{B\-F\-\_\-\-Belief\-Function} $\ast$from, const int nb\-B\-F)
 \item 
-\hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction} \hyperlink{_beliefs_from_beliefs_8c_a2c0b487de20375d4fdaede19581861cf}{BFB\_\-believeFromBelief} (const \hyperlink{struct_b_f_b___belief_from_belief}{BFB\_\-BeliefFromBelief} bfb, const \hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction} from, const int elementSize)
+\hyperlink{struct_b_f___belief_function}{B\-F\-\_\-\-Belief\-Function} \hyperlink{_beliefs_from_beliefs_8c_a2c0b487de20375d4fdaede19581861cf}{B\-F\-B\-\_\-believe\-From\-Belief} (const \hyperlink{struct_b_f_b___belief_from_belief}{B\-F\-B\-\_\-\-Belief\-From\-Belief} bfb, const \hyperlink{struct_b_f___belief_function}{B\-F\-\_\-\-Belief\-Function} from, const int element\-Size)
 \end{DoxyCompactItemize}
 \end{Indent}
 \begin{Indent}{\bf Free memory}\par
 \begin{DoxyCompactItemize}
 \item 
-void \hyperlink{_beliefs_from_beliefs_8c_a575ed6c7a84751334ad1507054b4dc51}{BFB\_\-freeBeliefStructure} (\hyperlink{struct_b_f_b___belief_structure}{BFB\_\-BeliefStructure} $\ast$bs)
+void \hyperlink{_beliefs_from_beliefs_8c_a575ed6c7a84751334ad1507054b4dc51}{B\-F\-B\-\_\-free\-Belief\-Structure} (\hyperlink{struct_b_f_b___belief_structure}{B\-F\-B\-\_\-\-Belief\-Structure} $\ast$bs)
 \item 
-void \hyperlink{_beliefs_from_beliefs_8c_a1bf269f1efc831d1829928774431296d}{BFB\_\-freeBeliefFromBelief} (\hyperlink{struct_b_f_b___belief_from_belief}{BFB\_\-BeliefFromBelief} $\ast$bfb)
+void \hyperlink{_beliefs_from_beliefs_8c_a1bf269f1efc831d1829928774431296d}{B\-F\-B\-\_\-free\-Belief\-From\-Belief} (\hyperlink{struct_b_f_b___belief_from_belief}{B\-F\-B\-\_\-\-Belief\-From\-Belief} $\ast$bfb)
 \item 
-void \hyperlink{_beliefs_from_beliefs_8c_a53cbfe097b97432ae48c0ce4895e70f4}{BFB\_\-freeBeliefVector} (\hyperlink{struct_b_f_b___belief_vector}{BFB\_\-BeliefVector} $\ast$bv)
+void \hyperlink{_beliefs_from_beliefs_8c_a53cbfe097b97432ae48c0ce4895e70f4}{B\-F\-B\-\_\-free\-Belief\-Vector} (\hyperlink{struct_b_f_b___belief_vector}{B\-F\-B\-\_\-\-Belief\-Vector} $\ast$bv)
 \end{DoxyCompactItemize}
 \end{Indent}
 {\bf }\par
 \begin{DoxyCompactItemize}
 \item 
-char $\ast$ \hyperlink{_beliefs_from_beliefs_8c_adff847c2cc5f3275612559c620ef97e1}{BFB\_\-beliefStructureToString} (const \hyperlink{struct_b_f_b___belief_structure}{BFB\_\-BeliefStructure} bs)
+char $\ast$ \hyperlink{_beliefs_from_beliefs_8c_adff847c2cc5f3275612559c620ef97e1}{B\-F\-B\-\_\-belief\-Structure\-To\-String} (const \hyperlink{struct_b_f_b___belief_structure}{B\-F\-B\-\_\-\-Belief\-Structure} bs)
 \item 
-char $\ast$ \hyperlink{_beliefs_from_beliefs_8c_a5976695ee5e8e42b544b53a1f19995af}{BFB\_\-beliefFromBeliefToString} (const \hyperlink{struct_b_f_b___belief_from_belief}{BFB\_\-BeliefFromBelief} bfb, const \hyperlink{struct_sets___reference_list}{Sets\_\-ReferenceList} to)
+char $\ast$ \hyperlink{_beliefs_from_beliefs_8c_a5976695ee5e8e42b544b53a1f19995af}{B\-F\-B\-\_\-belief\-From\-Belief\-To\-String} (const \hyperlink{struct_b_f_b___belief_from_belief}{B\-F\-B\-\_\-\-Belief\-From\-Belief} bfb, const \hyperlink{struct_sets___reference_list}{Sets\-\_\-\-Reference\-List} to)
 \item 
-char $\ast$ \hyperlink{_beliefs_from_beliefs_8c_a944acabe655c1a81d4969bb289f55603}{BFB\_\-beliefVectorToString} (const \hyperlink{struct_b_f_b___belief_vector}{BFB\_\-BeliefVector} bv, const \hyperlink{struct_sets___reference_list}{Sets\_\-ReferenceList} to, const \hyperlink{struct_sets___reference_list}{Sets\_\-ReferenceList} from)
+char $\ast$ \hyperlink{_beliefs_from_beliefs_8c_a944acabe655c1a81d4969bb289f55603}{B\-F\-B\-\_\-belief\-Vector\-To\-String} (const \hyperlink{struct_b_f_b___belief_vector}{B\-F\-B\-\_\-\-Belief\-Vector} bv, const \hyperlink{struct_sets___reference_list}{Sets\-\_\-\-Reference\-List} to, const \hyperlink{struct_sets___reference_list}{Sets\-\_\-\-Reference\-List} from)
 \end{DoxyCompactItemize}
 
 
 
 \subsection{Detailed Description}
-APPLICATION: Gives structures and main functions to create belief functions from belief functions. \hypertarget{_beliefs_from_beliefs_8h_BFB_intro}{}\subsection{Introduction}\label{_beliefs_from_beliefs_8h_BFB_intro}
+A\-P\-P\-L\-I\-C\-A\-T\-I\-O\-N\-: Gives structures and main functions to create belief functions from belief functions. \hypertarget{_beliefs_from_beliefs_8h_BFB_intro}{}\subsection{Introduction}\label{_beliefs_from_beliefs_8h_BFB_intro}
 This module enables the building of belief functions from another belief function based on another frame of discernment.
 
- 
+
 \begin{DoxyImage}
-\includegraphics[width=8cm]{images/Xzibit.jpg}
+\includegraphics[width=8cm]{Xzibit.jpg}
 \caption{What Xzibit thinks of this module.}
 \end{DoxyImage}
 
 
-The concept of this transformation is based on the paper \char`\"{}Propagating Belief Functions in Qualitative Markov Trees\char`\"{} by G. Shafer et al. (1987). Using relations between frames or simply by dividing huge frames of discernment into subframes, it is possible to work on smaller frames and to transfer the belief functions from one frame to another. This is called coarsening (big -\/$>$ smaller) or vacuous extension (small -\/$>$ bigger).
+The concept of this transformation is based on the paper \char`\"{}\-Propagating Belief Functions in Qualitative Markov Trees\char`\"{} by G. Shafer et al. (1987). Using relations between frames or simply by dividing huge frames of discernment into subframes, it is possible to work on smaller frames and to transfer the belief functions from one frame to another. This is called coarsening (big -\/$>$ smaller) or vacuous extension (small -\/$>$ bigger).
 
 In this module, we extend the possibilities by offering a way to manage fuzzy subsets. By this, we mean that the mass on one set could be transferred to multiple sets because. It could be convenient when working with fuzzy concepts in natural language or simply because links between possible world is not a perfect correlation.\hypertarget{_beliefs_from_beliefs_8h_BFS_HowTo}{}\subsection{How to use this module}\label{_beliefs_from_beliefs_8h_BFS_HowTo}
-To build the models, you should do the following : \begin{DoxyItemize}
-\item For each thing you want to compute, create a directory with the name you want in /data/beliefsFromBeliefs (or the directory defined by BFB\_\-PATH). For example, if you want to compute a thing called \char`\"{}Presence\char`\"{} to determine if there is someone in a room or not, just call the directory \char`\"{}Presence\char`\"{}. \item In this directory, create a file called \char`\"{}values\char`\"{} (or with the name defined by BFB\_\-VALUES\_\-NAME) with on each line, the name of one possible world (and no more line than necessary !). Those worlds are the ones corresponding to the thing you want to compute. Example: 
+To build the models, you should do the following \-: \begin{DoxyItemize}
+\item For each thing you want to compute, create a directory with the name you want in /data/beliefs\-From\-Beliefs (or the directory defined by B\-F\-B\-\_\-\-P\-A\-T\-H). For example, if you want to compute a thing called \char`\"{}\-Presence\char`\"{} to determine if there is someone in a room or not, just call the directory \char`\"{}\-Presence\char`\"{}. \item In this directory, create a file called \char`\"{}values\char`\"{} (or with the name defined by B\-F\-B\-\_\-\-V\-A\-L\-U\-E\-S\-\_\-\-N\-A\-M\-E) with on each line, the name of one possible world (and no more line than necessary !). Those worlds are the ones corresponding to the thing you want to compute. Example\-: 
 \begin{DoxyCode}
- Aka
- Bea
- Elf
+Aka
+Bea
+Elf
 \end{DoxyCode}
- This example creates three possible worlds : Aka, Bea and Elf. \item In this directory, for each subframe on which beliefs will be based, build a directory with the name of that subframe. \item In each of this directory, create a file also called \char`\"{}values\char`\"{} (or with the name defined by BFB\_\-VALUES\_\-NAME) with on each line, the name of one possible world (and no more line than necessary !). Those worlds are the ones of the subframe. \item In each subframe directory, for each subset of possible worlds, create a file (Those files can have any name, that is not important at all...) with on first line, the number of considered worlds of the subframe, then the number of transformations and for each transformation the number of considered worlds, the worlds' names and then the transformation factor. Considere an example where the frame Posture = \{Seated, Standing, LyingDown\} has to be transformed into the frame Sleeping = \{Yes, No\}. The file corresponding to the transformation of the element \{Seated u Standing\} could be written like this : 
+ This example creates three possible worlds \-: Aka, Bea and Elf. \item In this directory, for each subframe on which beliefs will be based, build a directory with the name of that subframe. \item In each of this directory, create a file also called \char`\"{}values\char`\"{} (or with the name defined by B\-F\-B\-\_\-\-V\-A\-L\-U\-E\-S\-\_\-\-N\-A\-M\-E) with on each line, the name of one possible world (and no more line than necessary !). Those worlds are the ones of the subframe. \item In each subframe directory, for each subset of possible worlds, create a file (Those files can have any name, that is not important at all...) with on first line, the number of considered worlds of the subframe, then the number of transformations and for each transformation the number of considered worlds, the worlds' names and then the transformation factor. Considere an example where the frame Posture = \{Seated, Standing, Lying\-Down\} has to be transformed into the frame Sleeping = \{Yes, No\}. The file corresponding to the transformation of the element \{Seated u Standing\} could be written like this \-: 
 \begin{DoxyCode}
- 2 elements           //The number of worlds in the element of the frame we're co
-      ming from
- Seated               //World 1
- Standing             //World 2
- 2 conversions        //Number of resulting elements
- 1 element            //+-+
- no                   //  |-> First element, {no} with a factor of 0.3
- 0.3                  //+-+
- 2 elements           //+-+
- yes                  //  |-> Second element, {yes u no} with a factor of 0.7
- no                   //  |
- 0.7                  //+-+
+2 elements           \textcolor{comment}{//The number of worlds in the element of the frame we're coming from}
+Seated               \textcolor{comment}{//World 1}
+Standing             \textcolor{comment}{//World 2}
+2 conversions        \textcolor{comment}{//Number of resulting elements}
+1 element            \textcolor{comment}{//+-+}
+no                   \textcolor{comment}{//  |-> First element, \{no\} with a factor of 0.3}
+0.3                  \textcolor{comment}{//+-+}
+2 elements           \textcolor{comment}{//+-+}
+yes                  \textcolor{comment}{//  |-> Second element, \{yes u no\} with a factor of 0.7}
+no                   \textcolor{comment}{//  |}
+0.7                  \textcolor{comment}{//+-+}
 \end{DoxyCode}
- With this file, any belief m(\{Seated u Standing\}) whould result in m(\{no\}) = 0.3 $\ast$ m(\{Seated u Standing\}) and m(\{yes u no\}) = 0.7 $\ast$ m(\{Seated u Standing\}). If there's not a file for each possible subset of possible worlds, it is possible to get weird behaviors and sum errors. Also, the sum of masses of any transformations should equal 1 or it won't work properly! Uncomment the constant CHECK\_\-MODELS in \hyperlink{config_8h}{config.h} to make sure your models are okay.\end{DoxyItemize}
-WARNING: Check that your files are in the correct format for you OS (specifically for the endline character...), thus, do not forget to format them correctly (or you could see $^\wedge$M characters appearing in your possible worlds for example...). To convert in a correct format, on Linux, it is possible to use the package 'tofrodos' with the two commands 'fromdos' and 'todos'.
+ With this file, any belief m(\{Seated u Standing\}) whould result in m(\{no\}) = 0.\-3 $\ast$ m(\{Seated u Standing\}) and m(\{yes u no\}) = 0.\-7 $\ast$ m(\{Seated u Standing\}). If there's not a file for each possible subset of possible worlds, it is possible to get weird behaviors and sum errors. Also, the sum of masses of any transformations should equal 1 or it won't work properly! Uncomment the constant C\-H\-E\-C\-K\-\_\-\-M\-O\-D\-E\-L\-S in \hyperlink{config_8h}{config.\-h} to make sure your models are okay.\end{DoxyItemize}
+W\-A\-R\-N\-I\-N\-G\-: Check that your files are in the correct format for you O\-S (specifically for the endline character...), thus, do not forget to format them correctly (or you could see $^\wedge$\-M characters appearing in your possible worlds for example...). To convert in a correct format, on Linux, it is possible to use the package 'tofrodos' with the two commands 'fromdos' and 'todos'.
 
 If you're not sure you understood this quick explanation, please check the example files (for instance those used to run tests...).
 
-Once everything has been created correctly, it is possible to load a belief structure using BFB\_\-loadBeliefStructure(nameOfTheThingYouWantToCompute), the files will all be loaded automatically. The functions \hyperlink{_beliefs_from_beliefs_8c_a306716b7e873338dc4e51610631d5143}{BFB\_\-believeFromBeliefs()} et \hyperlink{_beliefs_from_beliefs_8c_a2c0b487de20375d4fdaede19581861cf}{BFB\_\-believeFromBelief()} are then used to build the mass functions from given belief functions.
+Once everything has been created correctly, it is possible to load a belief structure using B\-F\-B\-\_\-load\-Belief\-Structure(name\-Of\-The\-Thing\-You\-Want\-To\-Compute), the files will all be loaded automatically. The functions \hyperlink{_beliefs_from_beliefs_8c_a306716b7e873338dc4e51610631d5143}{B\-F\-B\-\_\-believe\-From\-Beliefs()} et \hyperlink{_beliefs_from_beliefs_8c_a2c0b487de20375d4fdaede19581861cf}{B\-F\-B\-\_\-believe\-From\-Belief()} are then used to build the mass functions from given belief functions.
 
 \begin{DoxyAuthor}{Author}
-Bastien Pietropaoli (\href{mailto:bastien.pietropaoli@inria.fr}{\tt bastien.pietropaoli@inria.fr}) 
+Bastien Pietropaoli (\href{mailto:bastien.pietropaoli@inria.fr}{\tt bastien.\-pietropaoli@inria.\-fr}) 
 \end{DoxyAuthor}
 
 
-Definition in file \hyperlink{_beliefs_from_beliefs_8c_source}{BeliefsFromBeliefs.c}.
+Definition in file \hyperlink{_beliefs_from_beliefs_8c_source}{Beliefs\-From\-Beliefs.\-c}.
 
 
 
 \subsection{Function Documentation}
-\hypertarget{_beliefs_from_beliefs_8c_a5976695ee5e8e42b544b53a1f19995af}{
-\index{BeliefsFromBeliefs.c@{BeliefsFromBeliefs.c}!BFB\_\-beliefFromBeliefToString@{BFB\_\-beliefFromBeliefToString}}
-\index{BFB\_\-beliefFromBeliefToString@{BFB\_\-beliefFromBeliefToString}!BeliefsFromBeliefs.c@{BeliefsFromBeliefs.c}}
-\subsubsection[{BFB\_\-beliefFromBeliefToString}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ BFB\_\-beliefFromBeliefToString (
+\hypertarget{_beliefs_from_beliefs_8c_a5976695ee5e8e42b544b53a1f19995af}{\index{Beliefs\-From\-Beliefs.\-c@{Beliefs\-From\-Beliefs.\-c}!B\-F\-B\-\_\-belief\-From\-Belief\-To\-String@{B\-F\-B\-\_\-belief\-From\-Belief\-To\-String}}
+\index{B\-F\-B\-\_\-belief\-From\-Belief\-To\-String@{B\-F\-B\-\_\-belief\-From\-Belief\-To\-String}!BeliefsFromBeliefs.c@{Beliefs\-From\-Beliefs.\-c}}
+\subsubsection[{B\-F\-B\-\_\-belief\-From\-Belief\-To\-String}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ B\-F\-B\-\_\-belief\-From\-Belief\-To\-String (
 \begin{DoxyParamCaption}
-\item[{const {\bf BFB\_\-BeliefFromBelief}}]{bfb, }
-\item[{const {\bf Sets\_\-ReferenceList}}]{to}
+\item[{const {\bf B\-F\-B\-\_\-\-Belief\-From\-Belief}}]{bfb, }
+\item[{const {\bf Sets\-\_\-\-Reference\-List}}]{to}
 \end{DoxyParamCaption}
-)}}
-\label{_beliefs_from_beliefs_8c_a5976695ee5e8e42b544b53a1f19995af}
-Converts a \hyperlink{struct_b_f_b___belief_from_belief}{BFB\_\-BeliefFromBelief} into a string ready to print. 
+)}}\label{_beliefs_from_beliefs_8c_a5976695ee5e8e42b544b53a1f19995af}
+Converts a \hyperlink{struct_b_f_b___belief_from_belief}{B\-F\-B\-\_\-\-Belief\-From\-Belief} into a string ready to print. 
 \begin{DoxyParams}{Parameters}
-{\em bfb} & The \hyperlink{struct_b_f_b___belief_from_belief}{BFB\_\-BeliefFromBelief} to convert \\
+{\em bfb} & The \hyperlink{struct_b_f_b___belief_from_belief}{B\-F\-B\-\_\-\-Belief\-From\-Belief} to convert \\
 \hline
-{\em to} & The \hyperlink{struct_sets___reference_list}{Sets\_\-ReferenceList} to use to get the real values of resulting elements \\
+{\em to} & The \hyperlink{struct_sets___reference_list}{Sets\-\_\-\-Reference\-List} to use to get the real values of resulting elements \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-A string ready to print representing the \hyperlink{struct_b_f_b___belief_from_belief}{BFB\_\-BeliefFromBelief}. Must be freed after use. 
+A string ready to print representing the \hyperlink{struct_b_f_b___belief_from_belief}{B\-F\-B\-\_\-\-Belief\-From\-Belief}. Must be freed after use. 
 \end{DoxyReturn}
 
 
-Definition at line 537 of file BeliefsFromBeliefs.c.
+Definition at line 537 of file Beliefs\-From\-Beliefs.\-c.
 
-\hypertarget{_beliefs_from_beliefs_8c_adff847c2cc5f3275612559c620ef97e1}{
-\index{BeliefsFromBeliefs.c@{BeliefsFromBeliefs.c}!BFB\_\-beliefStructureToString@{BFB\_\-beliefStructureToString}}
-\index{BFB\_\-beliefStructureToString@{BFB\_\-beliefStructureToString}!BeliefsFromBeliefs.c@{BeliefsFromBeliefs.c}}
-\subsubsection[{BFB\_\-beliefStructureToString}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ BFB\_\-beliefStructureToString (
+\hypertarget{_beliefs_from_beliefs_8c_adff847c2cc5f3275612559c620ef97e1}{\index{Beliefs\-From\-Beliefs.\-c@{Beliefs\-From\-Beliefs.\-c}!B\-F\-B\-\_\-belief\-Structure\-To\-String@{B\-F\-B\-\_\-belief\-Structure\-To\-String}}
+\index{B\-F\-B\-\_\-belief\-Structure\-To\-String@{B\-F\-B\-\_\-belief\-Structure\-To\-String}!BeliefsFromBeliefs.c@{Beliefs\-From\-Beliefs.\-c}}
+\subsubsection[{B\-F\-B\-\_\-belief\-Structure\-To\-String}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ B\-F\-B\-\_\-belief\-Structure\-To\-String (
 \begin{DoxyParamCaption}
-\item[{const {\bf BFB\_\-BeliefStructure}}]{bs}
+\item[{const {\bf B\-F\-B\-\_\-\-Belief\-Structure}}]{bs}
 \end{DoxyParamCaption}
-)}}
-\label{_beliefs_from_beliefs_8c_adff847c2cc5f3275612559c620ef97e1}
-Converts a \hyperlink{struct_b_f_b___belief_structure}{BFB\_\-BeliefStructure} into a string ready to print. 
+)}}\label{_beliefs_from_beliefs_8c_adff847c2cc5f3275612559c620ef97e1}
+Converts a \hyperlink{struct_b_f_b___belief_structure}{B\-F\-B\-\_\-\-Belief\-Structure} into a string ready to print. 
 \begin{DoxyParams}{Parameters}
-{\em bs} & The \hyperlink{struct_b_f_b___belief_structure}{BFB\_\-BeliefStructure} to convert \\
+{\em bs} & The \hyperlink{struct_b_f_b___belief_structure}{B\-F\-B\-\_\-\-Belief\-Structure} to convert \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-A string ready to print representing the \hyperlink{struct_b_f_b___belief_structure}{BFB\_\-BeliefStructure}. Must be freed after use. 
+A string ready to print representing the \hyperlink{struct_b_f_b___belief_structure}{B\-F\-B\-\_\-\-Belief\-Structure}. Must be freed after use. 
 \end{DoxyReturn}
 
 
-Definition at line 486 of file BeliefsFromBeliefs.c.
+Definition at line 486 of file Beliefs\-From\-Beliefs.\-c.
 
-\hypertarget{_beliefs_from_beliefs_8c_a944acabe655c1a81d4969bb289f55603}{
-\index{BeliefsFromBeliefs.c@{BeliefsFromBeliefs.c}!BFB\_\-beliefVectorToString@{BFB\_\-beliefVectorToString}}
-\index{BFB\_\-beliefVectorToString@{BFB\_\-beliefVectorToString}!BeliefsFromBeliefs.c@{BeliefsFromBeliefs.c}}
-\subsubsection[{BFB\_\-beliefVectorToString}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ BFB\_\-beliefVectorToString (
+\hypertarget{_beliefs_from_beliefs_8c_a944acabe655c1a81d4969bb289f55603}{\index{Beliefs\-From\-Beliefs.\-c@{Beliefs\-From\-Beliefs.\-c}!B\-F\-B\-\_\-belief\-Vector\-To\-String@{B\-F\-B\-\_\-belief\-Vector\-To\-String}}
+\index{B\-F\-B\-\_\-belief\-Vector\-To\-String@{B\-F\-B\-\_\-belief\-Vector\-To\-String}!BeliefsFromBeliefs.c@{Beliefs\-From\-Beliefs.\-c}}
+\subsubsection[{B\-F\-B\-\_\-belief\-Vector\-To\-String}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ B\-F\-B\-\_\-belief\-Vector\-To\-String (
 \begin{DoxyParamCaption}
-\item[{const {\bf BFB\_\-BeliefVector}}]{bv, }
-\item[{const {\bf Sets\_\-ReferenceList}}]{to, }
-\item[{const {\bf Sets\_\-ReferenceList}}]{from}
+\item[{const {\bf B\-F\-B\-\_\-\-Belief\-Vector}}]{bv, }
+\item[{const {\bf Sets\-\_\-\-Reference\-List}}]{to, }
+\item[{const {\bf Sets\-\_\-\-Reference\-List}}]{from}
 \end{DoxyParamCaption}
-)}}
-\label{_beliefs_from_beliefs_8c_a944acabe655c1a81d4969bb289f55603}
-Converts a \hyperlink{struct_b_f_b___belief_vector}{BFB\_\-BeliefVector} into a string ready to print. 
+)}}\label{_beliefs_from_beliefs_8c_a944acabe655c1a81d4969bb289f55603}
+Converts a \hyperlink{struct_b_f_b___belief_vector}{B\-F\-B\-\_\-\-Belief\-Vector} into a string ready to print. 
 \begin{DoxyParams}{Parameters}
-{\em bv} & The \hyperlink{struct_b_f_b___belief_vector}{BFB\_\-BeliefVector} to convert \\
+{\em bv} & The \hyperlink{struct_b_f_b___belief_vector}{B\-F\-B\-\_\-\-Belief\-Vector} to convert \\
 \hline
-{\em to} & The \hyperlink{struct_sets___reference_list}{Sets\_\-ReferenceList} to use to get the real values of resulting elements \\
+{\em to} & The \hyperlink{struct_sets___reference_list}{Sets\-\_\-\-Reference\-List} to use to get the real values of resulting elements \\
 \hline
-{\em from} & The \hyperlink{struct_sets___reference_list}{Sets\_\-ReferenceList} to use to the real values of elements to transform \\
+{\em from} & The \hyperlink{struct_sets___reference_list}{Sets\-\_\-\-Reference\-List} to use to the real values of elements to transform \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-A string ready to print representing the \hyperlink{struct_b_f_b___belief_vector}{BFB\_\-BeliefVector}. Must be freed after use. 
+A string ready to print representing the \hyperlink{struct_b_f_b___belief_vector}{B\-F\-B\-\_\-\-Belief\-Vector}. Must be freed after use. 
 \end{DoxyReturn}
 
 
-Definition at line 603 of file BeliefsFromBeliefs.c.
+Definition at line 603 of file Beliefs\-From\-Beliefs.\-c.
 
-\hypertarget{_beliefs_from_beliefs_8c_a2c0b487de20375d4fdaede19581861cf}{
-\index{BeliefsFromBeliefs.c@{BeliefsFromBeliefs.c}!BFB\_\-believeFromBelief@{BFB\_\-believeFromBelief}}
-\index{BFB\_\-believeFromBelief@{BFB\_\-believeFromBelief}!BeliefsFromBeliefs.c@{BeliefsFromBeliefs.c}}
-\subsubsection[{BFB\_\-believeFromBelief}]{\setlength{\rightskip}{0pt plus 5cm}{\bf BF\_\-BeliefFunction} BFB\_\-believeFromBelief (
+\hypertarget{_beliefs_from_beliefs_8c_a2c0b487de20375d4fdaede19581861cf}{\index{Beliefs\-From\-Beliefs.\-c@{Beliefs\-From\-Beliefs.\-c}!B\-F\-B\-\_\-believe\-From\-Belief@{B\-F\-B\-\_\-believe\-From\-Belief}}
+\index{B\-F\-B\-\_\-believe\-From\-Belief@{B\-F\-B\-\_\-believe\-From\-Belief}!BeliefsFromBeliefs.c@{Beliefs\-From\-Beliefs.\-c}}
+\subsubsection[{B\-F\-B\-\_\-believe\-From\-Belief}]{\setlength{\rightskip}{0pt plus 5cm}{\bf B\-F\-\_\-\-Belief\-Function} B\-F\-B\-\_\-believe\-From\-Belief (
 \begin{DoxyParamCaption}
-\item[{const {\bf BFB\_\-BeliefFromBelief}}]{bfb, }
-\item[{const {\bf BF\_\-BeliefFunction}}]{from, }
-\item[{const int}]{elementSize}
+\item[{const {\bf B\-F\-B\-\_\-\-Belief\-From\-Belief}}]{bfb, }
+\item[{const {\bf B\-F\-\_\-\-Belief\-Function}}]{from, }
+\item[{const int}]{element\-Size}
 \end{DoxyParamCaption}
-)}}
-\label{_beliefs_from_beliefs_8c_a2c0b487de20375d4fdaede19581861cf}
-Get the \hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction} resulting of the transformation given a specific model. 
+)}}\label{_beliefs_from_beliefs_8c_a2c0b487de20375d4fdaede19581861cf}
+Get the \hyperlink{struct_b_f___belief_function}{B\-F\-\_\-\-Belief\-Function} resulting of the transformation given a specific model. 
 \begin{DoxyParams}{Parameters}
-{\em bfb} & The \hyperlink{struct_b_f_b___belief_from_belief}{BFB\_\-BeliefFromBelief} model to use for the transformation \\
+{\em bfb} & The \hyperlink{struct_b_f_b___belief_from_belief}{B\-F\-B\-\_\-\-Belief\-From\-Belief} model to use for the transformation \\
 \hline
-{\em from} & The \hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction} to transform \\
+{\em from} & The \hyperlink{struct_b_f___belief_function}{B\-F\-\_\-\-Belief\-Function} to transform \\
 \hline
-{\em elementSize} & The number of digits to use in the resulting belief function. \\
+{\em element\-Size} & The number of digits to use in the resulting belief function. \\
 \hline
 \end{DoxyParams}
 
 
-Definition at line 352 of file BeliefsFromBeliefs.c.
+Definition at line 352 of file Beliefs\-From\-Beliefs.\-c.
 
-\hypertarget{_beliefs_from_beliefs_8c_a306716b7e873338dc4e51610631d5143}{
-\index{BeliefsFromBeliefs.c@{BeliefsFromBeliefs.c}!BFB\_\-believeFromBeliefs@{BFB\_\-believeFromBeliefs}}
-\index{BFB\_\-believeFromBeliefs@{BFB\_\-believeFromBeliefs}!BeliefsFromBeliefs.c@{BeliefsFromBeliefs.c}}
-\subsubsection[{BFB\_\-believeFromBeliefs}]{\setlength{\rightskip}{0pt plus 5cm}{\bf BF\_\-BeliefFunction}$\ast$ BFB\_\-believeFromBeliefs (
+\hypertarget{_beliefs_from_beliefs_8c_a306716b7e873338dc4e51610631d5143}{\index{Beliefs\-From\-Beliefs.\-c@{Beliefs\-From\-Beliefs.\-c}!B\-F\-B\-\_\-believe\-From\-Beliefs@{B\-F\-B\-\_\-believe\-From\-Beliefs}}
+\index{B\-F\-B\-\_\-believe\-From\-Beliefs@{B\-F\-B\-\_\-believe\-From\-Beliefs}!BeliefsFromBeliefs.c@{Beliefs\-From\-Beliefs.\-c}}
+\subsubsection[{B\-F\-B\-\_\-believe\-From\-Beliefs}]{\setlength{\rightskip}{0pt plus 5cm}{\bf B\-F\-\_\-\-Belief\-Function}$\ast$ B\-F\-B\-\_\-believe\-From\-Beliefs (
 \begin{DoxyParamCaption}
-\item[{const {\bf BFB\_\-BeliefStructure}}]{bs, }
-\item[{const char $\ast$const $\ast$const}]{frameNames, }
-\item[{const {\bf BF\_\-BeliefFunction} $\ast$}]{from, }
-\item[{const int}]{nbBF}
+\item[{const {\bf B\-F\-B\-\_\-\-Belief\-Structure}}]{bs, }
+\item[{const char $\ast$const $\ast$const}]{frame\-Names, }
+\item[{const {\bf B\-F\-\_\-\-Belief\-Function} $\ast$}]{from, }
+\item[{const int}]{nb\-B\-F}
 \end{DoxyParamCaption}
-)}}
-\label{_beliefs_from_beliefs_8c_a306716b7e873338dc4e51610631d5143}
-Get the BF\_\-BeliefFunctions resulting of the transformations given a model (\hyperlink{struct_b_f_b___belief_structure}{BFB\_\-BeliefStructure}) and a set of BF\_\-BeliefFunctions associated to their frame names. If no corresponding model is found in the \hyperlink{struct_b_f_b___belief_structure}{BFB\_\-BeliefStructure}, then a vacuous mass function is returned. 
+)}}\label{_beliefs_from_beliefs_8c_a306716b7e873338dc4e51610631d5143}
+Get the B\-F\-\_\-\-Belief\-Functions resulting of the transformations given a model (\hyperlink{struct_b_f_b___belief_structure}{B\-F\-B\-\_\-\-Belief\-Structure}) and a set of B\-F\-\_\-\-Belief\-Functions associated to their frame names. If no corresponding model is found in the \hyperlink{struct_b_f_b___belief_structure}{B\-F\-B\-\_\-\-Belief\-Structure}, then a vacuous mass function is returned. 
 \begin{DoxyParams}{Parameters}
-{\em bs} & The \hyperlink{struct_b_f_b___belief_structure}{BFB\_\-BeliefStructure} in which the model is stored \\
+{\em bs} & The \hyperlink{struct_b_f_b___belief_structure}{B\-F\-B\-\_\-\-Belief\-Structure} in which the model is stored \\
 \hline
-{\em frameNames} & A list of strings corresponding to the names of the frames of discernment \\
+{\em frame\-Names} & A list of strings corresponding to the names of the frames of discernment \\
 \hline
-{\em from} & A list a BF\_\-BeliefFunctions to transform \\
+{\em from} & A list a B\-F\-\_\-\-Belief\-Functions to transform \\
 \hline
-{\em nbBF} & The number of given belief functions \\
+{\em nb\-B\-F} & The number of given belief functions \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-A list of BF\_\-BeliefFunctions corresponding to the transformation of the given ones. 
+A list of B\-F\-\_\-\-Belief\-Functions corresponding to the transformation of the given ones. 
 \end{DoxyReturn}
 
 
-Definition at line 322 of file BeliefsFromBeliefs.c.
+Definition at line 322 of file Beliefs\-From\-Beliefs.\-c.
 
-\hypertarget{_beliefs_from_beliefs_8c_a1bf269f1efc831d1829928774431296d}{
-\index{BeliefsFromBeliefs.c@{BeliefsFromBeliefs.c}!BFB\_\-freeBeliefFromBelief@{BFB\_\-freeBeliefFromBelief}}
-\index{BFB\_\-freeBeliefFromBelief@{BFB\_\-freeBeliefFromBelief}!BeliefsFromBeliefs.c@{BeliefsFromBeliefs.c}}
-\subsubsection[{BFB\_\-freeBeliefFromBelief}]{\setlength{\rightskip}{0pt plus 5cm}void BFB\_\-freeBeliefFromBelief (
+\hypertarget{_beliefs_from_beliefs_8c_a1bf269f1efc831d1829928774431296d}{\index{Beliefs\-From\-Beliefs.\-c@{Beliefs\-From\-Beliefs.\-c}!B\-F\-B\-\_\-free\-Belief\-From\-Belief@{B\-F\-B\-\_\-free\-Belief\-From\-Belief}}
+\index{B\-F\-B\-\_\-free\-Belief\-From\-Belief@{B\-F\-B\-\_\-free\-Belief\-From\-Belief}!BeliefsFromBeliefs.c@{Beliefs\-From\-Beliefs.\-c}}
+\subsubsection[{B\-F\-B\-\_\-free\-Belief\-From\-Belief}]{\setlength{\rightskip}{0pt plus 5cm}void B\-F\-B\-\_\-free\-Belief\-From\-Belief (
 \begin{DoxyParamCaption}
-\item[{{\bf BFB\_\-BeliefFromBelief} $\ast$}]{bfb}
+\item[{{\bf B\-F\-B\-\_\-\-Belief\-From\-Belief} $\ast$}]{bfb}
 \end{DoxyParamCaption}
-)}}
-\label{_beliefs_from_beliefs_8c_a1bf269f1efc831d1829928774431296d}
-Frees the memory used for the \hyperlink{struct_b_f_b___belief_from_belief}{BFB\_\-BeliefFromBelief}. 
+)}}\label{_beliefs_from_beliefs_8c_a1bf269f1efc831d1829928774431296d}
+Frees the memory used for the \hyperlink{struct_b_f_b___belief_from_belief}{B\-F\-B\-\_\-\-Belief\-From\-Belief}. 
 \begin{DoxyParams}{Parameters}
-{\em bfb} & A pointer to the BFS\_\-BeliefFromBelief to free \\
+{\em bfb} & A pointer to the B\-F\-S\-\_\-\-Belief\-From\-Belief to free \\
 \hline
 \end{DoxyParams}
 
 
-Definition at line 456 of file BeliefsFromBeliefs.c.
+Definition at line 456 of file Beliefs\-From\-Beliefs.\-c.
 
-\hypertarget{_beliefs_from_beliefs_8c_a575ed6c7a84751334ad1507054b4dc51}{
-\index{BeliefsFromBeliefs.c@{BeliefsFromBeliefs.c}!BFB\_\-freeBeliefStructure@{BFB\_\-freeBeliefStructure}}
-\index{BFB\_\-freeBeliefStructure@{BFB\_\-freeBeliefStructure}!BeliefsFromBeliefs.c@{BeliefsFromBeliefs.c}}
-\subsubsection[{BFB\_\-freeBeliefStructure}]{\setlength{\rightskip}{0pt plus 5cm}void BFB\_\-freeBeliefStructure (
+\hypertarget{_beliefs_from_beliefs_8c_a575ed6c7a84751334ad1507054b4dc51}{\index{Beliefs\-From\-Beliefs.\-c@{Beliefs\-From\-Beliefs.\-c}!B\-F\-B\-\_\-free\-Belief\-Structure@{B\-F\-B\-\_\-free\-Belief\-Structure}}
+\index{B\-F\-B\-\_\-free\-Belief\-Structure@{B\-F\-B\-\_\-free\-Belief\-Structure}!BeliefsFromBeliefs.c@{Beliefs\-From\-Beliefs.\-c}}
+\subsubsection[{B\-F\-B\-\_\-free\-Belief\-Structure}]{\setlength{\rightskip}{0pt plus 5cm}void B\-F\-B\-\_\-free\-Belief\-Structure (
 \begin{DoxyParamCaption}
-\item[{{\bf BFB\_\-BeliefStructure} $\ast$}]{bs}
+\item[{{\bf B\-F\-B\-\_\-\-Belief\-Structure} $\ast$}]{bs}
 \end{DoxyParamCaption}
-)}}
-\label{_beliefs_from_beliefs_8c_a575ed6c7a84751334ad1507054b4dc51}
-Frees the memory used for the \hyperlink{struct_b_f_b___belief_structure}{BFB\_\-BeliefStructure}. 
+)}}\label{_beliefs_from_beliefs_8c_a575ed6c7a84751334ad1507054b4dc51}
+Frees the memory used for the \hyperlink{struct_b_f_b___belief_structure}{B\-F\-B\-\_\-\-Belief\-Structure}. 
 \begin{DoxyParams}{Parameters}
-{\em bs} & A pointer to the \hyperlink{struct_b_f_b___belief_structure}{BFB\_\-BeliefStructure} to free \\
+{\em bs} & A pointer to the \hyperlink{struct_b_f_b___belief_structure}{B\-F\-B\-\_\-\-Belief\-Structure} to free \\
 \hline
 \end{DoxyParams}
 
 
-Definition at line 445 of file BeliefsFromBeliefs.c.
+Definition at line 445 of file Beliefs\-From\-Beliefs.\-c.
 
-\hypertarget{_beliefs_from_beliefs_8c_a53cbfe097b97432ae48c0ce4895e70f4}{
-\index{BeliefsFromBeliefs.c@{BeliefsFromBeliefs.c}!BFB\_\-freeBeliefVector@{BFB\_\-freeBeliefVector}}
-\index{BFB\_\-freeBeliefVector@{BFB\_\-freeBeliefVector}!BeliefsFromBeliefs.c@{BeliefsFromBeliefs.c}}
-\subsubsection[{BFB\_\-freeBeliefVector}]{\setlength{\rightskip}{0pt plus 5cm}void BFB\_\-freeBeliefVector (
+\hypertarget{_beliefs_from_beliefs_8c_a53cbfe097b97432ae48c0ce4895e70f4}{\index{Beliefs\-From\-Beliefs.\-c@{Beliefs\-From\-Beliefs.\-c}!B\-F\-B\-\_\-free\-Belief\-Vector@{B\-F\-B\-\_\-free\-Belief\-Vector}}
+\index{B\-F\-B\-\_\-free\-Belief\-Vector@{B\-F\-B\-\_\-free\-Belief\-Vector}!BeliefsFromBeliefs.c@{Beliefs\-From\-Beliefs.\-c}}
+\subsubsection[{B\-F\-B\-\_\-free\-Belief\-Vector}]{\setlength{\rightskip}{0pt plus 5cm}void B\-F\-B\-\_\-free\-Belief\-Vector (
 \begin{DoxyParamCaption}
-\item[{{\bf BFB\_\-BeliefVector} $\ast$}]{bv}
+\item[{{\bf B\-F\-B\-\_\-\-Belief\-Vector} $\ast$}]{bv}
 \end{DoxyParamCaption}
-)}}
-\label{_beliefs_from_beliefs_8c_a53cbfe097b97432ae48c0ce4895e70f4}
-Frees the memory used for the \hyperlink{struct_b_f_b___belief_vector}{BFB\_\-BeliefVector}. 
+)}}\label{_beliefs_from_beliefs_8c_a53cbfe097b97432ae48c0ce4895e70f4}
+Frees the memory used for the \hyperlink{struct_b_f_b___belief_vector}{B\-F\-B\-\_\-\-Belief\-Vector}. 
 \begin{DoxyParams}{Parameters}
-{\em bv} & A pointer to the BFS\_\-BeliefVector to free \\
+{\em bv} & A pointer to the B\-F\-S\-\_\-\-Belief\-Vector to free \\
 \hline
 \end{DoxyParams}
 
 
-Definition at line 467 of file BeliefsFromBeliefs.c.
+Definition at line 467 of file Beliefs\-From\-Beliefs.\-c.
 
-\hypertarget{_beliefs_from_beliefs_8c_aa704c173cca5cb1876736276edc0c19e}{
-\index{BeliefsFromBeliefs.c@{BeliefsFromBeliefs.c}!BFB\_\-loadBeliefFromBelief@{BFB\_\-loadBeliefFromBelief}}
-\index{BFB\_\-loadBeliefFromBelief@{BFB\_\-loadBeliefFromBelief}!BeliefsFromBeliefs.c@{BeliefsFromBeliefs.c}}
-\subsubsection[{BFB\_\-loadBeliefFromBelief}]{\setlength{\rightskip}{0pt plus 5cm}{\bf BFB\_\-BeliefFromBelief} BFB\_\-loadBeliefFromBelief (
+\hypertarget{_beliefs_from_beliefs_8c_aa704c173cca5cb1876736276edc0c19e}{\index{Beliefs\-From\-Beliefs.\-c@{Beliefs\-From\-Beliefs.\-c}!B\-F\-B\-\_\-load\-Belief\-From\-Belief@{B\-F\-B\-\_\-load\-Belief\-From\-Belief}}
+\index{B\-F\-B\-\_\-load\-Belief\-From\-Belief@{B\-F\-B\-\_\-load\-Belief\-From\-Belief}!BeliefsFromBeliefs.c@{Beliefs\-From\-Beliefs.\-c}}
+\subsubsection[{B\-F\-B\-\_\-load\-Belief\-From\-Belief}]{\setlength{\rightskip}{0pt plus 5cm}{\bf B\-F\-B\-\_\-\-Belief\-From\-Belief} B\-F\-B\-\_\-load\-Belief\-From\-Belief (
 \begin{DoxyParamCaption}
-\item[{const char $\ast$}]{frameOfOrigin, }
+\item[{const char $\ast$}]{frame\-Of\-Origin, }
 \item[{const char $\ast$}]{path, }
-\item[{const {\bf Sets\_\-ReferenceList}}]{rl}
+\item[{const {\bf Sets\-\_\-\-Reference\-List}}]{rl}
 \end{DoxyParamCaption}
-)}}
-\label{_beliefs_from_beliefs_8c_aa704c173cca5cb1876736276edc0c19e}
-Loads the belief from belief from a directory. A bunch of files corresponding to the \hyperlink{struct_b_f_b___belief_from_belief}{BFB\_\-BeliefFromBelief} may be in the path (see \hyperlink{}{loadBeliefVector()} ). 
+)}}\label{_beliefs_from_beliefs_8c_aa704c173cca5cb1876736276edc0c19e}
+Loads the belief from belief from a directory. A bunch of files corresponding to the \hyperlink{struct_b_f_b___belief_from_belief}{B\-F\-B\-\_\-\-Belief\-From\-Belief} may be in the path (see \hyperlink{}{load\-Belief\-Vector()} ). 
 \begin{DoxyParams}{Parameters}
-{\em frameOfOrigin} & The name of the subframe on which the transformation is based (name of the subdirectory) \\
+{\em frame\-Of\-Origin} & The name of the subframe on which the transformation is based (name of the subdirectory) \\
 \hline
 {\em path} & The path of the directory containing the different belief vectors \\
 \hline
-{\em rl} & The \hyperlink{struct_sets___reference_list}{Sets\_\-ReferenceList} containing the real values of the frame of discernment we want to compute \\
+{\em rl} & The \hyperlink{struct_sets___reference_list}{Sets\-\_\-\-Reference\-List} containing the real values of the frame of discernment we want to compute \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-The \hyperlink{struct_b_f_b___belief_from_belief}{BFB\_\-BeliefFromBelief} with the different \hyperlink{struct_b_f_b___belief_vector}{BFB\_\-BeliefVector}. Must be freed after use. 
+The \hyperlink{struct_b_f_b___belief_from_belief}{B\-F\-B\-\_\-\-Belief\-From\-Belief} with the different \hyperlink{struct_b_f_b___belief_vector}{B\-F\-B\-\_\-\-Belief\-Vector}. Must be freed after use. 
 \end{DoxyReturn}
 
 
-Definition at line 160 of file BeliefsFromBeliefs.c.
+Definition at line 160 of file Beliefs\-From\-Beliefs.\-c.
 
-\hypertarget{_beliefs_from_beliefs_8c_a358a86a0cec5273ecd0e8d2df61f7f6b}{
-\index{BeliefsFromBeliefs.c@{BeliefsFromBeliefs.c}!BFB\_\-loadBeliefStructure@{BFB\_\-loadBeliefStructure}}
-\index{BFB\_\-loadBeliefStructure@{BFB\_\-loadBeliefStructure}!BeliefsFromBeliefs.c@{BeliefsFromBeliefs.c}}
-\subsubsection[{BFB\_\-loadBeliefStructure}]{\setlength{\rightskip}{0pt plus 5cm}{\bf BFB\_\-BeliefStructure} BFB\_\-loadBeliefStructure (
+\hypertarget{_beliefs_from_beliefs_8c_a358a86a0cec5273ecd0e8d2df61f7f6b}{\index{Beliefs\-From\-Beliefs.\-c@{Beliefs\-From\-Beliefs.\-c}!B\-F\-B\-\_\-load\-Belief\-Structure@{B\-F\-B\-\_\-load\-Belief\-Structure}}
+\index{B\-F\-B\-\_\-load\-Belief\-Structure@{B\-F\-B\-\_\-load\-Belief\-Structure}!BeliefsFromBeliefs.c@{Beliefs\-From\-Beliefs.\-c}}
+\subsubsection[{B\-F\-B\-\_\-load\-Belief\-Structure}]{\setlength{\rightskip}{0pt plus 5cm}{\bf B\-F\-B\-\_\-\-Belief\-Structure} B\-F\-B\-\_\-load\-Belief\-Structure (
 \begin{DoxyParamCaption}
-\item[{const char $\ast$}]{frameName}
+\item[{const char $\ast$}]{frame\-Name}
 \end{DoxyParamCaption}
-)}}
-\label{_beliefs_from_beliefs_8c_a358a86a0cec5273ecd0e8d2df61f7f6b}
-Loads a belief structure from a directory. The directory must have the frame of discernment name and should be in the directory defined by BFB\_\-PATH (if unchanged \char`\"{}./data/beliefsFromBeliefs/\char`\"{}). It may contain : \begin{DoxyItemize}
-\item {\ttfamily values} A file with the different possible values for the frame of discernment (the name of this file is \hyperlink{}{BFS\_\-VALUES\_\-NAME} (if unchanged \char`\"{}values\char`\"{}). See the function \hyperlink{}{loadSet()} for more information about the format of the file. \item {\ttfamily subframes} A bunch of subdirectories, each one with the name of a specific subframe of discernment \item {\ttfamily transformations} Each subframe directory may contain a collection of files, each one corresponding to the beliefs transformation. The filenames aren't important at all. See the documentation of this module itself for more information about the format of the file. 
+)}}\label{_beliefs_from_beliefs_8c_a358a86a0cec5273ecd0e8d2df61f7f6b}
+Loads a belief structure from a directory. The directory must have the frame of discernment name and should be in the directory defined by B\-F\-B\-\_\-\-P\-A\-T\-H (if unchanged \char`\"{}./data/beliefs\-From\-Beliefs/\char`\"{}). It may contain \-: \begin{DoxyItemize}
+\item {\ttfamily values} A file with the different possible values for the frame of discernment (the name of this file is \hyperlink{_beliefs_from_sensors_8h_aeb65807aecdae7cac8a75bfaef6a5d02}{B\-F\-S\-\_\-\-V\-A\-L\-U\-E\-S\-\_\-\-N\-A\-M\-E} (if unchanged \char`\"{}values\char`\"{}). See the function \hyperlink{}{load\-Set()} for more information about the format of the file. \item {\ttfamily subframes} A bunch of subdirectories, each one with the name of a specific subframe of discernment \item {\ttfamily transformations} Each subframe directory may contain a collection of files, each one corresponding to the beliefs transformation. The filenames aren't important at all. See the documentation of this module itself for more information about the format of the file. 
 \begin{DoxyParams}{Parameters}
-{\em frameName} & The name of the frame of discernment (Name of the directory to look for.) \\
+{\em frame\-Name} & The name of the frame of discernment (Name of the directory to look for.) \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-The complete \hyperlink{struct_b_f_b___belief_structure}{BFB\_\-BeliefStructure} containing all the beliefs that may be used to estimate the real world state. The \hyperlink{struct_b_f_b___belief_structure}{BFB\_\-BeliefStructure} is empty if an error occurs. (The frameName attribute should be NULL in case of error.) Must be freed after use. 
+The complete \hyperlink{struct_b_f_b___belief_structure}{B\-F\-B\-\_\-\-Belief\-Structure} containing all the beliefs that may be used to estimate the real world state. The \hyperlink{struct_b_f_b___belief_structure}{B\-F\-B\-\_\-\-Belief\-Structure} is empty if an error occurs. (The frame\-Name attribute should be N\-U\-L\-L in case of error.) Must be freed after use. 
 \end{DoxyReturn}
 \end{DoxyItemize}
 
 
-Definition at line 98 of file BeliefsFromBeliefs.c.
+Definition at line 98 of file Beliefs\-From\-Beliefs.\-c.
 
-\hypertarget{_beliefs_from_beliefs_8c_a4d9476c19e67118e5dc2fd4ceac263b8}{
-\index{BeliefsFromBeliefs.c@{BeliefsFromBeliefs.c}!BFB\_\-loadBeliefVector@{BFB\_\-loadBeliefVector}}
-\index{BFB\_\-loadBeliefVector@{BFB\_\-loadBeliefVector}!BeliefsFromBeliefs.c@{BeliefsFromBeliefs.c}}
-\subsubsection[{BFB\_\-loadBeliefVector}]{\setlength{\rightskip}{0pt plus 5cm}{\bf BFB\_\-BeliefVector} BFB\_\-loadBeliefVector (
+\hypertarget{_beliefs_from_beliefs_8c_a4d9476c19e67118e5dc2fd4ceac263b8}{\index{Beliefs\-From\-Beliefs.\-c@{Beliefs\-From\-Beliefs.\-c}!B\-F\-B\-\_\-load\-Belief\-Vector@{B\-F\-B\-\_\-load\-Belief\-Vector}}
+\index{B\-F\-B\-\_\-load\-Belief\-Vector@{B\-F\-B\-\_\-load\-Belief\-Vector}!BeliefsFromBeliefs.c@{Beliefs\-From\-Beliefs.\-c}}
+\subsubsection[{B\-F\-B\-\_\-load\-Belief\-Vector}]{\setlength{\rightskip}{0pt plus 5cm}{\bf B\-F\-B\-\_\-\-Belief\-Vector} B\-F\-B\-\_\-load\-Belief\-Vector (
 \begin{DoxyParamCaption}
-\item[{const char $\ast$}]{fileName, }
-\item[{const {\bf Sets\_\-ReferenceList}}]{rlFrom, }
-\item[{const {\bf Sets\_\-ReferenceList}}]{rlTo}
+\item[{const char $\ast$}]{file\-Name, }
+\item[{const {\bf Sets\-\_\-\-Reference\-List}}]{rl\-From, }
+\item[{const {\bf Sets\-\_\-\-Reference\-List}}]{rl\-To}
 \end{DoxyParamCaption}
-)}}
-\label{_beliefs_from_beliefs_8c_a4d9476c19e67118e5dc2fd4ceac263b8}
-Load a belief vector corresponding to a column of the transformation matrix. Example : 
+)}}\label{_beliefs_from_beliefs_8c_a4d9476c19e67118e5dc2fd4ceac263b8}
+Load a belief vector corresponding to a column of the transformation matrix. Example \-: 
 \begin{DoxyCode}
- 2 elements           //The number of worlds in the element of the frame we're co
-      ming from
- Seated               //World 1
- Standing             //World 2
- 2 conversions        //Number of resulting elements
- 1 element            //+-+
- no                   //  |-> First element, {no} with a factor of 0.3
- 0.3                  //+-+
- 2 elements           //+-+
- yes                  //  |-> Second element, {yes u no} with a factor of 0.7
- no                   //  |
- 0.7                  //+-+
+2 elements           \textcolor{comment}{//The number of worlds in the element of the frame we're coming from}
+Seated               \textcolor{comment}{//World 1}
+Standing             \textcolor{comment}{//World 2}
+2 conversions        \textcolor{comment}{//Number of resulting elements}
+1 element            \textcolor{comment}{//+-+}
+no                   \textcolor{comment}{//  |-> First element, \{no\} with a factor of 0.3}
+0.3                  \textcolor{comment}{//+-+}
+2 elements           \textcolor{comment}{//+-+}
+yes                  \textcolor{comment}{//  |-> Second element, \{yes u no\} with a factor of 0.7}
+no                   \textcolor{comment}{//  |}
+0.7                  \textcolor{comment}{//+-+}
 \end{DoxyCode}
  
 \begin{DoxyParams}{Parameters}
-{\em fileName} & The name of the file to load \\
+{\em file\-Name} & The name of the file to load \\
 \hline
-{\em rlFrom} & The \hyperlink{struct_sets___reference_list}{Sets\_\-ReferenceList} containing the real values of the frame of discernment we're coming from \\
+{\em rl\-From} & The \hyperlink{struct_sets___reference_list}{Sets\-\_\-\-Reference\-List} containing the real values of the frame of discernment we're coming from \\
 \hline
-{\em rlTo} & The \hyperlink{struct_sets___reference_list}{Sets\_\-ReferenceList} containing the real values of the frame of discernment we're going to \\
+{\em rl\-To} & The \hyperlink{struct_sets___reference_list}{Sets\-\_\-\-Reference\-List} containing the real values of the frame of discernment we're going to \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-A \hyperlink{struct_b_f_b___belief_vector}{BFB\_\-BeliefVector} to be freed after use. 
+A \hyperlink{struct_b_f_b___belief_vector}{B\-F\-B\-\_\-\-Belief\-Vector} to be freed after use. 
 \end{DoxyReturn}
 
 
-Definition at line 224 of file BeliefsFromBeliefs.c.
+Definition at line 224 of file Beliefs\-From\-Beliefs.\-c.
 

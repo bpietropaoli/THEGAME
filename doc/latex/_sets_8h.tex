@@ -1,138 +1,129 @@
-\hypertarget{_sets_8h}{
-\section{Sets.h File Reference}
-\label{_sets_8h}\index{Sets.h@{Sets.h}}
+\hypertarget{_sets_8h}{\section{/home/arichez/git/\-T\-H\-E\-G\-A\-M\-E/src/main/include/\-Sets.h File Reference}
+\label{_sets_8h}\index{/home/arichez/git/\-T\-H\-E\-G\-A\-M\-E/src/main/include/\-Sets.\-h@{/home/arichez/git/\-T\-H\-E\-G\-A\-M\-E/src/main/include/\-Sets.\-h}}
 }
 
 
-CORE: Implements the basics required to work on sets and elements in the theory of belief functions.  
+C\-O\-R\-E\-: Implements the basics required to work on sets and elements in the theory of belief functions.  
 
 
-{\ttfamily \#include $<$stdio.h$>$}\par
-{\ttfamily \#include $<$stdlib.h$>$}\par
-{\ttfamily \#include $<$string.h$>$}\par
-{\ttfamily \#include $<$math.h$>$}\par
-{\ttfamily \#include \char`\"{}config.h\char`\"{}}\par
-{\ttfamily \#include \char`\"{}ReadFile.h\char`\"{}}\par
+{\ttfamily \#include $<$stdio.\-h$>$}\\*
+{\ttfamily \#include $<$stdlib.\-h$>$}\\*
+{\ttfamily \#include $<$string.\-h$>$}\\*
+{\ttfamily \#include $<$math.\-h$>$}\\*
+{\ttfamily \#include \char`\"{}config.\-h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}Read\-File.\-h\char`\"{}}\\*
 \subsection*{Data Structures}
 \begin{DoxyCompactItemize}
 \item 
-struct \hyperlink{struct_sets___reference_list}{Sets\_\-ReferenceList}
+struct \hyperlink{struct_sets___reference_list}{Sets\-\_\-\-Reference\-List}
 \item 
-struct \hyperlink{struct_sets___element}{Sets\_\-Element}
+struct \hyperlink{struct_sets___element}{Sets\-\_\-\-Element}
 \item 
-struct \hyperlink{struct_sets___set}{Sets\_\-Set}
+struct \hyperlink{struct_sets___set}{Sets\-\_\-\-Set}
 \end{DoxyCompactItemize}
 \subsection*{Typedefs}
 \begin{DoxyCompactItemize}
 \item 
-\hypertarget{_sets_8h_a170712bf248799737db417117fc1d20f}{
-typedef struct \hyperlink{struct_sets___reference_list}{Sets\_\-ReferenceList} {\bfseries Sets\_\-ReferenceList}}
-\label{_sets_8h_a170712bf248799737db417117fc1d20f}
+\hypertarget{_sets_8h_a170712bf248799737db417117fc1d20f}{typedef struct \hyperlink{struct_sets___reference_list}{Sets\-\_\-\-Reference\-List} {\bfseries Sets\-\_\-\-Reference\-List}}\label{_sets_8h_a170712bf248799737db417117fc1d20f}
 
 \item 
-\hypertarget{_sets_8h_a6709e43a0d8b9ffbda74edf679b1d32b}{
-typedef struct \hyperlink{struct_sets___element}{Sets\_\-Element} {\bfseries Sets\_\-Element}}
-\label{_sets_8h_a6709e43a0d8b9ffbda74edf679b1d32b}
+\hypertarget{_sets_8h_a6709e43a0d8b9ffbda74edf679b1d32b}{typedef struct \hyperlink{struct_sets___element}{Sets\-\_\-\-Element} {\bfseries Sets\-\_\-\-Element}}\label{_sets_8h_a6709e43a0d8b9ffbda74edf679b1d32b}
 
 \item 
-\hypertarget{_sets_8h_a13e783f6c6ed93717f0408ce50448caf}{
-typedef struct \hyperlink{struct_sets___set}{Sets\_\-Set} {\bfseries Sets\_\-Set}}
-\label{_sets_8h_a13e783f6c6ed93717f0408ce50448caf}
+\hypertarget{_sets_8h_a13e783f6c6ed93717f0408ce50448caf}{typedef struct \hyperlink{struct_sets___set}{Sets\-\_\-\-Set} {\bfseries Sets\-\_\-\-Set}}\label{_sets_8h_a13e783f6c6ed93717f0408ce50448caf}
 
 \end{DoxyCompactItemize}
 \subsection*{Functions}
 \begin{Indent}{\bf Reference lists}\par
 \begin{DoxyCompactItemize}
 \item 
-\hyperlink{struct_sets___reference_list}{Sets\_\-ReferenceList} \hyperlink{_sets_8h_a4f4dfebe73c846a88c525a7051ba6eed}{Sets\_\-loadRefList} (const char $\ast$filename)
+\hyperlink{struct_sets___reference_list}{Sets\-\_\-\-Reference\-List} \hyperlink{_sets_8h_a4f4dfebe73c846a88c525a7051ba6eed}{Sets\-\_\-load\-Ref\-List} (const char $\ast$filename)
 \end{DoxyCompactItemize}
 \end{Indent}
 \begin{Indent}{\bf Set and element creation}\par
 \begin{DoxyCompactItemize}
 \item 
-\hyperlink{struct_sets___set}{Sets\_\-Set} \hyperlink{_sets_8h_afc1de95161762f86518712d96347b451}{Sets\_\-createSetFromRefList} (const \hyperlink{struct_sets___reference_list}{Sets\_\-ReferenceList} rl)
+\hyperlink{struct_sets___set}{Sets\-\_\-\-Set} \hyperlink{_sets_8h_afc1de95161762f86518712d96347b451}{Sets\-\_\-create\-Set\-From\-Ref\-List} (const \hyperlink{struct_sets___reference_list}{Sets\-\_\-\-Reference\-List} rl)
 \item 
-\hyperlink{struct_sets___set}{Sets\_\-Set} \hyperlink{_sets_8h_ac6b07f3292e347231e23935b3773b778}{Sets\_\-createSet} (const int nbAtoms)
+\hyperlink{struct_sets___set}{Sets\-\_\-\-Set} \hyperlink{_sets_8h_ac6b07f3292e347231e23935b3773b778}{Sets\-\_\-create\-Set} (const int nb\-Atoms)
 \item 
-\hyperlink{struct_sets___set}{Sets\_\-Set} \hyperlink{_sets_8h_aff63bec7eef8f1dc3f70b84cab2fd929}{Sets\_\-createPowerSet} (const \hyperlink{struct_sets___set}{Sets\_\-Set} set)
+\hyperlink{struct_sets___set}{Sets\-\_\-\-Set} \hyperlink{_sets_8h_aff63bec7eef8f1dc3f70b84cab2fd929}{Sets\-\_\-create\-Power\-Set} (const \hyperlink{struct_sets___set}{Sets\-\_\-\-Set} set)
 \item 
-\hyperlink{struct_sets___set}{Sets\_\-Set} \hyperlink{_sets_8h_a5396c8d0baf10f82de306adfec74cf05}{Sets\_\-generatePowerSet} (const int elementSize)
+\hyperlink{struct_sets___set}{Sets\-\_\-\-Set} \hyperlink{_sets_8h_a5396c8d0baf10f82de306adfec74cf05}{Sets\-\_\-generate\-Power\-Set} (const int element\-Size)
 \item 
-\hyperlink{struct_sets___element}{Sets\_\-Element} \hyperlink{_sets_8h_aeb10b28f5412dda4fae3098283d0ab8f}{Sets\_\-createElementFromStrings} (const char $\ast$const $\ast$const values, const int nbValues, const \hyperlink{struct_sets___reference_list}{Sets\_\-ReferenceList} rl)
+\hyperlink{struct_sets___element}{Sets\-\_\-\-Element} \hyperlink{_sets_8h_aeb10b28f5412dda4fae3098283d0ab8f}{Sets\-\_\-create\-Element\-From\-Strings} (const char $\ast$const $\ast$const values, const int nb\-Values, const \hyperlink{struct_sets___reference_list}{Sets\-\_\-\-Reference\-List} rl)
 \item 
-\hyperlink{struct_sets___element}{Sets\_\-Element} \hyperlink{_sets_8h_a734e81728f1e2e9fab1b86045dcc42d4}{Sets\_\-createElementFromBits} (const char $\ast$values, const int size)
+\hyperlink{struct_sets___element}{Sets\-\_\-\-Element} \hyperlink{_sets_8h_a734e81728f1e2e9fab1b86045dcc42d4}{Sets\-\_\-create\-Element\-From\-Bits} (const char $\ast$values, const int size)
 \item 
-\hyperlink{struct_sets___element}{Sets\_\-Element} \hyperlink{_sets_8h_a025a9609428dd8e788a897273f30e21e}{Sets\_\-copyElement} (const \hyperlink{struct_sets___element}{Sets\_\-Element} e, const int size)
+\hyperlink{struct_sets___element}{Sets\-\_\-\-Element} \hyperlink{_sets_8h_a025a9609428dd8e788a897273f30e21e}{Sets\-\_\-copy\-Element} (const \hyperlink{struct_sets___element}{Sets\-\_\-\-Element} e, const int size)
 \item 
-\hyperlink{struct_sets___element}{Sets\_\-Element} \hyperlink{_sets_8h_a63694d9535e64bcb24d65ea53b3e077f}{Sets\_\-getEmptyElement} (const int size)
+\hyperlink{struct_sets___element}{Sets\-\_\-\-Element} \hyperlink{_sets_8h_a63694d9535e64bcb24d65ea53b3e077f}{Sets\-\_\-get\-Empty\-Element} (const int size)
 \item 
-\hyperlink{struct_sets___element}{Sets\_\-Element} \hyperlink{_sets_8h_ac5ef66419dc7db3f9b53fa383f9e3a2c}{Sets\_\-getOpposite} (const \hyperlink{struct_sets___element}{Sets\_\-Element} e, const int size)
+\hyperlink{struct_sets___element}{Sets\-\_\-\-Element} \hyperlink{_sets_8h_ac5ef66419dc7db3f9b53fa383f9e3a2c}{Sets\-\_\-get\-Opposite} (const \hyperlink{struct_sets___element}{Sets\-\_\-\-Element} e, const int size)
 \item 
-\hyperlink{struct_sets___element}{Sets\_\-Element} \hyperlink{_sets_8h_ab9ee97ae54608f3fb5784b29503d62b6}{Sets\_\-elementFromNumber} (const int number, const int nbDigits)
+\hyperlink{struct_sets___element}{Sets\-\_\-\-Element} \hyperlink{_sets_8h_ab9ee97ae54608f3fb5784b29503d62b6}{Sets\-\_\-element\-From\-Number} (const int number, const int nb\-Digits)
 \item 
-int \hyperlink{_sets_8h_a71aeb52bad651c5129b57d7e69e5f480}{Sets\_\-numberFromElement} (const \hyperlink{struct_sets___element}{Sets\_\-Element} e, const int nbDigits)
+int \hyperlink{_sets_8h_a71aeb52bad651c5129b57d7e69e5f480}{Sets\-\_\-number\-From\-Element} (const \hyperlink{struct_sets___element}{Sets\-\_\-\-Element} e, const int nb\-Digits)
 \end{DoxyCompactItemize}
 \end{Indent}
 \begin{Indent}{\bf Operations on elements}\par
 \begin{DoxyCompactItemize}
 \item 
-\hyperlink{struct_sets___element}{Sets\_\-Element} \hyperlink{_sets_8h_a6ceef60230ceb38b105db8dbd44279f8}{Sets\_\-conjunction} (const \hyperlink{struct_sets___element}{Sets\_\-Element} e1, const \hyperlink{struct_sets___element}{Sets\_\-Element} e2, const int size)
+\hyperlink{struct_sets___element}{Sets\-\_\-\-Element} \hyperlink{_sets_8h_a6ceef60230ceb38b105db8dbd44279f8}{Sets\-\_\-conjunction} (const \hyperlink{struct_sets___element}{Sets\-\_\-\-Element} e1, const \hyperlink{struct_sets___element}{Sets\-\_\-\-Element} e2, const int size)
 \item 
-\hyperlink{struct_sets___element}{Sets\_\-Element} \hyperlink{_sets_8h_a2d1b893038be0d315af244b5a2736912}{Sets\_\-disjunction} (const \hyperlink{struct_sets___element}{Sets\_\-Element} e1, const \hyperlink{struct_sets___element}{Sets\_\-Element} e2, const int size)
+\hyperlink{struct_sets___element}{Sets\-\_\-\-Element} \hyperlink{_sets_8h_a2d1b893038be0d315af244b5a2736912}{Sets\-\_\-disjunction} (const \hyperlink{struct_sets___element}{Sets\-\_\-\-Element} e1, const \hyperlink{struct_sets___element}{Sets\-\_\-\-Element} e2, const int size)
 \item 
-int \hyperlink{_sets_8h_a78ba6fcf9599a886b4f70d6fe37c43ae}{Sets\_\-equals} (const \hyperlink{struct_sets___element}{Sets\_\-Element} e1, const \hyperlink{struct_sets___element}{Sets\_\-Element} e2, const int size)
+int \hyperlink{_sets_8h_a78ba6fcf9599a886b4f70d6fe37c43ae}{Sets\-\_\-equals} (const \hyperlink{struct_sets___element}{Sets\-\_\-\-Element} e1, const \hyperlink{struct_sets___element}{Sets\-\_\-\-Element} e2, const int size)
 \item 
-int \hyperlink{_sets_8h_a0e125050caab8c3ea6e0c6106b368f30}{Sets\_\-isMember} (const \hyperlink{struct_sets___element}{Sets\_\-Element} e, const \hyperlink{struct_sets___set}{Sets\_\-Set} s, const int size)
+int \hyperlink{_sets_8h_a0e125050caab8c3ea6e0c6106b368f30}{Sets\-\_\-is\-Member} (const \hyperlink{struct_sets___element}{Sets\-\_\-\-Element} e, const \hyperlink{struct_sets___set}{Sets\-\_\-\-Set} s, const int size)
 \item 
-int \hyperlink{_sets_8h_aa05e324ab84db67e2aaa729937ecbb14}{Sets\_\-isSubset} (const \hyperlink{struct_sets___element}{Sets\_\-Element} e1, const \hyperlink{struct_sets___element}{Sets\_\-Element} e2, const int size)
+int \hyperlink{_sets_8h_aa05e324ab84db67e2aaa729937ecbb14}{Sets\-\_\-is\-Subset} (const \hyperlink{struct_sets___element}{Sets\-\_\-\-Element} e1, const \hyperlink{struct_sets___element}{Sets\-\_\-\-Element} e2, const int size)
 \end{DoxyCompactItemize}
 \end{Indent}
 \begin{Indent}{\bf Memory deallocation}\par
 \begin{DoxyCompactItemize}
 \item 
-void \hyperlink{_sets_8h_ae5fd27e698be963efb3722d58b2cac4d}{Sets\_\-freeReferenceList} (\hyperlink{struct_sets___reference_list}{Sets\_\-ReferenceList} $\ast$rl)
+void \hyperlink{_sets_8h_ae5fd27e698be963efb3722d58b2cac4d}{Sets\-\_\-free\-Reference\-List} (\hyperlink{struct_sets___reference_list}{Sets\-\_\-\-Reference\-List} $\ast$rl)
 \item 
-void \hyperlink{_sets_8h_a11d75288ecd28e615c496f2a646a1b09}{Sets\_\-freeElement} (\hyperlink{struct_sets___element}{Sets\_\-Element} $\ast$e)
+void \hyperlink{_sets_8h_a11d75288ecd28e615c496f2a646a1b09}{Sets\-\_\-free\-Element} (\hyperlink{struct_sets___element}{Sets\-\_\-\-Element} $\ast$e)
 \item 
-void \hyperlink{_sets_8h_a99867a999bb7bd03b65e8fcd98fe799e}{Sets\_\-freeSet} (\hyperlink{struct_sets___set}{Sets\_\-Set} $\ast$s)
+void \hyperlink{_sets_8h_a99867a999bb7bd03b65e8fcd98fe799e}{Sets\-\_\-free\-Set} (\hyperlink{struct_sets___set}{Sets\-\_\-\-Set} $\ast$s)
 \end{DoxyCompactItemize}
 \end{Indent}
 \begin{Indent}{\bf Conversion to string}\par
 \begin{DoxyCompactItemize}
 \item 
-char $\ast$ \hyperlink{_sets_8h_a8d225190cc818f62bac703312e79520f}{Sets\_\-elementToString} (const \hyperlink{struct_sets___element}{Sets\_\-Element} e, const \hyperlink{struct_sets___reference_list}{Sets\_\-ReferenceList} rl)
+char $\ast$ \hyperlink{_sets_8h_a8d225190cc818f62bac703312e79520f}{Sets\-\_\-element\-To\-String} (const \hyperlink{struct_sets___element}{Sets\-\_\-\-Element} e, const \hyperlink{struct_sets___reference_list}{Sets\-\_\-\-Reference\-List} rl)
 \item 
-char $\ast$ \hyperlink{_sets_8h_a7693e000c2760240139628cd1b33d2f1}{Sets\_\-elementToBitString} (const \hyperlink{struct_sets___element}{Sets\_\-Element} e, int size)
+char $\ast$ \hyperlink{_sets_8h_a7693e000c2760240139628cd1b33d2f1}{Sets\-\_\-element\-To\-Bit\-String} (const \hyperlink{struct_sets___element}{Sets\-\_\-\-Element} e, int size)
 \item 
-char $\ast$ \hyperlink{_sets_8h_affff729f0fc637509c91655fc374f7f8}{Sets\_\-setToString} (const \hyperlink{struct_sets___set}{Sets\_\-Set} s, const \hyperlink{struct_sets___reference_list}{Sets\_\-ReferenceList} rl)
+char $\ast$ \hyperlink{_sets_8h_affff729f0fc637509c91655fc374f7f8}{Sets\-\_\-set\-To\-String} (const \hyperlink{struct_sets___set}{Sets\-\_\-\-Set} s, const \hyperlink{struct_sets___reference_list}{Sets\-\_\-\-Reference\-List} rl)
 \item 
-char $\ast$ \hyperlink{_sets_8h_a76fd7c759c8e24d17fdc240cc003c969}{Sets\_\-setToBitString} (const \hyperlink{struct_sets___set}{Sets\_\-Set} s, int size)
+char $\ast$ \hyperlink{_sets_8h_a76fd7c759c8e24d17fdc240cc003c969}{Sets\-\_\-set\-To\-Bit\-String} (const \hyperlink{struct_sets___set}{Sets\-\_\-\-Set} s, int size)
 \end{DoxyCompactItemize}
 \end{Indent}
 
 
 \subsection{Detailed Description}
-CORE: Implements the basics required to work on sets and elements in the theory of belief functions. \begin{DoxyAuthor}{Author}
-Bastien Pietropaoli (\href{mailto:bastien.pietropaoli@inria.fr}{\tt bastien.pietropaoli@inria.fr}) 
+C\-O\-R\-E\-: Implements the basics required to work on sets and elements in the theory of belief functions. \begin{DoxyAuthor}{Author}
+Bastien Pietropaoli (\href{mailto:bastien.pietropaoli@inria.fr}{\tt bastien.\-pietropaoli@inria.\-fr}) 
 \end{DoxyAuthor}
 
 
-Definition in file \hyperlink{_sets_8h_source}{Sets.h}.
+Definition in file \hyperlink{_sets_8h_source}{Sets.\-h}.
 
 
 
 \subsection{Function Documentation}
-\hypertarget{_sets_8h_a6ceef60230ceb38b105db8dbd44279f8}{
-\index{Sets.h@{Sets.h}!Sets\_\-conjunction@{Sets\_\-conjunction}}
-\index{Sets\_\-conjunction@{Sets\_\-conjunction}!Sets.h@{Sets.h}}
-\subsubsection[{Sets\_\-conjunction}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Sets\_\-Element} Sets\_\-conjunction (
+\hypertarget{_sets_8h_a6ceef60230ceb38b105db8dbd44279f8}{\index{Sets.\-h@{Sets.\-h}!Sets\-\_\-conjunction@{Sets\-\_\-conjunction}}
+\index{Sets\-\_\-conjunction@{Sets\-\_\-conjunction}!Sets.h@{Sets.\-h}}
+\subsubsection[{Sets\-\_\-conjunction}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Sets\-\_\-\-Element} Sets\-\_\-conjunction (
 \begin{DoxyParamCaption}
-\item[{const {\bf Sets\_\-Element}}]{e1, }
-\item[{const {\bf Sets\_\-Element}}]{e2, }
+\item[{const {\bf Sets\-\_\-\-Element}}]{e1, }
+\item[{const {\bf Sets\-\_\-\-Element}}]{e2, }
 \item[{const int}]{size}
 \end{DoxyParamCaption}
-)}}
-\label{_sets_8h_a6ceef60230ceb38b105db8dbd44279f8}
+)}}\label{_sets_8h_a6ceef60230ceb38b105db8dbd44279f8}
 Conjunction operation for elements (remember, it can be subsets...). 
 \begin{DoxyParams}{Parameters}
 {\em e1} & The first element of the operation \\
@@ -147,18 +138,16 @@ A new element equal to the conjunction of e1 and e2. Must be freed after use.
 \end{DoxyReturn}
 
 
-Definition at line 387 of file Sets.c.
+Definition at line 387 of file Sets.\-c.
 
-\hypertarget{_sets_8h_a025a9609428dd8e788a897273f30e21e}{
-\index{Sets.h@{Sets.h}!Sets\_\-copyElement@{Sets\_\-copyElement}}
-\index{Sets\_\-copyElement@{Sets\_\-copyElement}!Sets.h@{Sets.h}}
-\subsubsection[{Sets\_\-copyElement}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Sets\_\-Element} Sets\_\-copyElement (
+\hypertarget{_sets_8h_a025a9609428dd8e788a897273f30e21e}{\index{Sets.\-h@{Sets.\-h}!Sets\-\_\-copy\-Element@{Sets\-\_\-copy\-Element}}
+\index{Sets\-\_\-copy\-Element@{Sets\-\_\-copy\-Element}!Sets.h@{Sets.\-h}}
+\subsubsection[{Sets\-\_\-copy\-Element}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Sets\-\_\-\-Element} Sets\-\_\-copy\-Element (
 \begin{DoxyParamCaption}
-\item[{const {\bf Sets\_\-Element}}]{e, }
+\item[{const {\bf Sets\-\_\-\-Element}}]{e, }
 \item[{const int}]{size}
 \end{DoxyParamCaption}
-)}}
-\label{_sets_8h_a025a9609428dd8e788a897273f30e21e}
+)}}\label{_sets_8h_a025a9609428dd8e788a897273f30e21e}
 Create a copy of an element. 
 \begin{DoxyParams}{Parameters}
 {\em e} & The element to duplicate \\
@@ -171,18 +160,16 @@ A copy of the given element. Must be freed after use.
 \end{DoxyReturn}
 
 
-Definition at line 284 of file Sets.c.
+Definition at line 284 of file Sets.\-c.
 
-\hypertarget{_sets_8h_a734e81728f1e2e9fab1b86045dcc42d4}{
-\index{Sets.h@{Sets.h}!Sets\_\-createElementFromBits@{Sets\_\-createElementFromBits}}
-\index{Sets\_\-createElementFromBits@{Sets\_\-createElementFromBits}!Sets.h@{Sets.h}}
-\subsubsection[{Sets\_\-createElementFromBits}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Sets\_\-Element} Sets\_\-createElementFromBits (
+\hypertarget{_sets_8h_a734e81728f1e2e9fab1b86045dcc42d4}{\index{Sets.\-h@{Sets.\-h}!Sets\-\_\-create\-Element\-From\-Bits@{Sets\-\_\-create\-Element\-From\-Bits}}
+\index{Sets\-\_\-create\-Element\-From\-Bits@{Sets\-\_\-create\-Element\-From\-Bits}!Sets.h@{Sets.\-h}}
+\subsubsection[{Sets\-\_\-create\-Element\-From\-Bits}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Sets\-\_\-\-Element} Sets\-\_\-create\-Element\-From\-Bits (
 \begin{DoxyParamCaption}
 \item[{const char $\ast$}]{values, }
 \item[{const int}]{size}
 \end{DoxyParamCaption}
-)}}
-\label{_sets_8h_a734e81728f1e2e9fab1b86045dcc42d4}
+)}}\label{_sets_8h_a734e81728f1e2e9fab1b86045dcc42d4}
 Creates an element from a list of bits. 
 \begin{DoxyParams}{Parameters}
 {\em values} & The list of bits corresponding of the binary representation of the Element \\
@@ -195,26 +182,24 @@ A new element corresponding to the given values. Must be freed after use.
 \end{DoxyReturn}
 
 
-Definition at line 266 of file Sets.c.
+Definition at line 266 of file Sets.\-c.
 
-\hypertarget{_sets_8h_aeb10b28f5412dda4fae3098283d0ab8f}{
-\index{Sets.h@{Sets.h}!Sets\_\-createElementFromStrings@{Sets\_\-createElementFromStrings}}
-\index{Sets\_\-createElementFromStrings@{Sets\_\-createElementFromStrings}!Sets.h@{Sets.h}}
-\subsubsection[{Sets\_\-createElementFromStrings}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Sets\_\-Element} Sets\_\-createElementFromStrings (
+\hypertarget{_sets_8h_aeb10b28f5412dda4fae3098283d0ab8f}{\index{Sets.\-h@{Sets.\-h}!Sets\-\_\-create\-Element\-From\-Strings@{Sets\-\_\-create\-Element\-From\-Strings}}
+\index{Sets\-\_\-create\-Element\-From\-Strings@{Sets\-\_\-create\-Element\-From\-Strings}!Sets.h@{Sets.\-h}}
+\subsubsection[{Sets\-\_\-create\-Element\-From\-Strings}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Sets\-\_\-\-Element} Sets\-\_\-create\-Element\-From\-Strings (
 \begin{DoxyParamCaption}
 \item[{const char $\ast$const $\ast$const}]{values, }
-\item[{const int}]{nbValues, }
-\item[{const {\bf Sets\_\-ReferenceList}}]{rl}
+\item[{const int}]{nb\-Values, }
+\item[{const {\bf Sets\-\_\-\-Reference\-List}}]{rl}
 \end{DoxyParamCaption}
-)}}
-\label{_sets_8h_aeb10b28f5412dda4fae3098283d0ab8f}
+)}}\label{_sets_8h_aeb10b28f5412dda4fae3098283d0ab8f}
 Creates an element from a list of string values. 
 \begin{DoxyParams}{Parameters}
 {\em values} & The strings corresponding to the values \\
 \hline
-{\em nbValues} & The number of values to store \\
+{\em nb\-Values} & The number of values to store \\
 \hline
-{\em rl} & The ReferenceList containing the real values of the context attribute \\
+{\em rl} & The Reference\-List containing the real values of the context attribute \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
@@ -222,17 +207,15 @@ A new element corresponding to the given values. Must be freed after use.
 \end{DoxyReturn}
 
 
-Definition at line 214 of file Sets.c.
+Definition at line 214 of file Sets.\-c.
 
-\hypertarget{_sets_8h_aff63bec7eef8f1dc3f70b84cab2fd929}{
-\index{Sets.h@{Sets.h}!Sets\_\-createPowerSet@{Sets\_\-createPowerSet}}
-\index{Sets\_\-createPowerSet@{Sets\_\-createPowerSet}!Sets.h@{Sets.h}}
-\subsubsection[{Sets\_\-createPowerSet}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Sets\_\-Set} Sets\_\-createPowerSet (
+\hypertarget{_sets_8h_aff63bec7eef8f1dc3f70b84cab2fd929}{\index{Sets.\-h@{Sets.\-h}!Sets\-\_\-create\-Power\-Set@{Sets\-\_\-create\-Power\-Set}}
+\index{Sets\-\_\-create\-Power\-Set@{Sets\-\_\-create\-Power\-Set}!Sets.h@{Sets.\-h}}
+\subsubsection[{Sets\-\_\-create\-Power\-Set}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Sets\-\_\-\-Set} Sets\-\_\-create\-Power\-Set (
 \begin{DoxyParamCaption}
-\item[{const {\bf Sets\_\-Set}}]{set}
+\item[{const {\bf Sets\-\_\-\-Set}}]{set}
 \end{DoxyParamCaption}
-)}}
-\label{_sets_8h_aff63bec7eef8f1dc3f70b84cab2fd929}
+)}}\label{_sets_8h_aff63bec7eef8f1dc3f70b84cab2fd929}
 Creates a powerset using a Set. 
 \begin{DoxyParams}{Parameters}
 {\em set} & The generator set, assuming that it contains only atoms \\
@@ -243,20 +226,18 @@ A new set representing the powerset. Must be freed after use.
 \end{DoxyReturn}
 
 
-Definition at line 134 of file Sets.c.
+Definition at line 134 of file Sets.\-c.
 
-\hypertarget{_sets_8h_ac6b07f3292e347231e23935b3773b778}{
-\index{Sets.h@{Sets.h}!Sets\_\-createSet@{Sets\_\-createSet}}
-\index{Sets\_\-createSet@{Sets\_\-createSet}!Sets.h@{Sets.h}}
-\subsubsection[{Sets\_\-createSet}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Sets\_\-Set} Sets\_\-createSet (
+\hypertarget{_sets_8h_ac6b07f3292e347231e23935b3773b778}{\index{Sets.\-h@{Sets.\-h}!Sets\-\_\-create\-Set@{Sets\-\_\-create\-Set}}
+\index{Sets\-\_\-create\-Set@{Sets\-\_\-create\-Set}!Sets.h@{Sets.\-h}}
+\subsubsection[{Sets\-\_\-create\-Set}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Sets\-\_\-\-Set} Sets\-\_\-create\-Set (
 \begin{DoxyParamCaption}
-\item[{const int}]{nbAtoms}
+\item[{const int}]{nb\-Atoms}
 \end{DoxyParamCaption}
-)}}
-\label{_sets_8h_ac6b07f3292e347231e23935b3773b778}
+)}}\label{_sets_8h_ac6b07f3292e347231e23935b3773b778}
 Creates the set of atoms given the total number of required atoms. 
 \begin{DoxyParams}{Parameters}
-{\em nbAtoms} & The wanted number of atoms \\
+{\em nb\-Atoms} & The wanted number of atoms \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
@@ -264,40 +245,36 @@ The set of atoms. Must be freed after use.
 \end{DoxyReturn}
 
 
-Definition at line 104 of file Sets.c.
+Definition at line 104 of file Sets.\-c.
 
-\hypertarget{_sets_8h_afc1de95161762f86518712d96347b451}{
-\index{Sets.h@{Sets.h}!Sets\_\-createSetFromRefList@{Sets\_\-createSetFromRefList}}
-\index{Sets\_\-createSetFromRefList@{Sets\_\-createSetFromRefList}!Sets.h@{Sets.h}}
-\subsubsection[{Sets\_\-createSetFromRefList}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Sets\_\-Set} Sets\_\-createSetFromRefList (
+\hypertarget{_sets_8h_afc1de95161762f86518712d96347b451}{\index{Sets.\-h@{Sets.\-h}!Sets\-\_\-create\-Set\-From\-Ref\-List@{Sets\-\_\-create\-Set\-From\-Ref\-List}}
+\index{Sets\-\_\-create\-Set\-From\-Ref\-List@{Sets\-\_\-create\-Set\-From\-Ref\-List}!Sets.h@{Sets.\-h}}
+\subsubsection[{Sets\-\_\-create\-Set\-From\-Ref\-List}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Sets\-\_\-\-Set} Sets\-\_\-create\-Set\-From\-Ref\-List (
 \begin{DoxyParamCaption}
-\item[{const {\bf Sets\_\-ReferenceList}}]{rl}
+\item[{const {\bf Sets\-\_\-\-Reference\-List}}]{rl}
 \end{DoxyParamCaption}
-)}}
-\label{_sets_8h_afc1de95161762f86518712d96347b451}
-Creates the set of atoms given a ReferenceList. 
+)}}\label{_sets_8h_afc1de95161762f86518712d96347b451}
+Creates the set of atoms given a Reference\-List. 
 \begin{DoxyParams}{Parameters}
-{\em rl} & The ReferenceList of atomic values \\
+{\em rl} & The Reference\-List of atomic values \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-The set associated to the given ReferenceList. Must be freed after use. 
+The set associated to the given Reference\-List. Must be freed after use. 
 \end{DoxyReturn}
 
 
-Definition at line 100 of file Sets.c.
+Definition at line 100 of file Sets.\-c.
 
-\hypertarget{_sets_8h_a2d1b893038be0d315af244b5a2736912}{
-\index{Sets.h@{Sets.h}!Sets\_\-disjunction@{Sets\_\-disjunction}}
-\index{Sets\_\-disjunction@{Sets\_\-disjunction}!Sets.h@{Sets.h}}
-\subsubsection[{Sets\_\-disjunction}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Sets\_\-Element} Sets\_\-disjunction (
+\hypertarget{_sets_8h_a2d1b893038be0d315af244b5a2736912}{\index{Sets.\-h@{Sets.\-h}!Sets\-\_\-disjunction@{Sets\-\_\-disjunction}}
+\index{Sets\-\_\-disjunction@{Sets\-\_\-disjunction}!Sets.h@{Sets.\-h}}
+\subsubsection[{Sets\-\_\-disjunction}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Sets\-\_\-\-Element} Sets\-\_\-disjunction (
 \begin{DoxyParamCaption}
-\item[{const {\bf Sets\_\-Element}}]{e1, }
-\item[{const {\bf Sets\_\-Element}}]{e2, }
+\item[{const {\bf Sets\-\_\-\-Element}}]{e1, }
+\item[{const {\bf Sets\-\_\-\-Element}}]{e2, }
 \item[{const int}]{size}
 \end{DoxyParamCaption}
-)}}
-\label{_sets_8h_a2d1b893038be0d315af244b5a2736912}
+)}}\label{_sets_8h_a2d1b893038be0d315af244b5a2736912}
 Disjunction operation for elements (remember, it can be subsets...). 
 \begin{DoxyParams}{Parameters}
 {\em e1} & The first element of the operation \\
@@ -312,23 +289,21 @@ A new element equal to the disjunction of e1 and e2. Must be freed after use.
 \end{DoxyReturn}
 
 
-Definition at line 410 of file Sets.c.
+Definition at line 410 of file Sets.\-c.
 
-\hypertarget{_sets_8h_ab9ee97ae54608f3fb5784b29503d62b6}{
-\index{Sets.h@{Sets.h}!Sets\_\-elementFromNumber@{Sets\_\-elementFromNumber}}
-\index{Sets\_\-elementFromNumber@{Sets\_\-elementFromNumber}!Sets.h@{Sets.h}}
-\subsubsection[{Sets\_\-elementFromNumber}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Sets\_\-Element} Sets\_\-elementFromNumber (
+\hypertarget{_sets_8h_ab9ee97ae54608f3fb5784b29503d62b6}{\index{Sets.\-h@{Sets.\-h}!Sets\-\_\-element\-From\-Number@{Sets\-\_\-element\-From\-Number}}
+\index{Sets\-\_\-element\-From\-Number@{Sets\-\_\-element\-From\-Number}!Sets.h@{Sets.\-h}}
+\subsubsection[{Sets\-\_\-element\-From\-Number}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Sets\-\_\-\-Element} Sets\-\_\-element\-From\-Number (
 \begin{DoxyParamCaption}
 \item[{const int}]{number, }
-\item[{const int}]{nbDigits}
+\item[{const int}]{nb\-Digits}
 \end{DoxyParamCaption}
-)}}
-\label{_sets_8h_ab9ee97ae54608f3fb5784b29503d62b6}
+)}}\label{_sets_8h_ab9ee97ae54608f3fb5784b29503d62b6}
 Builds an element from the integer corresponding to its binary form. 
 \begin{DoxyParams}{Parameters}
 {\em number} & The number to convert into an Element in a binary form. \\
 \hline
-{\em nbDigits} & The number of digits to use for the binary form. \\
+{\em nb\-Digits} & The number of digits to use for the binary form. \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
@@ -336,18 +311,16 @@ The corresponding Element. Must be freed after use.
 \end{DoxyReturn}
 
 
-Definition at line 341 of file Sets.c.
+Definition at line 341 of file Sets.\-c.
 
-\hypertarget{_sets_8h_a7693e000c2760240139628cd1b33d2f1}{
-\index{Sets.h@{Sets.h}!Sets\_\-elementToBitString@{Sets\_\-elementToBitString}}
-\index{Sets\_\-elementToBitString@{Sets\_\-elementToBitString}!Sets.h@{Sets.h}}
-\subsubsection[{Sets\_\-elementToBitString}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ Sets\_\-elementToBitString (
+\hypertarget{_sets_8h_a7693e000c2760240139628cd1b33d2f1}{\index{Sets.\-h@{Sets.\-h}!Sets\-\_\-element\-To\-Bit\-String@{Sets\-\_\-element\-To\-Bit\-String}}
+\index{Sets\-\_\-element\-To\-Bit\-String@{Sets\-\_\-element\-To\-Bit\-String}!Sets.h@{Sets.\-h}}
+\subsubsection[{Sets\-\_\-element\-To\-Bit\-String}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ Sets\-\_\-element\-To\-Bit\-String (
 \begin{DoxyParamCaption}
-\item[{const {\bf Sets\_\-Element}}]{e, }
+\item[{const {\bf Sets\-\_\-\-Element}}]{e, }
 \item[{int}]{size}
 \end{DoxyParamCaption}
-)}}
-\label{_sets_8h_a7693e000c2760240139628cd1b33d2f1}
+)}}\label{_sets_8h_a7693e000c2760240139628cd1b33d2f1}
 Creates a binary representation of an element. 
 \begin{DoxyParams}{Parameters}
 {\em e} & The element to convert \\
@@ -360,23 +333,21 @@ A string ready to print. Must be freed after use.
 \end{DoxyReturn}
 
 
-Definition at line 566 of file Sets.c.
+Definition at line 566 of file Sets.\-c.
 
-\hypertarget{_sets_8h_a8d225190cc818f62bac703312e79520f}{
-\index{Sets.h@{Sets.h}!Sets\_\-elementToString@{Sets\_\-elementToString}}
-\index{Sets\_\-elementToString@{Sets\_\-elementToString}!Sets.h@{Sets.h}}
-\subsubsection[{Sets\_\-elementToString}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ Sets\_\-elementToString (
+\hypertarget{_sets_8h_a8d225190cc818f62bac703312e79520f}{\index{Sets.\-h@{Sets.\-h}!Sets\-\_\-element\-To\-String@{Sets\-\_\-element\-To\-String}}
+\index{Sets\-\_\-element\-To\-String@{Sets\-\_\-element\-To\-String}!Sets.h@{Sets.\-h}}
+\subsubsection[{Sets\-\_\-element\-To\-String}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ Sets\-\_\-element\-To\-String (
 \begin{DoxyParamCaption}
-\item[{const {\bf Sets\_\-Element}}]{e, }
-\item[{const {\bf Sets\_\-ReferenceList}}]{rl}
+\item[{const {\bf Sets\-\_\-\-Element}}]{e, }
+\item[{const {\bf Sets\-\_\-\-Reference\-List}}]{rl}
 \end{DoxyParamCaption}
-)}}
-\label{_sets_8h_a8d225190cc818f62bac703312e79520f}
+)}}\label{_sets_8h_a8d225190cc818f62bac703312e79520f}
 Creates a natural representation of an element. 
 \begin{DoxyParams}{Parameters}
 {\em e} & The element to convert \\
 \hline
-{\em rl} & The ReferenceList containing the real value of atoms \\
+{\em rl} & The Reference\-List containing the real value of atoms \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
@@ -384,19 +355,17 @@ A string ready to print. Must be freed after use.
 \end{DoxyReturn}
 
 
-Definition at line 518 of file Sets.c.
+Definition at line 518 of file Sets.\-c.
 
-\hypertarget{_sets_8h_a78ba6fcf9599a886b4f70d6fe37c43ae}{
-\index{Sets.h@{Sets.h}!Sets\_\-equals@{Sets\_\-equals}}
-\index{Sets\_\-equals@{Sets\_\-equals}!Sets.h@{Sets.h}}
-\subsubsection[{Sets\_\-equals}]{\setlength{\rightskip}{0pt plus 5cm}int Sets\_\-equals (
+\hypertarget{_sets_8h_a78ba6fcf9599a886b4f70d6fe37c43ae}{\index{Sets.\-h@{Sets.\-h}!Sets\-\_\-equals@{Sets\-\_\-equals}}
+\index{Sets\-\_\-equals@{Sets\-\_\-equals}!Sets.h@{Sets.\-h}}
+\subsubsection[{Sets\-\_\-equals}]{\setlength{\rightskip}{0pt plus 5cm}int Sets\-\_\-equals (
 \begin{DoxyParamCaption}
-\item[{const {\bf Sets\_\-Element}}]{e1, }
-\item[{const {\bf Sets\_\-Element}}]{e2, }
+\item[{const {\bf Sets\-\_\-\-Element}}]{e1, }
+\item[{const {\bf Sets\-\_\-\-Element}}]{e2, }
 \item[{const int}]{size}
 \end{DoxyParamCaption}
-)}}
-\label{_sets_8h_a78ba6fcf9599a886b4f70d6fe37c43ae}
+)}}\label{_sets_8h_a78ba6fcf9599a886b4f70d6fe37c43ae}
 Compares two elements. 
 \begin{DoxyParams}{Parameters}
 {\em e1} & The first element \\
@@ -411,17 +380,15 @@ Compares two elements.
 \end{DoxyReturn}
 
 
-Definition at line 433 of file Sets.c.
+Definition at line 433 of file Sets.\-c.
 
-\hypertarget{_sets_8h_a11d75288ecd28e615c496f2a646a1b09}{
-\index{Sets.h@{Sets.h}!Sets\_\-freeElement@{Sets\_\-freeElement}}
-\index{Sets\_\-freeElement@{Sets\_\-freeElement}!Sets.h@{Sets.h}}
-\subsubsection[{Sets\_\-freeElement}]{\setlength{\rightskip}{0pt plus 5cm}void Sets\_\-freeElement (
+\hypertarget{_sets_8h_a11d75288ecd28e615c496f2a646a1b09}{\index{Sets.\-h@{Sets.\-h}!Sets\-\_\-free\-Element@{Sets\-\_\-free\-Element}}
+\index{Sets\-\_\-free\-Element@{Sets\-\_\-free\-Element}!Sets.h@{Sets.\-h}}
+\subsubsection[{Sets\-\_\-free\-Element}]{\setlength{\rightskip}{0pt plus 5cm}void Sets\-\_\-free\-Element (
 \begin{DoxyParamCaption}
-\item[{{\bf Sets\_\-Element} $\ast$}]{e}
+\item[{{\bf Sets\-\_\-\-Element} $\ast$}]{e}
 \end{DoxyParamCaption}
-)}}
-\label{_sets_8h_a11d75288ecd28e615c496f2a646a1b09}
+)}}\label{_sets_8h_a11d75288ecd28e615c496f2a646a1b09}
 Frees the memory used for the values storage in an element. 
 \begin{DoxyParams}{Parameters}
 {\em e} & A pointer to the element to deallocate in memory \\
@@ -429,35 +396,31 @@ Frees the memory used for the values storage in an element.
 \end{DoxyParams}
 
 
-Definition at line 490 of file Sets.c.
+Definition at line 490 of file Sets.\-c.
 
-\hypertarget{_sets_8h_ae5fd27e698be963efb3722d58b2cac4d}{
-\index{Sets.h@{Sets.h}!Sets\_\-freeReferenceList@{Sets\_\-freeReferenceList}}
-\index{Sets\_\-freeReferenceList@{Sets\_\-freeReferenceList}!Sets.h@{Sets.h}}
-\subsubsection[{Sets\_\-freeReferenceList}]{\setlength{\rightskip}{0pt plus 5cm}void Sets\_\-freeReferenceList (
+\hypertarget{_sets_8h_ae5fd27e698be963efb3722d58b2cac4d}{\index{Sets.\-h@{Sets.\-h}!Sets\-\_\-free\-Reference\-List@{Sets\-\_\-free\-Reference\-List}}
+\index{Sets\-\_\-free\-Reference\-List@{Sets\-\_\-free\-Reference\-List}!Sets.h@{Sets.\-h}}
+\subsubsection[{Sets\-\_\-free\-Reference\-List}]{\setlength{\rightskip}{0pt plus 5cm}void Sets\-\_\-free\-Reference\-List (
 \begin{DoxyParamCaption}
-\item[{{\bf Sets\_\-ReferenceList} $\ast$}]{rl}
+\item[{{\bf Sets\-\_\-\-Reference\-List} $\ast$}]{rl}
 \end{DoxyParamCaption}
-)}}
-\label{_sets_8h_ae5fd27e698be963efb3722d58b2cac4d}
-Frees the memory used for a ReferenceList. 
+)}}\label{_sets_8h_ae5fd27e698be963efb3722d58b2cac4d}
+Frees the memory used for a Reference\-List. 
 \begin{DoxyParams}{Parameters}
-{\em rl} & A pointer to the ReferenceList to deallocate in memory \\
+{\em rl} & A pointer to the Reference\-List to deallocate in memory \\
 \hline
 \end{DoxyParams}
 
 
-Definition at line 481 of file Sets.c.
+Definition at line 481 of file Sets.\-c.
 
-\hypertarget{_sets_8h_a99867a999bb7bd03b65e8fcd98fe799e}{
-\index{Sets.h@{Sets.h}!Sets\_\-freeSet@{Sets\_\-freeSet}}
-\index{Sets\_\-freeSet@{Sets\_\-freeSet}!Sets.h@{Sets.h}}
-\subsubsection[{Sets\_\-freeSet}]{\setlength{\rightskip}{0pt plus 5cm}void Sets\_\-freeSet (
+\hypertarget{_sets_8h_a99867a999bb7bd03b65e8fcd98fe799e}{\index{Sets.\-h@{Sets.\-h}!Sets\-\_\-free\-Set@{Sets\-\_\-free\-Set}}
+\index{Sets\-\_\-free\-Set@{Sets\-\_\-free\-Set}!Sets.h@{Sets.\-h}}
+\subsubsection[{Sets\-\_\-free\-Set}]{\setlength{\rightskip}{0pt plus 5cm}void Sets\-\_\-free\-Set (
 \begin{DoxyParamCaption}
-\item[{{\bf Sets\_\-Set} $\ast$}]{s}
+\item[{{\bf Sets\-\_\-\-Set} $\ast$}]{s}
 \end{DoxyParamCaption}
-)}}
-\label{_sets_8h_a99867a999bb7bd03b65e8fcd98fe799e}
+)}}\label{_sets_8h_a99867a999bb7bd03b65e8fcd98fe799e}
 Frees the memory used by all the elements in the set. 
 \begin{DoxyParams}{Parameters}
 {\em s} & A pointer to the set to deallocate in memory \\
@@ -465,20 +428,18 @@ Frees the memory used by all the elements in the set.
 \end{DoxyParams}
 
 
-Definition at line 494 of file Sets.c.
+Definition at line 494 of file Sets.\-c.
 
-\hypertarget{_sets_8h_a5396c8d0baf10f82de306adfec74cf05}{
-\index{Sets.h@{Sets.h}!Sets\_\-generatePowerSet@{Sets\_\-generatePowerSet}}
-\index{Sets\_\-generatePowerSet@{Sets\_\-generatePowerSet}!Sets.h@{Sets.h}}
-\subsubsection[{Sets\_\-generatePowerSet}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Sets\_\-Set} Sets\_\-generatePowerSet (
+\hypertarget{_sets_8h_a5396c8d0baf10f82de306adfec74cf05}{\index{Sets.\-h@{Sets.\-h}!Sets\-\_\-generate\-Power\-Set@{Sets\-\_\-generate\-Power\-Set}}
+\index{Sets\-\_\-generate\-Power\-Set@{Sets\-\_\-generate\-Power\-Set}!Sets.h@{Sets.\-h}}
+\subsubsection[{Sets\-\_\-generate\-Power\-Set}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Sets\-\_\-\-Set} Sets\-\_\-generate\-Power\-Set (
 \begin{DoxyParamCaption}
-\item[{const int}]{elementSize}
+\item[{const int}]{element\-Size}
 \end{DoxyParamCaption}
-)}}
-\label{_sets_8h_a5396c8d0baf10f82de306adfec74cf05}
+)}}\label{_sets_8h_a5396c8d0baf10f82de306adfec74cf05}
 Creates a powerset knowing the number of bits to represent the elements. 
 \begin{DoxyParams}{Parameters}
-{\em elementSize} & The number of bits used to represent elements \\
+{\em element\-Size} & The number of bits used to represent elements \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
@@ -486,17 +447,15 @@ A new Set representing the powerset. Must be freed after use.
 \end{DoxyReturn}
 
 
-Definition at line 183 of file Sets.c.
+Definition at line 183 of file Sets.\-c.
 
-\hypertarget{_sets_8h_a63694d9535e64bcb24d65ea53b3e077f}{
-\index{Sets.h@{Sets.h}!Sets\_\-getEmptyElement@{Sets\_\-getEmptyElement}}
-\index{Sets\_\-getEmptyElement@{Sets\_\-getEmptyElement}!Sets.h@{Sets.h}}
-\subsubsection[{Sets\_\-getEmptyElement}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Sets\_\-Element} Sets\_\-getEmptyElement (
+\hypertarget{_sets_8h_a63694d9535e64bcb24d65ea53b3e077f}{\index{Sets.\-h@{Sets.\-h}!Sets\-\_\-get\-Empty\-Element@{Sets\-\_\-get\-Empty\-Element}}
+\index{Sets\-\_\-get\-Empty\-Element@{Sets\-\_\-get\-Empty\-Element}!Sets.h@{Sets.\-h}}
+\subsubsection[{Sets\-\_\-get\-Empty\-Element}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Sets\-\_\-\-Element} Sets\-\_\-get\-Empty\-Element (
 \begin{DoxyParamCaption}
 \item[{const int}]{size}
 \end{DoxyParamCaption}
-)}}
-\label{_sets_8h_a63694d9535e64bcb24d65ea53b3e077f}
+)}}\label{_sets_8h_a63694d9535e64bcb24d65ea53b3e077f}
 Creates the empty set as an Element. 
 \begin{DoxyParams}{Parameters}
 {\em size} & The size of the empty set to create \\
@@ -507,18 +466,16 @@ An empty Element. Must be freed after use.
 \end{DoxyReturn}
 
 
-Definition at line 303 of file Sets.c.
+Definition at line 303 of file Sets.\-c.
 
-\hypertarget{_sets_8h_ac5ef66419dc7db3f9b53fa383f9e3a2c}{
-\index{Sets.h@{Sets.h}!Sets\_\-getOpposite@{Sets\_\-getOpposite}}
-\index{Sets\_\-getOpposite@{Sets\_\-getOpposite}!Sets.h@{Sets.h}}
-\subsubsection[{Sets\_\-getOpposite}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Sets\_\-Element} Sets\_\-getOpposite (
+\hypertarget{_sets_8h_ac5ef66419dc7db3f9b53fa383f9e3a2c}{\index{Sets.\-h@{Sets.\-h}!Sets\-\_\-get\-Opposite@{Sets\-\_\-get\-Opposite}}
+\index{Sets\-\_\-get\-Opposite@{Sets\-\_\-get\-Opposite}!Sets.h@{Sets.\-h}}
+\subsubsection[{Sets\-\_\-get\-Opposite}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Sets\-\_\-\-Element} Sets\-\_\-get\-Opposite (
 \begin{DoxyParamCaption}
-\item[{const {\bf Sets\_\-Element}}]{e, }
+\item[{const {\bf Sets\-\_\-\-Element}}]{e, }
 \item[{const int}]{size}
 \end{DoxyParamCaption}
-)}}
-\label{_sets_8h_ac5ef66419dc7db3f9b53fa383f9e3a2c}
+)}}\label{_sets_8h_ac5ef66419dc7db3f9b53fa383f9e3a2c}
 Creates the opposite of the element e. 
 \begin{DoxyParams}{Parameters}
 {\em e} & The element whose opposite is required \\
@@ -531,19 +488,17 @@ A new element which is the opposite of e. Must be freed after use.
 \end{DoxyReturn}
 
 
-Definition at line 322 of file Sets.c.
+Definition at line 322 of file Sets.\-c.
 
-\hypertarget{_sets_8h_a0e125050caab8c3ea6e0c6106b368f30}{
-\index{Sets.h@{Sets.h}!Sets\_\-isMember@{Sets\_\-isMember}}
-\index{Sets\_\-isMember@{Sets\_\-isMember}!Sets.h@{Sets.h}}
-\subsubsection[{Sets\_\-isMember}]{\setlength{\rightskip}{0pt plus 5cm}int Sets\_\-isMember (
+\hypertarget{_sets_8h_a0e125050caab8c3ea6e0c6106b368f30}{\index{Sets.\-h@{Sets.\-h}!Sets\-\_\-is\-Member@{Sets\-\_\-is\-Member}}
+\index{Sets\-\_\-is\-Member@{Sets\-\_\-is\-Member}!Sets.h@{Sets.\-h}}
+\subsubsection[{Sets\-\_\-is\-Member}]{\setlength{\rightskip}{0pt plus 5cm}int Sets\-\_\-is\-Member (
 \begin{DoxyParamCaption}
-\item[{const {\bf Sets\_\-Element}}]{e, }
-\item[{const {\bf Sets\_\-Set}}]{s, }
+\item[{const {\bf Sets\-\_\-\-Element}}]{e, }
+\item[{const {\bf Sets\-\_\-\-Set}}]{s, }
 \item[{const int}]{size}
 \end{DoxyParamCaption}
-)}}
-\label{_sets_8h_a0e125050caab8c3ea6e0c6106b368f30}
+)}}\label{_sets_8h_a0e125050caab8c3ea6e0c6106b368f30}
 Tests if the element is a member of the set. 
 \begin{DoxyParams}{Parameters}
 {\em e} & The element to test \\
@@ -558,19 +513,17 @@ Tests if the element is a member of the set.
 \end{DoxyReturn}
 
 
-Definition at line 448 of file Sets.c.
+Definition at line 448 of file Sets.\-c.
 
-\hypertarget{_sets_8h_aa05e324ab84db67e2aaa729937ecbb14}{
-\index{Sets.h@{Sets.h}!Sets\_\-isSubset@{Sets\_\-isSubset}}
-\index{Sets\_\-isSubset@{Sets\_\-isSubset}!Sets.h@{Sets.h}}
-\subsubsection[{Sets\_\-isSubset}]{\setlength{\rightskip}{0pt plus 5cm}int Sets\_\-isSubset (
+\hypertarget{_sets_8h_aa05e324ab84db67e2aaa729937ecbb14}{\index{Sets.\-h@{Sets.\-h}!Sets\-\_\-is\-Subset@{Sets\-\_\-is\-Subset}}
+\index{Sets\-\_\-is\-Subset@{Sets\-\_\-is\-Subset}!Sets.h@{Sets.\-h}}
+\subsubsection[{Sets\-\_\-is\-Subset}]{\setlength{\rightskip}{0pt plus 5cm}int Sets\-\_\-is\-Subset (
 \begin{DoxyParamCaption}
-\item[{const {\bf Sets\_\-Element}}]{e1, }
-\item[{const {\bf Sets\_\-Element}}]{e2, }
+\item[{const {\bf Sets\-\_\-\-Element}}]{e1, }
+\item[{const {\bf Sets\-\_\-\-Element}}]{e2, }
 \item[{const int}]{size}
 \end{DoxyParamCaption}
-)}}
-\label{_sets_8h_aa05e324ab84db67e2aaa729937ecbb14}
+)}}\label{_sets_8h_aa05e324ab84db67e2aaa729937ecbb14}
 Tests if the element is a subset of another one. 
 \begin{DoxyParams}{Parameters}
 {\em e1} & The element that may be included \\
@@ -585,44 +538,40 @@ Tests if the element is a subset of another one.
 \end{DoxyReturn}
 
 
-Definition at line 458 of file Sets.c.
+Definition at line 458 of file Sets.\-c.
 
-\hypertarget{_sets_8h_a4f4dfebe73c846a88c525a7051ba6eed}{
-\index{Sets.h@{Sets.h}!Sets\_\-loadRefList@{Sets\_\-loadRefList}}
-\index{Sets\_\-loadRefList@{Sets\_\-loadRefList}!Sets.h@{Sets.h}}
-\subsubsection[{Sets\_\-loadRefList}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Sets\_\-ReferenceList} Sets\_\-loadRefList (
+\hypertarget{_sets_8h_a4f4dfebe73c846a88c525a7051ba6eed}{\index{Sets.\-h@{Sets.\-h}!Sets\-\_\-load\-Ref\-List@{Sets\-\_\-load\-Ref\-List}}
+\index{Sets\-\_\-load\-Ref\-List@{Sets\-\_\-load\-Ref\-List}!Sets.h@{Sets.\-h}}
+\subsubsection[{Sets\-\_\-load\-Ref\-List}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Sets\-\_\-\-Reference\-List} Sets\-\_\-load\-Ref\-List (
 \begin{DoxyParamCaption}
 \item[{const char $\ast$}]{filename}
 \end{DoxyParamCaption}
-)}}
-\label{_sets_8h_a4f4dfebe73c846a88c525a7051ba6eed}
+)}}\label{_sets_8h_a4f4dfebe73c846a88c525a7051ba6eed}
 Loads a reference list of possible values for a context attribute from a file. There should be one atom per line in the file and no empty line! 'void' is reserved, use it may cause unpredictable behaviour. 
 \begin{DoxyParams}{Parameters}
-{\em fileName} & The name of the file to read \\
+{\em file\-Name} & The name of the file to read \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-The loaded ReferenceList or a list with a card = 0 if fail. Must be freed after use. 
+The loaded Reference\-List or a list with a card = 0 if fail. Must be freed after use. 
 \end{DoxyReturn}
 
 
-Definition at line 33 of file Sets.c.
+Definition at line 33 of file Sets.\-c.
 
-\hypertarget{_sets_8h_a71aeb52bad651c5129b57d7e69e5f480}{
-\index{Sets.h@{Sets.h}!Sets\_\-numberFromElement@{Sets\_\-numberFromElement}}
-\index{Sets\_\-numberFromElement@{Sets\_\-numberFromElement}!Sets.h@{Sets.h}}
-\subsubsection[{Sets\_\-numberFromElement}]{\setlength{\rightskip}{0pt plus 5cm}int Sets\_\-numberFromElement (
+\hypertarget{_sets_8h_a71aeb52bad651c5129b57d7e69e5f480}{\index{Sets.\-h@{Sets.\-h}!Sets\-\_\-number\-From\-Element@{Sets\-\_\-number\-From\-Element}}
+\index{Sets\-\_\-number\-From\-Element@{Sets\-\_\-number\-From\-Element}!Sets.h@{Sets.\-h}}
+\subsubsection[{Sets\-\_\-number\-From\-Element}]{\setlength{\rightskip}{0pt plus 5cm}int Sets\-\_\-number\-From\-Element (
 \begin{DoxyParamCaption}
-\item[{const {\bf Sets\_\-Element}}]{e, }
-\item[{const int}]{nbDigits}
+\item[{const {\bf Sets\-\_\-\-Element}}]{e, }
+\item[{const int}]{nb\-Digits}
 \end{DoxyParamCaption}
-)}}
-\label{_sets_8h_a71aeb52bad651c5129b57d7e69e5f480}
+)}}\label{_sets_8h_a71aeb52bad651c5129b57d7e69e5f480}
 Gives the number corresponding to the binary form of an Element. 
 \begin{DoxyParams}{Parameters}
-{\em e} & The \hyperlink{struct_sets___element}{Sets\_\-Element} to convert. \\
+{\em e} & The \hyperlink{struct_sets___element}{Sets\-\_\-\-Element} to convert. \\
 \hline
-{\em nbDigits} & The number of digits used for the binary form. \\
+{\em nb\-Digits} & The number of digits used for the binary form. \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
@@ -630,18 +579,16 @@ The number corresponding to the binary form of the given Element.
 \end{DoxyReturn}
 
 
-Definition at line 363 of file Sets.c.
+Definition at line 363 of file Sets.\-c.
 
-\hypertarget{_sets_8h_a76fd7c759c8e24d17fdc240cc003c969}{
-\index{Sets.h@{Sets.h}!Sets\_\-setToBitString@{Sets\_\-setToBitString}}
-\index{Sets\_\-setToBitString@{Sets\_\-setToBitString}!Sets.h@{Sets.h}}
-\subsubsection[{Sets\_\-setToBitString}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ Sets\_\-setToBitString (
+\hypertarget{_sets_8h_a76fd7c759c8e24d17fdc240cc003c969}{\index{Sets.\-h@{Sets.\-h}!Sets\-\_\-set\-To\-Bit\-String@{Sets\-\_\-set\-To\-Bit\-String}}
+\index{Sets\-\_\-set\-To\-Bit\-String@{Sets\-\_\-set\-To\-Bit\-String}!Sets.h@{Sets.\-h}}
+\subsubsection[{Sets\-\_\-set\-To\-Bit\-String}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ Sets\-\_\-set\-To\-Bit\-String (
 \begin{DoxyParamCaption}
-\item[{const {\bf Sets\_\-Set}}]{s, }
+\item[{const {\bf Sets\-\_\-\-Set}}]{s, }
 \item[{int}]{size}
 \end{DoxyParamCaption}
-)}}
-\label{_sets_8h_a76fd7c759c8e24d17fdc240cc003c969}
+)}}\label{_sets_8h_a76fd7c759c8e24d17fdc240cc003c969}
 Creates a binary representation of a set of elements. 
 \begin{DoxyParams}{Parameters}
 {\em s} & The set to convert \\
@@ -654,23 +601,21 @@ A string ready to print. Must be freed after use.
 \end{DoxyReturn}
 
 
-Definition at line 635 of file Sets.c.
+Definition at line 635 of file Sets.\-c.
 
-\hypertarget{_sets_8h_affff729f0fc637509c91655fc374f7f8}{
-\index{Sets.h@{Sets.h}!Sets\_\-setToString@{Sets\_\-setToString}}
-\index{Sets\_\-setToString@{Sets\_\-setToString}!Sets.h@{Sets.h}}
-\subsubsection[{Sets\_\-setToString}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ Sets\_\-setToString (
+\hypertarget{_sets_8h_affff729f0fc637509c91655fc374f7f8}{\index{Sets.\-h@{Sets.\-h}!Sets\-\_\-set\-To\-String@{Sets\-\_\-set\-To\-String}}
+\index{Sets\-\_\-set\-To\-String@{Sets\-\_\-set\-To\-String}!Sets.h@{Sets.\-h}}
+\subsubsection[{Sets\-\_\-set\-To\-String}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ Sets\-\_\-set\-To\-String (
 \begin{DoxyParamCaption}
-\item[{const {\bf Sets\_\-Set}}]{s, }
-\item[{const {\bf Sets\_\-ReferenceList}}]{rl}
+\item[{const {\bf Sets\-\_\-\-Set}}]{s, }
+\item[{const {\bf Sets\-\_\-\-Reference\-List}}]{rl}
 \end{DoxyParamCaption}
-)}}
-\label{_sets_8h_affff729f0fc637509c91655fc374f7f8}
+)}}\label{_sets_8h_affff729f0fc637509c91655fc374f7f8}
 Creates a natural representation of a set. 
 \begin{DoxyParams}{Parameters}
 {\em s} & The set to convert \\
 \hline
-{\em rl} & The ReferenceList containing the real value of atoms \\
+{\em rl} & The Reference\-List containing the real value of atoms \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
@@ -678,5 +623,5 @@ A string ready to print. Must be freed after use.
 \end{DoxyReturn}
 
 
-Definition at line 588 of file Sets.c.
+Definition at line 588 of file Sets.\-c.
 

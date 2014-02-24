@@ -1,72 +1,67 @@
-\hypertarget{_read_file_8c}{
-\section{ReadFile.c File Reference}
-\label{_read_file_8c}\index{ReadFile.c@{ReadFile.c}}
+\hypertarget{_read_file_8c}{\section{/home/arichez/git/\-T\-H\-E\-G\-A\-M\-E/src/main/c/\-Read\-File.c File Reference}
+\label{_read_file_8c}\index{/home/arichez/git/\-T\-H\-E\-G\-A\-M\-E/src/main/c/\-Read\-File.\-c@{/home/arichez/git/\-T\-H\-E\-G\-A\-M\-E/src/main/c/\-Read\-File.\-c}}
 }
 
 
-UTILITY: A module to ease file reading.  
+U\-T\-I\-L\-I\-T\-Y\-: A module to ease file reading.  
 
 
-{\ttfamily \#include \char`\"{}ReadFile.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}Read\-File.\-h\char`\"{}}\\*
 \subsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
-int \hyperlink{_read_file_8c_a357e8438f0a9b6e26f22b944492928d2}{ReadFile\_\-countLines} (const char $\ast$fileName)
+int \hyperlink{_read_file_8c_a357e8438f0a9b6e26f22b944492928d2}{Read\-File\-\_\-count\-Lines} (const char $\ast$file\-Name)
 \item 
-int $\ast$ \hyperlink{_read_file_8c_a86e0cf29c3fd90c8571c9d58c94d605b}{ReadFile\_\-charsPerLine} (const char $\ast$fileName, const int nbLines)
+int $\ast$ \hyperlink{_read_file_8c_a86e0cf29c3fd90c8571c9d58c94d605b}{Read\-File\-\_\-chars\-Per\-Line} (const char $\ast$file\-Name, const int nb\-Lines)
 \item 
-char $\ast$$\ast$ \hyperlink{_read_file_8c_ac695f2572380e2f96ae143be783f203b}{ReadFile\_\-readLines} (const char $\ast$fileName, const int nbLines, const int $\ast$charsPerLine)
+char $\ast$$\ast$ \hyperlink{_read_file_8c_ac695f2572380e2f96ae143be783f203b}{Read\-File\-\_\-read\-Lines} (const char $\ast$file\-Name, const int nb\-Lines, const int $\ast$chars\-Per\-Line)
 \end{DoxyCompactItemize}
 
 
 \subsection{Detailed Description}
-UTILITY: A module to ease file reading. \begin{DoxyAuthor}{Author}
-Bastien Pietropaoli (\href{mailto:bastien.pietropaoli@inria.fr}{\tt bastien.pietropaoli@inria.fr}) 
+U\-T\-I\-L\-I\-T\-Y\-: A module to ease file reading. \begin{DoxyAuthor}{Author}
+Bastien Pietropaoli (\href{mailto:bastien.pietropaoli@inria.fr}{\tt bastien.\-pietropaoli@inria.\-fr}) 
 \end{DoxyAuthor}
 
 
-Definition in file \hyperlink{_read_file_8c_source}{ReadFile.c}.
+Definition in file \hyperlink{_read_file_8c_source}{Read\-File.\-c}.
 
 
 
 \subsection{Function Documentation}
-\hypertarget{_read_file_8c_a86e0cf29c3fd90c8571c9d58c94d605b}{
-\index{ReadFile.c@{ReadFile.c}!ReadFile\_\-charsPerLine@{ReadFile\_\-charsPerLine}}
-\index{ReadFile\_\-charsPerLine@{ReadFile\_\-charsPerLine}!ReadFile.c@{ReadFile.c}}
-\subsubsection[{ReadFile\_\-charsPerLine}]{\setlength{\rightskip}{0pt plus 5cm}int$\ast$ ReadFile\_\-charsPerLine (
+\hypertarget{_read_file_8c_a86e0cf29c3fd90c8571c9d58c94d605b}{\index{Read\-File.\-c@{Read\-File.\-c}!Read\-File\-\_\-chars\-Per\-Line@{Read\-File\-\_\-chars\-Per\-Line}}
+\index{Read\-File\-\_\-chars\-Per\-Line@{Read\-File\-\_\-chars\-Per\-Line}!ReadFile.c@{Read\-File.\-c}}
+\subsubsection[{Read\-File\-\_\-chars\-Per\-Line}]{\setlength{\rightskip}{0pt plus 5cm}int$\ast$ Read\-File\-\_\-chars\-Per\-Line (
 \begin{DoxyParamCaption}
-\item[{const char $\ast$}]{fileName, }
-\item[{const int}]{nbLines}
+\item[{const char $\ast$}]{file\-Name, }
+\item[{const int}]{nb\-Lines}
 \end{DoxyParamCaption}
-)}}
-\label{_read_file_8c_a86e0cf29c3fd90c8571c9d58c94d605b}
+)}}\label{_read_file_8c_a86e0cf29c3fd90c8571c9d58c94d605b}
 Counts the number of characters per line of the file. 
 \begin{DoxyParams}{Parameters}
-{\em fileName} & The name of the file to study \\
+{\em file\-Name} & The name of the file to study \\
 \hline
-{\em nbLines} & The number of lines in the file \\
+{\em nb\-Lines} & The number of lines in the file \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-A pointer to a list of integer representing the number of characters per line. NULL if error. CAUTION: Don't forget to free list when it 's not needed anymore! 
+A pointer to a list of integer representing the number of characters per line. N\-U\-L\-L if error. C\-A\-U\-T\-I\-O\-N\-: Don't forget to free list when it 's not needed anymore! 
 \end{DoxyReturn}
 
 
-Definition at line 58 of file ReadFile.c.
+Definition at line 58 of file Read\-File.\-c.
 
-\hypertarget{_read_file_8c_a357e8438f0a9b6e26f22b944492928d2}{
-\index{ReadFile.c@{ReadFile.c}!ReadFile\_\-countLines@{ReadFile\_\-countLines}}
-\index{ReadFile\_\-countLines@{ReadFile\_\-countLines}!ReadFile.c@{ReadFile.c}}
-\subsubsection[{ReadFile\_\-countLines}]{\setlength{\rightskip}{0pt plus 5cm}int ReadFile\_\-countLines (
+\hypertarget{_read_file_8c_a357e8438f0a9b6e26f22b944492928d2}{\index{Read\-File.\-c@{Read\-File.\-c}!Read\-File\-\_\-count\-Lines@{Read\-File\-\_\-count\-Lines}}
+\index{Read\-File\-\_\-count\-Lines@{Read\-File\-\_\-count\-Lines}!ReadFile.c@{Read\-File.\-c}}
+\subsubsection[{Read\-File\-\_\-count\-Lines}]{\setlength{\rightskip}{0pt plus 5cm}int Read\-File\-\_\-count\-Lines (
 \begin{DoxyParamCaption}
-\item[{const char $\ast$}]{fileName}
+\item[{const char $\ast$}]{file\-Name}
 \end{DoxyParamCaption}
-)}}
-\label{_read_file_8c_a357e8438f0a9b6e26f22b944492928d2}
+)}}\label{_read_file_8c_a357e8438f0a9b6e26f22b944492928d2}
 Counts the number of lines in the file. Actually, it counts the number of occurrence of the character '\par
 '. 
 \begin{DoxyParams}{Parameters}
-{\em fileName} & The name of the file to study \\
+{\em file\-Name} & The name of the file to study \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
@@ -74,32 +69,30 @@ The number of lines in the file
 \end{DoxyReturn}
 
 
-Definition at line 26 of file ReadFile.c.
+Definition at line 26 of file Read\-File.\-c.
 
-\hypertarget{_read_file_8c_ac695f2572380e2f96ae143be783f203b}{
-\index{ReadFile.c@{ReadFile.c}!ReadFile\_\-readLines@{ReadFile\_\-readLines}}
-\index{ReadFile\_\-readLines@{ReadFile\_\-readLines}!ReadFile.c@{ReadFile.c}}
-\subsubsection[{ReadFile\_\-readLines}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$$\ast$ ReadFile\_\-readLines (
+\hypertarget{_read_file_8c_ac695f2572380e2f96ae143be783f203b}{\index{Read\-File.\-c@{Read\-File.\-c}!Read\-File\-\_\-read\-Lines@{Read\-File\-\_\-read\-Lines}}
+\index{Read\-File\-\_\-read\-Lines@{Read\-File\-\_\-read\-Lines}!ReadFile.c@{Read\-File.\-c}}
+\subsubsection[{Read\-File\-\_\-read\-Lines}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$$\ast$ Read\-File\-\_\-read\-Lines (
 \begin{DoxyParamCaption}
-\item[{const char $\ast$}]{fileName, }
-\item[{const int}]{nbLines, }
-\item[{const int $\ast$}]{charsPerLine}
+\item[{const char $\ast$}]{file\-Name, }
+\item[{const int}]{nb\-Lines, }
+\item[{const int $\ast$}]{chars\-Per\-Line}
 \end{DoxyParamCaption}
-)}}
-\label{_read_file_8c_ac695f2572380e2f96ae143be783f203b}
+)}}\label{_read_file_8c_ac695f2572380e2f96ae143be783f203b}
 Reads the lines of a file. 
 \begin{DoxyParams}{Parameters}
-{\em fileName} & The name of the file to read \\
+{\em file\-Name} & The name of the file to read \\
 \hline
-{\em nbLines} & The number of lines in this file \\
+{\em nb\-Lines} & The number of lines in this file \\
 \hline
-{\em charsPerLine} & The number of characters per line \\
+{\em chars\-Per\-Line} & The number of characters per line \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-A list a strings representing the different lines of the file. NULL if error. CAUTION: Don't forget to free everything when it's not need anymore! 
+A list a strings representing the different lines of the file. N\-U\-L\-L if error. C\-A\-U\-T\-I\-O\-N\-: Don't forget to free everything when it's not need anymore! 
 \end{DoxyReturn}
 
 
-Definition at line 105 of file ReadFile.c.
+Definition at line 105 of file Read\-File.\-c.
 

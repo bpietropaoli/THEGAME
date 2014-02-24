@@ -1,120 +1,111 @@
-\hypertarget{_read_directory_8h}{
-\section{ReadDirectory.h File Reference}
-\label{_read_directory_8h}\index{ReadDirectory.h@{ReadDirectory.h}}
+\hypertarget{_read_directory_8h}{\section{/home/arichez/git/\-T\-H\-E\-G\-A\-M\-E/src/main/include/\-Read\-Directory.h File Reference}
+\label{_read_directory_8h}\index{/home/arichez/git/\-T\-H\-E\-G\-A\-M\-E/src/main/include/\-Read\-Directory.\-h@{/home/arichez/git/\-T\-H\-E\-G\-A\-M\-E/src/main/include/\-Read\-Directory.\-h}}
 }
 
 
-UTILITY: A module to ease the manipulation of directories.  
+U\-T\-I\-L\-I\-T\-Y\-: A module to ease the manipulation of directories.  
 
 
-{\ttfamily \#include $<$stdio.h$>$}\par
-{\ttfamily \#include $<$stdlib.h$>$}\par
-{\ttfamily \#include $<$string.h$>$}\par
-{\ttfamily \#include $<$dirent.h$>$}\par
-{\ttfamily \#include \char`\"{}config.h\char`\"{}}\par
-\subsection*{Defines}
+{\ttfamily \#include $<$stdio.\-h$>$}\\*
+{\ttfamily \#include $<$stdlib.\-h$>$}\\*
+{\ttfamily \#include $<$string.\-h$>$}\\*
+{\ttfamily \#include $<$dirent.\-h$>$}\\*
+{\ttfamily \#include \char`\"{}config.\-h\char`\"{}}\\*
+\subsection*{Macros}
 \begin{DoxyCompactItemize}
 \item 
-\hypertarget{_read_directory_8h_a02735ce33e88e08efe637351e4361d91}{
-\#define {\bfseries MAX\_\-SIZE\_\-PATH}~1024}
-\label{_read_directory_8h_a02735ce33e88e08efe637351e4361d91}
+\hypertarget{_read_directory_8h_a02735ce33e88e08efe637351e4361d91}{\#define {\bfseries M\-A\-X\-\_\-\-S\-I\-Z\-E\-\_\-\-P\-A\-T\-H}~1024}\label{_read_directory_8h_a02735ce33e88e08efe637351e4361d91}
 
 \end{DoxyCompactItemize}
 \subsection*{Functions}
 \begin{Indent}{\bf Directory name manipulation}\par
 \begin{DoxyCompactItemize}
 \item 
-int \hyperlink{_read_directory_8h_a6759111bd8977778e3e7c9f9f1f3e1b5}{ReadDir\_\-isDirectory} (const char $\ast$path)
+int \hyperlink{_read_directory_8h_a6759111bd8977778e3e7c9f9f1f3e1b5}{Read\-Dir\-\_\-is\-Directory} (const char $\ast$path)
 \item 
-int \hyperlink{_read_directory_8h_ad2e02356bec403797826df92c6a0abe5}{ReadDir\_\-countDirectories} (const char $\ast$path)
+int \hyperlink{_read_directory_8h_ad2e02356bec403797826df92c6a0abe5}{Read\-Dir\-\_\-count\-Directories} (const char $\ast$path)
 \item 
-int $\ast$ \hyperlink{_read_directory_8h_aef0e4922ee37d9924b2557bbf7b5340d}{ReadDir\_\-charsPerDirectory} (const char $\ast$path, const int nbDir)
+int $\ast$ \hyperlink{_read_directory_8h_aef0e4922ee37d9924b2557bbf7b5340d}{Read\-Dir\-\_\-chars\-Per\-Directory} (const char $\ast$path, const int nb\-Dir)
 \item 
-char $\ast$$\ast$ \hyperlink{_read_directory_8h_a0c27113f377b2179a8694f736aaf5825}{ReadDir\_\-getDirectories} (const char $\ast$path, const int nbDir, const int $\ast$charsPerDir)
+char $\ast$$\ast$ \hyperlink{_read_directory_8h_a0c27113f377b2179a8694f736aaf5825}{Read\-Dir\-\_\-get\-Directories} (const char $\ast$path, const int nb\-Dir, const int $\ast$chars\-Per\-Dir)
 \end{DoxyCompactItemize}
 \end{Indent}
 \begin{Indent}{\bf Filename manipulation}\par
 \begin{DoxyCompactItemize}
 \item 
-int \hyperlink{_read_directory_8h_a90987ad779af30fa3223aa67713968eb}{ReadDir\_\-isFile} (const char $\ast$path)
+int \hyperlink{_read_directory_8h_a90987ad779af30fa3223aa67713968eb}{Read\-Dir\-\_\-is\-File} (const char $\ast$path)
 \item 
-int \hyperlink{_read_directory_8h_af00e8cb01475fab905360548e950cdfb}{ReadDir\_\-countFiles} (const char $\ast$path)
+int \hyperlink{_read_directory_8h_af00e8cb01475fab905360548e950cdfb}{Read\-Dir\-\_\-count\-Files} (const char $\ast$path)
 \item 
-int $\ast$ \hyperlink{_read_directory_8h_a91b42c0d604479de35090ae1b1da9577}{ReadDir\_\-charsPerFilename} (const char $\ast$path, const int nbFiles)
+int $\ast$ \hyperlink{_read_directory_8h_a91b42c0d604479de35090ae1b1da9577}{Read\-Dir\-\_\-chars\-Per\-Filename} (const char $\ast$path, const int nb\-Files)
 \item 
-char $\ast$$\ast$ \hyperlink{_read_directory_8h_a4029c845fbe2a666420458a95e023909}{ReadDir\_\-getFilenames} (const char $\ast$path, const int nbFiles, const int $\ast$charsPerFilenam)
+char $\ast$$\ast$ \hyperlink{_read_directory_8h_a4029c845fbe2a666420458a95e023909}{Read\-Dir\-\_\-get\-Filenames} (const char $\ast$path, const int nb\-Files, const int $\ast$chars\-Per\-Filenam)
 \end{DoxyCompactItemize}
 \end{Indent}
 
 
 \subsection{Detailed Description}
-UTILITY: A module to ease the manipulation of directories. \begin{DoxyAuthor}{Author}
-Bastien Pietropaoli (\href{mailto:bastien.pietropaoli@inria.fr}{\tt bastien.pietropaoli@inria.fr}) 
+U\-T\-I\-L\-I\-T\-Y\-: A module to ease the manipulation of directories. \begin{DoxyAuthor}{Author}
+Bastien Pietropaoli (\href{mailto:bastien.pietropaoli@inria.fr}{\tt bastien.\-pietropaoli@inria.\-fr}) 
 \end{DoxyAuthor}
 
 
-Definition in file \hyperlink{_read_directory_8h_source}{ReadDirectory.h}.
+Definition in file \hyperlink{_read_directory_8h_source}{Read\-Directory.\-h}.
 
 
 
 \subsection{Function Documentation}
-\hypertarget{_read_directory_8h_aef0e4922ee37d9924b2557bbf7b5340d}{
-\index{ReadDirectory.h@{ReadDirectory.h}!ReadDir\_\-charsPerDirectory@{ReadDir\_\-charsPerDirectory}}
-\index{ReadDir\_\-charsPerDirectory@{ReadDir\_\-charsPerDirectory}!ReadDirectory.h@{ReadDirectory.h}}
-\subsubsection[{ReadDir\_\-charsPerDirectory}]{\setlength{\rightskip}{0pt plus 5cm}int$\ast$ ReadDir\_\-charsPerDirectory (
+\hypertarget{_read_directory_8h_aef0e4922ee37d9924b2557bbf7b5340d}{\index{Read\-Directory.\-h@{Read\-Directory.\-h}!Read\-Dir\-\_\-chars\-Per\-Directory@{Read\-Dir\-\_\-chars\-Per\-Directory}}
+\index{Read\-Dir\-\_\-chars\-Per\-Directory@{Read\-Dir\-\_\-chars\-Per\-Directory}!ReadDirectory.h@{Read\-Directory.\-h}}
+\subsubsection[{Read\-Dir\-\_\-chars\-Per\-Directory}]{\setlength{\rightskip}{0pt plus 5cm}int$\ast$ Read\-Dir\-\_\-chars\-Per\-Directory (
 \begin{DoxyParamCaption}
 \item[{const char $\ast$}]{path, }
-\item[{const int}]{nbDir}
+\item[{const int}]{nb\-Dir}
 \end{DoxyParamCaption}
-)}}
-\label{_read_directory_8h_aef0e4922ee37d9924b2557bbf7b5340d}
+)}}\label{_read_directory_8h_aef0e4922ee37d9924b2557bbf7b5340d}
 Counts the number of characters in the names of subdirectories at the given path. 
 \begin{DoxyParams}{Parameters}
 {\em path} & The path to work on \\
 \hline
-{\em nbDir} & The number of directories \\
+{\em nb\-Dir} & The number of directories \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-A list of integers with the number of characters in the names of directories. NULL if error. Must be freed after use. 
+A list of integers with the number of characters in the names of directories. N\-U\-L\-L if error. Must be freed after use. 
 \end{DoxyReturn}
 
 
-Definition at line 78 of file ReadDirectory.c.
+Definition at line 78 of file Read\-Directory.\-c.
 
-\hypertarget{_read_directory_8h_a91b42c0d604479de35090ae1b1da9577}{
-\index{ReadDirectory.h@{ReadDirectory.h}!ReadDir\_\-charsPerFilename@{ReadDir\_\-charsPerFilename}}
-\index{ReadDir\_\-charsPerFilename@{ReadDir\_\-charsPerFilename}!ReadDirectory.h@{ReadDirectory.h}}
-\subsubsection[{ReadDir\_\-charsPerFilename}]{\setlength{\rightskip}{0pt plus 5cm}int$\ast$ ReadDir\_\-charsPerFilename (
+\hypertarget{_read_directory_8h_a91b42c0d604479de35090ae1b1da9577}{\index{Read\-Directory.\-h@{Read\-Directory.\-h}!Read\-Dir\-\_\-chars\-Per\-Filename@{Read\-Dir\-\_\-chars\-Per\-Filename}}
+\index{Read\-Dir\-\_\-chars\-Per\-Filename@{Read\-Dir\-\_\-chars\-Per\-Filename}!ReadDirectory.h@{Read\-Directory.\-h}}
+\subsubsection[{Read\-Dir\-\_\-chars\-Per\-Filename}]{\setlength{\rightskip}{0pt plus 5cm}int$\ast$ Read\-Dir\-\_\-chars\-Per\-Filename (
 \begin{DoxyParamCaption}
 \item[{const char $\ast$}]{path, }
-\item[{const int}]{nbFiles}
+\item[{const int}]{nb\-Files}
 \end{DoxyParamCaption}
-)}}
-\label{_read_directory_8h_a91b42c0d604479de35090ae1b1da9577}
+)}}\label{_read_directory_8h_a91b42c0d604479de35090ae1b1da9577}
 Counts the number of characters in the names of files at the given path. 
 \begin{DoxyParams}{Parameters}
 {\em path} & The path to work on \\
 \hline
-{\em nbFiles} & The number of files at the given path \\
+{\em nb\-Files} & The number of files at the given path \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-A list of integers with the number of characters in the filenames. NULL if error. Must be freed after use. 
+A list of integers with the number of characters in the filenames. N\-U\-L\-L if error. Must be freed after use. 
 \end{DoxyReturn}
 
 
-Definition at line 205 of file ReadDirectory.c.
+Definition at line 205 of file Read\-Directory.\-c.
 
-\hypertarget{_read_directory_8h_ad2e02356bec403797826df92c6a0abe5}{
-\index{ReadDirectory.h@{ReadDirectory.h}!ReadDir\_\-countDirectories@{ReadDir\_\-countDirectories}}
-\index{ReadDir\_\-countDirectories@{ReadDir\_\-countDirectories}!ReadDirectory.h@{ReadDirectory.h}}
-\subsubsection[{ReadDir\_\-countDirectories}]{\setlength{\rightskip}{0pt plus 5cm}int ReadDir\_\-countDirectories (
+\hypertarget{_read_directory_8h_ad2e02356bec403797826df92c6a0abe5}{\index{Read\-Directory.\-h@{Read\-Directory.\-h}!Read\-Dir\-\_\-count\-Directories@{Read\-Dir\-\_\-count\-Directories}}
+\index{Read\-Dir\-\_\-count\-Directories@{Read\-Dir\-\_\-count\-Directories}!ReadDirectory.h@{Read\-Directory.\-h}}
+\subsubsection[{Read\-Dir\-\_\-count\-Directories}]{\setlength{\rightskip}{0pt plus 5cm}int Read\-Dir\-\_\-count\-Directories (
 \begin{DoxyParamCaption}
 \item[{const char $\ast$}]{path}
 \end{DoxyParamCaption}
-)}}
-\label{_read_directory_8h_ad2e02356bec403797826df92c6a0abe5}
+)}}\label{_read_directory_8h_ad2e02356bec403797826df92c6a0abe5}
 Counts the number of subdirectories at the given path. 
 \begin{DoxyParams}{Parameters}
 {\em path} & The path to work on \\
@@ -125,17 +116,15 @@ The number of directories at path. -\/1 if error.
 \end{DoxyReturn}
 
 
-Definition at line 45 of file ReadDirectory.c.
+Definition at line 45 of file Read\-Directory.\-c.
 
-\hypertarget{_read_directory_8h_af00e8cb01475fab905360548e950cdfb}{
-\index{ReadDirectory.h@{ReadDirectory.h}!ReadDir\_\-countFiles@{ReadDir\_\-countFiles}}
-\index{ReadDir\_\-countFiles@{ReadDir\_\-countFiles}!ReadDirectory.h@{ReadDirectory.h}}
-\subsubsection[{ReadDir\_\-countFiles}]{\setlength{\rightskip}{0pt plus 5cm}int ReadDir\_\-countFiles (
+\hypertarget{_read_directory_8h_af00e8cb01475fab905360548e950cdfb}{\index{Read\-Directory.\-h@{Read\-Directory.\-h}!Read\-Dir\-\_\-count\-Files@{Read\-Dir\-\_\-count\-Files}}
+\index{Read\-Dir\-\_\-count\-Files@{Read\-Dir\-\_\-count\-Files}!ReadDirectory.h@{Read\-Directory.\-h}}
+\subsubsection[{Read\-Dir\-\_\-count\-Files}]{\setlength{\rightskip}{0pt plus 5cm}int Read\-Dir\-\_\-count\-Files (
 \begin{DoxyParamCaption}
 \item[{const char $\ast$}]{path}
 \end{DoxyParamCaption}
-)}}
-\label{_read_directory_8h_af00e8cb01475fab905360548e950cdfb}
+)}}\label{_read_directory_8h_af00e8cb01475fab905360548e950cdfb}
 Counts the number of files in at a given path. 
 \begin{DoxyParams}{Parameters}
 {\em path} & The path to work on \\
@@ -146,71 +135,65 @@ The number of files at path. -\/1 if error.
 \end{DoxyReturn}
 
 
-Definition at line 173 of file ReadDirectory.c.
+Definition at line 173 of file Read\-Directory.\-c.
 
-\hypertarget{_read_directory_8h_a0c27113f377b2179a8694f736aaf5825}{
-\index{ReadDirectory.h@{ReadDirectory.h}!ReadDir\_\-getDirectories@{ReadDir\_\-getDirectories}}
-\index{ReadDir\_\-getDirectories@{ReadDir\_\-getDirectories}!ReadDirectory.h@{ReadDirectory.h}}
-\subsubsection[{ReadDir\_\-getDirectories}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$$\ast$ ReadDir\_\-getDirectories (
+\hypertarget{_read_directory_8h_a0c27113f377b2179a8694f736aaf5825}{\index{Read\-Directory.\-h@{Read\-Directory.\-h}!Read\-Dir\-\_\-get\-Directories@{Read\-Dir\-\_\-get\-Directories}}
+\index{Read\-Dir\-\_\-get\-Directories@{Read\-Dir\-\_\-get\-Directories}!ReadDirectory.h@{Read\-Directory.\-h}}
+\subsubsection[{Read\-Dir\-\_\-get\-Directories}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$$\ast$ Read\-Dir\-\_\-get\-Directories (
 \begin{DoxyParamCaption}
 \item[{const char $\ast$}]{path, }
-\item[{const int}]{nbDir, }
-\item[{const int $\ast$}]{charsPerDir}
+\item[{const int}]{nb\-Dir, }
+\item[{const int $\ast$}]{chars\-Per\-Dir}
 \end{DoxyParamCaption}
-)}}
-\label{_read_directory_8h_a0c27113f377b2179a8694f736aaf5825}
+)}}\label{_read_directory_8h_a0c27113f377b2179a8694f736aaf5825}
 Get the list of directories at the given path. 
 \begin{DoxyParams}{Parameters}
 {\em path} & The path to work on \\
 \hline
-{\em nbDir} & The number of directories \\
+{\em nb\-Dir} & The number of directories \\
 \hline
-{\em charsPerDir} & The number of characters in the directories names \\
+{\em chars\-Per\-Dir} & The number of characters in the directories names \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-A list of strings corresponding to the names of directories. NULL if error. Must be free after use. 
+A list of strings corresponding to the names of directories. N\-U\-L\-L if error. Must be free after use. 
 \end{DoxyReturn}
 
 
-Definition at line 117 of file ReadDirectory.c.
+Definition at line 117 of file Read\-Directory.\-c.
 
-\hypertarget{_read_directory_8h_a4029c845fbe2a666420458a95e023909}{
-\index{ReadDirectory.h@{ReadDirectory.h}!ReadDir\_\-getFilenames@{ReadDir\_\-getFilenames}}
-\index{ReadDir\_\-getFilenames@{ReadDir\_\-getFilenames}!ReadDirectory.h@{ReadDirectory.h}}
-\subsubsection[{ReadDir\_\-getFilenames}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$$\ast$ ReadDir\_\-getFilenames (
+\hypertarget{_read_directory_8h_a4029c845fbe2a666420458a95e023909}{\index{Read\-Directory.\-h@{Read\-Directory.\-h}!Read\-Dir\-\_\-get\-Filenames@{Read\-Dir\-\_\-get\-Filenames}}
+\index{Read\-Dir\-\_\-get\-Filenames@{Read\-Dir\-\_\-get\-Filenames}!ReadDirectory.h@{Read\-Directory.\-h}}
+\subsubsection[{Read\-Dir\-\_\-get\-Filenames}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$$\ast$ Read\-Dir\-\_\-get\-Filenames (
 \begin{DoxyParamCaption}
 \item[{const char $\ast$}]{path, }
-\item[{const int}]{nbFiles, }
-\item[{const int $\ast$}]{charsPerFilenam}
+\item[{const int}]{nb\-Files, }
+\item[{const int $\ast$}]{chars\-Per\-Filenam}
 \end{DoxyParamCaption}
-)}}
-\label{_read_directory_8h_a4029c845fbe2a666420458a95e023909}
+)}}\label{_read_directory_8h_a4029c845fbe2a666420458a95e023909}
 Get the filenames at the given path. 
 \begin{DoxyParams}{Parameters}
 {\em path} & The path to work on \\
 \hline
-{\em nbFiles} & The number of files at the given path \\
+{\em nb\-Files} & The number of files at the given path \\
 \hline
-{\em charsPerFilenam} & The number of characters per filename \\
+{\em chars\-Per\-Filenam} & The number of characters per filename \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-A list of strings corresponding to the filenames at the given path. NULL if error. Must be freed after use. 
+A list of strings corresponding to the filenames at the given path. N\-U\-L\-L if error. Must be freed after use. 
 \end{DoxyReturn}
 
 
-Definition at line 241 of file ReadDirectory.c.
+Definition at line 241 of file Read\-Directory.\-c.
 
-\hypertarget{_read_directory_8h_a6759111bd8977778e3e7c9f9f1f3e1b5}{
-\index{ReadDirectory.h@{ReadDirectory.h}!ReadDir\_\-isDirectory@{ReadDir\_\-isDirectory}}
-\index{ReadDir\_\-isDirectory@{ReadDir\_\-isDirectory}!ReadDirectory.h@{ReadDirectory.h}}
-\subsubsection[{ReadDir\_\-isDirectory}]{\setlength{\rightskip}{0pt plus 5cm}int ReadDir\_\-isDirectory (
+\hypertarget{_read_directory_8h_a6759111bd8977778e3e7c9f9f1f3e1b5}{\index{Read\-Directory.\-h@{Read\-Directory.\-h}!Read\-Dir\-\_\-is\-Directory@{Read\-Dir\-\_\-is\-Directory}}
+\index{Read\-Dir\-\_\-is\-Directory@{Read\-Dir\-\_\-is\-Directory}!ReadDirectory.h@{Read\-Directory.\-h}}
+\subsubsection[{Read\-Dir\-\_\-is\-Directory}]{\setlength{\rightskip}{0pt plus 5cm}int Read\-Dir\-\_\-is\-Directory (
 \begin{DoxyParamCaption}
 \item[{const char $\ast$}]{path}
 \end{DoxyParamCaption}
-)}}
-\label{_read_directory_8h_a6759111bd8977778e3e7c9f9f1f3e1b5}
+)}}\label{_read_directory_8h_a6759111bd8977778e3e7c9f9f1f3e1b5}
 Tells if the given path is a directory or not. 
 \begin{DoxyParams}{Parameters}
 {\em path} & The path to test \\
@@ -221,17 +204,15 @@ Tells if the given path is a directory or not.
 \end{DoxyReturn}
 
 
-Definition at line 31 of file ReadDirectory.c.
+Definition at line 31 of file Read\-Directory.\-c.
 
-\hypertarget{_read_directory_8h_a90987ad779af30fa3223aa67713968eb}{
-\index{ReadDirectory.h@{ReadDirectory.h}!ReadDir\_\-isFile@{ReadDir\_\-isFile}}
-\index{ReadDir\_\-isFile@{ReadDir\_\-isFile}!ReadDirectory.h@{ReadDirectory.h}}
-\subsubsection[{ReadDir\_\-isFile}]{\setlength{\rightskip}{0pt plus 5cm}int ReadDir\_\-isFile (
+\hypertarget{_read_directory_8h_a90987ad779af30fa3223aa67713968eb}{\index{Read\-Directory.\-h@{Read\-Directory.\-h}!Read\-Dir\-\_\-is\-File@{Read\-Dir\-\_\-is\-File}}
+\index{Read\-Dir\-\_\-is\-File@{Read\-Dir\-\_\-is\-File}!ReadDirectory.h@{Read\-Directory.\-h}}
+\subsubsection[{Read\-Dir\-\_\-is\-File}]{\setlength{\rightskip}{0pt plus 5cm}int Read\-Dir\-\_\-is\-File (
 \begin{DoxyParamCaption}
 \item[{const char $\ast$}]{path}
 \end{DoxyParamCaption}
-)}}
-\label{_read_directory_8h_a90987ad779af30fa3223aa67713968eb}
+)}}\label{_read_directory_8h_a90987ad779af30fa3223aa67713968eb}
 Tells if the given path is a file or not. 
 \begin{DoxyParams}{Parameters}
 {\em path} & The path to test \\
@@ -242,5 +223,5 @@ Tells if the given path is a file or not.
 \end{DoxyReturn}
 
 
-Definition at line 169 of file ReadDirectory.c.
+Definition at line 169 of file Read\-Directory.\-c.
 

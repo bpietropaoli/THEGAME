@@ -1,512 +1,479 @@
-\hypertarget{_beliefs_from_sensors_8c}{
-\section{BeliefsFromSensors.c File Reference}
-\label{_beliefs_from_sensors_8c}\index{BeliefsFromSensors.c@{BeliefsFromSensors.c}}
+\hypertarget{_beliefs_from_sensors_8c}{\section{/home/arichez/git/\-T\-H\-E\-G\-A\-M\-E/src/main/c/\-Beliefs\-From\-Sensors.c File Reference}
+\label{_beliefs_from_sensors_8c}\index{/home/arichez/git/\-T\-H\-E\-G\-A\-M\-E/src/main/c/\-Beliefs\-From\-Sensors.\-c@{/home/arichez/git/\-T\-H\-E\-G\-A\-M\-E/src/main/c/\-Beliefs\-From\-Sensors.\-c}}
 }
 
 
-APPLICATION: Gives structures and main functions to create belief functions from sensor measures.  
+A\-P\-P\-L\-I\-C\-A\-T\-I\-O\-N\-: Gives structures and main functions to create belief functions from sensor measures.  
 
 
-{\ttfamily \#include \char`\"{}BeliefsFromSensors.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}Beliefs\-From\-Sensors.\-h\char`\"{}}\\*
 \subsection*{Functions}
 \begin{Indent}{\bf Loading a model}\par
 \begin{DoxyCompactItemize}
 \item 
-\hyperlink{struct_b_f_s___belief_structure}{BFS\_\-BeliefStructure} \hyperlink{_beliefs_from_sensors_8c_a43a0c08d950b7eac1900fa1c91c39f02}{BFS\_\-loadBeliefStructure} (const char $\ast$frameName)
+\hyperlink{struct_b_f_s___belief_structure}{B\-F\-S\-\_\-\-Belief\-Structure} \hyperlink{_beliefs_from_sensors_8c_a43a0c08d950b7eac1900fa1c91c39f02}{B\-F\-S\-\_\-load\-Belief\-Structure} (const char $\ast$frame\-Name)
 \item 
-\hyperlink{struct_b_f_s___sensor_beliefs}{BFS\_\-SensorBeliefs} \hyperlink{_beliefs_from_sensors_8c_ad471b39be113cedd19a8e4a6563547ed}{BFS\_\-loadSensorBeliefs} (const char $\ast$sensorType, const char $\ast$path, const \hyperlink{struct_sets___reference_list}{Sets\_\-ReferenceList} rl)
+\hyperlink{struct_b_f_s___sensor_beliefs}{B\-F\-S\-\_\-\-Sensor\-Beliefs} \hyperlink{_beliefs_from_sensors_8c_ad471b39be113cedd19a8e4a6563547ed}{B\-F\-S\-\_\-load\-Sensor\-Beliefs} (const char $\ast$sensor\-Type, const char $\ast$path, const \hyperlink{struct_sets___reference_list}{Sets\-\_\-\-Reference\-List} rl)
 \item 
-\hyperlink{struct_b_f_s___part_of_belief}{BFS\_\-PartOfBelief} \hyperlink{_beliefs_from_sensors_8c_a8b80fe77dd3dd4581c23447cecf1c3c5}{BFS\_\-loadPartOfBelief} (const char $\ast$fileName, const \hyperlink{struct_sets___reference_list}{Sets\_\-ReferenceList} rl)
+\hyperlink{struct_b_f_s___part_of_belief}{B\-F\-S\-\_\-\-Part\-Of\-Belief} \hyperlink{_beliefs_from_sensors_8c_a8b80fe77dd3dd4581c23447cecf1c3c5}{B\-F\-S\-\_\-load\-Part\-Of\-Belief} (const char $\ast$file\-Name, const \hyperlink{struct_sets___reference_list}{Sets\-\_\-\-Reference\-List} rl)
 \end{DoxyCompactItemize}
 \end{Indent}
 \begin{Indent}{\bf Creation of belief functions}\par
 \begin{DoxyCompactItemize}
 \item 
-\hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction} $\ast$ \hyperlink{_beliefs_from_sensors_8c_ab29d8e5aec4acb76233926768627643f}{BFS\_\-getEvidence} (const \hyperlink{struct_b_f_s___belief_structure}{BFS\_\-BeliefStructure} bs, const char $\ast$const $\ast$const sensorTypes, const double $\ast$sensorMeasures, const int nbMeasures)
+\hyperlink{struct_b_f___belief_function}{B\-F\-\_\-\-Belief\-Function} $\ast$ \hyperlink{_beliefs_from_sensors_8c_ab29d8e5aec4acb76233926768627643f}{B\-F\-S\-\_\-get\-Evidence} (const \hyperlink{struct_b_f_s___belief_structure}{B\-F\-S\-\_\-\-Belief\-Structure} bs, const char $\ast$const $\ast$const sensor\-Types, const double $\ast$sensor\-Measures, const int nb\-Measures)
 \item 
-\hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction} \hyperlink{_beliefs_from_sensors_8c_a0e545c6a35093eb43b27325db61c2216}{BFS\_\-getProjection} (const \hyperlink{struct_b_f_s___sensor_beliefs}{BFS\_\-SensorBeliefs} sb, const double sensorMeasure, const int elementSize)
+\hyperlink{struct_b_f___belief_function}{B\-F\-\_\-\-Belief\-Function} \hyperlink{_beliefs_from_sensors_8c_a0e545c6a35093eb43b27325db61c2216}{B\-F\-S\-\_\-get\-Projection} (const \hyperlink{struct_b_f_s___sensor_beliefs}{B\-F\-S\-\_\-\-Sensor\-Beliefs} sb, const double sensor\-Measure, const int element\-Size)
 \item 
-\hyperlink{struct_b_f___focal_element}{BF\_\-FocalElement} \hyperlink{_beliefs_from_sensors_8c_a10bdb699cd9dddc428d544b569a93c6b}{BFS\_\-getBeliefValue} (const \hyperlink{struct_b_f_s___part_of_belief}{BFS\_\-PartOfBelief} pob, const double sensorMeasure, const int elementSize)
+\hyperlink{struct_b_f___focal_element}{B\-F\-\_\-\-Focal\-Element} \hyperlink{_beliefs_from_sensors_8c_a10bdb699cd9dddc428d544b569a93c6b}{B\-F\-S\-\_\-get\-Belief\-Value} (const \hyperlink{struct_b_f_s___part_of_belief}{B\-F\-S\-\_\-\-Part\-Of\-Belief} pob, const double sensor\-Measure, const int element\-Size)
 \end{DoxyCompactItemize}
 \end{Indent}
 \begin{Indent}{\bf Temporizations}\par
 \begin{DoxyCompactItemize}
 \item 
-\hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction} \hyperlink{_beliefs_from_sensors_8c_a3d28fe4cb063ab2f21d9a161a8531eb0}{BFS\_\-temporization\_\-specificity} (const \hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction} oldOne, const \hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction} newOne, const float timeFactor, const struct timespec oldTime, \hyperlink{struct_b_f_s___option}{BFS\_\-Option} $\ast$op)
+\hyperlink{struct_b_f___belief_function}{B\-F\-\_\-\-Belief\-Function} \hyperlink{_beliefs_from_sensors_8c_a3d28fe4cb063ab2f21d9a161a8531eb0}{B\-F\-S\-\_\-temporization\-\_\-specificity} (const \hyperlink{struct_b_f___belief_function}{B\-F\-\_\-\-Belief\-Function} old\-One, const \hyperlink{struct_b_f___belief_function}{B\-F\-\_\-\-Belief\-Function} new\-One, const float time\-Factor, const struct timespec old\-Time, \hyperlink{struct_b_f_s___option}{B\-F\-S\-\_\-\-Option} $\ast$op)
 \item 
-\hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction} \hyperlink{_beliefs_from_sensors_8c_ac056655256752e8e9c65651674a566bf}{BFS\_\-temporization\_\-fusion} (const \hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction} oldOne, const \hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction} newOne, const float timeFactor, const struct timespec oldTime, \hyperlink{struct_b_f_s___option}{BFS\_\-Option} $\ast$op)
+\hyperlink{struct_b_f___belief_function}{B\-F\-\_\-\-Belief\-Function} \hyperlink{_beliefs_from_sensors_8c_ac056655256752e8e9c65651674a566bf}{B\-F\-S\-\_\-temporization\-\_\-fusion} (const \hyperlink{struct_b_f___belief_function}{B\-F\-\_\-\-Belief\-Function} old\-One, const \hyperlink{struct_b_f___belief_function}{B\-F\-\_\-\-Belief\-Function} new\-One, const float time\-Factor, const struct timespec old\-Time, \hyperlink{struct_b_f_s___option}{B\-F\-S\-\_\-\-Option} $\ast$op)
 \end{DoxyCompactItemize}
 \end{Indent}
 \begin{Indent}{\bf Memory deallocation}\par
 \begin{DoxyCompactItemize}
 \item 
-void \hyperlink{_beliefs_from_sensors_8c_ab740882d43bffbdb6dbd8ccae33ee542}{BFS\_\-freeBeliefStructure} (\hyperlink{struct_b_f_s___belief_structure}{BFS\_\-BeliefStructure} $\ast$bs)
+void \hyperlink{_beliefs_from_sensors_8c_ab740882d43bffbdb6dbd8ccae33ee542}{B\-F\-S\-\_\-free\-Belief\-Structure} (\hyperlink{struct_b_f_s___belief_structure}{B\-F\-S\-\_\-\-Belief\-Structure} $\ast$bs)
 \item 
-void \hyperlink{_beliefs_from_sensors_8c_a656096925b23a22260bb5cf401a2c913}{BFS\_\-freeOption} (\hyperlink{struct_b_f_s___option}{BFS\_\-Option} $\ast$o)
+void \hyperlink{_beliefs_from_sensors_8c_a656096925b23a22260bb5cf401a2c913}{B\-F\-S\-\_\-free\-Option} (\hyperlink{struct_b_f_s___option}{B\-F\-S\-\_\-\-Option} $\ast$o)
 \item 
-void \hyperlink{_beliefs_from_sensors_8c_a6012b3fb40fe63ca8c35c1836e76cb06}{BFS\_\-freeSensorBeliefs} (\hyperlink{struct_b_f_s___sensor_beliefs}{BFS\_\-SensorBeliefs} $\ast$sb)
+void \hyperlink{_beliefs_from_sensors_8c_a6012b3fb40fe63ca8c35c1836e76cb06}{B\-F\-S\-\_\-free\-Sensor\-Beliefs} (\hyperlink{struct_b_f_s___sensor_beliefs}{B\-F\-S\-\_\-\-Sensor\-Beliefs} $\ast$sb)
 \item 
-void \hyperlink{_beliefs_from_sensors_8c_a85c4783ddf170331a7ac31805cf501f3}{BFS\_\-freePartOfBelief} (\hyperlink{struct_b_f_s___part_of_belief}{BFS\_\-PartOfBelief} $\ast$pob)
+void \hyperlink{_beliefs_from_sensors_8c_a85c4783ddf170331a7ac31805cf501f3}{B\-F\-S\-\_\-free\-Part\-Of\-Belief} (\hyperlink{struct_b_f_s___part_of_belief}{B\-F\-S\-\_\-\-Part\-Of\-Belief} $\ast$pob)
 \end{DoxyCompactItemize}
 \end{Indent}
 \begin{Indent}{\bf Conversion to string}\par
 \begin{DoxyCompactItemize}
 \item 
-char $\ast$ \hyperlink{_beliefs_from_sensors_8c_adb9761bd0fab3324adb46d12bed858e1}{BFS\_\-partOfBeliefToString} (const \hyperlink{struct_b_f_s___part_of_belief}{BFS\_\-PartOfBelief} pob, const \hyperlink{struct_sets___reference_list}{Sets\_\-ReferenceList} rl)
+char $\ast$ \hyperlink{_beliefs_from_sensors_8c_adb9761bd0fab3324adb46d12bed858e1}{B\-F\-S\-\_\-part\-Of\-Belief\-To\-String} (const \hyperlink{struct_b_f_s___part_of_belief}{B\-F\-S\-\_\-\-Part\-Of\-Belief} pob, const \hyperlink{struct_sets___reference_list}{Sets\-\_\-\-Reference\-List} rl)
 \item 
-char $\ast$ \hyperlink{_beliefs_from_sensors_8c_a2e5f7e7f26ddab46e97e7d3e613d60a4}{BFS\_\-optionToString} (const \hyperlink{struct_b_f_s___option}{BFS\_\-Option} o)
+char $\ast$ \hyperlink{_beliefs_from_sensors_8c_a2e5f7e7f26ddab46e97e7d3e613d60a4}{B\-F\-S\-\_\-option\-To\-String} (const \hyperlink{struct_b_f_s___option}{B\-F\-S\-\_\-\-Option} o)
 \item 
-char $\ast$ \hyperlink{_beliefs_from_sensors_8c_a7843347f4bb8e8910afc707c22c0339b}{BFS\_\-sensorBeliefsToString} (const \hyperlink{struct_b_f_s___sensor_beliefs}{BFS\_\-SensorBeliefs} sb, const \hyperlink{struct_sets___reference_list}{Sets\_\-ReferenceList} rl)
+char $\ast$ \hyperlink{_beliefs_from_sensors_8c_a7843347f4bb8e8910afc707c22c0339b}{B\-F\-S\-\_\-sensor\-Beliefs\-To\-String} (const \hyperlink{struct_b_f_s___sensor_beliefs}{B\-F\-S\-\_\-\-Sensor\-Beliefs} sb, const \hyperlink{struct_sets___reference_list}{Sets\-\_\-\-Reference\-List} rl)
 \item 
-char $\ast$ \hyperlink{_beliefs_from_sensors_8c_a260a230f0b69a6d5581fa4b1b7896ecc}{BFS\_\-beliefStructureToString} (const \hyperlink{struct_b_f_s___belief_structure}{BFS\_\-BeliefStructure} bs)
+char $\ast$ \hyperlink{_beliefs_from_sensors_8c_a260a230f0b69a6d5581fa4b1b7896ecc}{B\-F\-S\-\_\-belief\-Structure\-To\-String} (const \hyperlink{struct_b_f_s___belief_structure}{B\-F\-S\-\_\-\-Belief\-Structure} bs)
 \end{DoxyCompactItemize}
 \end{Indent}
 
 
 \subsection{Detailed Description}
-APPLICATION: Gives structures and main functions to create belief functions from sensor measures. \hypertarget{_beliefs_from_sensors_8h_BFS_intro}{}\subsection{Introduction}\label{_beliefs_from_sensors_8h_BFS_intro}
+A\-P\-P\-L\-I\-C\-A\-T\-I\-O\-N\-: Gives structures and main functions to create belief functions from sensor measures. \hypertarget{_beliefs_from_sensors_8h_BFS_intro}{}\subsection{Introduction}\label{_beliefs_from_sensors_8h_BFS_intro}
 This module enables the building of belief functions from raw sensor measures. The method used is the one used in Ricquebourg et at. 2007 and Pietropaoli et al. 2011/2012. For more details, please check those references. Anyway, I will try here to introduce the way it works. The mass functions are built from raw sensor measures using predefined set of mass functions (cf figure).
 
- 
+
 \begin{DoxyImage}
-\includegraphics[width=8cm]{images/FunctionSet.jpg}
-\caption{Example of set of mass functions for a Phidget motion sensor connected to an USB Interface Kit and applied to the detection of presence.}
+\includegraphics[width=8cm]{FunctionSet.jpg}
+\caption{Example of set of mass functions for a Phidget motion sensor connected to an U\-S\-B Interface Kit and applied to the detection of presence.}
 \end{DoxyImage}
 
 
-In the given example, whenever a raw sensor measure is received, the projection on this set gives the resulting mass function. For instance, with the given figure, if the motion sensor returns a value of 450, then the resulting mass function would have two focal sets: m(\{Yes\}) = 0.7 and m(\{Yes u No\}) = 0.3.
+In the given example, whenever a raw sensor measure is received, the projection on this set gives the resulting mass function. For instance, with the given figure, if the motion sensor returns a value of 450, then the resulting mass function would have two focal sets\-: m(\{Yes\}) = 0.\-7 and m(\{Yes u No\}) = 0.\-3.
 
-The following options are developped until now: \begin{DoxyItemize}
-\item Variation : considers the variation of the raw measure instead of the measure itself. It takes as a parameter the number of previous measures to compare to. \item Tempo-\/Specificity : includes temporization in the building of mass functions using a discrimination based on specificity. Please read Pietropaoli et al. 2012 for explanations. It takes the number of seconds before complete forgetness as parameter. \item Tempo-\/Fusion : includes temporization in the building of mass functions using a fusion based on Dubois \& Prade's combination rule. It takes the number of seconds before complete forgetness as parameter.\end{DoxyItemize}
+The following options are developped until now\-: \begin{DoxyItemize}
+\item Variation \-: considers the variation of the raw measure instead of the measure itself. It takes as a parameter the number of previous measures to compare to. \item Tempo-\/\-Specificity \-: includes temporization in the building of mass functions using a discrimination based on specificity. Please read Pietropaoli et al. 2012 for explanations. It takes the number of seconds before complete forgetness as parameter. \item Tempo-\/\-Fusion \-: includes temporization in the building of mass functions using a fusion based on Dubois \& Prade's combination rule. It takes the number of seconds before complete forgetness as parameter.\end{DoxyItemize}
 \hypertarget{_beliefs_from_sensors_8h_BFS_howto}{}\subsection{How to use this module}\label{_beliefs_from_sensors_8h_BFS_howto}
-So, to build your sets of mass functions, you should do the following : \begin{DoxyItemize}
-\item For each thing you want to compute, create a directory with the name you want in data/beliefsFromSensors/ (or the directory defined by BFS\_\-PATH). For example, if you want to compute a thing called \char`\"{}Presence\char`\"{} to determine if there is someone in a room or not, just call the directory \char`\"{}Presence\char`\"{}. \item In this directory, create a file called \char`\"{}values\char`\"{} (or with the name defined by BFS\_\-VALUES\_\-NAME) with on each line, the name of one possible world (and no more line than necessary !) Example: 
+So, to build your sets of mass functions, you should do the following \-: \begin{DoxyItemize}
+\item For each thing you want to compute, create a directory with the name you want in data/beliefs\-From\-Sensors/ (or the directory defined by B\-F\-S\-\_\-\-P\-A\-T\-H). For example, if you want to compute a thing called \char`\"{}\-Presence\char`\"{} to determine if there is someone in a room or not, just call the directory \char`\"{}\-Presence\char`\"{}. \item In this directory, create a file called \char`\"{}values\char`\"{} (or with the name defined by B\-F\-S\-\_\-\-V\-A\-L\-U\-E\-S\-\_\-\-N\-A\-M\-E) with on each line, the name of one possible world (and no more line than necessary !) Example\-: 
 \begin{DoxyCode}
- Yes
- No
+Yes
+No
 \end{DoxyCode}
- This example creates two possible worlds : Yes and No (useful for a binary case...). \item In this directory, for each sensor, build a directory with the name of that sensor. \item In each sensor subdirectory, create, if necessary, a file called \char`\"{}options\char`\"{} (no extension...) with on each line, the name of one of the options you want and the corresponding parameter. Example: 
+ This example creates two possible worlds \-: Yes and No (useful for a binary case...). \item In this directory, for each sensor, build a directory with the name of that sensor. \item In each sensor subdirectory, create, if necessary, a file called \char`\"{}options\char`\"{} (no extension...) with on each line, the name of one of the options you want and the corresponding parameter. Example\-: 
 \begin{DoxyCode}
- 2 options                 //Number of options
- Tempo-Specificity 3       //Type of tempo + nb of seconds
- Variation 2               //Variation + nb of measures to consider
+2 options                 \textcolor{comment}{//Number of options}
+Tempo-Specificity 3       \textcolor{comment}{//Type of tempo + nb of seconds}
+Variation 2               \textcolor{comment}{//Variation + nb of measures to consider}
 \end{DoxyCode}
- This options file applies a temporization of 3 seconds and compares the given measure with the 2 previous one... The case does not matter to write the name of the options. \item In each sensor subdirectory, for each subset of possible worlds, create a file with on first line, the number of considered world in the subset, then come the names of those worlds, one per line. Then, put the number of specific points used to build the set of mass functions. Then, indicate the couples \char`\"{}sensorMeasure beliefValue\char`\"{} for the set of mass functions, one per line. Example: 
+ This options file applies a temporization of 3 seconds and compares the given measure with the 2 previous one... The case does not matter to write the name of the options. \item In each sensor subdirectory, for each subset of possible worlds, create a file with on first line, the number of considered world in the subset, then come the names of those worlds, one per line. Then, put the number of specific points used to build the set of mass functions. Then, indicate the couples \char`\"{}sensor\-Measure belief\-Value\char`\"{} for the set of mass functions, one per line. Example\-: 
 \begin{DoxyCode}
- 2 elements   //Number of worlds in the subset
- Aka          //World 1
- Elf          //World 2
- 5 points     //Number of considered measure
- 100 0        //For a measure of 100, get a null mass for this subset of worlds
- 200 0.40     //etc...
- 300 0.15
- 400 0.40
- 500 0
+2 elements   \textcolor{comment}{//Number of worlds in the subset}
+Aka          \textcolor{comment}{//World 1}
+Elf          \textcolor{comment}{//World 2}
+5 points     \textcolor{comment}{//Number of considered measure}
+100 0        \textcolor{comment}{//For a measure of 100, get a null mass for this subset of worlds}
+200 0.40     \textcolor{comment}{//etc...}
+300 0.15
+400 0.40
+500 0
 \end{DoxyCode}
- This file corresponds to the set of mass function only for the subset \{Aka u Elf\}. Those files can have any name, that is not important at all... However, the given sensor measures should be in an increasing order or it could produce weird behaviors! Also, for any measure, the sum of masses over files should always be 1. Uncomment the constant CHECK\_\-MODELS in \hyperlink{config_8h}{config.h} to make sure your models are okay.\end{DoxyItemize}
+ This file corresponds to the set of mass function only for the subset \{Aka u Elf\}. Those files can have any name, that is not important at all... However, the given sensor measures should be in an increasing order or it could produce weird behaviors! Also, for any measure, the sum of masses over files should always be 1. Uncomment the constant C\-H\-E\-C\-K\-\_\-\-M\-O\-D\-E\-L\-S in \hyperlink{config_8h}{config.\-h} to make sure your models are okay.\end{DoxyItemize}
 It is not actually necessary to write a file for each subset of possible worlds. A file per possible focal element is enough.
 
-WARNING: Check that your files are in the correct format for you OS (specifically for the endline character...), thus, do not forget to format them correctly (or you could see $^\wedge$M characters appearing in your possible worlds for example...). To convert in a correct format, on Linux, it is possible to use the package 'tofrodos' with the two commands 'fromdos' and 'todos'.
+W\-A\-R\-N\-I\-N\-G\-: Check that your files are in the correct format for you O\-S (specifically for the endline character...), thus, do not forget to format them correctly (or you could see $^\wedge$\-M characters appearing in your possible worlds for example...). To convert in a correct format, on Linux, it is possible to use the package 'tofrodos' with the two commands 'fromdos' and 'todos'.
 
 If you're not sure you understood this quick explanation, please check the example files (for instance those used to run tests...).
 
-Once everything has been created correctly, it is possible to load a belief structure using BFS\_\-loadBeliefStructure(nameOfTheThingYouWantToCompute), the files will all be loaded automatically. The functions BFS\_\-getEvidences() et \hyperlink{_beliefs_from_sensors_8c_a0e545c6a35093eb43b27325db61c2216}{BFS\_\-getProjection()} are then used to build the mass functions from given raw measures.
+Once everything has been created correctly, it is possible to load a belief structure using B\-F\-S\-\_\-load\-Belief\-Structure(name\-Of\-The\-Thing\-You\-Want\-To\-Compute), the files will all be loaded automatically. The functions B\-F\-S\-\_\-get\-Evidences() et \hyperlink{_beliefs_from_sensors_8c_a0e545c6a35093eb43b27325db61c2216}{B\-F\-S\-\_\-get\-Projection()} are then used to build the mass functions from given raw measures.
 
 \begin{DoxyAuthor}{Author}
-Bastien Pietropaoli (\href{mailto:bastien.pietropaoli@inria.fr}{\tt bastien.pietropaoli@inria.fr}) 
+Bastien Pietropaoli (\href{mailto:bastien.pietropaoli@inria.fr}{\tt bastien.\-pietropaoli@inria.\-fr}) 
 \end{DoxyAuthor}
 
 
-Definition in file \hyperlink{_beliefs_from_sensors_8c_source}{BeliefsFromSensors.c}.
+Definition in file \hyperlink{_beliefs_from_sensors_8c_source}{Beliefs\-From\-Sensors.\-c}.
 
 
 
 \subsection{Function Documentation}
-\hypertarget{_beliefs_from_sensors_8c_a260a230f0b69a6d5581fa4b1b7896ecc}{
-\index{BeliefsFromSensors.c@{BeliefsFromSensors.c}!BFS\_\-beliefStructureToString@{BFS\_\-beliefStructureToString}}
-\index{BFS\_\-beliefStructureToString@{BFS\_\-beliefStructureToString}!BeliefsFromSensors.c@{BeliefsFromSensors.c}}
-\subsubsection[{BFS\_\-beliefStructureToString}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ BFS\_\-beliefStructureToString (
+\hypertarget{_beliefs_from_sensors_8c_a260a230f0b69a6d5581fa4b1b7896ecc}{\index{Beliefs\-From\-Sensors.\-c@{Beliefs\-From\-Sensors.\-c}!B\-F\-S\-\_\-belief\-Structure\-To\-String@{B\-F\-S\-\_\-belief\-Structure\-To\-String}}
+\index{B\-F\-S\-\_\-belief\-Structure\-To\-String@{B\-F\-S\-\_\-belief\-Structure\-To\-String}!BeliefsFromSensors.c@{Beliefs\-From\-Sensors.\-c}}
+\subsubsection[{B\-F\-S\-\_\-belief\-Structure\-To\-String}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ B\-F\-S\-\_\-belief\-Structure\-To\-String (
 \begin{DoxyParamCaption}
-\item[{const {\bf BFS\_\-BeliefStructure}}]{bs}
+\item[{const {\bf B\-F\-S\-\_\-\-Belief\-Structure}}]{bs}
 \end{DoxyParamCaption}
-)}}
-\label{_beliefs_from_sensors_8c_a260a230f0b69a6d5581fa4b1b7896ecc}
-Converts a \hyperlink{struct_b_f_s___belief_structure}{BFS\_\-BeliefStructure} into a string ready to print. 
+)}}\label{_beliefs_from_sensors_8c_a260a230f0b69a6d5581fa4b1b7896ecc}
+Converts a \hyperlink{struct_b_f_s___belief_structure}{B\-F\-S\-\_\-\-Belief\-Structure} into a string ready to print. 
 \begin{DoxyParams}{Parameters}
-{\em bs} & The \hyperlink{struct_b_f_s___belief_structure}{BFS\_\-BeliefStructure} to convert \\
+{\em bs} & The \hyperlink{struct_b_f_s___belief_structure}{B\-F\-S\-\_\-\-Belief\-Structure} to convert \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-A string ready to print representing the \hyperlink{struct_b_f_s___belief_structure}{BFS\_\-BeliefStructure}. Must be freed after use. 
+A string ready to print representing the \hyperlink{struct_b_f_s___belief_structure}{B\-F\-S\-\_\-\-Belief\-Structure}. Must be freed after use. 
 \end{DoxyReturn}
 
 
-Definition at line 958 of file BeliefsFromSensors.c.
+Definition at line 958 of file Beliefs\-From\-Sensors.\-c.
 
-\hypertarget{_beliefs_from_sensors_8c_ab740882d43bffbdb6dbd8ccae33ee542}{
-\index{BeliefsFromSensors.c@{BeliefsFromSensors.c}!BFS\_\-freeBeliefStructure@{BFS\_\-freeBeliefStructure}}
-\index{BFS\_\-freeBeliefStructure@{BFS\_\-freeBeliefStructure}!BeliefsFromSensors.c@{BeliefsFromSensors.c}}
-\subsubsection[{BFS\_\-freeBeliefStructure}]{\setlength{\rightskip}{0pt plus 5cm}void BFS\_\-freeBeliefStructure (
+\hypertarget{_beliefs_from_sensors_8c_ab740882d43bffbdb6dbd8ccae33ee542}{\index{Beliefs\-From\-Sensors.\-c@{Beliefs\-From\-Sensors.\-c}!B\-F\-S\-\_\-free\-Belief\-Structure@{B\-F\-S\-\_\-free\-Belief\-Structure}}
+\index{B\-F\-S\-\_\-free\-Belief\-Structure@{B\-F\-S\-\_\-free\-Belief\-Structure}!BeliefsFromSensors.c@{Beliefs\-From\-Sensors.\-c}}
+\subsubsection[{B\-F\-S\-\_\-free\-Belief\-Structure}]{\setlength{\rightskip}{0pt plus 5cm}void B\-F\-S\-\_\-free\-Belief\-Structure (
 \begin{DoxyParamCaption}
-\item[{{\bf BFS\_\-BeliefStructure} $\ast$}]{bs}
+\item[{{\bf B\-F\-S\-\_\-\-Belief\-Structure} $\ast$}]{bs}
 \end{DoxyParamCaption}
-)}}
-\label{_beliefs_from_sensors_8c_ab740882d43bffbdb6dbd8ccae33ee542}
-Frees the memory used for the \hyperlink{struct_b_f_s___belief_structure}{BFS\_\-BeliefStructure}. 
+)}}\label{_beliefs_from_sensors_8c_ab740882d43bffbdb6dbd8ccae33ee542}
+Frees the memory used for the \hyperlink{struct_b_f_s___belief_structure}{B\-F\-S\-\_\-\-Belief\-Structure}. 
 \begin{DoxyParams}{Parameters}
-{\em bs} & A pointer to the \hyperlink{struct_b_f_s___belief_structure}{BFS\_\-BeliefStructure} to free \\
+{\em bs} & A pointer to the \hyperlink{struct_b_f_s___belief_structure}{B\-F\-S\-\_\-\-Belief\-Structure} to free \\
 \hline
 \end{DoxyParams}
 
 
-Definition at line 760 of file BeliefsFromSensors.c.
+Definition at line 760 of file Beliefs\-From\-Sensors.\-c.
 
-\hypertarget{_beliefs_from_sensors_8c_a656096925b23a22260bb5cf401a2c913}{
-\index{BeliefsFromSensors.c@{BeliefsFromSensors.c}!BFS\_\-freeOption@{BFS\_\-freeOption}}
-\index{BFS\_\-freeOption@{BFS\_\-freeOption}!BeliefsFromSensors.c@{BeliefsFromSensors.c}}
-\subsubsection[{BFS\_\-freeOption}]{\setlength{\rightskip}{0pt plus 5cm}void BFS\_\-freeOption (
+\hypertarget{_beliefs_from_sensors_8c_a656096925b23a22260bb5cf401a2c913}{\index{Beliefs\-From\-Sensors.\-c@{Beliefs\-From\-Sensors.\-c}!B\-F\-S\-\_\-free\-Option@{B\-F\-S\-\_\-free\-Option}}
+\index{B\-F\-S\-\_\-free\-Option@{B\-F\-S\-\_\-free\-Option}!BeliefsFromSensors.c@{Beliefs\-From\-Sensors.\-c}}
+\subsubsection[{B\-F\-S\-\_\-free\-Option}]{\setlength{\rightskip}{0pt plus 5cm}void B\-F\-S\-\_\-free\-Option (
 \begin{DoxyParamCaption}
-\item[{{\bf BFS\_\-Option} $\ast$}]{o}
+\item[{{\bf B\-F\-S\-\_\-\-Option} $\ast$}]{o}
 \end{DoxyParamCaption}
-)}}
-\label{_beliefs_from_sensors_8c_a656096925b23a22260bb5cf401a2c913}
-Frees the memory used for the \hyperlink{struct_b_f_s___option}{BFS\_\-Option}. 
+)}}\label{_beliefs_from_sensors_8c_a656096925b23a22260bb5cf401a2c913}
+Frees the memory used for the \hyperlink{struct_b_f_s___option}{B\-F\-S\-\_\-\-Option}. 
 \begin{DoxyParams}{Parameters}
-{\em o} & A pointer to the \hyperlink{struct_b_f_s___option}{BFS\_\-Option} to free \\
+{\em o} & A pointer to the \hyperlink{struct_b_f_s___option}{B\-F\-S\-\_\-\-Option} to free \\
 \hline
 \end{DoxyParams}
 
 
-Definition at line 774 of file BeliefsFromSensors.c.
+Definition at line 774 of file Beliefs\-From\-Sensors.\-c.
 
-\hypertarget{_beliefs_from_sensors_8c_a85c4783ddf170331a7ac31805cf501f3}{
-\index{BeliefsFromSensors.c@{BeliefsFromSensors.c}!BFS\_\-freePartOfBelief@{BFS\_\-freePartOfBelief}}
-\index{BFS\_\-freePartOfBelief@{BFS\_\-freePartOfBelief}!BeliefsFromSensors.c@{BeliefsFromSensors.c}}
-\subsubsection[{BFS\_\-freePartOfBelief}]{\setlength{\rightskip}{0pt plus 5cm}void BFS\_\-freePartOfBelief (
+\hypertarget{_beliefs_from_sensors_8c_a85c4783ddf170331a7ac31805cf501f3}{\index{Beliefs\-From\-Sensors.\-c@{Beliefs\-From\-Sensors.\-c}!B\-F\-S\-\_\-free\-Part\-Of\-Belief@{B\-F\-S\-\_\-free\-Part\-Of\-Belief}}
+\index{B\-F\-S\-\_\-free\-Part\-Of\-Belief@{B\-F\-S\-\_\-free\-Part\-Of\-Belief}!BeliefsFromSensors.c@{Beliefs\-From\-Sensors.\-c}}
+\subsubsection[{B\-F\-S\-\_\-free\-Part\-Of\-Belief}]{\setlength{\rightskip}{0pt plus 5cm}void B\-F\-S\-\_\-free\-Part\-Of\-Belief (
 \begin{DoxyParamCaption}
-\item[{{\bf BFS\_\-PartOfBelief} $\ast$}]{pob}
+\item[{{\bf B\-F\-S\-\_\-\-Part\-Of\-Belief} $\ast$}]{pob}
 \end{DoxyParamCaption}
-)}}
-\label{_beliefs_from_sensors_8c_a85c4783ddf170331a7ac31805cf501f3}
-Frees the memory used for the \hyperlink{struct_b_f_s___part_of_belief}{BFS\_\-PartOfBelief}. 
+)}}\label{_beliefs_from_sensors_8c_a85c4783ddf170331a7ac31805cf501f3}
+Frees the memory used for the \hyperlink{struct_b_f_s___part_of_belief}{B\-F\-S\-\_\-\-Part\-Of\-Belief}. 
 \begin{DoxyParams}{Parameters}
-{\em pob} & A pointer to the \hyperlink{struct_b_f_s___part_of_belief}{BFS\_\-PartOfBelief} to free \\
+{\em pob} & A pointer to the \hyperlink{struct_b_f_s___part_of_belief}{B\-F\-S\-\_\-\-Part\-Of\-Belief} to free \\
 \hline
 \end{DoxyParams}
 
 
-Definition at line 795 of file BeliefsFromSensors.c.
+Definition at line 795 of file Beliefs\-From\-Sensors.\-c.
 
-\hypertarget{_beliefs_from_sensors_8c_a6012b3fb40fe63ca8c35c1836e76cb06}{
-\index{BeliefsFromSensors.c@{BeliefsFromSensors.c}!BFS\_\-freeSensorBeliefs@{BFS\_\-freeSensorBeliefs}}
-\index{BFS\_\-freeSensorBeliefs@{BFS\_\-freeSensorBeliefs}!BeliefsFromSensors.c@{BeliefsFromSensors.c}}
-\subsubsection[{BFS\_\-freeSensorBeliefs}]{\setlength{\rightskip}{0pt plus 5cm}void BFS\_\-freeSensorBeliefs (
+\hypertarget{_beliefs_from_sensors_8c_a6012b3fb40fe63ca8c35c1836e76cb06}{\index{Beliefs\-From\-Sensors.\-c@{Beliefs\-From\-Sensors.\-c}!B\-F\-S\-\_\-free\-Sensor\-Beliefs@{B\-F\-S\-\_\-free\-Sensor\-Beliefs}}
+\index{B\-F\-S\-\_\-free\-Sensor\-Beliefs@{B\-F\-S\-\_\-free\-Sensor\-Beliefs}!BeliefsFromSensors.c@{Beliefs\-From\-Sensors.\-c}}
+\subsubsection[{B\-F\-S\-\_\-free\-Sensor\-Beliefs}]{\setlength{\rightskip}{0pt plus 5cm}void B\-F\-S\-\_\-free\-Sensor\-Beliefs (
 \begin{DoxyParamCaption}
-\item[{{\bf BFS\_\-SensorBeliefs} $\ast$}]{sb}
+\item[{{\bf B\-F\-S\-\_\-\-Sensor\-Beliefs} $\ast$}]{sb}
 \end{DoxyParamCaption}
-)}}
-\label{_beliefs_from_sensors_8c_a6012b3fb40fe63ca8c35c1836e76cb06}
-Frees the memory used for the \hyperlink{struct_b_f_s___sensor_beliefs}{BFS\_\-SensorBeliefs}. 
+)}}\label{_beliefs_from_sensors_8c_a6012b3fb40fe63ca8c35c1836e76cb06}
+Frees the memory used for the \hyperlink{struct_b_f_s___sensor_beliefs}{B\-F\-S\-\_\-\-Sensor\-Beliefs}. 
 \begin{DoxyParams}{Parameters}
-{\em sb} & A pointer to the \hyperlink{struct_b_f_s___sensor_beliefs}{BFS\_\-SensorBeliefs} to free \\
+{\em sb} & A pointer to the \hyperlink{struct_b_f_s___sensor_beliefs}{B\-F\-S\-\_\-\-Sensor\-Beliefs} to free \\
 \hline
 \end{DoxyParams}
 
 
-Definition at line 781 of file BeliefsFromSensors.c.
+Definition at line 781 of file Beliefs\-From\-Sensors.\-c.
 
-\hypertarget{_beliefs_from_sensors_8c_a10bdb699cd9dddc428d544b569a93c6b}{
-\index{BeliefsFromSensors.c@{BeliefsFromSensors.c}!BFS\_\-getBeliefValue@{BFS\_\-getBeliefValue}}
-\index{BFS\_\-getBeliefValue@{BFS\_\-getBeliefValue}!BeliefsFromSensors.c@{BeliefsFromSensors.c}}
-\subsubsection[{BFS\_\-getBeliefValue}]{\setlength{\rightskip}{0pt plus 5cm}{\bf BF\_\-FocalElement} BFS\_\-getBeliefValue (
+\hypertarget{_beliefs_from_sensors_8c_a10bdb699cd9dddc428d544b569a93c6b}{\index{Beliefs\-From\-Sensors.\-c@{Beliefs\-From\-Sensors.\-c}!B\-F\-S\-\_\-get\-Belief\-Value@{B\-F\-S\-\_\-get\-Belief\-Value}}
+\index{B\-F\-S\-\_\-get\-Belief\-Value@{B\-F\-S\-\_\-get\-Belief\-Value}!BeliefsFromSensors.c@{Beliefs\-From\-Sensors.\-c}}
+\subsubsection[{B\-F\-S\-\_\-get\-Belief\-Value}]{\setlength{\rightskip}{0pt plus 5cm}{\bf B\-F\-\_\-\-Focal\-Element} B\-F\-S\-\_\-get\-Belief\-Value (
 \begin{DoxyParamCaption}
-\item[{const {\bf BFS\_\-PartOfBelief}}]{pob, }
-\item[{const double}]{sensorMeasure, }
-\item[{const int}]{elementSize}
+\item[{const {\bf B\-F\-S\-\_\-\-Part\-Of\-Belief}}]{pob, }
+\item[{const double}]{sensor\-Measure, }
+\item[{const int}]{element\-Size}
 \end{DoxyParamCaption}
-)}}
-\label{_beliefs_from_sensors_8c_a10bdb699cd9dddc428d544b569a93c6b}
+)}}\label{_beliefs_from_sensors_8c_a10bdb699cd9dddc428d544b569a93c6b}
 Get the belief value associated to a specific possible value of the frame of discernment. 
 \begin{DoxyParams}{Parameters}
 {\em pob} & The part of belief associated to a sensor and a specific possible value \\
 \hline
-{\em sensorMeasure} & The measure given by the sensor \\
+{\em sensor\-Measure} & The measure given by the sensor \\
 \hline
-{\em elementSize} & The number of digits in the representation of elements \\
+{\em element\-Size} & The number of digits in the representation of elements \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-A BF\_\-BeliefPoint corresponding to the belief in the measure given. A linear approximation is done to get the belief value. 
+A B\-F\-\_\-\-Belief\-Point corresponding to the belief in the measure given. A linear approximation is done to get the belief value. 
 \end{DoxyReturn}
 
 
-Definition at line 619 of file BeliefsFromSensors.c.
+Definition at line 619 of file Beliefs\-From\-Sensors.\-c.
 
-\hypertarget{_beliefs_from_sensors_8c_ab29d8e5aec4acb76233926768627643f}{
-\index{BeliefsFromSensors.c@{BeliefsFromSensors.c}!BFS\_\-getEvidence@{BFS\_\-getEvidence}}
-\index{BFS\_\-getEvidence@{BFS\_\-getEvidence}!BeliefsFromSensors.c@{BeliefsFromSensors.c}}
-\subsubsection[{BFS\_\-getEvidence}]{\setlength{\rightskip}{0pt plus 5cm}{\bf BF\_\-BeliefFunction}$\ast$ BFS\_\-getEvidence (
+\hypertarget{_beliefs_from_sensors_8c_ab29d8e5aec4acb76233926768627643f}{\index{Beliefs\-From\-Sensors.\-c@{Beliefs\-From\-Sensors.\-c}!B\-F\-S\-\_\-get\-Evidence@{B\-F\-S\-\_\-get\-Evidence}}
+\index{B\-F\-S\-\_\-get\-Evidence@{B\-F\-S\-\_\-get\-Evidence}!BeliefsFromSensors.c@{Beliefs\-From\-Sensors.\-c}}
+\subsubsection[{B\-F\-S\-\_\-get\-Evidence}]{\setlength{\rightskip}{0pt plus 5cm}{\bf B\-F\-\_\-\-Belief\-Function}$\ast$ B\-F\-S\-\_\-get\-Evidence (
 \begin{DoxyParamCaption}
-\item[{const {\bf BFS\_\-BeliefStructure}}]{bs, }
-\item[{const char $\ast$const $\ast$const}]{sensorTypes, }
-\item[{const double $\ast$}]{sensorMeasures, }
-\item[{const int}]{nbMeasures}
+\item[{const {\bf B\-F\-S\-\_\-\-Belief\-Structure}}]{bs, }
+\item[{const char $\ast$const $\ast$const}]{sensor\-Types, }
+\item[{const double $\ast$}]{sensor\-Measures, }
+\item[{const int}]{nb\-Measures}
 \end{DoxyParamCaption}
-)}}
-\label{_beliefs_from_sensors_8c_ab29d8e5aec4acb76233926768627643f}
-Generates the BF\_\-BeliefFunctions from the \hyperlink{struct_b_f_s___belief_structure}{BFS\_\-BeliefStructure} and a set of sensor measures. If a sensor does not correspond to anything given in the model (\hyperlink{struct_b_f_s___belief_structure}{BFS\_\-BeliefStructure}), then a vacuous mass function is returned for this sensor. 
+)}}\label{_beliefs_from_sensors_8c_ab29d8e5aec4acb76233926768627643f}
+Generates the B\-F\-\_\-\-Belief\-Functions from the \hyperlink{struct_b_f_s___belief_structure}{B\-F\-S\-\_\-\-Belief\-Structure} and a set of sensor measures. If a sensor does not correspond to anything given in the model (\hyperlink{struct_b_f_s___belief_structure}{B\-F\-S\-\_\-\-Belief\-Structure}), then a vacuous mass function is returned for this sensor. 
 \begin{DoxyParams}{Parameters}
 {\em bs} & The belief structure to use \\
 \hline
-{\em sensorTypes} & The types of sensors giving data (table of Strings) \\
+{\em sensor\-Types} & The types of sensors giving data (table of Strings) \\
 \hline
-{\em sensorMeasures} & The set of measures given by sensors \\
+{\em sensor\-Measures} & The set of measures given by sensors \\
 \hline
-{\em nbMeasures} & The number of measures (and of elements in sensorTypes) \\
+{\em nb\-Measures} & The number of measures (and of elements in sensor\-Types) \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-The list of BeliefFunctions associated to the sensors 
+The list of Belief\-Functions associated to the sensors 
 \end{DoxyReturn}
 
 
-Definition at line 457 of file BeliefsFromSensors.c.
+Definition at line 457 of file Beliefs\-From\-Sensors.\-c.
 
-\hypertarget{_beliefs_from_sensors_8c_a0e545c6a35093eb43b27325db61c2216}{
-\index{BeliefsFromSensors.c@{BeliefsFromSensors.c}!BFS\_\-getProjection@{BFS\_\-getProjection}}
-\index{BFS\_\-getProjection@{BFS\_\-getProjection}!BeliefsFromSensors.c@{BeliefsFromSensors.c}}
-\subsubsection[{BFS\_\-getProjection}]{\setlength{\rightskip}{0pt plus 5cm}{\bf BF\_\-BeliefFunction} BFS\_\-getProjection (
+\hypertarget{_beliefs_from_sensors_8c_a0e545c6a35093eb43b27325db61c2216}{\index{Beliefs\-From\-Sensors.\-c@{Beliefs\-From\-Sensors.\-c}!B\-F\-S\-\_\-get\-Projection@{B\-F\-S\-\_\-get\-Projection}}
+\index{B\-F\-S\-\_\-get\-Projection@{B\-F\-S\-\_\-get\-Projection}!BeliefsFromSensors.c@{Beliefs\-From\-Sensors.\-c}}
+\subsubsection[{B\-F\-S\-\_\-get\-Projection}]{\setlength{\rightskip}{0pt plus 5cm}{\bf B\-F\-\_\-\-Belief\-Function} B\-F\-S\-\_\-get\-Projection (
 \begin{DoxyParamCaption}
-\item[{const {\bf BFS\_\-SensorBeliefs}}]{sb, }
-\item[{const double}]{sensorMeasure, }
-\item[{const int}]{elementSize}
+\item[{const {\bf B\-F\-S\-\_\-\-Sensor\-Beliefs}}]{sb, }
+\item[{const double}]{sensor\-Measure, }
+\item[{const int}]{element\-Size}
 \end{DoxyParamCaption}
-)}}
-\label{_beliefs_from_sensors_8c_a0e545c6a35093eb43b27325db61c2216}
-Get the instant \hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction} from a model of belief associated to a sensor. Options are applied here. 
+)}}\label{_beliefs_from_sensors_8c_a0e545c6a35093eb43b27325db61c2216}
+Get the instant \hyperlink{struct_b_f___belief_function}{B\-F\-\_\-\-Belief\-Function} from a model of belief associated to a sensor. Options are applied here. 
 \begin{DoxyParams}{Parameters}
-{\em \hyperlink{struct_b_f_s___sensor_beliefs}{BFS\_\-SensorBeliefs}} & The model of belief associated to the sensor \\
+{\em \hyperlink{struct_b_f_s___sensor_beliefs}{B\-F\-S\-\_\-\-Sensor\-Beliefs}} & The model of belief associated to the sensor \\
 \hline
-{\em sensorMeasure} & The measure given by the sensor (if sensorMeasure == WEIRD\_\-NUMBER, projection = vacuous + tempo discrimination) \\
+{\em sensor\-Measure} & The measure given by the sensor (if sensor\-Measure == W\-E\-I\-R\-D\-\_\-\-N\-U\-M\-B\-E\-R, projection = vacuous + tempo discrimination) \\
 \hline
-{\em elementSize} & The number of digits in the representation of elements \\
+{\em element\-Size} & The number of digits in the representation of elements \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-The projection (the instant \hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction}) associated to the sensor and its measure. 
+The projection (the instant \hyperlink{struct_b_f___belief_function}{B\-F\-\_\-\-Belief\-Function}) associated to the sensor and its measure. 
 \end{DoxyReturn}
 
 
-Definition at line 486 of file BeliefsFromSensors.c.
+Definition at line 486 of file Beliefs\-From\-Sensors.\-c.
 
-\hypertarget{_beliefs_from_sensors_8c_a43a0c08d950b7eac1900fa1c91c39f02}{
-\index{BeliefsFromSensors.c@{BeliefsFromSensors.c}!BFS\_\-loadBeliefStructure@{BFS\_\-loadBeliefStructure}}
-\index{BFS\_\-loadBeliefStructure@{BFS\_\-loadBeliefStructure}!BeliefsFromSensors.c@{BeliefsFromSensors.c}}
-\subsubsection[{BFS\_\-loadBeliefStructure}]{\setlength{\rightskip}{0pt plus 5cm}{\bf BFS\_\-BeliefStructure} BFS\_\-loadBeliefStructure (
+\hypertarget{_beliefs_from_sensors_8c_a43a0c08d950b7eac1900fa1c91c39f02}{\index{Beliefs\-From\-Sensors.\-c@{Beliefs\-From\-Sensors.\-c}!B\-F\-S\-\_\-load\-Belief\-Structure@{B\-F\-S\-\_\-load\-Belief\-Structure}}
+\index{B\-F\-S\-\_\-load\-Belief\-Structure@{B\-F\-S\-\_\-load\-Belief\-Structure}!BeliefsFromSensors.c@{Beliefs\-From\-Sensors.\-c}}
+\subsubsection[{B\-F\-S\-\_\-load\-Belief\-Structure}]{\setlength{\rightskip}{0pt plus 5cm}{\bf B\-F\-S\-\_\-\-Belief\-Structure} B\-F\-S\-\_\-load\-Belief\-Structure (
 \begin{DoxyParamCaption}
-\item[{const char $\ast$}]{frameName}
+\item[{const char $\ast$}]{frame\-Name}
 \end{DoxyParamCaption}
-)}}
-\label{_beliefs_from_sensors_8c_a43a0c08d950b7eac1900fa1c91c39f02}
-Loads a belief structure from a directory. The directory must have the frame of discernment name and should be in the directory defined by BFS\_\-PATH (if unchanged \char`\"{}./data/beliefsFromSensors/\char`\"{}). It may contain : \begin{DoxyItemize}
-\item {\ttfamily values} A file with the different possible values for the frame of discernment (the name of this file is \hyperlink{}{BFS\_\-VALUES\_\-NAME} (if unchanged \char`\"{}values\char`\"{}). See the function \hyperlink{}{loadSet()} for more information about the format of the file. \item {\ttfamily sensorType} A bunch of subdirectories, each one with the name of a specific type of sensor \item {\ttfamily beliefValues} Each sensor type subdirectory may contain a collection of files, each one corresponding to the beliefs associated to a specific value. The filenames aren't important at all. See the documentation of this module itself for more information about the format of the file. 
+)}}\label{_beliefs_from_sensors_8c_a43a0c08d950b7eac1900fa1c91c39f02}
+Loads a belief structure from a directory. The directory must have the frame of discernment name and should be in the directory defined by B\-F\-S\-\_\-\-P\-A\-T\-H (if unchanged \char`\"{}./data/beliefs\-From\-Sensors/\char`\"{}). It may contain \-: \begin{DoxyItemize}
+\item {\ttfamily values} A file with the different possible values for the frame of discernment (the name of this file is \hyperlink{_beliefs_from_sensors_8h_aeb65807aecdae7cac8a75bfaef6a5d02}{B\-F\-S\-\_\-\-V\-A\-L\-U\-E\-S\-\_\-\-N\-A\-M\-E} (if unchanged \char`\"{}values\char`\"{}). See the function \hyperlink{}{load\-Set()} for more information about the format of the file. \item {\ttfamily sensor\-Type} A bunch of subdirectories, each one with the name of a specific type of sensor \item {\ttfamily belief\-Values} Each sensor type subdirectory may contain a collection of files, each one corresponding to the beliefs associated to a specific value. The filenames aren't important at all. See the documentation of this module itself for more information about the format of the file. 
 \begin{DoxyParams}{Parameters}
-{\em frameName} & The name of the frame of discernment (Name of the directory to look for.) \\
+{\em frame\-Name} & The name of the frame of discernment (Name of the directory to look for.) \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-The complete \hyperlink{struct_b_f_s___belief_structure}{BFS\_\-BeliefStructure} containing all the beliefs that may be used to estimate the real world state. The \hyperlink{struct_b_f_s___belief_structure}{BFS\_\-BeliefStructure} is empty if an error occurs. (The frameName attribute should be NULL in case of error.) Must be freed after use. 
+The complete \hyperlink{struct_b_f_s___belief_structure}{B\-F\-S\-\_\-\-Belief\-Structure} containing all the beliefs that may be used to estimate the real world state. The \hyperlink{struct_b_f_s___belief_structure}{B\-F\-S\-\_\-\-Belief\-Structure} is empty if an error occurs. (The frame\-Name attribute should be N\-U\-L\-L in case of error.) Must be freed after use. 
 \end{DoxyReturn}
 \end{DoxyItemize}
 
 
-Definition at line 116 of file BeliefsFromSensors.c.
+Definition at line 116 of file Beliefs\-From\-Sensors.\-c.
 
-\hypertarget{_beliefs_from_sensors_8c_a8b80fe77dd3dd4581c23447cecf1c3c5}{
-\index{BeliefsFromSensors.c@{BeliefsFromSensors.c}!BFS\_\-loadPartOfBelief@{BFS\_\-loadPartOfBelief}}
-\index{BFS\_\-loadPartOfBelief@{BFS\_\-loadPartOfBelief}!BeliefsFromSensors.c@{BeliefsFromSensors.c}}
-\subsubsection[{BFS\_\-loadPartOfBelief}]{\setlength{\rightskip}{0pt plus 5cm}{\bf BFS\_\-PartOfBelief} BFS\_\-loadPartOfBelief (
+\hypertarget{_beliefs_from_sensors_8c_a8b80fe77dd3dd4581c23447cecf1c3c5}{\index{Beliefs\-From\-Sensors.\-c@{Beliefs\-From\-Sensors.\-c}!B\-F\-S\-\_\-load\-Part\-Of\-Belief@{B\-F\-S\-\_\-load\-Part\-Of\-Belief}}
+\index{B\-F\-S\-\_\-load\-Part\-Of\-Belief@{B\-F\-S\-\_\-load\-Part\-Of\-Belief}!BeliefsFromSensors.c@{Beliefs\-From\-Sensors.\-c}}
+\subsubsection[{B\-F\-S\-\_\-load\-Part\-Of\-Belief}]{\setlength{\rightskip}{0pt plus 5cm}{\bf B\-F\-S\-\_\-\-Part\-Of\-Belief} B\-F\-S\-\_\-load\-Part\-Of\-Belief (
 \begin{DoxyParamCaption}
-\item[{const char $\ast$}]{fileName, }
-\item[{const {\bf Sets\_\-ReferenceList}}]{rl}
+\item[{const char $\ast$}]{file\-Name, }
+\item[{const {\bf Sets\-\_\-\-Reference\-List}}]{rl}
 \end{DoxyParamCaption}
-)}}
-\label{_beliefs_from_sensors_8c_a8b80fe77dd3dd4581c23447cecf1c3c5}
-Loads a part of belief corresponding to the function use to create the belief functions associated to a set of possible values of the frame of discernment and a sensor type. Format : \begin{DoxyItemize}
-\item {\ttfamily nbOfAtoms} The number of atoms associated to the function \item {\ttfamily atomsNames} The list of corresponding atoms, one per line \item {\ttfamily nbOfPoints} The number of points to define the function \item {\ttfamily points} The couples (sensorValue, belief) used to define the function, one per line. The points may be placed in order from the smallest sensor value to the biggest 
+)}}\label{_beliefs_from_sensors_8c_a8b80fe77dd3dd4581c23447cecf1c3c5}
+Loads a part of belief corresponding to the function use to create the belief functions associated to a set of possible values of the frame of discernment and a sensor type. Format \-: \begin{DoxyItemize}
+\item {\ttfamily nb\-Of\-Atoms} The number of atoms associated to the function \item {\ttfamily atoms\-Names} The list of corresponding atoms, one per line \item {\ttfamily nb\-Of\-Points} The number of points to define the function \item {\ttfamily points} The couples (sensor\-Value, belief) used to define the function, one per line. The points may be placed in order from the smallest sensor value to the biggest 
 \begin{DoxyParams}{Parameters}
-{\em fileName} & The name of the file to load \\
+{\em file\-Name} & The name of the file to load \\
 \hline
-{\em rl} & The \hyperlink{struct_sets___reference_list}{Sets\_\-ReferenceList} containing the real values of the frame of discernment \\
+{\em rl} & The \hyperlink{struct_sets___reference_list}{Sets\-\_\-\-Reference\-List} containing the real values of the frame of discernment \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-A \hyperlink{struct_b_f_s___part_of_belief}{BFS\_\-PartOfBelief} to be freed after use. 
+A \hyperlink{struct_b_f_s___part_of_belief}{B\-F\-S\-\_\-\-Part\-Of\-Belief} to be freed after use. 
 \end{DoxyReturn}
 \end{DoxyItemize}
 
 
-Definition at line 386 of file BeliefsFromSensors.c.
+Definition at line 386 of file Beliefs\-From\-Sensors.\-c.
 
-\hypertarget{_beliefs_from_sensors_8c_ad471b39be113cedd19a8e4a6563547ed}{
-\index{BeliefsFromSensors.c@{BeliefsFromSensors.c}!BFS\_\-loadSensorBeliefs@{BFS\_\-loadSensorBeliefs}}
-\index{BFS\_\-loadSensorBeliefs@{BFS\_\-loadSensorBeliefs}!BeliefsFromSensors.c@{BeliefsFromSensors.c}}
-\subsubsection[{BFS\_\-loadSensorBeliefs}]{\setlength{\rightskip}{0pt plus 5cm}{\bf BFS\_\-SensorBeliefs} BFS\_\-loadSensorBeliefs (
+\hypertarget{_beliefs_from_sensors_8c_ad471b39be113cedd19a8e4a6563547ed}{\index{Beliefs\-From\-Sensors.\-c@{Beliefs\-From\-Sensors.\-c}!B\-F\-S\-\_\-load\-Sensor\-Beliefs@{B\-F\-S\-\_\-load\-Sensor\-Beliefs}}
+\index{B\-F\-S\-\_\-load\-Sensor\-Beliefs@{B\-F\-S\-\_\-load\-Sensor\-Beliefs}!BeliefsFromSensors.c@{Beliefs\-From\-Sensors.\-c}}
+\subsubsection[{B\-F\-S\-\_\-load\-Sensor\-Beliefs}]{\setlength{\rightskip}{0pt plus 5cm}{\bf B\-F\-S\-\_\-\-Sensor\-Beliefs} B\-F\-S\-\_\-load\-Sensor\-Beliefs (
 \begin{DoxyParamCaption}
-\item[{const char $\ast$}]{sensorType, }
+\item[{const char $\ast$}]{sensor\-Type, }
 \item[{const char $\ast$}]{path, }
-\item[{const {\bf Sets\_\-ReferenceList}}]{rl}
+\item[{const {\bf Sets\-\_\-\-Reference\-List}}]{rl}
 \end{DoxyParamCaption}
-)}}
-\label{_beliefs_from_sensors_8c_ad471b39be113cedd19a8e4a6563547ed}
-Load sthe sensor beliefs from a directory. A bunch of files corresponding to the \hyperlink{struct_b_f_s___part_of_belief}{BFS\_\-PartOfBelief} may be in the path (see \hyperlink{}{loadPartOfBelief()} ). 
+)}}\label{_beliefs_from_sensors_8c_ad471b39be113cedd19a8e4a6563547ed}
+Load sthe sensor beliefs from a directory. A bunch of files corresponding to the \hyperlink{struct_b_f_s___part_of_belief}{B\-F\-S\-\_\-\-Part\-Of\-Belief} may be in the path (see \hyperlink{}{load\-Part\-Of\-Belief()} ). 
 \begin{DoxyParams}{Parameters}
-{\em sensorType} & The type of sensor (name of the directory) whose beliefs are loaded \\
+{\em sensor\-Type} & The type of sensor (name of the directory) whose beliefs are loaded \\
 \hline
 {\em path} & The path of the directory containing the different part of belief \\
 \hline
-{\em rl} & The \hyperlink{struct_sets___reference_list}{Sets\_\-ReferenceList} containing the real values of the frame of discernment \\
+{\em rl} & The \hyperlink{struct_sets___reference_list}{Sets\-\_\-\-Reference\-List} containing the real values of the frame of discernment \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-The \hyperlink{struct_b_f_s___sensor_beliefs}{BFS\_\-SensorBeliefs} with the different BFS\_\-PartOfBeliefs. Must be freed after use. 
+The \hyperlink{struct_b_f_s___sensor_beliefs}{B\-F\-S\-\_\-\-Sensor\-Beliefs} with the different B\-F\-S\-\_\-\-Part\-Of\-Beliefs. Must be freed after use. 
 \end{DoxyReturn}
 
 
-Definition at line 182 of file BeliefsFromSensors.c.
+Definition at line 182 of file Beliefs\-From\-Sensors.\-c.
 
-\hypertarget{_beliefs_from_sensors_8c_a2e5f7e7f26ddab46e97e7d3e613d60a4}{
-\index{BeliefsFromSensors.c@{BeliefsFromSensors.c}!BFS\_\-optionToString@{BFS\_\-optionToString}}
-\index{BFS\_\-optionToString@{BFS\_\-optionToString}!BeliefsFromSensors.c@{BeliefsFromSensors.c}}
-\subsubsection[{BFS\_\-optionToString}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ BFS\_\-optionToString (
+\hypertarget{_beliefs_from_sensors_8c_a2e5f7e7f26ddab46e97e7d3e613d60a4}{\index{Beliefs\-From\-Sensors.\-c@{Beliefs\-From\-Sensors.\-c}!B\-F\-S\-\_\-option\-To\-String@{B\-F\-S\-\_\-option\-To\-String}}
+\index{B\-F\-S\-\_\-option\-To\-String@{B\-F\-S\-\_\-option\-To\-String}!BeliefsFromSensors.c@{Beliefs\-From\-Sensors.\-c}}
+\subsubsection[{B\-F\-S\-\_\-option\-To\-String}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ B\-F\-S\-\_\-option\-To\-String (
 \begin{DoxyParamCaption}
-\item[{const {\bf BFS\_\-Option}}]{o}
+\item[{const {\bf B\-F\-S\-\_\-\-Option}}]{o}
 \end{DoxyParamCaption}
-)}}
-\label{_beliefs_from_sensors_8c_a2e5f7e7f26ddab46e97e7d3e613d60a4}
-Converts an \hyperlink{struct_b_f_s___option}{BFS\_\-Option} into a string ready to print. 
+)}}\label{_beliefs_from_sensors_8c_a2e5f7e7f26ddab46e97e7d3e613d60a4}
+Converts an \hyperlink{struct_b_f_s___option}{B\-F\-S\-\_\-\-Option} into a string ready to print. 
 \begin{DoxyParams}{Parameters}
-{\em o} & The \hyperlink{struct_b_f_s___option}{BFS\_\-Option} to convert \\
+{\em o} & The \hyperlink{struct_b_f_s___option}{B\-F\-S\-\_\-\-Option} to convert \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-A string ready to print representing the \hyperlink{struct_b_f_s___part_of_belief}{BFS\_\-PartOfBelief}. Must be freed after use. 
+A string ready to print representing the \hyperlink{struct_b_f_s___part_of_belief}{B\-F\-S\-\_\-\-Part\-Of\-Belief}. Must be freed after use. 
 \end{DoxyReturn}
 
 
-Definition at line 848 of file BeliefsFromSensors.c.
+Definition at line 848 of file Beliefs\-From\-Sensors.\-c.
 
-\hypertarget{_beliefs_from_sensors_8c_adb9761bd0fab3324adb46d12bed858e1}{
-\index{BeliefsFromSensors.c@{BeliefsFromSensors.c}!BFS\_\-partOfBeliefToString@{BFS\_\-partOfBeliefToString}}
-\index{BFS\_\-partOfBeliefToString@{BFS\_\-partOfBeliefToString}!BeliefsFromSensors.c@{BeliefsFromSensors.c}}
-\subsubsection[{BFS\_\-partOfBeliefToString}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ BFS\_\-partOfBeliefToString (
+\hypertarget{_beliefs_from_sensors_8c_adb9761bd0fab3324adb46d12bed858e1}{\index{Beliefs\-From\-Sensors.\-c@{Beliefs\-From\-Sensors.\-c}!B\-F\-S\-\_\-part\-Of\-Belief\-To\-String@{B\-F\-S\-\_\-part\-Of\-Belief\-To\-String}}
+\index{B\-F\-S\-\_\-part\-Of\-Belief\-To\-String@{B\-F\-S\-\_\-part\-Of\-Belief\-To\-String}!BeliefsFromSensors.c@{Beliefs\-From\-Sensors.\-c}}
+\subsubsection[{B\-F\-S\-\_\-part\-Of\-Belief\-To\-String}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ B\-F\-S\-\_\-part\-Of\-Belief\-To\-String (
 \begin{DoxyParamCaption}
-\item[{const {\bf BFS\_\-PartOfBelief}}]{pob, }
-\item[{const {\bf Sets\_\-ReferenceList}}]{rl}
+\item[{const {\bf B\-F\-S\-\_\-\-Part\-Of\-Belief}}]{pob, }
+\item[{const {\bf Sets\-\_\-\-Reference\-List}}]{rl}
 \end{DoxyParamCaption}
-)}}
-\label{_beliefs_from_sensors_8c_adb9761bd0fab3324adb46d12bed858e1}
-Converts a \hyperlink{struct_b_f_s___part_of_belief}{BFS\_\-PartOfBelief} into a string ready to print. 
+)}}\label{_beliefs_from_sensors_8c_adb9761bd0fab3324adb46d12bed858e1}
+Converts a \hyperlink{struct_b_f_s___part_of_belief}{B\-F\-S\-\_\-\-Part\-Of\-Belief} into a string ready to print. 
 \begin{DoxyParams}{Parameters}
-{\em pob} & The \hyperlink{struct_b_f_s___part_of_belief}{BFS\_\-PartOfBelief} to convert \\
+{\em pob} & The \hyperlink{struct_b_f_s___part_of_belief}{B\-F\-S\-\_\-\-Part\-Of\-Belief} to convert \\
 \hline
-{\em rl} & The \hyperlink{struct_sets___reference_list}{Sets\_\-ReferenceList} containing the real values of the frame of discernment \\
+{\em rl} & The \hyperlink{struct_sets___reference_list}{Sets\-\_\-\-Reference\-List} containing the real values of the frame of discernment \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-A string ready to print representing the \hyperlink{struct_b_f_s___part_of_belief}{BFS\_\-PartOfBelief}. Must be freed after use. 
+A string ready to print representing the \hyperlink{struct_b_f_s___part_of_belief}{B\-F\-S\-\_\-\-Part\-Of\-Belief}. Must be freed after use. 
 \end{DoxyReturn}
 
 
-Definition at line 812 of file BeliefsFromSensors.c.
+Definition at line 812 of file Beliefs\-From\-Sensors.\-c.
 
-\hypertarget{_beliefs_from_sensors_8c_a7843347f4bb8e8910afc707c22c0339b}{
-\index{BeliefsFromSensors.c@{BeliefsFromSensors.c}!BFS\_\-sensorBeliefsToString@{BFS\_\-sensorBeliefsToString}}
-\index{BFS\_\-sensorBeliefsToString@{BFS\_\-sensorBeliefsToString}!BeliefsFromSensors.c@{BeliefsFromSensors.c}}
-\subsubsection[{BFS\_\-sensorBeliefsToString}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ BFS\_\-sensorBeliefsToString (
+\hypertarget{_beliefs_from_sensors_8c_a7843347f4bb8e8910afc707c22c0339b}{\index{Beliefs\-From\-Sensors.\-c@{Beliefs\-From\-Sensors.\-c}!B\-F\-S\-\_\-sensor\-Beliefs\-To\-String@{B\-F\-S\-\_\-sensor\-Beliefs\-To\-String}}
+\index{B\-F\-S\-\_\-sensor\-Beliefs\-To\-String@{B\-F\-S\-\_\-sensor\-Beliefs\-To\-String}!BeliefsFromSensors.c@{Beliefs\-From\-Sensors.\-c}}
+\subsubsection[{B\-F\-S\-\_\-sensor\-Beliefs\-To\-String}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ B\-F\-S\-\_\-sensor\-Beliefs\-To\-String (
 \begin{DoxyParamCaption}
-\item[{const {\bf BFS\_\-SensorBeliefs}}]{sb, }
-\item[{const {\bf Sets\_\-ReferenceList}}]{rl}
+\item[{const {\bf B\-F\-S\-\_\-\-Sensor\-Beliefs}}]{sb, }
+\item[{const {\bf Sets\-\_\-\-Reference\-List}}]{rl}
 \end{DoxyParamCaption}
-)}}
-\label{_beliefs_from_sensors_8c_a7843347f4bb8e8910afc707c22c0339b}
-Converts a \hyperlink{struct_b_f_s___sensor_beliefs}{BFS\_\-SensorBeliefs} into a string ready to print. 
+)}}\label{_beliefs_from_sensors_8c_a7843347f4bb8e8910afc707c22c0339b}
+Converts a \hyperlink{struct_b_f_s___sensor_beliefs}{B\-F\-S\-\_\-\-Sensor\-Beliefs} into a string ready to print. 
 \begin{DoxyParams}{Parameters}
-{\em sb} & The \hyperlink{struct_b_f_s___sensor_beliefs}{BFS\_\-SensorBeliefs} to convert \\
+{\em sb} & The \hyperlink{struct_b_f_s___sensor_beliefs}{B\-F\-S\-\_\-\-Sensor\-Beliefs} to convert \\
 \hline
-{\em rl} & The \hyperlink{struct_sets___reference_list}{Sets\_\-ReferenceList} containing the real values of the frame of discernment \\
+{\em rl} & The \hyperlink{struct_sets___reference_list}{Sets\-\_\-\-Reference\-List} containing the real values of the frame of discernment \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-A string ready to print representing the \hyperlink{struct_b_f_s___sensor_beliefs}{BFS\_\-SensorBeliefs}. Must be freed after use. 
+A string ready to print representing the \hyperlink{struct_b_f_s___sensor_beliefs}{B\-F\-S\-\_\-\-Sensor\-Beliefs}. Must be freed after use. 
 \end{DoxyReturn}
 
 
-Definition at line 874 of file BeliefsFromSensors.c.
+Definition at line 874 of file Beliefs\-From\-Sensors.\-c.
 
-\hypertarget{_beliefs_from_sensors_8c_ac056655256752e8e9c65651674a566bf}{
-\index{BeliefsFromSensors.c@{BeliefsFromSensors.c}!BFS\_\-temporization\_\-fusion@{BFS\_\-temporization\_\-fusion}}
-\index{BFS\_\-temporization\_\-fusion@{BFS\_\-temporization\_\-fusion}!BeliefsFromSensors.c@{BeliefsFromSensors.c}}
-\subsubsection[{BFS\_\-temporization\_\-fusion}]{\setlength{\rightskip}{0pt plus 5cm}{\bf BF\_\-BeliefFunction} BFS\_\-temporization\_\-fusion (
+\hypertarget{_beliefs_from_sensors_8c_ac056655256752e8e9c65651674a566bf}{\index{Beliefs\-From\-Sensors.\-c@{Beliefs\-From\-Sensors.\-c}!B\-F\-S\-\_\-temporization\-\_\-fusion@{B\-F\-S\-\_\-temporization\-\_\-fusion}}
+\index{B\-F\-S\-\_\-temporization\-\_\-fusion@{B\-F\-S\-\_\-temporization\-\_\-fusion}!BeliefsFromSensors.c@{Beliefs\-From\-Sensors.\-c}}
+\subsubsection[{B\-F\-S\-\_\-temporization\-\_\-fusion}]{\setlength{\rightskip}{0pt plus 5cm}{\bf B\-F\-\_\-\-Belief\-Function} B\-F\-S\-\_\-temporization\-\_\-fusion (
 \begin{DoxyParamCaption}
-\item[{const {\bf BF\_\-BeliefFunction}}]{oldOne, }
-\item[{const {\bf BF\_\-BeliefFunction}}]{newOne, }
-\item[{const float}]{timeFactor, }
-\item[{const struct timespec}]{oldTime, }
-\item[{{\bf BFS\_\-Option} $\ast$}]{op}
+\item[{const {\bf B\-F\-\_\-\-Belief\-Function}}]{old\-One, }
+\item[{const {\bf B\-F\-\_\-\-Belief\-Function}}]{new\-One, }
+\item[{const float}]{time\-Factor, }
+\item[{const struct timespec}]{old\-Time, }
+\item[{{\bf B\-F\-S\-\_\-\-Option} $\ast$}]{op}
 \end{DoxyParamCaption}
-)}}
-\label{_beliefs_from_sensors_8c_ac056655256752e8e9c65651674a566bf}
+)}}\label{_beliefs_from_sensors_8c_ac056655256752e8e9c65651674a566bf}
 Applies a temporization of belief based on a discounting of the old belief plus a combination with the new belief using the Dubois \& Prade's combination rule (the combination occurs only if the given belief function correspond to a new measure, otherwise, only discounting is applied). 
 \begin{DoxyParams}{Parameters}
-{\em oldOne} & The old \hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction} \\
+{\em old\-One} & The old \hyperlink{struct_b_f___belief_function}{B\-F\-\_\-\-Belief\-Function} \\
 \hline
-{\em newOne} & The last \hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction} corresponding to the last received measure (if newOne.focals == NULL, then it only applies discounting) \\
+{\em new\-One} & The last \hyperlink{struct_b_f___belief_function}{B\-F\-\_\-\-Belief\-Function} corresponding to the last received measure (if new\-One.\-focals == N\-U\-L\-L, then it only applies discounting) \\
 \hline
-{\em timeFactor} & The factor used to discount over time (linear discount over time for now) \\
+{\em time\-Factor} & The factor used to discount over time (linear discount over time for now) \\
 \hline
-{\em oldTime} & The time at which the old \hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction} has been built \\
+{\em old\-Time} & The time at which the old \hyperlink{struct_b_f___belief_function}{B\-F\-\_\-\-Belief\-Function} has been built \\
 \hline
 {\em op} & A pointer to the temporization option to store the needed data \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-The \hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction} after the temporization has been applied (must be freed after use). 
+The \hyperlink{struct_b_f___belief_function}{B\-F\-\_\-\-Belief\-Function} after the temporization has been applied (must be freed after use). 
 \end{DoxyReturn}
 
 
-Definition at line 702 of file BeliefsFromSensors.c.
+Definition at line 702 of file Beliefs\-From\-Sensors.\-c.
 
-\hypertarget{_beliefs_from_sensors_8c_a3d28fe4cb063ab2f21d9a161a8531eb0}{
-\index{BeliefsFromSensors.c@{BeliefsFromSensors.c}!BFS\_\-temporization\_\-specificity@{BFS\_\-temporization\_\-specificity}}
-\index{BFS\_\-temporization\_\-specificity@{BFS\_\-temporization\_\-specificity}!BeliefsFromSensors.c@{BeliefsFromSensors.c}}
-\subsubsection[{BFS\_\-temporization\_\-specificity}]{\setlength{\rightskip}{0pt plus 5cm}{\bf BF\_\-BeliefFunction} BFS\_\-temporization\_\-specificity (
+\hypertarget{_beliefs_from_sensors_8c_a3d28fe4cb063ab2f21d9a161a8531eb0}{\index{Beliefs\-From\-Sensors.\-c@{Beliefs\-From\-Sensors.\-c}!B\-F\-S\-\_\-temporization\-\_\-specificity@{B\-F\-S\-\_\-temporization\-\_\-specificity}}
+\index{B\-F\-S\-\_\-temporization\-\_\-specificity@{B\-F\-S\-\_\-temporization\-\_\-specificity}!BeliefsFromSensors.c@{Beliefs\-From\-Sensors.\-c}}
+\subsubsection[{B\-F\-S\-\_\-temporization\-\_\-specificity}]{\setlength{\rightskip}{0pt plus 5cm}{\bf B\-F\-\_\-\-Belief\-Function} B\-F\-S\-\_\-temporization\-\_\-specificity (
 \begin{DoxyParamCaption}
-\item[{const {\bf BF\_\-BeliefFunction}}]{oldOne, }
-\item[{const {\bf BF\_\-BeliefFunction}}]{newOne, }
-\item[{const float}]{timeFactor, }
-\item[{const struct timespec}]{oldTime, }
-\item[{{\bf BFS\_\-Option} $\ast$}]{op}
+\item[{const {\bf B\-F\-\_\-\-Belief\-Function}}]{old\-One, }
+\item[{const {\bf B\-F\-\_\-\-Belief\-Function}}]{new\-One, }
+\item[{const float}]{time\-Factor, }
+\item[{const struct timespec}]{old\-Time, }
+\item[{{\bf B\-F\-S\-\_\-\-Option} $\ast$}]{op}
 \end{DoxyParamCaption}
-)}}
-\label{_beliefs_from_sensors_8c_a3d28fe4cb063ab2f21d9a161a8531eb0}
+)}}\label{_beliefs_from_sensors_8c_a3d28fe4cb063ab2f21d9a161a8531eb0}
 Applies the discrimination of temporization based on the specificity of the discounted old belief function (cf Pietropaoli et al. -\/ Belief Inference with Timed Evidence -\/ 2012). 
 \begin{DoxyParams}{Parameters}
-{\em oldOne} & The old \hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction} \\
+{\em old\-One} & The old \hyperlink{struct_b_f___belief_function}{B\-F\-\_\-\-Belief\-Function} \\
 \hline
-{\em newOne} & The last \hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction} corresponding to the last received measure (or vacuous if not receive) \\
+{\em new\-One} & The last \hyperlink{struct_b_f___belief_function}{B\-F\-\_\-\-Belief\-Function} corresponding to the last received measure (or vacuous if not receive) \\
 \hline
-{\em timeFactor} & The factor used to discount over time (linear discount over time for now) \\
+{\em time\-Factor} & The factor used to discount over time (linear discount over time for now) \\
 \hline
-{\em oldTime} & The time at which the old \hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction} has been built \\
+{\em old\-Time} & The time at which the old \hyperlink{struct_b_f___belief_function}{B\-F\-\_\-\-Belief\-Function} has been built \\
 \hline
 {\em op} & A pointer to the temporization option to store the needed data \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-The \hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction} after the temporization has been applied (must be freed after use). 
+The \hyperlink{struct_b_f___belief_function}{B\-F\-\_\-\-Belief\-Function} after the temporization has been applied (must be freed after use). 
 \end{DoxyReturn}
 
 
-Definition at line 658 of file BeliefsFromSensors.c.
+Definition at line 658 of file Beliefs\-From\-Sensors.\-c.
 

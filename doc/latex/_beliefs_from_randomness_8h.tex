@@ -1,78 +1,73 @@
-\hypertarget{_beliefs_from_randomness_8h}{
-\section{BeliefsFromRandomness.h File Reference}
-\label{_beliefs_from_randomness_8h}\index{BeliefsFromRandomness.h@{BeliefsFromRandomness.h}}
+\hypertarget{_beliefs_from_randomness_8h}{\section{/home/arichez/git/\-T\-H\-E\-G\-A\-M\-E/src/main/include/\-Beliefs\-From\-Randomness.h File Reference}
+\label{_beliefs_from_randomness_8h}\index{/home/arichez/git/\-T\-H\-E\-G\-A\-M\-E/src/main/include/\-Beliefs\-From\-Randomness.\-h@{/home/arichez/git/\-T\-H\-E\-G\-A\-M\-E/src/main/include/\-Beliefs\-From\-Randomness.\-h}}
 }
 
 
-APPLICATION: Gives structures and main functions to create random belief functions.  
+A\-P\-P\-L\-I\-C\-A\-T\-I\-O\-N\-: Gives structures and main functions to create random belief functions.  
 
 
-{\ttfamily \#include $<$stdio.h$>$}\par
-{\ttfamily \#include $<$stdint.h$>$}\par
-{\ttfamily \#include $<$stdlib.h$>$}\par
-{\ttfamily \#include $<$string.h$>$}\par
-{\ttfamily \#include $<$math.h$>$}\par
-{\ttfamily \#include $<$time.h$>$}\par
-{\ttfamily \#include $<$ctype.h$>$}\par
-{\ttfamily \#include \char`\"{}config.h\char`\"{}}\par
-{\ttfamily \#include \char`\"{}Sets.h\char`\"{}}\par
-{\ttfamily \#include \char`\"{}BeliefFunctions.h\char`\"{}}\par
+{\ttfamily \#include $<$stdio.\-h$>$}\\*
+{\ttfamily \#include $<$stdint.\-h$>$}\\*
+{\ttfamily \#include $<$stdlib.\-h$>$}\\*
+{\ttfamily \#include $<$string.\-h$>$}\\*
+{\ttfamily \#include $<$math.\-h$>$}\\*
+{\ttfamily \#include $<$time.\-h$>$}\\*
+{\ttfamily \#include $<$ctype.\-h$>$}\\*
+{\ttfamily \#include \char`\"{}config.\-h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}Sets.\-h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}Belief\-Functions.\-h\char`\"{}}\\*
 \subsection*{Functions}
 \begin{Indent}{\bf Utility functions}\par
 \begin{DoxyCompactItemize}
 \item 
-void \hyperlink{_beliefs_from_randomness_8h_a4a6f961a70f4e8919ff6ca9313bb94bf}{BFR\_\-generateRandomSeed} ()
+void \hyperlink{_beliefs_from_randomness_8h_a4a6f961a70f4e8919ff6ca9313bb94bf}{B\-F\-R\-\_\-generate\-Random\-Seed} ()
 \end{DoxyCompactItemize}
 \end{Indent}
 \begin{Indent}{\bf Random generators}\par
 \begin{DoxyCompactItemize}
 \item 
-\hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction} \hyperlink{_beliefs_from_randomness_8h_aaa6c6360c4d88dc7ab57edf6240463e9}{BFR\_\-getCrappyRandomBelief} (const int elementSize)
+\hyperlink{struct_b_f___belief_function}{B\-F\-\_\-\-Belief\-Function} \hyperlink{_beliefs_from_randomness_8h_aaa6c6360c4d88dc7ab57edf6240463e9}{B\-F\-R\-\_\-get\-Crappy\-Random\-Belief} (const int element\-Size)
 \item 
-\hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction} \hyperlink{_beliefs_from_randomness_8h_af7cb0cf2489f355c4c1fcaacbe6b3a39}{BFR\_\-getCrappyRandomBeliefWithFixedNbFocals} (const int elementSize, const int nbFocals)
+\hyperlink{struct_b_f___belief_function}{B\-F\-\_\-\-Belief\-Function} \hyperlink{_beliefs_from_randomness_8h_af7cb0cf2489f355c4c1fcaacbe6b3a39}{B\-F\-R\-\_\-get\-Crappy\-Random\-Belief\-With\-Fixed\-Nb\-Focals} (const int element\-Size, const int nb\-Focals)
 \end{DoxyCompactItemize}
 \end{Indent}
 
 
 \subsection{Detailed Description}
-APPLICATION: Gives structures and main functions to create random belief functions. This module provides with methods to randomly generate mass functions. It is roughly based on common algorithms to do so. An interesting paper on the subject is \char`\"{}Random Generation of Mass Functions:
- A Short Howto\char`\"{} by Thomas Burger and Sébastien Destercke (2012).
+A\-P\-P\-L\-I\-C\-A\-T\-I\-O\-N\-: Gives structures and main functions to create random belief functions. This module provides with methods to randomly generate mass functions. It is roughly based on common algorithms to do so. An interesting paper on the subject is \char`\"{}\-Random Generation of Mass Functions\-:
+\-A Short Howto\char`\"{} by Thomas Burger and Sébastien Destercke (2012).
 
 \begin{DoxyAuthor}{Author}
-Bastien Pietropaoli (\href{mailto:bastien.pietropaoli@inria.fr}{\tt bastien.pietropaoli@inria.fr}) 
+Bastien Pietropaoli (\href{mailto:bastien.pietropaoli@inria.fr}{\tt bastien.\-pietropaoli@inria.\-fr}) 
 \end{DoxyAuthor}
 
 
-Definition in file \hyperlink{_beliefs_from_randomness_8h_source}{BeliefsFromRandomness.h}.
+Definition in file \hyperlink{_beliefs_from_randomness_8h_source}{Beliefs\-From\-Randomness.\-h}.
 
 
 
 \subsection{Function Documentation}
-\hypertarget{_beliefs_from_randomness_8h_a4a6f961a70f4e8919ff6ca9313bb94bf}{
-\index{BeliefsFromRandomness.h@{BeliefsFromRandomness.h}!BFR\_\-generateRandomSeed@{BFR\_\-generateRandomSeed}}
-\index{BFR\_\-generateRandomSeed@{BFR\_\-generateRandomSeed}!BeliefsFromRandomness.h@{BeliefsFromRandomness.h}}
-\subsubsection[{BFR\_\-generateRandomSeed}]{\setlength{\rightskip}{0pt plus 5cm}void BFR\_\-generateRandomSeed (
+\hypertarget{_beliefs_from_randomness_8h_a4a6f961a70f4e8919ff6ca9313bb94bf}{\index{Beliefs\-From\-Randomness.\-h@{Beliefs\-From\-Randomness.\-h}!B\-F\-R\-\_\-generate\-Random\-Seed@{B\-F\-R\-\_\-generate\-Random\-Seed}}
+\index{B\-F\-R\-\_\-generate\-Random\-Seed@{B\-F\-R\-\_\-generate\-Random\-Seed}!BeliefsFromRandomness.h@{Beliefs\-From\-Randomness.\-h}}
+\subsubsection[{B\-F\-R\-\_\-generate\-Random\-Seed}]{\setlength{\rightskip}{0pt plus 5cm}void B\-F\-R\-\_\-generate\-Random\-Seed (
 \begin{DoxyParamCaption}
 {}
 \end{DoxyParamCaption}
-)}}
-\label{_beliefs_from_randomness_8h_a4a6f961a70f4e8919ff6ca9313bb94bf}
+)}}\label{_beliefs_from_randomness_8h_a4a6f961a70f4e8919ff6ca9313bb94bf}
 Generates a seed based on the date and the hour. This function should be called each time a new seed is required. 
 
-Definition at line 36 of file BeliefsFromRandomness.c.
+Definition at line 36 of file Beliefs\-From\-Randomness.\-c.
 
-\hypertarget{_beliefs_from_randomness_8h_aaa6c6360c4d88dc7ab57edf6240463e9}{
-\index{BeliefsFromRandomness.h@{BeliefsFromRandomness.h}!BFR\_\-getCrappyRandomBelief@{BFR\_\-getCrappyRandomBelief}}
-\index{BFR\_\-getCrappyRandomBelief@{BFR\_\-getCrappyRandomBelief}!BeliefsFromRandomness.h@{BeliefsFromRandomness.h}}
-\subsubsection[{BFR\_\-getCrappyRandomBelief}]{\setlength{\rightskip}{0pt plus 5cm}{\bf BF\_\-BeliefFunction} BFR\_\-getCrappyRandomBelief (
+\hypertarget{_beliefs_from_randomness_8h_aaa6c6360c4d88dc7ab57edf6240463e9}{\index{Beliefs\-From\-Randomness.\-h@{Beliefs\-From\-Randomness.\-h}!B\-F\-R\-\_\-get\-Crappy\-Random\-Belief@{B\-F\-R\-\_\-get\-Crappy\-Random\-Belief}}
+\index{B\-F\-R\-\_\-get\-Crappy\-Random\-Belief@{B\-F\-R\-\_\-get\-Crappy\-Random\-Belief}!BeliefsFromRandomness.h@{Beliefs\-From\-Randomness.\-h}}
+\subsubsection[{B\-F\-R\-\_\-get\-Crappy\-Random\-Belief}]{\setlength{\rightskip}{0pt plus 5cm}{\bf B\-F\-\_\-\-Belief\-Function} B\-F\-R\-\_\-get\-Crappy\-Random\-Belief (
 \begin{DoxyParamCaption}
-\item[{const int}]{elementSize}
+\item[{const int}]{element\-Size}
 \end{DoxyParamCaption}
-)}}
-\label{_beliefs_from_randomness_8h_aaa6c6360c4d88dc7ab57edf6240463e9}
+)}}\label{_beliefs_from_randomness_8h_aaa6c6360c4d88dc7ab57edf6240463e9}
 Generates a crappy random belief function with a random number of focals elements, random focal elements and random mass values. It is crap as the mass values and the size of focal elements are not well distributed. 
 \begin{DoxyParams}{Parameters}
-{\em elementSize} & The number of possible states/worlds. \\
+{\em element\-Size} & The number of possible states/worlds. \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
@@ -80,28 +75,26 @@ A random belief function.
 \end{DoxyReturn}
 
 
-Definition at line 53 of file BeliefsFromRandomness.c.
+Definition at line 53 of file Beliefs\-From\-Randomness.\-c.
 
-\hypertarget{_beliefs_from_randomness_8h_af7cb0cf2489f355c4c1fcaacbe6b3a39}{
-\index{BeliefsFromRandomness.h@{BeliefsFromRandomness.h}!BFR\_\-getCrappyRandomBeliefWithFixedNbFocals@{BFR\_\-getCrappyRandomBeliefWithFixedNbFocals}}
-\index{BFR\_\-getCrappyRandomBeliefWithFixedNbFocals@{BFR\_\-getCrappyRandomBeliefWithFixedNbFocals}!BeliefsFromRandomness.h@{BeliefsFromRandomness.h}}
-\subsubsection[{BFR\_\-getCrappyRandomBeliefWithFixedNbFocals}]{\setlength{\rightskip}{0pt plus 5cm}{\bf BF\_\-BeliefFunction} BFR\_\-getCrappyRandomBeliefWithFixedNbFocals (
+\hypertarget{_beliefs_from_randomness_8h_af7cb0cf2489f355c4c1fcaacbe6b3a39}{\index{Beliefs\-From\-Randomness.\-h@{Beliefs\-From\-Randomness.\-h}!B\-F\-R\-\_\-get\-Crappy\-Random\-Belief\-With\-Fixed\-Nb\-Focals@{B\-F\-R\-\_\-get\-Crappy\-Random\-Belief\-With\-Fixed\-Nb\-Focals}}
+\index{B\-F\-R\-\_\-get\-Crappy\-Random\-Belief\-With\-Fixed\-Nb\-Focals@{B\-F\-R\-\_\-get\-Crappy\-Random\-Belief\-With\-Fixed\-Nb\-Focals}!BeliefsFromRandomness.h@{Beliefs\-From\-Randomness.\-h}}
+\subsubsection[{B\-F\-R\-\_\-get\-Crappy\-Random\-Belief\-With\-Fixed\-Nb\-Focals}]{\setlength{\rightskip}{0pt plus 5cm}{\bf B\-F\-\_\-\-Belief\-Function} B\-F\-R\-\_\-get\-Crappy\-Random\-Belief\-With\-Fixed\-Nb\-Focals (
 \begin{DoxyParamCaption}
-\item[{const int}]{elementSize, }
-\item[{const int}]{nbFocals}
+\item[{const int}]{element\-Size, }
+\item[{const int}]{nb\-Focals}
 \end{DoxyParamCaption}
-)}}
-\label{_beliefs_from_randomness_8h_af7cb0cf2489f355c4c1fcaacbe6b3a39}
-Generates a crappy random belief function with a fixed number of focal elements but those elements and their mass values are random. A constraint nbFocals $<$= 2$^\wedge$elementSize has to be respected. Returns a null \hyperlink{struct_b_f___belief_function}{BF\_\-BeliefFunction} if not. 
+)}}\label{_beliefs_from_randomness_8h_af7cb0cf2489f355c4c1fcaacbe6b3a39}
+Generates a crappy random belief function with a fixed number of focal elements but those elements and their mass values are random. A constraint nb\-Focals $<$= 2$^\wedge$element\-Size has to be respected. Returns a null \hyperlink{struct_b_f___belief_function}{B\-F\-\_\-\-Belief\-Function} if not. 
 \begin{DoxyParams}{Parameters}
-{\em elementSize} & The number of possible states/worlds. \\
+{\em element\-Size} & The number of possible states/worlds. \\
 \hline
-{\em nbFocals} & The number of focal elements wanted. \\
+{\em nb\-Focals} & The number of focal elements wanted. \\
 \hline
 {\em A} & random belief function. \\
 \hline
 \end{DoxyParams}
 
 
-Definition at line 85 of file BeliefsFromRandomness.c.
+Definition at line 85 of file Beliefs\-From\-Randomness.\-c.
 
