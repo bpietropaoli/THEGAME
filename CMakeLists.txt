@@ -33,9 +33,11 @@ add_executable(
 	${src_thegame_test}
 )
 
+file(COPY src/test/resources/data DESTINATION .)
+
 include_directories(src/test/include)
 
 target_link_libraries(test-thegame THEGAME)
 
-add_test(test-thegame test-thegame)
+add_test(NAME test-thegame COMMAND test-thegame)
 
