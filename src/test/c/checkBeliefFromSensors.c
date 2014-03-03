@@ -45,7 +45,7 @@ static BFS_SensorBeliefs *getSensorBelief(BFS_BeliefStructure from,char *name) {
 			"wrong option flags for %s", sensorName);
 
 #define assert_flt_equals(expected, actual, precision) \
-		ck_assert_msg(fabs(expected - actual) <= precision, \
+		ck_assert_msg(fabs((float)expected - (float)actual) <= precision, \
 		"error - expected: %f; actual: %f", expected, actual)
 
 
@@ -125,7 +125,7 @@ START_TEST(soundSensorYesValuesAreOk) {
 
 	ck_assert_int_eq(4, belief->beliefOnElements[0].nbPts);
 
-	assert_flt_equals(0, (double)belief->beliefOnElements[0].points[0].sensorValue, 0.0);
+	assert_flt_equals(0, belief->beliefOnElements[0].points[0].sensorValue, 0.0);
 	assert_flt_equals(0, belief->beliefOnElements[0].points[0].belief, 0);
 
 	assert_flt_equals(10.0f, belief->beliefOnElements[0].points[1].sensorValue, 0);
@@ -169,6 +169,63 @@ START_TEST(soundSensorYesUNoValuesAreOk) {
 END_TEST
 
 
+/*
+ * Test for beliefValue
+ * ===================
+ */
+
+
+BFS_SensorBeliefs *soundBelief;
+BF_FocalElement focalElementMinus20, focalElement5, focalElement60, focalElement63;
+BF_BeliefFunction beliefFunction5;
+
+static void setupProjection(void) {
+	beliefStructurePresence = BFS_loadBeliefStructure("presence");
+	soundBelief = getSensorBelief(beliefStructurePresence, "sound");
+	focalElementMinus20 = BFS_getBeliefValue(soundBelief->beliefOnElements[0], -20.0,
+	    		beliefStructurePresence.refList.card);
+	focalElement5 = BFS_getBeliefValue(soundBelief->beliefOnElements[0], 5.0,
+	    		beliefStructurePresence.refList.card);
+	focalElement60 = BFS_getBeliefValue(soundBelief->beliefOnElements[0], 60.0,
+	    		beliefStructurePresence.refList.card);
+	focalElement63 = BFS_getBeliefValue(soundBelief->beliefOnElements[0], 63.0,
+    		beliefStructurePresence.refList.card);
+	beliefFunction5 = BFS_getProjection(*soundBelief, 5.0,
+    		beliefStructurePresence.refList.card);
+}
+
+static void teardownProjection(void) {
+	BFS_freeBeliefStructure(&beliefStructurePresence);
+    BF_freeBeliefPoint(&focalElementMinus20);
+    BF_freeBeliefPoint(&focalElement5);
+    BF_freeBeliefPoint(&focalElement60);
+    BF_freeBeliefPoint(&focalElement63);
+    BF_freeBeliefFunction(&beliefFunction5);
+
+}
+
+START_TEST(beliefValueForSound) {
+
+    assert_flt_equals(0.0, focalElementMinus20.beliefValue, 0);
+    assert_flt_equals(0.1, focalElement5.beliefValue, 0);
+    assert_flt_equals(1.0, focalElement60.beliefValue, 0);
+    assert_flt_equals(1.0, focalElement63.beliefValue, 0);
+}
+END_TEST
+
+START_TEST(ProjectionForSoundFocalNb) {
+    ck_assert_int_eq(2, beliefFunction5.nbFocals);
+}
+END_TEST
+
+
+START_TEST(ProjectionForSoundFocalValues) {
+	assert_flt_equals(0.1, beliefFunction5.focals[0].beliefValue, 0);
+	assert_flt_equals(0.9, beliefFunction5.focals[1].beliefValue, 0);
+}
+END_TEST
+
+
 static TCase* createParsingTestcase() {
 	TCase* testCaseParsing = tcase_create("Parsing");
 	tcase_add_checked_fixture(testCaseParsing, setup, teardown);
@@ -184,10 +241,21 @@ static TCase* createParsingTestcase() {
 	return testCaseParsing;
 }
 
+static TCase* createBeliefProjectionsTestCase() {
+	TCase* testCaseProjections = tcase_create("Projections");
+	tcase_add_checked_fixture(testCaseProjections, setupProjection, teardownProjection);
+	tcase_add_test(testCaseProjections, beliefValueForSound);
+	tcase_add_test(testCaseProjections, ProjectionForSoundFocalNb);
+	tcase_add_test(testCaseProjections, ProjectionForSoundFocalValues);
+
+	return testCaseProjections;
+
+}
+
 Suite *createSuite(void) {
 	Suite *suite = suite_create("beliefFromSensors");
-	TCase* testCaseParsing = createParsingTestcase();
-	suite_add_tcase(suite, testCaseParsing);
+	suite_add_tcase(suite, createParsingTestcase());
+	suite_add_tcase(suite, createBeliefProjectionsTestCase());
 	return suite;
 }
 
