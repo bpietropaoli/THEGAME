@@ -9,6 +9,7 @@
 #include <check.h>
 
 #include "BeliefsFromSensors.h"
+#include "unit_tests.h"
 
 
 BFS_BeliefStructure beliefStructurePresence;
@@ -44,9 +45,7 @@ static BFS_SensorBeliefs *getSensorBelief(BFS_BeliefStructure from,char *name) {
 	ck_assert_msg(getSensorBelief(structure, sensorName)->optionFlags == opts, \
 			"wrong option flags for %s", sensorName);
 
-#define assert_flt_equals(expected, actual, precision) \
-		ck_assert_msg(fabs((float)expected - (float)actual) <= precision, \
-		"error - expected: %f; actual: %f", expected, actual)
+
 
 
 START_TEST(beliefStructureNameIsOk) {
