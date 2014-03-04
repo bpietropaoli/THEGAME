@@ -13,13 +13,21 @@
 #include "unit_tests.h"
 
 #define SENSOR_NB 5
-#define AKA 1
-#define BEA 2
-#define ELF 32
+
+char AKA_VAL[] = {1, 0, 0};
+char BEA_VAL[] = {0, 1, 0};
+char ELF_VAL[] = {0, 0, 1};
+char VOID_VAL[] = {0, 0, 0};
+
+const Sets_Element AKA = {AKA_VAL, 1};
+const Sets_Element BEA = {BEA_VAL, 1};
+const Sets_Element ELF = {ELF_VAL, 1};
+const Sets_Element VOID = {VOID_VAL, 0};
 
 BFS_BeliefStructure beliefStructure;
 BF_BeliefFunction *evidences;
-BF_BeliefFunction fusedBelief;
+BF_BeliefFunction DempsterfusedBelief, SmetsFusedBelief;
+
 
 static void setup() {
     char const *sensorTypes[] = {"S1", "S2", "S3", "S4", "S5"};
@@ -27,7 +35,8 @@ static void setup() {
 	beliefStructure = BFS_loadBeliefStructure("test");
 
 	evidences = BFS_getEvidence(beliefStructure, sensorTypes, sensorMeasures, SENSOR_NB);
-	fusedBelief = BF_DempsterCombination(evidences[1], evidences[2]);
+	SmetsFusedBelief = BF_SmetsCombination(evidences[0], evidences[1]);
+	DempsterfusedBelief = BF_DempsterCombination(evidences[0], evidences[1]);
 }
 
 static void teardown() {
@@ -39,27 +48,52 @@ static void teardown() {
 	free(evidences);
 }
 
+/*
+ * Fusion tests
+ * ============
+ */
+START_TEST(SmetsCombinationValuesAreOk) {
+	/*
+	 * expected values :
+	 * m(Aka) = 0.45
+	 * m(Bea) = 0.025
+	 * m(void) = 0.525
+	 * m(E) = 0
+	 */
+	assert_flt_equals(0.45f, BF_M(SmetsFusedBelief, AKA), BF_PRECISION);
+	assert_flt_equals(0.025f, BF_M(SmetsFusedBelief, BEA), BF_PRECISION);
+	assert_flt_equals(0.0f, BF_M(SmetsFusedBelief, ELF), BF_PRECISION);
+	assert_flt_equals(0.525f, BF_M(SmetsFusedBelief, VOID), BF_PRECISION);
+}
+END_TEST
 
 START_TEST(DempsterCombinationValuesAreOk) {
 	/*
-	 * m(Aka) = 0.39 / 0.515
-	 * m(Bea) = 0.065 / 0.515
-	 * m(AuB) = 0.06 / 0.515
+	 * expected values :
+	 * m(Aka) = 0.45 / 0.475
+	 * m(Bea) = 0.025 / 0.475
+	 * m(AuB) = 0
 	 * m(E) = 0
 	 */
-	ck_abort_msg("not implemented");
+	assert_flt_equals(0.45 / 0.475, BF_M(DempsterfusedBelief, AKA), BF_PRECISION);
+	assert_flt_equals(0.025 / 0.475, BF_M(DempsterfusedBelief, BEA), BF_PRECISION);
+	assert_flt_equals(0.0f, BF_M(DempsterfusedBelief, VOID), BF_PRECISION);
 }
 END_TEST
 
 
+
+TCase* createFusionTestCase() {
+TCase* testCaseFusion = tcase_create("Fusion");
+tcase_add_checked_fixture(testCaseFusion, setup, teardown);
+tcase_add_test(testCaseFusion, SmetsCombinationValuesAreOk);
+tcase_add_test(testCaseFusion, DempsterCombinationValuesAreOk);
+return testCaseFusion;
+}
+
 Suite *createSuite(void) {
 	Suite *suite = suite_create("BeliefFunctions");
-	TCase* testCaseFusion = tcase_create("Fusion");
-
-	tcase_add_checked_fixture(testCaseFusion, setup, teardown);
-	tcase_add_test(testCaseFusion, DempsterCombinationValuesAreOk);
-
-	suite_add_tcase(suite, testCaseFusion);
+	suite_add_tcase(suite, createFusionTestCase());
 
 	return suite;
 }
