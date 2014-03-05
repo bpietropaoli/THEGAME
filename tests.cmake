@@ -21,6 +21,11 @@ find_package(Check)
 if(CHECK_FOUND)
     enable_testing()
     
+    ###sets
+    add_executable(test_Sets src/test/c/checkSets.c)
+    target_link_libraries(test_Sets THEGAME ${CHECK_LIBRARIES})
+    add_test(NAME test_Sets COMMAND test_Sets)
+    
     ###belief from sensors
     add_executable(test_BeliefFromSensors src/test/c/checkBeliefFromSensors.c)
     target_link_libraries(test_BeliefFromSensors THEGAME ${CHECK_LIBRARIES})
@@ -31,7 +36,7 @@ if(CHECK_FOUND)
     target_link_libraries(test_beliefFunctions THEGAME ${CHECK_LIBRARIES})
     add_test(NAME test_beliefFunctions COMMAND test_beliefFunctions)
 
-    set(test_binaries test_BeliefFromSensors)
+    set(test_binaries test_Sets test_beliefFunctions test_BeliefFromSensors)
     add_custom_target(unit_test ALL  ctest --output-on-failure
         DEPENDS THEGAME ${test_binaries}
         COMMENT "\n\n   ===== TESTS =====   \n\n"

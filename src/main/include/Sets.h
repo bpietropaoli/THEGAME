@@ -237,6 +237,16 @@ Sets_Element Sets_conjunction(const Sets_Element e1, const Sets_Element e2, cons
 Sets_Element Sets_disjunction(const Sets_Element e1, const Sets_Element e2, const int size);
 
 /**
+ * Create the union of two elements.
+ * @param e1 The first element of the operation
+ * @param e2 The second element of the operation
+ * @param size The size of the elements
+ * @return A new element equal to the disjunction of e1 and e2.
+ * Must be freed after use.
+ */
+Sets_Element Sets_union(const Sets_Element e1, const Sets_Element e2, const int size);
+
+/**
  * Compares two elements.
  * @param e1 The first element
  * @param e2 The second element to compare to

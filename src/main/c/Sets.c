@@ -430,6 +430,24 @@ Sets_Element Sets_disjunction(const Sets_Element e1, const Sets_Element e2, cons
     return disj;
 }
 
+Sets_Element Sets_union(const Sets_Element e1, const Sets_Element e2, const int size) {
+	Sets_Element unionResult = {NULL, 0};
+	int i;
+	unionResult.values = malloc(sizeof(char) * size);
+	#ifdef DEBUG
+	if(unionResult.values == NULL){
+		printf("debug: malloc failed in Sets_disjunction() for \"unionResult.values\".\n");
+	}
+	#endif
+
+	for (i = 0; i < size; ++i) {
+		unionResult.values[i] = e1.values[i] || e2.values[i];
+		unionResult.card += unionResult.values[i];
+	}
+
+	return unionResult;
+}
+
 int Sets_equals(const Sets_Element e1, const Sets_Element e2, const int size){
     int equality = 1, i = 0;
 
