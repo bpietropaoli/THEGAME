@@ -9,6 +9,7 @@
 #include <check.h>
 
 #include "Sets.h"
+#include "unit_tests.h"
 
 #define ATOM_NB 3
 #define SET_ELEMENT_DECLARE(name, val1, val2, val3) \

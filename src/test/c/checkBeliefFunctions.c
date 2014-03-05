@@ -14,17 +14,15 @@
 
 #define SENSOR_NB 5
 
-char AKA_VAL[] = {1, 0, 0};
-char BEA_VAL[] = {0, 1, 0};
-char ELF_VAL[] = {0, 0, 1};
-char VOID_VAL[] = {0, 0, 0};
-char ALL_VAL[] = {1, 1, 1};
+#define SET_ELEMENT_DECLARE(name, val1, val2, val3) \
+	static char name ##  _VAL[] = {val1, val2, val3}; \
+	static Sets_Element name = {name ##  _VAL, val1 + val2 + val3}
 
-const Sets_Element AKA = {AKA_VAL, 1};
-const Sets_Element BEA = {BEA_VAL, 1};
-const Sets_Element ELF = {ELF_VAL, 1};
-const Sets_Element VOID = {VOID_VAL, 0};
-const Sets_Element ALL = {ALL_VAL, 0};
+SET_ELEMENT_DECLARE(AKA, 1,0,0);
+SET_ELEMENT_DECLARE(BEA, 0,1,0);
+SET_ELEMENT_DECLARE(ELF, 0,0,1);
+SET_ELEMENT_DECLARE(VOID, 0,0,0);
+
 
 BFS_BeliefStructure beliefStructure;
 BF_BeliefFunction *evidences;
@@ -67,12 +65,14 @@ START_TEST(getMaxMassReturnsTheRightValues) {
 }
 END_TEST
 
-START_TEST(getMaxBelReturnsTheRightValues) {
+START_TEST(getMaxBetPReturnsTheRightValues) {
 	/* The max for the first evidence function should be 1.0 for {Aka u Bea u Elf} */
 	BF_FocalElement focalPoint = BF_getMax(BF_betP, evidences[0], 0,
 			Sets_generatePowerSet(evidences[0].elementSize));
 	float value = BF_betP(evidences[0], focalPoint.element);
 	assert_flt_equals(1.0f, value, BF_PRECISION);
+	ck_assert_msg(Sets_equals(focalPoint.element, Sets_union(AKA,BEA, 3),3),
+			"BetP did not return AKA u BEA");
 }
 END_TEST
 
@@ -114,7 +114,7 @@ TCase* createManipulationTestCase() {
 TCase* testCaseManipulation = tcase_create("Manipulation");
 tcase_add_checked_fixture(testCaseManipulation, setup, teardown);
 tcase_add_test(testCaseManipulation, getMaxMassReturnsTheRightValues);
-tcase_add_test(testCaseManipulation, getMaxBelReturnsTheRightValues);
+tcase_add_test(testCaseManipulation, getMaxBetPReturnsTheRightValues);
 return testCaseManipulation;
 }
 
