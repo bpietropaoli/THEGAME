@@ -18,11 +18,13 @@ char AKA_VAL[] = {1, 0, 0};
 char BEA_VAL[] = {0, 1, 0};
 char ELF_VAL[] = {0, 0, 1};
 char VOID_VAL[] = {0, 0, 0};
+char ALL_VAL[] = {1, 1, 1};
 
 const Sets_Element AKA = {AKA_VAL, 1};
 const Sets_Element BEA = {BEA_VAL, 1};
 const Sets_Element ELF = {ELF_VAL, 1};
 const Sets_Element VOID = {VOID_VAL, 0};
+const Sets_Element ALL = {ALL_VAL, 0};
 
 BFS_BeliefStructure beliefStructure;
 BF_BeliefFunction *evidences;
@@ -42,11 +44,37 @@ static void setup() {
 static void teardown() {
 	int i;
 	BFS_freeBeliefStructure(&beliefStructure);
+	BF_freeBeliefFunction(&SmetsFusedBelief);
+	BF_freeBeliefFunction(&DempsterfusedBelief);
 	for(i = 0; i < SENSOR_NB; i++){
 		BF_freeBeliefFunction(&(evidences[i]));
 	}
 	free(evidences);
 }
+
+/*
+ * Manipulation Tests
+ * ==================
+ */
+START_TEST(getMaxMassReturnsTheRightValues) {
+	/* The max for the first evidence function should be 0.75 for Aka*/
+	BF_FocalElement element = BF_getMax(BF_M, evidences[0], 0,
+			Sets_generatePowerSet(evidences[0].elementSize));
+	float value = BF_M(evidences[0], element.element);
+	ck_assert(Sets_equals(element.element, AKA, 3));
+	assert_flt_equals(0.75f, value, BF_PRECISION);
+	BF_freeBeliefPoint(&element);
+}
+END_TEST
+
+START_TEST(getMaxBelReturnsTheRightValues) {
+	/* The max for the first evidence function should be 1.0 for {Aka u Bea u Elf} */
+	BF_FocalElement focalPoint = BF_getMax(BF_betP, evidences[0], 0,
+			Sets_generatePowerSet(evidences[0].elementSize));
+	float value = BF_betP(evidences[0], focalPoint.element);
+	assert_flt_equals(1.0f, value, BF_PRECISION);
+}
+END_TEST
 
 /*
  * Fusion tests
@@ -82,6 +110,13 @@ START_TEST(DempsterCombinationValuesAreOk) {
 END_TEST
 
 
+TCase* createManipulationTestCase() {
+TCase* testCaseManipulation = tcase_create("Manipulation");
+tcase_add_checked_fixture(testCaseManipulation, setup, teardown);
+tcase_add_test(testCaseManipulation, getMaxMassReturnsTheRightValues);
+tcase_add_test(testCaseManipulation, getMaxBelReturnsTheRightValues);
+return testCaseManipulation;
+}
 
 TCase* createFusionTestCase() {
 TCase* testCaseFusion = tcase_create("Fusion");
@@ -91,8 +126,11 @@ tcase_add_test(testCaseFusion, DempsterCombinationValuesAreOk);
 return testCaseFusion;
 }
 
+
+
 Suite *createSuite(void) {
 	Suite *suite = suite_create("BeliefFunctions");
+	suite_add_tcase(suite, createManipulationTestCase());
 	suite_add_tcase(suite, createFusionTestCase());
 
 	return suite;

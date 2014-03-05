@@ -1730,6 +1730,31 @@ int BF_checkValues(const BF_BeliefFunction m){
  * @{
  */
 
+BF_FocalElement BF_getMax(float (*criterion)(const BF_BeliefFunction, const Sets_Element),
+		const BF_BeliefFunction beliefFunction, const int maxCard, const Sets_Set powerset) {
+    BF_FocalElement  max = {{NULL,0}, 0};
+    int i = 0, maxIndex = -1;
+    float value = 0;
+
+
+    for(i = 0; i < powerset.card; i++){
+        if((powerset.elements[i].card <= maxCard ||
+        		maxCard == 0)                         &&
+           powerset.elements[i].card > 0 ){
+            value = criterion(beliefFunction, powerset.elements[i]);
+            if(value > max.beliefValue){
+                maxIndex = i;
+                max.beliefValue = value;
+            }
+        }
+    }
+    if(maxIndex != -1){
+        max.element = Sets_copyElement(powerset.elements[maxIndex], beliefFunction.elementSize);
+    }
+
+    return max;
+}
+
 BF_FocalElement  BF_getMaxMass(const BF_BeliefFunction m, const int card){
     BF_FocalElement  max = {{NULL,0}, 0};
     int i = 0, maxIndex = -1;

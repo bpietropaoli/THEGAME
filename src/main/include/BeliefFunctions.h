@@ -551,6 +551,19 @@ int BF_checkValues(const BF_BeliefFunction m);
  */
 
 /**
+ * Returns the BF_FocalElement corresponding to the maximum of a BF_BeliefFunction
+ * according to a criterion. The criterion is given as a pointer to a function.
+ * This can be a pointer to BF_M() or BF_Pl() for instance.
+ * The cardinality should be at least of 1 as the empty set is not considered.
+ * @param criterion criterion used to get the max.
+ * @param beliefFunction function from wich we extract the max
+ * @param maxCard The maximum authorized cardinality of the max Element (0 = no card limit)
+ * @return The BF_FocalElement (Element + mass) corresponding to the maximum. Must be freed after use.
+ */
+BF_FocalElement BF_getMax(float (*criterion)(const BF_BeliefFunction, const Sets_Element),
+		const BF_BeliefFunction beliefFunction, const int maxCard, const Sets_Set powerset);
+
+/**
  * Returns the BF_FocalElement corresponding to the maximum of mass of a BF_BeliefFunction.
  * The cardinality should be at least of 1 as the empty set is not considered.
  * @param m The BF_BeliefFunction to work with
