@@ -565,22 +565,18 @@ char* Sets_elementToString(const Sets_Element e, const Sets_ReferenceList rl){
 
 char* Sets_elementToBitString(const Sets_Element e, int size){
 	char* str = NULL;
-	char bit[1];
 	int i = 0;
 	
-	str = malloc(sizeof(char) * (size+1));
+	str = malloc(sizeof(char) * (size + 1));
 	#ifdef DEBUG
 	if(str == NULL){
 		printf("debug: malloc failed in Sets_elementToBitString() for \"str\".\n");
 	}
 	#endif
-	sprintf(bit, "%d", e.values[0]);
-	strcpy(str, bit);
-	for(i = 1; i < size; i++){
-		sprintf(bit, "%d", e.values[i]);
-		strcat(str, bit);
+	for(i = 0; i < size; i++){
+		str[i] = e.values[i] ? '1' :'0';
 	}
-	strcat(str, "\0");
+	str[i] = '\0';
 	
 	return str;
 }
