@@ -86,6 +86,15 @@ struct BF_BeliefFunction{
 };
 typedef struct BF_BeliefFunction BF_BeliefFunction;
 
+/**
+ * Define the prototype for criterionFunction such as plausibility or pignistic
+ * probability.
+ * @param beliefFunction the belief function on which the criterion will be applied
+ * @param element The element for which we want to get the value of the criterion
+ * @return The value for the given element according to the criterion.
+ * @see BF_pl(), BF_M(), BF_q(), BF_betP(), Bf_q()
+ */
+typedef  float (*BF_criterionFun)(const BF_BeliefFunction beliefFunction, const Sets_Element element) ;
 
 /*
   +--------------+
@@ -556,7 +565,12 @@ int BF_checkValues(const BF_BeliefFunction m);
  * This can be a pointer to BF_M() or BF_Pl() for instance.
  * The cardinality should be at least of 1 as the empty set is not considered.
  * @param criterion criterion used to get the max.
- * @param beliefFunction function from wich we extract the max
+ * @param beliefFunction function from which we extract the max
+ * @param maxCard The maximum authorized cardinality of the max Element (0 = no card limit)
+ * @return The BF_FocalElement (Element + mass) corresponding to the maximum. Must be freed after use.
+ */
+BF_FocalElement BF_getMax(BF_criterionFun criterion, const BF_BeliefFunction beliefFunction,
+		const int maxCard, const Sets_Set powerset);
  * @param maxCard The maximum authorized cardinality of the max Element (0 = no card limit)
  * @return The BF_FocalElement (Element + mass) corresponding to the maximum. Must be freed after use.
  */
