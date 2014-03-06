@@ -16,6 +16,7 @@
 
 
 #include "BeliefsFromSensors.h"
+#include "BeliefCombinations.h"
 
 /**
  * @section BFS_intro Introduction

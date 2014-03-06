@@ -20,6 +20,7 @@
 #include "BeliefsFromSensors.h"
 #include "BeliefsFromBeliefs.h"
 #include "BeliefsFromRandomness.h"
+#include "BeliefCombinations.h"
 #include <time.h>
 #include <stdio.h>
 #include <stdlib.h>

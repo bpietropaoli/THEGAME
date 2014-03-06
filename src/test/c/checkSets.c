@@ -11,16 +11,7 @@
 #include "Sets.h"
 #include "unit_tests.h"
 
-#define ATOM_NB 3
-#define SET_ELEMENT_DECLARE(name, val1, val2, val3) \
-	static char name ##  _VAL[] = {val1, val2, val3}; \
-	static Sets_Element name = {name ##  _VAL, val1 + val2 + val3}
 
-SET_ELEMENT_DECLARE(A, 1, 0, 0);
-SET_ELEMENT_DECLARE(B, 0, 1, 0);
-SET_ELEMENT_DECLARE(C, 0, 0, 1);
-SET_ELEMENT_DECLARE(AuB, 1, 1, 0);
-SET_ELEMENT_DECLARE(AuBuC, 1, 1, 1);
 
 START_TEST(testUnion1) {
 	/*
