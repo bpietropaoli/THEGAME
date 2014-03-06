@@ -1730,8 +1730,8 @@ int BF_checkValues(const BF_BeliefFunction m){
  * @{
  */
 
-BF_FocalElement BF_getMax(float (*criterion)(const BF_BeliefFunction, const Sets_Element),
-		const BF_BeliefFunction beliefFunction, const int maxCard, const Sets_Set powerset) {
+BF_FocalElement BF_getMax(BF_criterionFun criterion, const BF_BeliefFunction beliefFunction,
+		const int maxCard, const Sets_Set powerset) {
     BF_FocalElement  max = {{NULL,0}, 0};
     int i = 0, maxIndex = -1;
     float value = 0;
@@ -1753,6 +1753,31 @@ BF_FocalElement BF_getMax(float (*criterion)(const BF_BeliefFunction, const Sets
     }
 
     return max;
+}
+
+BF_FocalElement BF_getMin(BF_criterionFun criterion, const BF_BeliefFunction beliefFunction,
+		const int maxCard, const Sets_Set powerset) {
+    BF_FocalElement  min = {{NULL,0}, 1};
+    int i = 0, minIndex = -1;
+    float value = 0;
+
+    for(i = 0; i < powerset.card; i++){
+        if((powerset.elements[i].card <= maxCard ||
+        		maxCard == 0)                         &&
+           powerset.elements[i].card > 0){
+            value = criterion(beliefFunction, powerset.elements[i]);
+            if(value <= min.beliefValue &&
+               value != 0){
+                minIndex = i;
+                min.beliefValue = value;
+            }
+        }
+    }
+    if(minIndex != -1){
+        min.element = Sets_copyElement(powerset.elements[minIndex], beliefFunction.elementSize);
+    }
+
+    return min;
 }
 
 BF_FocalElement  BF_getMaxMass(const BF_BeliefFunction m, const int card){

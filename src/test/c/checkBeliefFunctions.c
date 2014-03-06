@@ -93,6 +93,32 @@ START_TEST(getMaxBetWithCardLimitReturnsTheRightValues) {
 END_TEST
 
 /*
+ * ## getMin
+ */
+
+START_TEST(getMinMassReturnsTheRightValues) {
+	/* The minimum focal element (i.e. > 0) for the first evidence function should be B with 0.1*/
+	BF_FocalElement element = BF_getMin(BF_M, evidences[0], 0,
+			Sets_generatePowerSet(evidences[0].elementSize));
+	float value = BF_M(evidences[0], element.element);
+	ck_assert(Sets_equals(element.element, B, 3));
+	assert_flt_equals(0.1f, value, BF_PRECISION);
+	BF_freeBeliefPoint(&element);
+}
+END_TEST
+
+START_TEST(getMinBetPReturnsTheRightValues) {
+	/* The minimum focal element (i.e. > 0) for the first evidence function should be B with 0.175*/
+	BF_FocalElement element = BF_getMin(BF_M, evidences[0], 0,
+			Sets_generatePowerSet(evidences[0].elementSize));
+	float value = BF_betP(evidences[0], element.element);
+	ck_assert(Sets_equals(element.element, B, 3));
+	assert_flt_equals(0.175f, value, BF_PRECISION);
+	BF_freeBeliefPoint(&element);
+}
+END_TEST
+
+/*
  * Fusion tests
  * ============
  */
@@ -135,6 +161,8 @@ tcase_add_checked_fixture(testCaseManipulation, setup, teardown);
 tcase_add_test(testCaseManipulation, getMaxMassReturnsTheRightValues);
 tcase_add_test(testCaseManipulation, getMaxBetPReturnsTheRightValues);
 tcase_add_test(testCaseManipulation, getMaxBetWithCardLimitReturnsTheRightValues);
+tcase_add_test(testCaseManipulation, getMinMassReturnsTheRightValues);
+tcase_add_test(testCaseManipulation, getMinBetPReturnsTheRightValues);
 return testCaseManipulation;
 }
 
