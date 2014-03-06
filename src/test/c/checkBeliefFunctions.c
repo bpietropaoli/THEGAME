@@ -107,12 +107,13 @@ START_TEST(getMinMassReturnsTheRightValues) {
 }
 END_TEST
 
-START_TEST(getMinBetPReturnsTheRightValues) {
-	/* The minimum focal element (i.e. > 0) for the first evidence function should be B with 0.175*/
-	BF_FocalElement element = BF_getMin(BF_M, evidences[0], 0,
-			Sets_generatePowerSet(evidences[0].elementSize));
+START_TEST(getMinBetPWithCardLimitReturnsTheRightValues) {
+	/* The minimum focal element (i.e. > 0) for the first evidence function should be B with 0.175.
+	 * We apply a limit of 1 for the card */
+	BF_FocalElement element = BF_getMin(BF_betP, evidences[0], 1,
+			beliefStructure.powerset);
 	float value = BF_betP(evidences[0], element.element);
-	ck_assert(Sets_equals(element.element, B, 3));
+	ck_assert(Sets_equals(element.element, B, ATOM_NB));
 	assert_flt_equals(0.175f, value, BF_PRECISION);
 	BF_freeBeliefPoint(&element);
 }
