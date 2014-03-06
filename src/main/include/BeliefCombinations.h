@@ -8,6 +8,17 @@
 #include "BeliefFunctions.h"
 
 /**
+ * This module contains the elements related to belief function combination.
+ *
+ * Different combination rules are implemented but one is free to implement some more.
+ *
+ * If you have no idea to what corresponds exactly a function, you should refer to the given references.
+ * @file BeliefCombinations.h
+ * @author Bastien Pietropaoli (bastien.pietropaoli@inria.fr)
+ * @brief CORE: Gives function to combine belief functions.
+ */
+
+/**
  * @name Combination rules
  * @{
  */

@@ -24,10 +24,8 @@
 
 /**
  * This module does not enable the building of belief functions but only to manipulate them!
- * Thus, this module offers many functions to characterize, combine and discount belief functions.
+ * Thus, this module offers many functions to characterize and discount belief functions.
  * Some decision support functions have also been implemented in order to ease the decision making.
- *
- * Different combination rules are implemented but one is free to implement some more.
  *
  * If you have no idea to what corresponds exactly a function, you should refer to the given references.
  * @file BeliefFunctions.h
