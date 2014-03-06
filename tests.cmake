@@ -19,29 +19,22 @@ if(NOT SKIPTEST AND NOT CMAKE_CROSSCOMPILING)
 find_package(Check)
 
 if(CHECK_FOUND)
+    
+    macro(thegame_add_test TEST_NAME) 
+        add_executable(${TEST_NAME} EXCLUDE_FROM_ALL src/test/c/${TEST_NAME}.c)
+        target_link_libraries(${TEST_NAME} THEGAME ${CHECK_LIBRARIES})
+        add_test(NAME ${TEST_NAME} COMMAND ${TEST_NAME})
+        set(test_binaries ${test_binaries} ${TEST_NAME})
+    endmacro(thegame_add_test)
+
     enable_testing()
     
-    ###sets
-    add_executable(test_Sets EXCLUDE_FROM_ALL src/test/c/checkSets.c)
-    target_link_libraries(test_Sets THEGAME ${CHECK_LIBRARIES})
-    add_test(NAME test_Sets COMMAND test_Sets)
     
-    ###belief from sensors
-    add_executable(test_BeliefFromSensors EXCLUDE_FROM_ALL src/test/c/checkBeliefFromSensors.c)
-    target_link_libraries(test_BeliefFromSensors THEGAME ${CHECK_LIBRARIES})
-    add_test(NAME test_BeliefFromSensors COMMAND test_BeliefFromSensors)
-    
-    ###belief functions
-    add_executable(test_beliefFunctions EXCLUDE_FROM_ALL src/test/c/checkBeliefFunctions.c)
-    target_link_libraries(test_beliefFunctions THEGAME ${CHECK_LIBRARIES})
-    add_test(NAME test_beliefFunctions COMMAND test_beliefFunctions)
-    
-    ###belief combinations
-    add_executable(test_beliefCombination EXCLUDE_FROM_ALL src/test/c/checkBeliefCombination.c)
-    target_link_libraries(test_beliefCombination THEGAME ${CHECK_LIBRARIES})
-    add_test(NAME test_beliefCombination COMMAND test_beliefCombination)
+    thegame_add_test(test_Sets)
+    thegame_add_test(test_BeliefFromSensors)
+    thegame_add_test(test_BeliefFunctions)
+    thegame_add_test(test_BeliefCombination)
 
-    set(test_binaries test_Sets test_beliefFunctions test_beliefCombination test_BeliefFromSensors )
     add_custom_target(unit_test ALL  ctest --output-on-failure
         DEPENDS THEGAME ${test_binaries}
         COMMENT "\n\n   ===== TESTS =====   \n\n"
