@@ -13,6 +13,7 @@
 #include "unit_tests.h"
 
 #define SENSOR_NB 2
+#define ATOM_NB 3
 
 #define SET_ELEMENT_DECLARE(name, val1, val2, val3) \
 	static char name ##  _VAL[] = {val1, val2, val3}; \
@@ -21,12 +22,15 @@
 SET_ELEMENT_DECLARE(A, 1,0,0);
 SET_ELEMENT_DECLARE(B, 0,1,0);
 SET_ELEMENT_DECLARE(C, 0,0,1);
+SET_ELEMENT_DECLARE(BuC, 0,1,1);
+SET_ELEMENT_DECLARE(AuC, 1,0,1);
 SET_ELEMENT_DECLARE(VOID, 0,0,0);
 
 
 BFS_BeliefStructure beliefStructure;
-BF_BeliefFunction *evidences;
+BF_BeliefFunction *evidences = NULL;
 BF_BeliefFunction DempsterfusedBelief, SmetsFusedBelief;
+Sets_Set powerset;
 
 
 static void setup() {
@@ -62,9 +66,9 @@ static void teardown() {
 START_TEST(getMaxMassReturnsTheRightValues) {
 	/* The max for the first evidence function should be 0.75 for {A}*/
 	BF_FocalElement element = BF_getMax(BF_M, evidences[0], 0,
-			Sets_generatePowerSet(evidences[0].elementSize));
+			beliefStructure.powerset);
 	float value = BF_M(evidences[0], element.element);
-	ck_assert(Sets_equals(element.element, A, 3));
+	ck_assert(Sets_equals(element.element, A, ATOM_NB));
 	assert_flt_equals(0.75f, value, BF_PRECISION);
 	BF_freeBeliefPoint(&element);
 }
@@ -73,10 +77,10 @@ END_TEST
 START_TEST(getMaxBetPReturnsTheRightValues) {
 	/* The max for the first evidence function should be 1.0 for {AuB} */
 	BF_FocalElement focalPoint = BF_getMax(BF_betP, evidences[0], 0,
-			Sets_generatePowerSet(evidences[0].elementSize));
+			beliefStructure.powerset);
 	float value = BF_betP(evidences[0], focalPoint.element);
 	assert_flt_equals(1.0f, value, BF_PRECISION);
-	ck_assert_msg(Sets_equals(focalPoint.element, Sets_union(A,B, 3),3),
+	ck_assert_msg(Sets_equals(focalPoint.element, Sets_union(A,B, ATOM_NB),ATOM_NB),
 			"BetP did not return AKA u BEA");
 }
 END_TEST
@@ -84,10 +88,10 @@ END_TEST
 START_TEST(getMaxBetWithCardLimitReturnsTheRightValues) {
 	/* The max with 1 as card for the first evidence function should be 0.825 for {A} */
 	BF_FocalElement focalPoint = BF_getMax(BF_betP, evidences[0], 1,
-			Sets_generatePowerSet(evidences[0].elementSize));
+			beliefStructure.powerset);
 	float value = BF_betP(evidences[0], focalPoint.element);
 	assert_flt_equals(0.825f, value, BF_PRECISION);
-	ck_assert_msg(Sets_equals(focalPoint.element, A,3),
+	ck_assert_msg(Sets_equals(focalPoint.element, A, ATOM_NB),
 			"BetP did not return AKA u BEA");
 }
 END_TEST
@@ -99,9 +103,9 @@ END_TEST
 START_TEST(getMinMassReturnsTheRightValues) {
 	/* The minimum focal element (i.e. > 0) for the first evidence function should be B with 0.1*/
 	BF_FocalElement element = BF_getMin(BF_M, evidences[0], 0,
-			Sets_generatePowerSet(evidences[0].elementSize));
+			beliefStructure.powerset);
 	float value = BF_M(evidences[0], element.element);
-	ck_assert(Sets_equals(element.element, B, 3));
+	ck_assert(Sets_equals(element.element, B, ATOM_NB));
 	assert_flt_equals(0.1f, value, BF_PRECISION);
 	BF_freeBeliefPoint(&element);
 }
@@ -116,6 +120,32 @@ START_TEST(getMinBetPWithCardLimitReturnsTheRightValues) {
 	ck_assert(Sets_equals(element.element, B, ATOM_NB));
 	assert_flt_equals(0.175f, value, BF_PRECISION);
 	BF_freeBeliefPoint(&element);
+}
+END_TEST
+
+/*
+ * ## getListMax
+ */
+
+START_TEST(getListMaxMassReturnsTheRightNumberOfValues) {
+	/* There should be two max for the second belief function */
+	BF_FocalElementList list = BF_getMaxList(BF_M, evidences[1], 0,
+			beliefStructure.powerset);
+	ck_assert_int_eq(2, list.size);
+	BF_freeFocalElementList(&list);
+}
+END_TEST
+
+START_TEST(getListMaxMassReturnsTheRightFocals) {
+	BF_FocalElementList list = BF_getMaxList(BF_M, evidences[1], 0,
+				beliefStructure.powerset);
+	int i;
+	for (i = 0; i < list.size; ++i) {
+		ck_assert_msg(Sets_equals( C,list.elements[0].element, ATOM_NB) ||
+				Sets_equals( AuC, list.elements[0].element, ATOM_NB),
+				"One of the max is not C or AuC.");
+	}
+	BF_freeFocalElementList(&list);
 }
 END_TEST
 
@@ -163,7 +193,9 @@ tcase_add_test(testCaseManipulation, getMaxMassReturnsTheRightValues);
 tcase_add_test(testCaseManipulation, getMaxBetPReturnsTheRightValues);
 tcase_add_test(testCaseManipulation, getMaxBetWithCardLimitReturnsTheRightValues);
 tcase_add_test(testCaseManipulation, getMinMassReturnsTheRightValues);
-tcase_add_test(testCaseManipulation, getMinBetPReturnsTheRightValues);
+tcase_add_test(testCaseManipulation, getMinBetPWithCardLimitReturnsTheRightValues);
+tcase_add_test(testCaseManipulation, getListMaxMassReturnsTheRightNumberOfValues);
+tcase_add_test(testCaseManipulation, getListMaxMassReturnsTheRightFocals);
 return testCaseManipulation;
 }
 

@@ -29,8 +29,10 @@
 /**
  * This module does not enable the building of belief functions but only to manipulate them!
  * Thus, this module offers many functions to characterize, combine and discount belief functions.
- * Some decision support functions have also been implemented in order to ease the decision making.@n@n
- * Different combination rules are implemented but one is free to implement some more.@n@n
+ * Some decision support functions have also been implemented in order to ease the decision making.
+ *
+ * Different combination rules are implemented but one is free to implement some more.
+ *
  * If you have no idea to what corresponds exactly a function, you should refer to the given references.
  * @file BeliefFunctions.h
  * @author Bastien Pietropaoli (bastien.pietropaoli@inria.fr)
@@ -67,6 +69,25 @@ struct BF_FocalElement{
 };
 typedef struct BF_FocalElement BF_FocalElement;
 
+
+/**
+ * A simple structure to store a list of Focal elements. It is used by
+ * BF_getMinList() and BF_getMaxList().
+ * @param elements array of elements
+ * @param size size of the array
+ */
+struct BF_FocalElementList{
+	BF_FocalElement *elements;
+	unsigned int size;
+};
+typedef struct BF_FocalElementList BF_FocalElementList;
+
+/**
+ * Frees the memory used by a list (array contained by the list and elements
+ * contained  by the array).
+ * @param list List to free.
+ */
+void BF_freeFocalElementList(BF_FocalElementList *list);
 
 /**
  * The real belief function. There are several ways to build
@@ -564,9 +585,14 @@ int BF_checkValues(const BF_BeliefFunction m);
  * according to a criterion. The criterion is given as a pointer to a function.
  * This can be a pointer to BF_M() or BF_Pl() for instance.
  * The cardinality should be at least of 1 as the empty set is not considered.
+ *
+ * @note BF_GetMax() return only one maximum value for convenience. If there may
+ * be several focal element which have the same value, BF_getMaxList() can return
+ * every maximum values.
  * @param criterion criterion used to get the max.
  * @param beliefFunction function from which we extract the max
  * @param maxCard The maximum authorized cardinality of the max Element (0 = no card limit)
+ * @param powerset The powerset generated from the size of the elements
  * @return The BF_FocalElement (Element + mass) corresponding to the maximum. Must be freed after use.
  */
 BF_FocalElement BF_getMax(BF_criterionFun criterion, const BF_BeliefFunction beliefFunction,
@@ -581,10 +607,27 @@ BF_FocalElement BF_getMax(BF_criterionFun criterion, const BF_BeliefFunction bel
  * @param criterion criterion used to get the max.
  * @param beliefFunction function from which we extract the minimum
  * @param maxCard The maximum authorized cardinality of the max Element (0 = no card limit)
+ * @param powerset The powerset generated from the size of the elements
  * @return The BF_FocalElement (Element + mass) corresponding to the maximum. Must be freed after use.
  * @see BF_getMax()
  */
 BF_FocalElement BF_getMin(BF_criterionFun criterion, const BF_BeliefFunction beliefFunction,
+		const int maxCard, const Sets_Set powerset);
+
+/**
+ * Gets the list of focals corresponding to the maximum for a given criterion
+ * for a BF_BeliefFunction. The cardinality should be at least of 1 as the empty
+ * set is not considered. This function is useful if you there may be several
+ * set elements with the same value for the belief function. the difference
+ * with BF_getMax() is that if there are several focal elements with the same
+ * value which can be the maximum, they will be all returned.
+ * @param criterion Criterion used to find the max
+ * @param beliefFunction Function from which we extract the maxima.
+ * @param maxCard The maximum authorized cardinality of the max Element (0 = no card limit).
+ * @param powerset The powerset generated from the size of the elements
+ * @return The BF_FocalElement (Element + mass) corresponding to the maximum. Must be freed after use.
+ */
+BF_FocalElementList BF_getMaxList(BF_criterionFun criterion, const BF_BeliefFunction beliefFunction,
 		const int maxCard, const Sets_Set powerset);
 
 /**

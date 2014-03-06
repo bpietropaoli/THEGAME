@@ -1780,6 +1780,83 @@ BF_FocalElement BF_getMin(BF_criterionFun criterion, const BF_BeliefFunction bel
     return min;
 }
 
+static unsigned int listAppend(BF_FocalElementList *list, const BF_FocalElement element,
+		const unsigned int realSize, const int elementSize) {
+	BF_FocalElement *newArray;
+	unsigned int newSize = realSize;
+	if(realSize == list->size) {
+		/* increase allocated memory size */
+		newSize = (list->size + 1)  * 1.25;
+		newArray = realloc(list->elements, sizeof(BF_FocalElement) * newSize);
+		#ifdef DEBUG
+		if(NULL == newArray) {
+			fprintf(stderr, "debug: realloc failed in listAppend() line %d.\n", __LINE__);
+			return realSize;
+		}
+		#endif /* DEBUG */
+		list->elements = newArray;
+	}
+	list->elements[list->size].beliefValue = element.beliefValue;
+	list->elements[list->size].element = Sets_copyElement(element.element, elementSize);
+	list->size++;
+	return newSize;
+}
+
+static BF_FocalElementList newList() {
+	BF_FocalElementList newList = {NULL, 0};
+	return newList;
+}
+
+static void emptyList(BF_FocalElementList *list) {
+	unsigned int i;
+	for (i = 0; i < list->size; ++i) {
+		Sets_freeElement(&(list->elements[i].element));
+	}
+	list->size = 0;
+}
+
+void BF_freeFocalElementList(BF_FocalElementList *list) {
+	unsigned int i;
+	for (i = 0; i < list->size; ++i) {
+		Sets_freeElement(&(list->elements[i].element));
+	}
+	free(list->elements);
+	list->size = 0;
+}
+
+BF_FocalElementList BF_getMaxList(BF_criterionFun criterion, const BF_BeliefFunction beliefFunction,
+		const int maxCard, const Sets_Set powerset) {
+	BF_FocalElementList  list = newList();
+	unsigned int listSize = 0;
+
+    BF_FocalElement  max = {{NULL,0}, 0};
+	int i = 0;
+	float value = 0;
+
+
+	for(i = 0; i < powerset.card; i++){
+		if((powerset.elements[i].card <= maxCard ||
+				maxCard == 0)                         &&
+		   powerset.elements[i].card > 0 ){
+			value = criterion(beliefFunction, powerset.elements[i]);
+
+			if(value > max.beliefValue){
+				emptyList(&list);
+				max.element = powerset.elements[i];
+				max.beliefValue = value;
+				listSize = listAppend(&list, max, listSize, beliefFunction.elementSize);
+			}
+			else if(value == max.beliefValue && value > 0) {
+				max.element = powerset.elements[i];
+				listSize = listAppend(&list, max, listSize, beliefFunction.elementSize);
+			}
+		}
+	}
+
+	return list;
+}
+
+
 BF_FocalElement  BF_getMaxMass(const BF_BeliefFunction m, const int card){
     BF_FocalElement  max = {{NULL,0}, 0};
     int i = 0, maxIndex = -1;
