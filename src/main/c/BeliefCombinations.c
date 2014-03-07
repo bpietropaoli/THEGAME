@@ -70,7 +70,7 @@ BF_BeliefFunction BF_DempsterCombination(const BF_BeliefFunction m1, const BF_Be
     Sets_Element emptySet;
     int i = 0, voidIndex = -1;
     float voidMass = 0;
-    #ifdef DEBUG
+    #if defined(CHECK_VALUES) || defined(CHECK_SUM)
     char *str;
     #endif
 
