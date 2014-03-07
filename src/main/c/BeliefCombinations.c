@@ -214,11 +214,8 @@ BF_BeliefFunction BF_SmetsCombination(const BF_BeliefFunction m1, const BF_Belie
     		if(index == -1){
     			combined.nbFocals++;
     			combined.focals = realloc(combined.focals, sizeof(BF_FocalElement) * combined.nbFocals);
-    			#ifdef DEBUG
-				if(combined.focals == NULL){
-					printf("debug: malloc failed in BF_SmetsCombination() for \"combined.focals\".\n");
-				}
-				#endif
+    			DEBUG_CHECK_MALLOC(combined.focals);
+
     			combined.focals[combined.nbFocals - 1].element = Sets_copyElement(conj, combined.elementSize);
     			combined.focals[combined.nbFocals - 1].beliefValue = m1.focals[i].beliefValue * m2.focals[j].beliefValue;
     		}
@@ -369,11 +366,8 @@ BF_BeliefFunction BF_YagerCombination(const BF_BeliefFunction m1, const BF_Belie
         combined.nbFocals = smets.nbFocals;
     }
     combined.focals = malloc(sizeof(BF_FocalElement) * combined.nbFocals);
-    #ifdef DEBUG
-    if(combined.focals == NULL){
-    	printf("debug: malloc failed in BF_YagerCombination() for \"combined.focals\".\n");
-    }
-    #endif
+    DEBUG_CHECK_MALLOC(combined.focals);
+
     combined.elementSize = smets.elementSize;
     for(i = 0; i<smets.nbFocals; i++){
         combined.focals[i].element = Sets_copyElement(smets.focals[i].element, combined.elementSize);
@@ -488,11 +482,8 @@ BF_BeliefFunction BF_DuboisPradeCombination(const BF_BeliefFunction m1, const BF
     		if(index == -1){
     			combined.nbFocals++;
     			combined.focals = realloc(combined.focals, sizeof(BF_FocalElement) * combined.nbFocals);
-    			#ifdef DEBUG
-				if(combined.focals == NULL){
-					printf("debug: malloc failed in BF_DuboisPradeCombination() for \"combined.focals\".\n");
-				}
-				#endif
+    			DEBUG_CHECK_MALLOC(combined.focals);
+
     			combined.focals[combined.nbFocals - 1].element = Sets_copyElement(newFocal, combined.elementSize);
     			combined.focals[combined.nbFocals - 1].beliefValue = m1.focals[i].beliefValue * m2.focals[j].beliefValue;
     		}
@@ -551,11 +542,8 @@ BF_BeliefFunction BF_fullAverageCombination(const BF_BeliefFunction* m, const in
 			if(index == -1){
 				combined.nbFocals++;
 				combined.focals = realloc(combined.focals, sizeof(BF_FocalElement) * combined.nbFocals);
-				#ifdef DEBUG
-				if(combined.focals == NULL){
-					printf("debug: malloc failed in BF_averageCombination() for \"combined.focals\".\n");
-				}
-				#endif
+				DEBUG_CHECK_MALLOC(combined.focals);
+
 				combined.focals[combined.nbFocals - 1].element = Sets_copyElement(m[k].focals[i].element, combined.elementSize);
 				combined.focals[combined.nbFocals - 1].beliefValue = m[k].focals[i].beliefValue;
 			}
@@ -610,11 +598,8 @@ BF_BeliefFunction BF_averageCombination(const BF_BeliefFunction m1, const BF_Bel
     	if(index == -1){
     		combined.nbFocals++;
     		combined.focals = realloc(combined.focals, sizeof(BF_FocalElement) * combined.nbFocals);
-    		#ifdef DEBUG
-			if(combined.focals == NULL){
-				printf("debug: malloc failed in BF_averageCombination() for \"combined.focals\".\n");
-			}
-			#endif
+    		DEBUG_CHECK_MALLOC(combined.focals);
+
     		combined.focals[combined.nbFocals - 1].element = Sets_copyElement(m1.focals[i].element, combined.elementSize);
     		combined.focals[combined.nbFocals - 1].beliefValue = m1.focals[i].beliefValue;
     	}
@@ -633,11 +618,8 @@ BF_BeliefFunction BF_averageCombination(const BF_BeliefFunction m1, const BF_Bel
     	if(index == -1){
     		combined.nbFocals++;
     		combined.focals = realloc(combined.focals, sizeof(BF_FocalElement) * combined.nbFocals);
-    		#ifdef DEBUG
-			if(combined.focals == NULL){
-				printf("debug: malloc failed in BF_averageCombination() for \"combined.focals\".\n");
-			}
-			#endif
+    		DEBUG_CHECK_MALLOC(combined.focals);
+
     		combined.focals[combined.nbFocals - 1].element = Sets_copyElement(m2.focals[i].element, combined.elementSize);
     		combined.focals[combined.nbFocals - 1].beliefValue = m2.focals[i].beliefValue;
     	}
@@ -758,11 +740,8 @@ BF_BeliefFunction BF_fullChenCombination(const BF_BeliefFunction* m, const int n
     }
     /*Initialize set:*/
     focals.elements = malloc(sizeof(Sets_Element) * nbMaxFocals);
-    #ifdef DEBUG
-    if(focals.elements == NULL){
-    	printf("debug: malloc failed in BF_fullChenCombination() for \"focals.elements\".\n");
-    }
-    #endif
+    DEBUG_CHECK_MALLOC(focals.elements);
+
     /*Get focals:*/
     for(i = 0; i<nbM; i++){
         for(j = 0; j<m[i].nbFocals; j++){
@@ -775,25 +754,17 @@ BF_BeliefFunction BF_fullChenCombination(const BF_BeliefFunction* m, const int n
     /*Initialize the belief function:*/
     combined.nbFocals = focals.card;
     combined.focals = malloc(sizeof(BF_FocalElement) * combined.nbFocals);
-    #ifdef DEBUG
-    if(combined.focals == NULL){
-    	printf("debug: malloc failed in BF_fullChenCombination() for \"combined.focals\".\n");
-    }
-    #endif
+    DEBUG_CHECK_MALLOC(combined.focals);
+
     combined.elementSize = size;
     /*Get the credibility for each body of evidence:*/
     supports = malloc(sizeof(float)*nbM);
-    #ifdef DEBUG
-    if(supports == NULL){
-    	printf("debug: malloc failed in BF_fullChenCombination() for \"supports\".\n");
-    }
-    #endif
+    DEBUG_CHECK_MALLOC(supports);
+
     cred = malloc(sizeof(float)*nbM);
-    #ifdef DEBUG
-    if(cred == NULL){
-    	printf("debug: malloc failed in BF_fullChenCombination() for \"cred\".\n");
-    }
-    #endif
+    DEBUG_CHECK_MALLOC(cred);
+
+
     for(i = 0; i<nbM; i++){
         supports[i] = BF_support(m[i], m, nbM);
         supportSum += supports[i];
@@ -872,11 +843,7 @@ BF_BeliefFunction BF_combination(const BF_BeliefFunction m1, const BF_BeliefFunc
         case MURPHY :      return BF_MurphyCombination(m1, m2);      break;
         case CHEN :
             m = malloc(sizeof(BF_BeliefFunction)*2);
-            #ifdef DEBUG
-			if(m == NULL){
-				printf("debug: malloc failed in BF_combination() for \"m\".\n");
-			}
-			#endif
+            DEBUG_CHECK_MALLOC(m);
             m[0] = m1;
             m[1] = m2;
             result = BF_fullChenCombination(m, 2);
@@ -902,11 +869,8 @@ float* BF_autoConflict(const BF_BeliefFunction m, const int maxDegree){
 
     /*Allocation: */
     voidMasses = malloc(sizeof(float) * maxDegree);
-    #ifdef DEBUG
-    if(voidMasses == NULL){
-		printf("debug: malloc failed in BF_autoConflict() for \"voidMasses\".\n");
-	}
-	#endif
+    DEBUG_CHECK_MALLOC(voidMasses);
+
     /*Initialization: */
     temp = BF_SmetsCombination(m, m);
     for(i = 0; i<maxDegree; i++){

@@ -72,7 +72,31 @@
 #define MAX_STR_LEN 1024
 
 
+#ifdef DEBUG
+	#ifdef __GNUC__
+	/* we check if we are using gcc. As using __func__ may not work with others
+	 * compilers (__func__ was introduced in C99). */
+	#define DEBUG_MALLOC_MESSAGE(var) \
+	fprintf(stderr,"debug - %s:%d malloc failed for " #var " in %s.\n" #var,\
+				__FILE__, __LINE__, __func__)
 
+	#else /* __GNUC__ */
+		#define DEBUG_MALLOC_MESSAGE(var) \
+		fprintf(stderr,"debug - %s:%d malloc failed for " #var ".\n" #var, __FILE__, __LINE__)
+	#endif
+
+	#define DEBUG_CHECK_MALLOC(var) if(NULL == (var)) { DEBUG_MALLOC_MESSAGE(var); }
+
+	#define DEBUG_CHECK_MALLOC_OR_RETURN(var, toReturn) if(NULL == (var)) { \
+		DEBUG_MALLOC_MESSAGE(var); \
+		return toReturn;\
+	}
+#else /* DEBUG */
+
+	#define DEBUG_CHECK_MALLOC(var)
+	#define DEBUG_CHECK_MALLOC_OR_RETURN(var, toReturn)
+
+#endif /* DEBUG */
 
 /**
  * @mainpage Belief Functions Implementation

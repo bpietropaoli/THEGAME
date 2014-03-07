@@ -66,12 +66,7 @@ int* ReadFile_charsPerLine(const char* fileName, const int nbLines){
     if(f != NULL){
         /*Allocate memory: */
         result = malloc(sizeof(int)*nbLines);
-        #ifdef DEBUG
-        if (result == NULL) {
-            printf("debug: malloc failed in ReadFile_charsPerLine() for \"result\".\n");
-            return NULL;
-	    }
-	    #endif
+        DEBUG_CHECK_MALLOC_OR_RETURN(result, NULL);
 
         /*Get the first char: */
         currentChar = fgetc(f);
@@ -112,21 +107,13 @@ char** ReadFile_readLines(const char* fileName, const int nbLines, const int* ch
     if(f != NULL){
         /*Memory allocation : */
         lines = malloc(sizeof(char*)*nbLines);
-        #ifdef DEBUG
-        if (lines == NULL) {
-            printf("debug: malloc failed in ReadFile_readLines() for \"lines\".\n");
-            return NULL;
-	    }
-	    #endif
+        DEBUG_CHECK_MALLOC_OR_RETURN(lines, NULL);
+
         /*Get the lines: */
         for(i=0; i<nbLines; i++){
             lines[i] = malloc(sizeof(char)*charsPerLine[i]+1);
-            #ifdef DEBUG
-            if (lines[i] == NULL) {
-                printf("debug: malloc failed in ReadFile_readLines() for \"lines[i]\".\n");
-                return NULL;
-            }
-            #endif
+            DEBUG_CHECK_MALLOC_OR_RETURN(lines[i], NULL);
+
             fgets(lines[i], charsPerLine[i]+1, f);
             fseek(f, NB_ENDLINE_CHARS, SEEK_CUR);
         }

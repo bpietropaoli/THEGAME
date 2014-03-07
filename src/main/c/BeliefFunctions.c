@@ -48,11 +48,8 @@ BF_BeliefFunction BF_copyBeliefFunction(const BF_BeliefFunction m){
     /*Memory alocation:*/
     copy.nbFocals = m.nbFocals;
     copy.focals = malloc(sizeof(BF_FocalElement ) * copy.nbFocals);
-    #ifdef DEBUG
-    if(copy.focals == NULL){
-       	printf("debug: malloc failed in BF_copyBeliefFunction() for \"copy.focals\".\n");
-    }
-    #endif
+    DEBUG_CHECK_MALLOC(copy.focals);
+
     copy.elementSize = m.elementSize;
     /*Copy: */
     for(i = 0; i < copy.nbFocals; i++){
@@ -71,11 +68,8 @@ BF_BeliefFunction BF_getVacuousBeliefFunction(const int elementSize){
 	
 	vacuous.nbFocals = 1;
 	vacuous.focals = malloc(sizeof(BF_FocalElement ));
-	#ifdef DEBUG
-    if(vacuous.focals == NULL){
-       	printf("debug: malloc failed in BF_getVacuousBeliefFunction() for \"vacuous.focals\".\n");
-    }
-    #endif
+	DEBUG_CHECK_MALLOC(vacuous.focals);
+
     vacuous.elementSize = elementSize;
 	
 	empty = Sets_getEmptyElement(elementSize);
@@ -176,21 +170,15 @@ BF_BeliefFunction BF_conditioning(const BF_BeliefFunction m, const Sets_Element 
     if(containVoid){
         conditioned.nbFocals = m.nbFocals;
         conditioned.focals = malloc(sizeof(BF_FocalElement )*m.nbFocals);
-        #ifdef DEBUG
-		if(conditioned.focals == NULL){
-			printf("debug: malloc failed in BF_conditioning() for \"conditioned.focals\".\n");
-		}
-		#endif
+        DEBUG_CHECK_MALLOC(conditioned.focals);
+
 		conditioned.elementSize = m.elementSize;
     }
     else {
         conditioned.nbFocals = m.nbFocals + 1;
         conditioned.focals = malloc(sizeof(BF_FocalElement )*(m.nbFocals+1));
-        #ifdef DEBUG
-		if(conditioned.focals == NULL){
-			printf("debug: malloc failed in BF_conditioning() for \"conditioned.focals\".\n");
-		}
-		#endif
+        DEBUG_CHECK_MALLOC(conditioned.focals);
+
 		conditioned.elementSize = m.elementSize;
     }
     /*Check for the new focal elements:*/
@@ -276,11 +264,8 @@ BF_BeliefFunction BF_weakening(const BF_BeliefFunction m, const float alpha){
         /*Weaken the believes on elements:*/
         weakened.nbFocals = m.nbFocals;
         weakened.focals = malloc(sizeof(BF_FocalElement) * m.nbFocals);
-        #ifdef DEBUG
-		if(weakened.focals == NULL){
-			printf("debug: malloc failed in BF_weakening() for \"weakened.focals\".\n");
-		}
-		#endif
+        DEBUG_CHECK_MALLOC(weakened.focals);
+
 		weakened.elementSize = m.elementSize;
         for(i = 0; i<m.nbFocals; i++){
             weakened.focals[i].element = Sets_copyElement(m.focals[i].element, m.elementSize);
@@ -295,11 +280,8 @@ BF_BeliefFunction BF_weakening(const BF_BeliefFunction m, const float alpha){
     else {
         weakened.nbFocals = m.nbFocals + 1; /* + void */
         weakened.focals = malloc(sizeof(BF_FocalElement) * (m.nbFocals + 1));
-        #ifdef DEBUG
-		if(weakened.focals == NULL){
-			printf("debug: malloc failed in BF_weakening() for \"weakened.focals\".\n");
-		}
-		#endif
+        DEBUG_CHECK_MALLOC(weakened.focals);
+
 		weakened.elementSize = m.elementSize;
         /*Put the elements: */
         for(i = 0; i<m.nbFocals; i++){
@@ -363,11 +345,8 @@ BF_BeliefFunction BF_discounting(const BF_BeliefFunction m, const float alpha){
         /*Discount the believes on elements: */
         discounted.nbFocals = m.nbFocals;
         discounted.focals = malloc(sizeof(BF_FocalElement )*m.nbFocals);
-        #ifdef DEBUG
-		if(discounted.focals == NULL){
-			printf("debug: malloc failed in BF_discounting() for \"discounted.focals\".\n");
-		}
-		#endif
+        DEBUG_CHECK_MALLOC(discounted.focals);
+
 		discounted.elementSize = m.elementSize;
         for(i = 0; i<m.nbFocals; i++){
             discounted.focals[i].element = Sets_copyElement(m.focals[i].element, m.elementSize);
@@ -382,11 +361,8 @@ BF_BeliefFunction BF_discounting(const BF_BeliefFunction m, const float alpha){
     else {
         discounted.nbFocals = m.nbFocals + 1; /* + complete */
         discounted.focals = malloc(sizeof(BF_FocalElement )*(m.nbFocals + 1));
-        #ifdef DEBUG
-		if(discounted.focals == NULL){
-			printf("debug: malloc failed in BF_discounting() for \"discounted.focals\".\n");
-		}
-		#endif
+        DEBUG_CHECK_MALLOC(discounted.focals);
+
 		discounted.elementSize = m.elementSize;
         /*Put the elements: */
         for(i = 0; i<m.nbFocals; i++){
@@ -433,11 +409,8 @@ BF_BeliefFunction BF_difference(const BF_BeliefFunction m1, const BF_BeliefFunct
 
     /*Get the set of values to considerate: */
     values.elements = malloc(sizeof(Sets_Element) * (m1.nbFocals + m2.nbFocals));
-    #ifdef DEBUG
-	if(values.elements == NULL){
-		printf("debug: malloc failed in BF_difference() for \"values.elements\".\n");
-	}
-	#endif
+    DEBUG_CHECK_MALLOC(values.elements);
+
     for(i = 0; i<m1.nbFocals; i++){
         values.elements[i] = Sets_copyElement(m1.focals[i].element, m1.elementSize);
         values.card++;
@@ -451,11 +424,8 @@ BF_BeliefFunction BF_difference(const BF_BeliefFunction m1, const BF_BeliefFunct
     /*Allocation: */
     diff.nbFocals = values.card;
     diff.focals = malloc(sizeof(BF_FocalElement) * values.card);
-    #ifdef DEBUG
-    if(diff.focals == NULL){
-		printf("debug: malloc failed in BF_difference() for \"diff.focals\".\n");
-	}
-	#endif
+    DEBUG_CHECK_MALLOC(diff.focals);
+
 	diff.elementSize = m1.elementSize;
     /*Get the differences: */
     for(i = 0; i<values.card; i++){
@@ -664,18 +634,12 @@ float BF_distance(const BF_BeliefFunction m1, const BF_BeliefFunction m2){
 
     /*Compute the matrix: */
     matrix = malloc(sizeof(float*) * diff.nbFocals);
-    #ifdef DEBUG
-    if(matrix == NULL){
-		printf("debug: malloc failed in BF_distance() for \"matrix\".\n");
-	}
-	#endif
+    DEBUG_CHECK_MALLOC(matrix);
+
     for(i = 0; i<diff.nbFocals; i++){
         matrix[i] = malloc(sizeof(float) * diff.nbFocals);
-        #ifdef DEBUG
-		if(matrix == NULL){
-			printf("debug: malloc failed in BF_distance() for \"matrix\".\n");
-		}
-		#endif
+        DEBUG_CHECK_MALLOC(matrix);
+
         for(j = 0; j<diff.nbFocals; j++){
             if(!Sets_equals(diff.focals[i].element, emptySet, m1.elementSize) || !Sets_equals(diff.focals[j].element, emptySet, m1.elementSize)){
                 disj = Sets_disjunction(diff.focals[i].element, diff.focals[j].element, m1.elementSize);
@@ -692,11 +656,8 @@ float BF_distance(const BF_BeliefFunction m1, const BF_BeliefFunction m2){
 
     /*Compute the distance: */
     temp = malloc(sizeof(float) * diff.nbFocals);
-    #ifdef DEBUG
-    if(temp == NULL){
-		printf("debug: malloc failed in BF_distance() for \"temp\".\n");
-	}
-	#endif
+    DEBUG_CHECK_MALLOC(temp);
+
     for(i = 0; i<diff.nbFocals; i++){
         temp[i] = 0;
         for(j = 0; j<diff.nbFocals; j++){
@@ -886,12 +847,8 @@ static unsigned int listAppend(BF_FocalElementList *list, const BF_FocalElement 
 		/* increase allocated memory size */
 		newSize = (list->size + 1)  * 1.25;
 		newArray = realloc(list->elements, sizeof(BF_FocalElement) * newSize);
-		#ifdef DEBUG
-		if(NULL == newArray) {
-			fprintf(stderr, "debug: realloc failed in listAppend() line %d.\n", __LINE__);
-			return realSize;
-		}
-		#endif /* DEBUG */
+		DEBUG_CHECK_MALLOC_OR_RETURN(newArray, realSize);
+
 		list->elements = newArray;
 	}
 	list->elements[list->size].beliefValue = element.beliefValue;
@@ -1677,11 +1634,8 @@ BF_FocalElement * BF_getQuickerListMaxMass(const BF_BeliefFunction m, const int 
     int index = 0;
 
     list = malloc(sizeof(BF_FocalElement ) * nbMax);
-    #ifdef DEBUG
-    if(list == NULL){
-		printf("debug: malloc failed in BF_getQuickerListMaxMass() for \"list\".\n");
-	}
-	#endif
+    DEBUG_CHECK_MALLOC(list);
+
     for(i = 0; i < m.nbFocals; i++){
         if(m.focals[i].beliefValue == maxValue &&
            (m.focals[i].element.card <= card   ||
@@ -1704,11 +1658,8 @@ BF_FocalElement * BF_getQuickerListMinMass(const BF_BeliefFunction m, const int 
     int index = 0;
 
     list = malloc(sizeof(BF_FocalElement) * nbMin);
-    #ifdef DEBUG
-    if(list == NULL){
-		printf("debug: malloc failed in BF_getQuickerListMinMass() for \"list\".\n");
-	}
-	#endif
+    DEBUG_CHECK_MALLOC(list);
+
     for(i = 0; i < m.nbFocals; i++){
         if(m.focals[i].beliefValue == minValue &&
            (m.focals[i].element.card <= card   ||
@@ -1731,11 +1682,8 @@ BF_FocalElement * BF_getQuickerListMaxBel(const BF_BeliefFunction m, const int c
     int index = 0;
 
     list = malloc(sizeof(BF_FocalElement ) * nbMax);
-    #ifdef DEBUG
-    if(list == NULL){
-		printf("debug: malloc failed in BF_getQuickerListMaxBel() for \"list\".\n");
-	}
-	#endif
+    DEBUG_CHECK_MALLOC(list);
+
     for(i = 0; i < powerset.card; i++){
         if((powerset.elements[i].card <= card ||
            card == 0)                         &&
@@ -1759,11 +1707,8 @@ BF_FocalElement * BF_getQuickerListMinBel(const BF_BeliefFunction m, const int c
     int index = 0;
 
     list = malloc(sizeof(BF_FocalElement ) * nbMin);
-    #ifdef DEBUG
-    if(list == NULL){
-		printf("debug: malloc failed in BF_getQuickerListMinBel() for \"list\".\n");
-	}
-	#endif
+    DEBUG_CHECK_MALLOC(list);
+
     for(i = 0; i < powerset.card; i++){
         if((powerset.elements[i].card <= card ||
            card == 0)                         &&
@@ -1787,11 +1732,8 @@ BF_FocalElement * BF_getQuickerListMaxPl(const BF_BeliefFunction m, const int ca
     int index = 0;
 
     list = malloc(sizeof(BF_FocalElement ) * nbMax);
-    #ifdef DEBUG
-    if(list == NULL){
-		printf("debug: malloc failed in BF_getQuickerListMaxPl() for \"list\".\n");
-	}
-	#endif
+    DEBUG_CHECK_MALLOC(list);
+
     for(i = 0; i < powerset.card; i++){
         if((powerset.elements[i].card <= card ||
            card == 0)                         &&
@@ -1815,11 +1757,8 @@ BF_FocalElement * BF_getQuickerListMinPl(const BF_BeliefFunction m, const int ca
     int index = 0;
 
     list = malloc(sizeof(BF_FocalElement ) * nbMin);
-    #ifdef DEBUG
-    if(list == NULL){
-		printf("debug: malloc failed in BF_getQuickerListMinPl() for \"list\".\n");
-	}
-	#endif
+    DEBUG_CHECK_MALLOC(list);
+
     for(i = 0; i < powerset.card; i++){
         if((powerset.elements[i].card <= card ||
            card == 0)                         &&
@@ -1843,11 +1782,8 @@ BF_FocalElement * BF_getQuickerListMaxBetP(const BF_BeliefFunction m, const int 
     int index = 0;
 
     list = malloc(sizeof(BF_FocalElement) * nbMax);
-    #ifdef DEBUG
-    if(list == NULL){
-		printf("debug: malloc failed in BF_getQuickerListMaxBetP() for \"list\".\n");
-	}
-	#endif
+    DEBUG_CHECK_MALLOC(list);
+
     for(i = 0; i < powerset.card; i++){
         if((powerset.elements[i].card <= card ||
            card == 0)                         &&
@@ -1871,11 +1807,8 @@ BF_FocalElement * BF_getQuickerListMinBetP(const BF_BeliefFunction m, const int 
     int index = 0;
 
     list = malloc(sizeof(BF_FocalElement) * nbMin);
-    #ifdef DEBUG
-    if(list == NULL){
-		printf("debug: malloc failed in BF_getQuickerListMinBetP() for \"list\".\n");
-	}
-	#endif
+    DEBUG_CHECK_MALLOC(list);
+
     for(i = 0; i < powerset.card; i++){
         if((powerset.elements[i].card <= card ||
            card == 0)                         &&
@@ -1954,12 +1887,8 @@ char* BF_beliefFunctionToString(const BF_BeliefFunction bf, const Sets_Reference
     }
     /*Memory allocation: */
     str = malloc(sizeof(char)*(totChar+1));
-    #ifdef DEBUG
-    if(str == NULL){
-        printf("debug: malloc failed in beliefFunctionToString() for \"str\".\n");
-        return NULL;
-    }
-    #endif
+    DEBUG_CHECK_MALLOC_OR_RETURN(str, NULL);
+
     /*Fill the string: */
     elem = Sets_elementToString(bf.focals[0].element, rl);
     sprintf(str, "m(%s) = %f\n", elem, bf.focals[0].beliefValue);
@@ -1995,12 +1924,8 @@ char* BF_beliefFunctionToBitString(const BF_BeliefFunction bf){
     }
     /*Memory allocation: */
     str = malloc(sizeof(char)*(totChar+1));
-    #ifdef DEBUG
-    if(str == NULL){
-        printf("debug: malloc failed in beliefFunctionToBitString() for \"str\".\n");
-        return NULL;
-    }
-    #endif
+    DEBUG_CHECK_MALLOC_OR_RETURN(str, NULL);
+
     /*Fill the string: */
     elem = Sets_elementToBitString(bf.focals[0].element, bf.elementSize);
     sprintf(str, "m(%s) = %f\n", elem, bf.focals[0].beliefValue);

@@ -118,11 +118,8 @@ BFB_BeliefStructure BFB_loadBeliefStructure(const char* frameName){
     if(ReadDir_isDirectory(path)){
     	/*Copy the frame name: */
         bs.frameName = malloc(sizeof(char)*(strlen(frameName) + 1));
-        #ifdef DEBUG
-        if(bs.frameName == NULL){
-        	printf("debug: malloc failed in BFB_loadBeliefStructure() for \"bs.frameName\".\n");
-        }
-        #endif
+        DEBUG_CHECK_MALLOC(bs.frameName);
+
         strcpy(bs.frameName, frameName);
         strcat(bs.frameName, "\0");
         /*Creation of the path to load the set: */
@@ -139,11 +136,8 @@ BFB_BeliefStructure BFB_loadBeliefStructure(const char* frameName){
         directories = ReadDir_getDirectories(path, bs.nbBeliefs, charsPerDir);
         /*Load the beliefs from beliefs: */
         bs.beliefs = malloc(sizeof(BFB_BeliefFromBelief)*bs.nbBeliefs);
-        #ifdef DEBUG
-        if(bs.beliefs == NULL){
-        	printf("debug: malloc failed in BFB_loadBeliefStructure() for \"bs.beliefs\".\n");
-        }
-        #endif
+        DEBUG_CHECK_MALLOC(bs.beliefs)
+
         for(i = 0; i < bs.nbBeliefs; i++){
             strcpy(path, BFB_PATH);         /* The directory where to find the CAs */
             strcat(path, frameName);        /* The name of the CA */
@@ -177,11 +171,8 @@ BFB_BeliefFromBelief BFB_loadBeliefFromBelief(const char* frameOfOrigin, const c
 	if(ReadDir_isDirectory(path)){
 		/*Copy the frame name: */
         bfb.frameName = malloc(sizeof(char)*(strlen(frameOfOrigin) + 1));
-        #ifdef DEBUG
-        if(bfb.frameName == NULL){
-        	printf("debug: malloc failed in BFB_loadBeliefFromBelief() for \"bfb.frameName\".\n");
-        }
-        #endif
+        DEBUG_CHECK_MALLOC(bfb.frameName);
+
         strcpy(bfb.frameName, frameOfOrigin);
         strcat(bfb.frameName, "\0");
         /*Load the reference list : */
@@ -201,11 +192,8 @@ BFB_BeliefFromBelief BFB_loadBeliefFromBelief(const char* frameOfOrigin, const c
         }
         #endif
         bfb.vectors = malloc(sizeof(BFB_BeliefVector) * bfb.nbVectors);
-        #ifdef DEBUG
-        if(bfb.vectors == NULL){
-        	printf("debug: malloc failed in BFB_loadBeliefFromBelief() for \"bfb.vectors\".\n");
-        }
-        #endif
+        DEBUG_CHECK_MALLOC(bfb.vectors);
+
         for(i = 0; i < nbFiles; i++){
             strcpy(filepath, path);
             strcat(filepath, "/");
@@ -250,11 +238,8 @@ BFB_BeliefVector BFB_loadBeliefVector(const char* fileName, const Sets_Reference
         nbElements = atoi(lines[0]);
         lineCounter++;
         elements = malloc(sizeof(char*)*nbElements);
-        #ifdef DEBUG
-		if(elements == NULL){
-			printf("debug: malloc failed in BFB_loadBeliefVector() for \"elements\".\n");
-		}
-		#endif
+        DEBUG_CHECK_MALLOC(elements);
+
         for(i = 0; i < nbElements; i++){
             elements[i] = lines[lineCounter];
             lineCounter++;
@@ -264,28 +249,19 @@ BFB_BeliefVector BFB_loadBeliefVector(const char* fileName, const Sets_Reference
         bv.nbTos = atoi(lines[lineCounter]);
         lineCounter++;
         bv.to = malloc(sizeof(Sets_Element) * bv.nbTos);
-        #ifdef DEBUG
-		if(bv.to == NULL){
-			printf("debug: malloc failed in BFB_loadBeliefVector() for \"bv.to\".\n");
-		}
-		#endif
+        DEBUG_CHECK_MALLOC(bv.to);
+
 		bv.factors = malloc(sizeof(float) * bv.nbTos);
-		#ifdef DEBUG
-		if(bv.factors == NULL){
-			printf("debug: malloc failed in BFB_loadBeliefVector() for \"bv.factors\".\n");
-		}
-		#endif
+		DEBUG_CHECK_MALLOC(bv.factors);
+
         /*Elements To : */
         for(i = 0; i < bv.nbTos; i++){
         	free(elements);
         	nbElements = atoi(lines[lineCounter]);
         	lineCounter++;
         	elements = malloc(sizeof(char*)*nbElements);
-		    #ifdef DEBUG
-			if(elements == NULL){
-				printf("debug: malloc failed in BFB_loadBeliefVector() for \"elements\".\n");
-			}
-			#endif
+		    DEBUG_CHECK_MALLOC(elements);
+
         	for(j = 0; j < nbElements; j++){
 		        elements[j] = lines[lineCounter];
 		        lineCounter++;
@@ -335,11 +311,7 @@ BF_BeliefFunction* BFB_believeFromBeliefs(const BFB_BeliefStructure bs, const ch
 
     /*Memory allocation: */
     bf = malloc(sizeof(BF_BeliefFunction) * nbBF);
-    #ifdef DEBUG
-	if(bf == NULL){
-		printf("debug: malloc failed in BFB_believeFromBeliefs() for \"bf\".\n");
-	}
-	#endif
+    DEBUG_CHECK_MALLOC(bf);
 
     /*Get the functions: */
     for(i = 0; i<nbBF; i++){
@@ -377,11 +349,8 @@ BF_BeliefFunction BFB_believeFromBelief(const BFB_BeliefFromBelief bfb, const BF
 	emptyMass = BF_M(from, emptyset);
 	if(emptyMass > 0){
 		bf.focals = malloc(sizeof(BF_FocalElement));
-		#ifdef DEBUG
-		if(bf.focals == NULL){
-			printf("debug: realloc failed in BFB_believeFromBelief() for \"bf.focals\".\n");
-		}
-		#endif
+		DEBUG_CHECK_MALLOC(bf.focals);
+
 		bf.nbFocals++;
 		bf.focals[0].element = Sets_getEmptyElement(elementSize);
 		bf.focals[0].beliefValue = emptyMass;
@@ -404,11 +373,8 @@ BF_BeliefFunction BFB_believeFromBelief(const BFB_BeliefFromBelief bfb, const BF
 					}
 					if(!in){
 						bf.focals = realloc(bf.focals, sizeof(BF_FocalElement) * (bf.nbFocals + 1));
-						#ifdef DEBUG
-						if(bf.focals == NULL){
-							printf("debug: realloc failed in BFB_believeFromBelief() for \"bf.focals\".\n");
-						}
-						#endif
+						DEBUG_CHECK_MALLOC(bf.focals);
+
 						bf.nbFocals++;
 						bf.focals[bf.nbFocals - 1].element = Sets_copyElement(bfb.vectors[j].to[k], elementSize);
 						bf.focals[bf.nbFocals - 1].beliefValue = from.focals[i].beliefValue * bfb.vectors[j].factors[k];
@@ -500,11 +466,8 @@ char* BFB_beliefStructureToString(const BFB_BeliefStructure bs){
 	int len = 0;
 	
 	beliefs = malloc(sizeof(char*) * bs.nbBeliefs);
-	#ifdef DEBUG
-	if(beliefs == NULL){
-		printf("debug: malloc failed in BFB_beliefStructureToString() for \"beliefs\".\n");
-	}
-	#endif
+	DEBUG_CHECK_MALLOC(beliefs);
+
 	for(i = 0; i < bs.nbBeliefs; i++){
 		beliefs[i] = BFB_beliefFromBeliefToString(bs.beliefs[i], bs.refList);
 		totChar += strlen(beliefs[i]);
@@ -515,11 +478,8 @@ char* BFB_beliefStructureToString(const BFB_BeliefStructure bs){
 	
 	/*Print: */
 	str = malloc(sizeof(char) * (totChar+1));
-	#ifdef DEBUG
-	if(str == NULL){
-		printf("debug: malloc failed in BFB_beliefStructureToString() for \"str\".\n");
-	}
-	#endif
+	DEBUG_CHECK_MALLOC(str);
+
 	strcpy(str, "*");
 	len = strlen(bs.frameName);
 	for(i = 0; i < len + 3; i++){
@@ -553,11 +513,8 @@ char* BFB_beliefFromBeliefToString(const BFB_BeliefFromBelief bfb, const Sets_Re
 	
 	/*Vectors' strings: */
 	vectors = malloc(sizeof(char*) * bfb.nbVectors);
-	#ifdef DEBUG
-	if(vectors == NULL){
-		printf("debug: malloc failed in BFB_beliefFromBeliefToString() for \"vectors\".\n");
-	}
-	#endif
+	DEBUG_CHECK_MALLOC(vectors);
+
 	for(i = 0; i < bfb.nbVectors; i++){
 		vectors[i] = BFB_beliefVectorToString(bfb.vectors[i], to, bfb.refList);
 		totChar += strlen(vectors[i]);
@@ -575,11 +532,8 @@ char* BFB_beliefFromBeliefToString(const BFB_BeliefFromBelief bfb, const Sets_Re
 	
 	/*Print: */
 	str = malloc(sizeof(char) * (totChar+1));
-	#ifdef DEBUG
-	if(str == NULL){
-		printf("debug: malloc failed in BFB_beliefFromBeliefToString() for \"str\".\n");
-	}
-	#endif
+	DEBUG_CHECK_MALLOC(str);
+
 	sprintf(str, "Subframe %s :\n", bfb.frameName);
 	len = strlen(bfb.frameName);
 	for(i = 0; i < len + 11; i++){
@@ -628,11 +582,8 @@ char* BFB_beliefVectorToString(const BFB_BeliefVector bv, const Sets_ReferenceLi
 	}
 	
 	str = malloc(sizeof(char) * (strlen(temp2) + 1));
-	#ifdef DEBUG
-	if(str == NULL){
-		printf("debug: malloc failed in BFB_beliefVectorToString() for \"str\".\n");
-	}
-	#endif
+	DEBUG_CHECK_MALLOC(str);
+
 	strcpy(str, temp2);
 	strcat(str, "\0");
 	

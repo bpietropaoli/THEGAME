@@ -87,12 +87,8 @@ int* ReadDir_charsPerDirectory(const char* path, const int nbDir){
     if (dir != NULL) {
         /*Allocate memory: */
         charsPerDir = malloc(sizeof(int)*nbDir);
-        #ifdef DEBUG
-        if (charsPerDir == NULL) {
-            printf("debug: malloc failed in ReadDir_charsPerDirectory() for \"charsPerDir\".\n");
-            return NULL;
-	    }
-	    #endif
+        DEBUG_CHECK_MALLOC_OR_RETURN(charsPerDir, NULL);
+
         /*Get subdirectories: */
         while ((ent = readdir(dir)) != NULL) {
             if(strcmp(ent->d_name, "..") && strcmp(ent->d_name, ".")){

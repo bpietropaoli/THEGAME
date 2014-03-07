@@ -61,19 +61,13 @@ Sets_ReferenceList Sets_loadRefList(const char* fileName){
     /*Memory allocation: */
     loadedList.card = card;
     loadedList.values = malloc(sizeof(char*) * loadedList.card);
-    #ifdef DEBUG
-    if(loadedList.values == NULL){
-    	printf("debug: malloc failed in Sets_loadRefList() for \"loadedList.values\".\n");
-    }
-    #endif
+    DEBUG_CHECK_MALLOC(loadedList.values);
+
     for(i = 0; i < nbLines; i++){
     	if(charPerLine[i] != 0){
 		    loadedList.values[current] = malloc(sizeof(char) * charPerLine[i] + 1);
-		    #ifdef DEBUG
-			if(loadedList.values[current] == NULL){
-				printf("debug: malloc failed in Sets_loadRefList() for \"loadedList.values[current]\".\n");
-			}
-			#endif
+		    DEBUG_CHECK_MALLOC(loadedList.values[current]);
+
 		    strcpy(loadedList.values[current], lines[i]);
 		    strcat(loadedList.values[current], "\0");
 		    current++;
@@ -113,21 +107,14 @@ Sets_Set Sets_createSet(const int nbAtoms){
     
     createdSet.card = nbAtoms;
     createdSet.elements = malloc(sizeof(Sets_Element) * createdSet.card);
-    #ifdef DEBUG
-    if(createdSet.elements == NULL){
-    	printf("debug: malloc failed in Sets_createSet() for \"createdSet.elements\".\n");
-    }
-    #endif
+    DEBUG_CHECK_MALLOC(createdSet.elements);
     
     /*Create the elements: */
     for(i = 0; i < createdSet.card; i++){
         createdSet.elements[i].card = 1;
         createdSet.elements[i].values = malloc(sizeof(char) * createdSet.card);
-        #ifdef DEBUG
-		if(createdSet.elements[i].values == NULL){
-			printf("debug: malloc failed in Sets_createSet() for \"createdSet.elements[i].values\".\n");
-		}
-		#endif
+        DEBUG_CHECK_MALLOC(createdSet.elements[i].values);
+
         for(j = 0; j < createdSet.card; j++){
             if(i == j) { createdSet.elements[i].values[j] = 1;}
             else { createdSet.elements[i].values[j] = 0;}
@@ -144,22 +131,15 @@ Sets_Set Sets_createPowerSet(const Sets_Set set){
     /*Powerset allocation: */
     powerset.card = pow(2, set.card);
     powerset.elements = malloc(sizeof(Sets_Element) * powerset.card);
-    #ifdef DEBUG
-    if(powerset.elements == NULL){
-    	printf("debug: malloc failed in Sets_createPowerSet() for \"powerset.elements\".\n");
-    }
-    #endif
+    DEBUG_CHECK_MALLOC(powerset.elements);
 
     /* ***********************
        Building the elements:
        ***********************
        Empty set:*/
     powerset.elements[0].values = malloc(sizeof(char) * set.card);
-    #ifdef DEBUG
-    if(powerset.elements[0].values == NULL){
-    	printf("debug: malloc failed in Sets_createPowerSet() for \"powerset.elements[0].values\".\n");
-    }
-    #endif
+    DEBUG_CHECK_MALLOC(powerset.elements[0].values);
+
     for(j = 0; j<set.card; j++){
         powerset.elements[0].values[j] = 0;
     }
@@ -170,11 +150,8 @@ Sets_Set Sets_createPowerSet(const Sets_Set set){
         sum = 0;
         /*Allocate memory: */
         powerset.elements[i].values = malloc(sizeof(char) * set.card);
-        #ifdef DEBUG
-		if(powerset.elements[i].values == NULL){
-			printf("debug: malloc failed in Sets_createPowerSet() for \"powerset.elements[i].values\".\n");
-		}
-		#endif
+        DEBUG_CHECK_MALLOC(powerset.elements[i].values);
+
         /*Compute the binary value: */
         for(j = 0; j < set.card; j++){
                 powerset.elements[i].values[j] = ((int)(i/pow(2,j)))%2;
@@ -196,11 +173,8 @@ Sets_Set Sets_generatePowerSet(const int elementSize){
     for(i = 0; i < elementSize; i++){
         set.elements[i].card = 1;
         set.elements[i].values = malloc(sizeof(char) * elementSize);
-        #ifdef DEBUG
-		if(set.elements[i].values == NULL){
-			printf("debug: malloc failed in Sets_generatePowerSet() for \"set.elements[i].values\".\n");
-		}
-		#endif
+        DEBUG_CHECK_MALLOC(set.elements[i].values);
+
         for(j = 0; j < elementSize; j++){
             if(i == j){
                 set.elements[i].values[j] = 1;
@@ -247,11 +221,8 @@ Sets_Element Sets_createElementFromStrings(const char* const * const values, con
 	
     /*Memory allocation: */
     newElem.values = malloc(sizeof(char) * rl.card);
-    #ifdef DEBUG
-	if(newElem.values == NULL){
-		printf("debug: malloc failed in Sets_createElementFromStrings() for \"newElem.values\".\n");
-	}
-	#endif
+    DEBUG_CHECK_MALLOC(newElem.values);
+
     /*Fill the element: */
     for(i = 0; i < rl.card; i++){
         /*Initialize: */
@@ -274,11 +245,8 @@ Sets_Element Sets_createElementFromBits(const char* values, const int size){
     int i = 0;
 
     newElem.values = malloc(sizeof(char) * size);
-    #ifdef DEBUG
-	if(newElem.values == NULL){
-		printf("debug: malloc failed in Sets_createElementFromsBits() for \"newElem.values\".\n");
-	}
-	#endif
+    DEBUG_CHECK_MALLOC(newElem.values);
+
     for(i = 0; i < size; i++){
         newElem.values[i] = values[i];
         newElem.card += values[i];
@@ -294,11 +262,8 @@ Sets_Element Sets_copyElement(const Sets_Element e, const int size){
     /*Copy the element: */
     copy.card = e.card;
     copy.values = malloc(sizeof(char) * size);
-    #ifdef DEBUG
-	if(copy.values == NULL){
-		printf("debug: malloc failed in Sets_copyElement() for \"copy.values\".\n");
-	}
-	#endif
+    DEBUG_CHECK_MALLOC(copy.values);
+
     for(i = 0; i < size; i++){
         copy.values[i] = e.values[i];
     }
@@ -312,11 +277,8 @@ Sets_Element Sets_getEmptyElement(const int size){
 
     /*Allocate memory: */
     emptySet.values = malloc(sizeof(char) * size);
-    #ifdef DEBUG
-	if(emptySet.values == NULL){
-		printf("debug: malloc failed in Sets_getEmptyElement() for \"emptySet.values\".\n");
-	}
-	#endif
+    DEBUG_CHECK_MALLOC(emptySet.values);
+
     /*Put zeros: */
     for(i = 0; i < size; i++){
         emptySet.values[i] = 0;
@@ -332,11 +294,8 @@ Sets_Element Sets_getOpposite(const Sets_Element e, const int size){
     /*Create opposite: */
     opposite.card = size - e.card;
     opposite.values = malloc(sizeof(char) * size);
-    #ifdef DEBUG
-    if(opposite.values == NULL){
-		printf("debug: malloc failed in Sets_getOpposite() for \"opposite.values\".\n");
-	}
-	#endif
+    DEBUG_CHECK_MALLOC(opposite.values);
+
     for(i = 0; i < size; i++){
         opposite.values[i] = !e.values[i];
     }
@@ -350,11 +309,8 @@ Sets_Element Sets_elementFromNumber(const int number, const int nbDigits){
 	int i = 0;
 	
 	e.values = malloc(sizeof(char) * nbDigits);
-	#ifdef DEBUG
-	if(e.values == NULL){
-		printf("debug: malloc failed in Sets_elementFromNumber() for \"e.values\".\n");
-	}
-	#endif
+	DEBUG_CHECK_MALLOC(e.values);
+
 	for(i = 0; i < nbDigits; i++){
 		e.values[i] = nb % 2 ;
 		nb /= 2;
@@ -396,11 +352,7 @@ Sets_Element Sets_conjunction(const Sets_Element e1, const Sets_Element e2, cons
 
     /*Memory allocation: */
     conj.values = malloc(sizeof(char) * size);
-    #ifdef DEBUG
-    if(conj.values == NULL){
-		printf("debug: malloc failed in Sets_conjunction() for \"conj.values\".\n");
-	}
-	#endif
+    DEBUG_CHECK_MALLOC(conj.values);
 
     /*Compare both elements: */
     for(i = 0; i < size; i++){
@@ -419,11 +371,7 @@ Sets_Element Sets_disjunction(const Sets_Element e1, const Sets_Element e2, cons
 
     /*Memory allocation: */
     disj.values = malloc(sizeof(char) * size);
-    #ifdef DEBUG
-    if(disj.values == NULL){
-		printf("debug: malloc failed in Sets_disjunction() for \"disj.values\".\n");
-	}
-	#endif
+    DEBUG_CHECK_MALLOC(disj.values);
 
     /*Compare both elements: */
     for(i = 0; i < size; i++){
@@ -440,11 +388,7 @@ Sets_Element Sets_union(const Sets_Element e1, const Sets_Element e2, const int 
 	Sets_Element unionResult = {NULL, 0};
 	int i;
 	unionResult.values = malloc(sizeof(char) * size);
-	#ifdef DEBUG
-	if(unionResult.values == NULL){
-		printf("debug: malloc failed in Sets_disjunction() for \"unionResult.values\".\n");
-	}
-	#endif
+	DEBUG_CHECK_MALLOC(unionResult.values);
 
 	for (i = 0; i < size; ++i) {
 		unionResult.values[i] = e1.values[i] || e2.values[i];
@@ -547,11 +491,8 @@ char* Sets_elementToString(const Sets_Element e, const Sets_ReferenceList rl){
     /*Empty set: */
     if(e.card == 0){
         str = malloc(sizeof(char) * 7);
-        #ifdef DEBUG
-        if(str == NULL){
-        	printf("debug: malloc failed in Sets_elementToString() for \"str\".\n");
-        }
-       	#endif
+        DEBUG_CHECK_MALLOC(str);
+
         strcpy(str, "{void}\0");
     }
     /*Others: */
@@ -568,11 +509,7 @@ char* Sets_elementToString(const Sets_Element e, const Sets_ReferenceList rl){
         totChar += 4 + 3*(sum - 1);
         /*Allocate memory: */
         str = malloc(sizeof(char)*totChar);
-        #ifdef DEBUG
-        if(str == NULL){
-        	printf("debug: malloc failed in Sets_elementToString() for \"str\".\n");
-        }
-       	#endif
+        DEBUG_CHECK_MALLOC(str);
         /*Create the string: */
         sprintf(str, "{%s", rl.values[firstElement]);
         for(i = firstElement + 1; i<rl.card; i++){
@@ -592,11 +529,8 @@ char* Sets_elementToBitString(const Sets_Element e, int size){
 	int i = 0;
 	
 	str = malloc(sizeof(char) * (size + 1));
-	#ifdef DEBUG
-	if(str == NULL){
-		printf("debug: malloc failed in Sets_elementToBitString() for \"str\".\n");
-	}
-	#endif
+	DEBUG_CHECK_MALLOC(str);
+
 	for(i = 0; i < size; i++){
 		str[i] = e.values[i] ? '1' :'0';
 	}
@@ -612,12 +546,7 @@ char* Sets_setToString(const Sets_Set s, const Sets_ReferenceList rl){
 
     /*Allocate memory for elements strings: */
     elements = malloc(sizeof(char*)*s.card);
-    #ifdef DEBUG
-    if(elements == NULL){
-        printf("debug: malloc failed in Sets_setToString() for \"elements\".\n");
-        return NULL;
-    }
-    #endif
+    DEBUG_CHECK_MALLOC_OR_RETURN(elements, NULL);
 
     /*Count the number of chars: */
     for(i = 0; i<s.card; i++) {
@@ -628,12 +557,7 @@ char* Sets_setToString(const Sets_Set s, const Sets_ReferenceList rl){
 
     /*Allocate memory for the string: */
     str = malloc(sizeof(char)*(totChar+1));
-    #ifdef DEBUG
-    if(str == NULL){
-        printf("debug: malloc failed in Sets_setToString() for \"str\".\n");
-        return NULL;
-    }
-    #endif
+    DEBUG_CHECK_MALLOC_OR_RETURN(str, NULL);
 
     /*Fill the string: */
     sprintf(str, "{%s", elements[0]);
@@ -659,12 +583,7 @@ char* Sets_setToBitString(const Sets_Set s, int size){
 
     /*Allocate memory for elements strings: */
     elements = malloc(sizeof(char*)*s.card);
-    #ifdef DEBUG
-    if(elements == NULL){
-        printf("debug: malloc failed in Sets_setToString() for \"elements\".\n");
-        return NULL;
-    }
-    #endif
+    DEBUG_CHECK_MALLOC_OR_RETURN(elements, NULL);
 
     /*Count the number of chars: */
     for(i = 0; i<s.card; i++) {
@@ -675,12 +594,7 @@ char* Sets_setToBitString(const Sets_Set s, int size){
 
     /*Allocate memory for the string: */
     str = malloc(sizeof(char)*(totChar+1));
-    #ifdef DEBUG
-    if(str == NULL){
-        printf("debug: malloc failed in Sets_setToString() for \"str\".\n");
-        return NULL;
-    }
-    #endif
+    DEBUG_CHECK_MALLOC_OR_RETURN(str, NULL);
 
     /*Fill the string: */
     sprintf(str, "{%s", elements[0]);

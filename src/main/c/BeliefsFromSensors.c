@@ -138,11 +138,8 @@ BFS_BeliefStructure BFS_loadBeliefStructure(const char* frameName){
     if(ReadDir_isDirectory(path)){
         /*Copy the context attribute name: */
         bs.frameName = malloc(sizeof(char)*(strlen(frameName) + 1));
-        #ifdef DEBUG
-        if(bs.frameName == NULL){
-        	printf("debug: malloc failed in BFS_loadBeliefStructure() for \"bs.frameName\".\n");
-        }
-        #endif
+        DEBUG_CHECK_MALLOC(bs.frameName);
+
         strcpy(bs.frameName, frameName);
         strcat(bs.frameName, "\0");
         /*Creation of the path to load the set: */
@@ -163,11 +160,8 @@ BFS_BeliefStructure BFS_loadBeliefStructure(const char* frameName){
         directories = ReadDir_getDirectories(path, bs.nbSensors, charsPerDir);
         /*Load the sensors' beliefs: */
         bs.beliefs = malloc(sizeof(BFS_SensorBeliefs)*bs.nbSensors);
-        #ifdef DEBUG
-        if(bs.beliefs == NULL){
-        	printf("debug: malloc failed in BFS_loadBeliefStructure() for \"bs.beliefs\".\n");
-        }
-        #endif
+        DEBUG_CHECK_MALLOC(bs.beliefs);
+
         for(i = 0; i<bs.nbSensors; i++){
             strcpy(path, BFS_PATH);       /* The directory where to find the CAs */
             strcat(path, frameName);      /* The name of the CA */
@@ -208,11 +202,8 @@ BFS_SensorBeliefs BFS_loadSensorBeliefs(const char* sensorType, const char* path
     	temp2 = malloc(sizeof(char) * MAX_STR_LEN);
         /*Sensor type: */
         sb.sensorType = malloc(sizeof(char)*(strlen(sensorType)+1));
-        #ifdef DEBUG
-        if(sb.sensorType == NULL){
-        	printf("debug: malloc failed in BFS_loadSensorBeliefs() for \"sb.sensorType\".\n");
-        }
-        #endif
+        DEBUG_CHECK_MALLOC(sb.sensorType);
+
         strcpy(sb.sensorType, sensorType);
         strcat(sb.sensorType, "\0");
         /*Get the files: */
@@ -236,11 +227,8 @@ BFS_SensorBeliefs BFS_loadSensorBeliefs(const char* sensorType, const char* path
         sb.optionFlags = OP_NONE;
         /*Load the files: */
         sb.beliefOnElements = malloc(sizeof(BFS_PartOfBelief)*sb.nbFocal);
-        #ifdef DEBUG
-        if(sb.beliefOnElements == NULL){
-        	printf("debug: malloc failed in BFS_loadSensorBeliefs() for \"sb.beliefOnElements\".\n");
-        }
-        #endif
+        DEBUG_CHECK_MALLOC(sb.beliefOnElements);
+
         for(i = 0; i<nbFiles; i++){
             strcpy(filepath, path);
             strcat(filepath, "/");
@@ -263,11 +251,8 @@ BFS_SensorBeliefs BFS_loadSensorBeliefs(const char* sensorType, const char* path
                 /*Memory allocation : */
                 sb.nbOptions = atoi(lines[0]);
                 sb.options = malloc(sizeof(BFS_Option)*sb.nbOptions);
-                #ifdef DEBUG
-				if(sb.options == NULL){
-					printf("debug: malloc failed in BFS_loadSensorBeliefs() for \"sb.options\".\n");
-				}
-				#endif
+                DEBUG_CHECK_MALLOC(sb.options);
+
                 for(j = 0; j < sb.nbOptions; j++){
                     sscanf(lines[1+j], "%s %s", temp, temp2);
                     sb.options[j].type = OP_NONE;
@@ -279,11 +264,8 @@ BFS_SensorBeliefs BFS_loadSensorBeliefs(const char* sensorType, const char* path
                        Storage: time of the previous measure + a pointer to the previous BF_BeliefFunction*/
                     if(!strcmp(temp, "TEMPO-SPECIFICITY")){
                         sb.options[j].util = malloc(sizeof(BFS_UtilData) * 2);
-                        #ifdef DEBUG
-						if(sb.options[j].util == NULL){
-							printf("debug: malloc failed in BFS_loadSensorBeliefs() for \"sb.options[j].util\".\n");
-						}
-						#endif
+                        DEBUG_CHECK_MALLOC(sb.options[j].util);
+
                         clock_gettime(CLOCK_ID, &(sb.options[j].util[0].time));
                         sb.options[j].util[1].bf.nbFocals = 0;
                         sb.options[j].util[1].bf.focals = NULL;
@@ -299,11 +281,8 @@ BFS_SensorBeliefs BFS_loadSensorBeliefs(const char* sensorType, const char* path
                             sb.options[j].parameter = 1;
                         }
                         sb.options[j].util = malloc(sizeof(BFS_UtilData) * sb.options[j].parameter);
-                        #ifdef DEBUG
-						if(sb.options[j].util == NULL){
-							printf("debug: malloc failed in BFS_loadSensorBeliefs() for \"sb.options[j].util\".\n");
-						}
-						#endif
+                        DEBUG_CHECK_MALLOC(sb.options[j].util);
+
                         for(opIndex = 0; opIndex < sb.options[j].parameter; opIndex++){
                             sb.options[j].util[opIndex].measure = 0;
                         }
@@ -313,11 +292,8 @@ BFS_SensorBeliefs BFS_loadSensorBeliefs(const char* sensorType, const char* path
                     /*Tempo-fusion: */
                     else if(!strcmp(temp, "TEMPO-FUSION")){
                     	sb.options[j].util = malloc(sizeof(BFS_UtilData) * 2);
-                        #ifdef DEBUG
-						if(sb.options[j].util == NULL){
-							printf("debug: malloc failed in BFS_loadSensorBeliefs() for \"sb.options[j].util\".\n");
-						}
-						#endif
+                        DEBUG_CHECK_MALLOC(sb.options[j].util);
+
                         clock_gettime(CLOCK_ID, &(sb.options[j].util[0].time));
                         sb.options[j].util[1].bf.nbFocals = 0;
                         sb.options[j].util[1].bf.focals = NULL;
@@ -413,22 +389,16 @@ BFS_PartOfBelief BFS_loadPartOfBelief(const char* fileName, const Sets_Reference
         pob.nbPts = atoi(lines[1 + nbElements]);
         /*Create element: */
         elements = malloc(sizeof(char*)*nbElements);
-        #ifdef DEBUG
-		if(elements == NULL){
-			printf("debug: malloc failed in BFS_loadPartOfBelief() for \"elements\".\n");
-		}
-		#endif
+        DEBUG_CHECK_MALLOC(elements);
+
         for(i = 0; i<nbElements; i++){
             elements[i] = lines[i + 1];
         }
         pob.focalElement = Sets_createElementFromStrings((const char* const * const)elements, nbElements, rl);
         /*Create pts: */
         pob.points = malloc(sizeof(BFS_Point)*pob.nbPts);
-        #ifdef DEBUG
-		if(pob.points == NULL){
-			printf("debug: malloc failed in BFS_loadPartOfBelief() for \"pob.points\".\n");
-		}
-		#endif
+        DEBUG_CHECK_MALLOC(pob.points);
+
         for(i = 0; i<pob.nbPts; i++){
             sscanf(lines[2+nbElements+i], "%f %f", &(pob.points[i].sensorValue),&(pob.points[i].belief));
         }
@@ -472,11 +442,7 @@ BF_BeliefFunction* BFS_getEvidence(const BFS_BeliefStructure bs, const char* con
 
     /*Memory allocation: */
     evidences = malloc(sizeof(BF_BeliefFunction) * nbMeasures);
-    #ifdef DEBUG
-	if(evidences == NULL){
-		printf("debug: malloc failed in BFS_getEvidence() for \"evidences\".\n");
-	}
-	#endif
+    DEBUG_CHECK_MALLOC(evidences);
 
     /*Get the functions: */
     for(i = 0; i<nbMeasures; i++){
@@ -510,11 +476,8 @@ BF_BeliefFunction BFS_getProjection(const BFS_SensorBeliefs sb, const double sen
 		/*Memory allocation: */
 		projection.nbFocals = sb.nbFocal;
 		projection.focals = malloc(sizeof(BF_FocalElement) * sb.nbFocal);
-		#ifdef DEBUG
-		if(projection.focals == NULL){
-			printf("debug: malloc failed in BFS_getProjection() for \"projection.focals\".\n");
-		}
-		#endif
+		DEBUG_CHECK_MALLOC(projection.focals);
+
 		projection.elementSize = elementSize;
 		/*
 		 * Apply variation option if required :
@@ -837,12 +800,8 @@ char* BFS_partOfBeliefToString(const BFS_PartOfBelief pob, const Sets_ReferenceL
 
     /*Fill the string: */
     str = malloc(sizeof(char)*(totChar+1));
-    #ifdef DEBUG
-    if(str == NULL){
-        printf("debug: malloc failed in BFS_partOfBeliefToString() for \"str\".\n");
-        return NULL;
-    }
-    #endif
+    DEBUG_CHECK_MALLOC_OR_RETURN(str, NULL);
+
     sprintf(str, "Focal: %s\nPoints:\n", elem);
     for(i = 0; i<pob.nbPts; i++){
         sprintf(temp, " - (%f, %f)\n", pob.points[i].sensorValue, pob.points[i].belief);
@@ -871,12 +830,8 @@ char* BFS_optionToString(const BFS_Option o){
     	sprintf(temp, "Tempo-fusion (%f)", o.parameter);
     }
     str = malloc(sizeof(char)*strlen(temp)+1);
-    #ifdef DEBUG
-    if(str == NULL){
-        printf("debug: malloc failed in BFS_optionToString() for \"str\".\n");
-        return NULL;
-    }
-    #endif
+    DEBUG_CHECK_MALLOC_OR_RETURN(str, NULL);
+
     strcpy(str, temp);
     strcat(str, "\0");
 
@@ -891,12 +846,8 @@ char* BFS_sensorBeliefsToString(const BFS_SensorBeliefs sb, const Sets_Reference
 
     /*Get the strings of parts of belief: */
     pobStr = malloc(sizeof(char*)*sb.nbFocal);
-    #ifdef DEBUG
-    if(pobStr == NULL){
-        printf("debug: malloc failed in BFS_sensorBeliefToString() for \"pobStr\".\n");
-        return NULL;
-    }
-    #endif
+    DEBUG_CHECK_MALLOC_OR_RETURN(pobStr, NULL);
+
     for(i = 0; i<sb.nbFocal; i++){
         pobStr[i] = BFS_partOfBeliefToString(sb.beliefOnElements[i], rl);
         if(pobStr[i] != NULL){
@@ -906,12 +857,8 @@ char* BFS_sensorBeliefsToString(const BFS_SensorBeliefs sb, const Sets_Reference
     /*Get the strings of options: */
     if(sb.nbOptions){
         opStr = malloc(sizeof(char*)*sb.nbOptions);
-        #ifdef DEBUG
-		if(opStr == NULL){
-		    printf("debug: malloc failed in BFS_sensorBeliefToString() for \"opStr\".\n");
-		    return NULL;
-		}
-		#endif
+        DEBUG_CHECK_MALLOC_OR_RETURN(opStr, NULL);
+
         for(i = 0; i<sb.nbOptions; i++){
             opStr[i] = BFS_optionToString(sb.options[i]);
             if(opStr[i] != NULL){
@@ -927,12 +874,8 @@ char* BFS_sensorBeliefsToString(const BFS_SensorBeliefs sb, const Sets_Reference
 
     /*Fill the string: */
     str = malloc(sizeof(char)*(totChar+1));
-    #ifdef DEBUG
-    if(str == NULL){
-        printf("debug: malloc failed in BFS_sensorBeliefToString() for \"str\".\n");
-        return NULL;
-    }
-    #endif
+    DEBUG_CHECK_MALLOC_OR_RETURN(str, NULL);
+
     /*Header: */
     sprintf(str, "%sSensor type: %s\n%sOptions:\n", separator, sb.sensorType, separator);
     /*Options: */
@@ -974,12 +917,8 @@ char* BFS_beliefStructureToString(const BFS_BeliefStructure bs){
 
     /*Get the strings of sensor beliefs: */
     sbStr = malloc(sizeof(char*)*bs.nbSensors);
-    #ifdef DEBUG
-    if(sbStr == NULL){
-        printf("debug: malloc failed in BFS_beliefStructureToString() for \"sbStr\".\n");
-        return NULL;
-    }
-    #endif
+    DEBUG_CHECK_MALLOC_OR_RETURN(sbStr, NULL);
+
     for(i = 0; i<bs.nbSensors; i++){
         sbStr[i] = BFS_sensorBeliefsToString(bs.beliefs[i], bs.refList);
         if(sbStr[i] != NULL){
@@ -994,12 +933,8 @@ char* BFS_beliefStructureToString(const BFS_BeliefStructure bs){
 
     /*Fill the string: */
     str = malloc(sizeof(char)*(totChar+1));
-    #ifdef DEBUG
-    if(str == NULL){
-        printf("debug: malloc failed in beliefStructureToString() for \"str\".\n");
-        return NULL;
-    }
-    #endif
+    DEBUG_CHECK_MALLOC_OR_RETURN(str, NULL);
+
     sprintf(str, "Context attribute:\n%s\nPossible values:\n%s\nPowerset:\n%s\n\n", bs.frameName, set, powerset);
     for(i = 0; i<bs.nbSensors; i++){
         strcat(str, sbStr[i]);
