@@ -75,13 +75,6 @@ struct BF_FocalElementList{
 typedef struct BF_FocalElementList BF_FocalElementList;
 
 /**
- * Frees the memory used by a list (array contained by the list and elements
- * contained  by the array).
- * @param list List to free.
- */
-void BF_freeFocalElementList(BF_FocalElementList *list);
-
-/**
  * The real belief function. There are several ways to build
  * belief functions (for instance using the BeliefsFromSensors
  * module). Operations defined in this module are for mass functions
@@ -1002,6 +995,13 @@ void BF_freeBeliefFunction(BF_BeliefFunction* bf);
  * @param bp A pointer to the BF_FocalElement to free
  */
 void BF_freeBeliefPoint(BF_FocalElement *bp);
+
+/**
+ * Frees the memory used by a list (array contained by the list and elements
+ * contained  by the array).
+ * @param list List to free.
+ */
+void BF_freeFocalElementList(BF_FocalElementList *list);
 
 /** @} */
 
