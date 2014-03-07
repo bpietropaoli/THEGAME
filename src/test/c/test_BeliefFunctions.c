@@ -7,6 +7,7 @@
 
 
 #include <check.h>
+#include <stdlib.h>
 
 #include "BeliefFunctions.h"
 #include "BeliefsFromSensors.h"

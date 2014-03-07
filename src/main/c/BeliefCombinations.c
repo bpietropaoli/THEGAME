@@ -11,10 +11,14 @@
  * @{
  */
 
+#include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
+#include <math.h>
 
 #include "BeliefFunctions.h"
 #include "BeliefCombinations.h"
+#include "config.h"
 
 /* !!!!!!!!!!!!!!!!!!!!!!!!!!!!
    !!! Operation on beliefs !!!

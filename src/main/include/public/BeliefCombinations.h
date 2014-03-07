@@ -5,6 +5,9 @@
  *      Author: arichez
  */
 
+#ifndef BELIEFCOMBINATION_H_
+#define BELIEFCOMBINATION_H_
+
 #include "BeliefFunctions.h"
 
 /**
@@ -229,3 +232,5 @@ BF_BeliefFunction BF_combination(const BF_BeliefFunction m1, const BF_BeliefFunc
  *         maxDegree-th degree
  */
 float* BF_autoConflict(const BF_BeliefFunction m, const int maxDegree);
+
+#endif /* BELIEFCOMBINATION_H_ */

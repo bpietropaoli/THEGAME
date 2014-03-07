@@ -7,6 +7,9 @@
 
 #ifndef UNIT_TESTS_H_
 #define UNIT_TESTS_H_
+
+#include <math.h>
+
 #define assert_flt_equals(expected, actual, precision) \
 		ck_assert_msg(fabs((float)expected - (float)actual) <= precision, \
 		"error - expected: %f; actual: %f", expected, actual)

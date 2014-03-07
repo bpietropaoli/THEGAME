@@ -17,9 +17,7 @@
  
 #ifndef DEF_BELIEFFUNCTIONS
 #define DEF_BELIEFFUNCTIONS
-#include "config.h"
-#include "ReadDirectory.h"
-#include "ReadFile.h"
+
 #include "Sets.h"
 
 /**

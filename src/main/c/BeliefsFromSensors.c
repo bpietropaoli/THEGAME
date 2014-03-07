@@ -15,8 +15,19 @@
  */
 
 
+#include <stdio.h>
+#include <stdint.h>
+#include <stdlib.h>
+#include <string.h>
+#include <math.h>
+#include <ctype.h>
+#include <errno.h>
+
 #include "BeliefsFromSensors.h"
 #include "BeliefCombinations.h"
+#include "ReadDirectory.h"
+#include "ReadFile.h"
+#include "config.h"
 
 /**
  * @section BFS_intro Introduction

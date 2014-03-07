@@ -17,14 +17,7 @@
 
 #ifndef DEF_BELIEFSFROMRANDOMNESS
 #define DEF_BELIEFSFROMRANDOMNESS
-#include <stdio.h>
-#include <stdint.h>
-#include <stdlib.h>
-#include <string.h>
-#include <math.h>
-#include <time.h>
-#include <ctype.h>
-#include "config.h"
+
 #include "Sets.h"
 #include "BeliefFunctions.h"
 

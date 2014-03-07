@@ -17,17 +17,10 @@
 
 #ifndef DEF_BELIEFSFROMSENSORS
 #define DEF_BELIEFSFROMSENSORS
-#include <stdio.h>
-#include <stdint.h>
-#include <stdlib.h>
-#include <string.h>
-#include <math.h>
+
+
 #include <time.h>
-#include <ctype.h>
-#include <errno.h>
-#include "config.h"
-#include "ReadDirectory.h"
-#include "ReadFile.h"
+
 #include "Sets.h"
 #include "BeliefFunctions.h"
 

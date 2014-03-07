@@ -14,8 +14,14 @@
  * limitations under the License.
  */
 
+#include <stdlib.h>
+#include <stdio.h>
+#include <math.h>
+#include <string.h>
 
 #include "Tests.h"
+#include "config.h"
+#include "BeliefsFromSensors.h"
 
 /**
  * @file Tests.c

@@ -14,7 +14,17 @@
  * limitations under the License.
  */
  
- #include "BeliefsFromBeliefs.h"
+#include <stdio.h>
+#include <stdint.h>
+#include <stdlib.h>
+#include <string.h>
+#include <math.h>
+#include <time.h>
+
+#include "BeliefsFromBeliefs.h"
+#include "ReadDirectory.h"
+#include "ReadFile.h"
+#include "config.h"
 
 /**
  * @section BFB_intro Introduction

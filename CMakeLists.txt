@@ -6,7 +6,7 @@ set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${PROJECT_SOURCE_DIR}/cmake/Modules/
 
 file(GLOB_RECURSE src_thegame src/main/c/*)
 
-include_directories(src/main/include)
+include_directories(src/main/include/public src/main/include/private)
 
 set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wall")
 
