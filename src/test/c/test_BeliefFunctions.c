@@ -130,6 +130,32 @@ START_TEST(getListMaxMassReturnsTheRightFocals) {
 }
 END_TEST
 
+/*
+ * ## getListMin
+ */
+
+START_TEST(getListMinMassReturnsTheRightNumberOfValues) {
+	/* There should be two min for the second belief function */
+	BF_FocalElementList list = BF_getMinList(BF_M, evidences[1], 0,
+					beliefStructure.powerset);
+	ck_assert_int_eq(2, list.size);
+	BF_freeFocalElementList(&list);
+}
+END_TEST
+
+START_TEST(getListMinMassReturnsTheRightFocals) {
+	/* There should be two min for the second belief function */
+	BF_FocalElementList list = BF_getMinList(BF_M, evidences[1], 0,
+					beliefStructure.powerset);
+	int i;
+	for(i = 0; i < list.size;++i) {
+		ck_assert_msg(Sets_equals( A,list.elements[0].element, ATOM_NB) ||
+						Sets_equals( B, list.elements[0].element, ATOM_NB),
+						"One of the max is not A or B.");
+	}
+	BF_freeFocalElementList(&list);
+}
+END_TEST
 
 TCase* createManipulationTestCase() {
 TCase* testCaseManipulation = tcase_create("Manipulation");
@@ -141,6 +167,8 @@ tcase_add_test(testCaseManipulation, getMinMassReturnsTheRightValues);
 tcase_add_test(testCaseManipulation, getMinBetPWithCardLimitReturnsTheRightValues);
 tcase_add_test(testCaseManipulation, getListMaxMassReturnsTheRightNumberOfValues);
 tcase_add_test(testCaseManipulation, getListMaxMassReturnsTheRightFocals);
+tcase_add_test(testCaseManipulation, getListMinMassReturnsTheRightNumberOfValues);
+tcase_add_test(testCaseManipulation, getListMinMassReturnsTheRightFocals);
 return testCaseManipulation;
 }
 

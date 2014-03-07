@@ -953,6 +953,38 @@ BF_FocalElementList BF_getMaxList(BF_criterionFun criterion, const BF_BeliefFunc
 	return list;
 }
 
+BF_FocalElementList BF_getMinList(BF_criterionFun criterion, const BF_BeliefFunction beliefFunction,
+		const int maxCard, const Sets_Set powerset) {
+	BF_FocalElementList  list = newList();
+	unsigned int listSize = 0;
+
+    BF_FocalElement  min = {{NULL,0}, 2};
+	int i = 0;
+	float value = 0;
+
+
+	for(i = 0; i < powerset.card; i++){
+		if((powerset.elements[i].card <= maxCard ||
+				maxCard == 0)                         &&
+		   powerset.elements[i].card > 0 ){
+			value = criterion(beliefFunction, powerset.elements[i]);
+
+			if(value < min.beliefValue && value > 0){
+				emptyList(&list);
+				min.element = powerset.elements[i];
+				min.beliefValue = value;
+				listSize = listAppend(&list, min, listSize, beliefFunction.elementSize);
+			}
+			else if(value == min.beliefValue) {
+				min.element = powerset.elements[i];
+				listSize = listAppend(&list, min, listSize, beliefFunction.elementSize);
+			}
+		}
+	}
+
+	return list;
+}
+
 
 BF_FocalElement  BF_getMaxMass(const BF_BeliefFunction m, const int card){
     BF_FocalElement  max = {{NULL,0}, 0};

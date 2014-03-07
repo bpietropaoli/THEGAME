@@ -413,9 +413,27 @@ BF_FocalElement BF_getMin(BF_criterionFun criterion, const BF_BeliefFunction bel
  * @param beliefFunction Function from which we extract the maxima.
  * @param maxCard The maximum authorized cardinality of the max Element (0 = no card limit).
  * @param powerset The powerset generated from the size of the elements
- * @return The BF_FocalElement (Element + mass) corresponding to the maximum. Must be freed after use.
+ * @return The BF_FocalElement (Element + mass) list corresponding to the maximum.
+ * Must be freed with BF_freeFocalElementList().
  */
 BF_FocalElementList BF_getMaxList(BF_criterionFun criterion, const BF_BeliefFunction beliefFunction,
+		const int maxCard, const Sets_Set powerset);
+
+/**
+ * Gets the list of focals (i.e. with a value > 0) corresponding to the minimum
+ * for a given criterion for a BF_BeliefFunction. The cardinality should be at
+ * least of 1 as the empty set is not considered. This function is useful if you
+ * there may be several set elements with the same value for the belief function.
+ * the difference with BF_getMin() is that if there are several focal elements
+ * with the minimum value, they will be all returned.
+ * @param criterion Criterion used to find the minimum
+ * @param beliefFunction Function from which we extract the minima.
+ * @param maxCard The maximum authorized cardinality of the max Element (0 = no card limit).
+ * @param powerset The powerset generated from the size of the elements
+ * @return The BF_FocalElement (Element + mass) list corresponding to the maximum.
+ * Must be freed with BF_freeFocalElementList().
+ */
+BF_FocalElementList BF_getMinList(BF_criterionFun criterion, const BF_BeliefFunction beliefFunction,
 		const int maxCard, const Sets_Set powerset);
 
 /**
