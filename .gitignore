@@ -1,7 +1,7 @@
 #build directory
 build/
-
-
+doc/html
+doc/latex
 
 #################
 ## Eclipse
