@@ -23,7 +23,7 @@ Sets_Set powerset;
 static void setup() {
     char const *sensorTypes[] = {"S1", "S2"};
     double sensorMeasures[] = {300.0, 400.0};
-	beliefStructure = BFS_loadBeliefStructure("unittest");
+	beliefStructure = BFS_loadBeliefStructure(BELIEF_DEFINITION_PATH, "unittest");
 
 	evidences = BFS_getEvidence(beliefStructure, sensorTypes, sensorMeasures, SENSOR_NB);
 }

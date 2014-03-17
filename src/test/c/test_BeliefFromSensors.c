@@ -15,7 +15,7 @@
 BFS_BeliefStructure beliefStructurePresence;
 
 static void setup(void) {
-	beliefStructurePresence = BFS_loadBeliefStructure("presence");
+	beliefStructurePresence = BFS_loadBeliefStructure(BELIEF_DEFINITION_PATH, "presence");
 }
 
 static void teardown(void) {
@@ -179,7 +179,7 @@ BF_FocalElement focalElementMinus20, focalElement5, focalElement60, focalElement
 BF_BeliefFunction beliefFunction5;
 
 static void setupProjection(void) {
-	beliefStructurePresence = BFS_loadBeliefStructure("presence");
+	beliefStructurePresence = BFS_loadBeliefStructure(BELIEF_DEFINITION_PATH, "presence");
 	soundBelief = getSensorBelief(beliefStructurePresence, "sound");
 	focalElementMinus20 = BFS_getBeliefValue(soundBelief->beliefOnElements[0], -20.0,
 	    		beliefStructurePresence.refList.card);

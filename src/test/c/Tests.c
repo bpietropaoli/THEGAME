@@ -225,7 +225,7 @@ void Tests_beliefsFromSensors(){
     fprintf(f,"Test of belief structure loading:\n");
     fprintf(f,"*******************************\n");
     /*Loading: */
-    bs = BFS_loadBeliefStructure("presence");
+    bs = BFS_loadBeliefStructure(BFS_PATH, "presence");
 
     /*Printing: */
     str = BFS_beliefStructureToString(bs);
@@ -241,7 +241,7 @@ void Tests_beliefsFromSensors(){
     fprintf(f,"Test of getBeliefValue:\n");
     fprintf(f,"*******************************\n");
     /*Loading a belief structure: */
-    bs = BFS_loadBeliefStructure("presence");
+    bs = BFS_loadBeliefStructure(BFS_PATH, "presence");
     /*Print a part of belief: */
     pob = bs.beliefs[0].beliefOnElements[0];
     str = BFS_partOfBeliefToString(pob, bs.refList);
@@ -467,7 +467,7 @@ void Tests_beliefsFromSensorsOptions(){
     fprintf(f, "**      Test of options:     **\n");
     fprintf(f, "*******************************\n");
     fprintf(f, "*******************************\n\n");
-    bs = BFS_loadBeliefStructure("optionTest");
+    bs = BFS_loadBeliefStructure(BFS_PATH, "optionTest");
     str = BFS_beliefStructureToString(bs);
     fprintf(f, "%s\n", str);
     free(str);
@@ -680,8 +680,8 @@ void Tests_tempo_specificity(){
 	f3 = fopen(path, "w");
 	sprintf(path, "./data/results/tempo-spec-temoin/Temporization-Specificity - General behavior");
 	f2 = fopen(path, "w");
-	bs = BFS_loadBeliefStructure("tempoSpec");
-	bs_temoin = BFS_loadBeliefStructure("tempoSpecTemoin");
+	bs = BFS_loadBeliefStructure(BFS_PATH, "tempoSpec");
+	bs_temoin = BFS_loadBeliefStructure(BFS_PATH, "tempoSpecTemoin");
 	
 	/*******************
 	 * Behavior resume *
@@ -1394,8 +1394,8 @@ void Tests_tempo_fusion(){
 			f3 = fopen(path, "w");
 			sprintf(path, "./data/results/tempo-fusion-temoin/R%d-B%d", (int)pow(2, l), k);
 			f2 = fopen(path, "w");
-			bs = BFS_loadBeliefStructure("tempoFusion");
-			bs_temoin = BFS_loadBeliefStructure("tempoFusionTemoin");
+			bs = BFS_loadBeliefStructure(BFS_PATH, "tempoFusion");
+			bs_temoin = BFS_loadBeliefStructure(BFS_PATH, "tempoFusionTemoin");
 			
 			/*With tempo: */
 			bf = BFS_getProjection(bs.beliefs[0], 0, 2);
@@ -1615,8 +1615,8 @@ void Tests_tempo_fusion(){
 	 */
 	for(k = 1; k < 10; k++){
 		for(l = 1; l < 5; l++){
-			bs = BFS_loadBeliefStructure("tempoFusion");
-			bs_temoin = BFS_loadBeliefStructure("tempoFusionTemoin");
+			bs = BFS_loadBeliefStructure(BFS_PATH, "tempoFusion");
+			bs_temoin = BFS_loadBeliefStructure(BFS_PATH, "tempoFusionTemoin");
 			/* Log files: */
 			sprintf(path, "./data/results/tempo-fusion/Convergence - R%d-B0.%d", (int)pow(2, l), k);
 			f3 = fopen(path, "w");
@@ -1654,8 +1654,8 @@ void Tests_tempo_fusion(){
 	 */
 	for(k = 1; k < 10; k++){
 		for(l = 1; l < 5; l++){
-			bs = BFS_loadBeliefStructure("tempoFusion");
-			bs_temoin = BFS_loadBeliefStructure("tempoFusionTemoin");
+			bs = BFS_loadBeliefStructure(BFS_PATH, "tempoFusion");
+			bs_temoin = BFS_loadBeliefStructure(BFS_PATH, "tempoFusionTemoin");
 			/* Log files: */
 			sprintf(path, "./data/results/tempo-fusion/Convergence then loss of evidence - R%d-B0.%d", (int)pow(2, l), k);
 			f3 = fopen(path, "w");
@@ -1713,8 +1713,8 @@ void Tests_tempo_fusion(){
 	 */
 	for(k = 1; k < 10; k++){
 		for(l = 1; l < 5; l++){
-			bs = BFS_loadBeliefStructure("tempoFusion");
-			bs_temoin = BFS_loadBeliefStructure("tempoFusionTemoin");
+			bs = BFS_loadBeliefStructure(BFS_PATH, "tempoFusion");
+			bs_temoin = BFS_loadBeliefStructure(BFS_PATH, "tempoFusionTemoin");
 			/* Log files: */
 			sprintf(path, "./data/results/tempo-fusion/Convergence then no real evidence - R%d-B0.%d", (int)pow(2, l), k);
 			f3 = fopen(path, "w");
@@ -1772,8 +1772,8 @@ void Tests_tempo_fusion(){
 	 */
 	for(k = 1; k < 10; k++){
 		for(l = 1; l < 5; l++){
-			bs = BFS_loadBeliefStructure("tempoFusion");
-			bs_temoin = BFS_loadBeliefStructure("tempoFusionTemoin");
+			bs = BFS_loadBeliefStructure(BFS_PATH, "tempoFusion");
+			bs_temoin = BFS_loadBeliefStructure(BFS_PATH, "tempoFusionTemoin");
 			/* Log files: */
 			sprintf(path, "./data/results/tempo-fusion/Effect of noise - R%d-B0.%d", (int)pow(2, l), k);
 			f3 = fopen(path, "w");
@@ -1851,8 +1851,8 @@ void Tests_tempo_fusion(){
 	 */
 	for(k = 1; k < 10; k++){
 		for(l = 1; l < 5; l++){
-			bs = BFS_loadBeliefStructure("tempoFusion");
-			bs_temoin = BFS_loadBeliefStructure("tempoFusionTemoin");
+			bs = BFS_loadBeliefStructure(BFS_PATH, "tempoFusion");
+			bs_temoin = BFS_loadBeliefStructure(BFS_PATH, "tempoFusionTemoin");
 			/* Log files: */
 			sprintf(path, "./data/results/tempo-fusion/Real state changes - R%d-B0.%d", (int)pow(2, l), k);
 			f3 = fopen(path, "w");
@@ -1918,8 +1918,8 @@ void Tests_tempo_fusion(){
 	for(k = 5; k < 10; k++){
 		for(l = 1; l < 5; l++){
 			for(m = 1; m < 5; m++){
-				bs = BFS_loadBeliefStructure("tempoFusion");
-				bs_temoin = BFS_loadBeliefStructure("tempoFusionTemoin");
+				bs = BFS_loadBeliefStructure(BFS_PATH, "tempoFusion");
+				bs_temoin = BFS_loadBeliefStructure(BFS_PATH, "tempoFusionTemoin");
 				/* Log files: */
 				sprintf(path, "./data/results/tempo-fusion/Real state changes (slow) - R%d-B0.%d-B0.%d", (int)pow(2, l), k, m);
 				f3 = fopen(path, "w");
@@ -1983,8 +1983,8 @@ void Tests_tempo_fusion(){
 	for(k = 1; k < 5; k++){
 		for(l = 1; l < 5; l++){
 			for(m = 5; m < 10; m++){
-				bs = BFS_loadBeliefStructure("tempoFusion");
-				bs_temoin = BFS_loadBeliefStructure("tempoFusionTemoin");
+				bs = BFS_loadBeliefStructure(BFS_PATH, "tempoFusion");
+				bs_temoin = BFS_loadBeliefStructure(BFS_PATH, "tempoFusionTemoin");
 				/* Log files: */
 				sprintf(path, "./data/results/tempo-fusion/Real state changes (fast) - R%d-B0.%d-B0.%d", (int)pow(2, l), k, m);
 				f3 = fopen(path, "w");
@@ -2099,7 +2099,7 @@ void Tests_beliefsFromBeliefs(){
     fprintf(f,"*******************************\n");
 	
 	bs_bfb = BFB_loadBeliefStructure("test9");
-	bs_test = BFS_loadBeliefStructure("test");
+	bs_test = BFS_loadBeliefStructure(BFS_PATH, "test");
 	
 	str = BFB_beliefStructureToString(bs_bfb);
 	fprintf(f, "%s\n", str);
@@ -2235,7 +2235,7 @@ void Test_beliefFunctions(){
 	fprintf(f,"*******************************\n");
     fprintf(f,"Test of cleanBeliefFunction():\n");
     fprintf(f,"*******************************\n");
-	bs = BFS_loadBeliefStructure("test9");
+	bs = BFS_loadBeliefStructure(BFS_PATH, "test9");
 	
 	bf = BFS_getProjection(bs.beliefs[0], 1000, bs.refList.card);
 	str = BF_beliefFunctionToString(bf, bs.refList);
@@ -2256,7 +2256,7 @@ void Test_beliefFunctions(){
     fprintf(f,"*******************************\n");
     fprintf(f,"Test BeliefStructure loading:\n");
     fprintf(f,"*******************************\n");
-    bs = BFS_loadBeliefStructure("test");
+    bs = BFS_loadBeliefStructure(BFS_PATH, "test");
     /*Printing: */
     str = BFS_beliefStructureToString(bs);
     fprintf(f,"%s\n", str);
@@ -3389,22 +3389,22 @@ int Tests_runTests(int nbIterations, int write){
     fprintf(f,"*******************************\n");*/
     
     /*Load belief structure: */
-    bs = BFS_loadBeliefStructure("test");
+    bs = BFS_loadBeliefStructure(BFS_PATH, "test");
     /*str = BFS_beliefStructureToString(bs);
     fprintf(f, "%s\n", str);
     free(str);*/
 
-    bs2 = BFS_loadBeliefStructure("test5");
+    bs2 = BFS_loadBeliefStructure(BFS_PATH, "test5");
     /*str = BFS_beliefStructureToString(bs2);
     fprintf(f, "%s\n", str);
     free(str);*/
 
-    bs3 = BFS_loadBeliefStructure("test7");
+    bs3 = BFS_loadBeliefStructure(BFS_PATH, "test7");
     /*str = BFS_beliefStructureToString(bs3);
     fprintf(f, "%s\n", str);
     free(str);*/
 
-    bs4 = BFS_loadBeliefStructure("test9");
+    bs4 = BFS_loadBeliefStructure(BFS_PATH, "test9");
     /*str = BFS_beliefStructureToString(bs4);
     fprintf(f, "%s\n", str);
     free(str);*/
