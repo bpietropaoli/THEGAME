@@ -32,26 +32,20 @@ I advise to build it out of source directory as follow :
 	mkdir build && cd build
 	#to enable debug use -DCMAKE_BUILD_TYPE=Debug
 	cmake -DCMAKE_BUILD_TYPE=Release ..
+	#And then build the library
 	make
 	
 This will build the libraries (static and shared) in build/lib/Release.
 
-
 The given main in Tests.c launches a ton of tests to check if everything is okay. 
 If you built as told before, you can launch the test program with `make test`.
-
 
 Building the documentation
 ==========================
 
-Building the documentation requires doxygen.
-
-To build the documentation :
-
-	cd doc
-	doxygen Doxyfile
-
-This will build the html documentation under doc/html.
+Building the documentation requires doxygen and cmake. In your build directory,
+just call `make doc` after doing the steps described in the compiling part, 
+this will build your documentation in generatedDoc/html. 
 
 Please, check the documentation for the way to use this little library, 
 get the references and the version notes.

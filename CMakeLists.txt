@@ -31,7 +31,20 @@ set_target_properties(
     COMPILE_FLAGS "-Wall -Wextra -Werror -pedantic"
     OUTPUT_NAME THEGAME
 )
-    
+
+# ====== documentation ======
+
+find_package(Doxygen)
+
+if(DOXYGEN_FOUND)
+    configure_file( doc/Doxyfile.in generatedDoc/Doxyfile @ONLY)
+    add_custom_target(doc
+    ${DOXYGEN_EXECUTABLE} ${CMAKE_CURRENT_BINARY_DIR}/generatedDoc/Doxyfile
+    WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/generatedDoc
+    COMMENT "Generating API documentation with Doxygen" VERBATIM
+    )
+    set_directory_properties(PROPERTIES ADDITIONAL_MAKE_CLEAN_FILES generatedDoc)
+endif(DOXYGEN_FOUND)
 
 # ====== testing =======
 
