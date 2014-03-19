@@ -15,16 +15,9 @@
  */
 
 
-#include <stdio.h>
-#include <stdint.h>
-#include <stdlib.h>
-#include <string.h>
-#include <math.h>
-#include <time.h>
-#include <ctype.h>
+
 
 #include "BeliefsFromRandomness.h"
-#include "config.h"
 
 /**
  * This module provides with methods to randomly generate mass functions. It is roughly based on common

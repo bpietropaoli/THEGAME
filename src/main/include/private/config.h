@@ -98,6 +98,10 @@
 
 #endif /* DEBUG */
 
+
+
+
+
 /**
  * @mainpage Belief Functions Implementation
  * @section intro_sec Introduction
@@ -124,21 +128,35 @@
  *
  * What it does:
  * @li Sets: creation and manipulation of sets (required for belief functions) and generation of powersets.
- * @li Belief functions: manipulation, fusion, characterization and decision making from belief functions. 
+ * @li Belief functions: manipulation, fusion/combination, characterization and decision making from belief functions. 
  *
  * The building of belief functions has been implemented in three cases:
  * @li Using raw sensor measures --> BeliefsFromSensors module
  * @li Transforming belief functions --> BeliefsFromBeliefs module
  * @li Random generation of belief functions --> BeliefsFromRandomness module
  *
- * @section compil_sec Compilation
- * To compile, it is mandatory to include the math library (-lm) and the real-time library (-lrt). @n
+ * @section compil_sec Compiling
+ * The Project needs cmake to be built.
+ * 
+ * Before building, you can change the config of the library in order to add or
+ * remove some model checking for instance (but the current configuration should
+ * work fine most of the time).  
  *
- * The file config.h enables the configuration of compilation (Windows/Unix and debug or not).
- * Once you are sure that everything is okay (sufficient memory, valid files, valid models), you can
- * comment the DEBUG, CHECK_SUM, CHECK_VALUES, CHECK_MODELS and CHECK_COMPATIBILITY defines to gain in performance. @n
- * The makefile is here to help you to compile everything. Replace the main by yours and just do a "make". The default
- * compilation options are quite constraining so feel free to remove some on them such as -pedantic...
+ * I advise to build it out of source directory as follow:
+ *
+ * @code
+ *	#create an out of source build dir
+ *	mkdir build && cd build
+ *	#to enable debug use -DCMAKE_BUILD_TYPE=Debug
+ *	cmake -DCMAKE_BUILD_TYPE=Release ..
+ *	make
+ * @endcode
+ *	
+ * This will build the libraries (static and shared) in build/lib/Release.
+ * 
+ *
+ * The given main in Tests.c launches a ton of tests to check if everything is okay. 
+ * If you built as told before, you can launch the test program with "make test".
  * 
  * If this is the first time you use this library, please have a look at the documentation or refer to the 
  * raw code given in Tests.c to see how the functions are used and called (a tutorial page is coming!).
@@ -190,7 +208,8 @@
  * @li R.R. Yager - On the Dempster-Shafer framework and new combination rules - Information Sciences 41,
  * 93-138 - 1987
  * @li ... and more I'm sure I forgot... (Anyway, you should find it in the doc of concerned functions if required...)
- * In any case, this theory is HUGE and it is hard to cite everything you can find on it! 
+ * In any case, this theory is HUGE and it is hard to cite everything you can find on it! To find more resources, 
+ * you may refer to the Belief Functions and Applications Society (http://www.bfasociety.org/).
  *
  * @section contact_sec Contact
  * Bastien Pietropaoli @n
@@ -236,13 +255,13 @@
  * of a name of option and a float parameter. Only variation and tempo are now available.
  * @li Decision support functions: those functions implemented in BeliefFunctions module enable to find
  * a max or a min of a belief function for mass, belief and plausibility.
- * The implementation is totally mem-check free (checked with Valgrind) !
+ * The implementation is totally mem-check free (checked with Valgrind)!
  *
  * @section v04_1_subsec V0.4.1
  * Correction of the function used to measure time in the tempo option. (Use of clock_gettime(CLOCK_REALTIME,...) now) @n
  * Adding Sets_elementToBitString() in Sets module. @n
  * Adding the DEBUG, CHECK_SUM and CHECK_VALUES defines in config.h to customize the compilation and optimize a little more the execution time. @n
- * The implementation is totally mem-check free (checked with Valgrind) !
+ * The implementation is totally mem-check free (checked with Valgrind)!
  *
  * @section v04_2_subsec V0.4.2
  * Adding Sets_elementFromNumber() and Sets_numberFromElement() in Sets module. @n
@@ -255,7 +274,7 @@
  * of the last belief using the temporization. @n
  * The BeliefFunctions module has been cleaned of all the "elementSize" by putting this variable inside the BF_BeliefFunction structure. @n
  * Diverse things have been renamed to be more explicit and/or more convenient for the extension of the library. @n
- * The implementation is totally mem-check free (checked with Valgrind) ! @n
+ * The implementation is totally mem-check free (checked with Valgrind)! @n
  *
  * @section v05_subsec V0.5
  * Addition of a new applicative module BeliefsFromBeliefs. @n
@@ -263,7 +282,7 @@
  * Addition of a new function to clean the BF_BeliefFunction of non-focal elements. @n
  * Addition of a new way of doing temporization using Dubois & Prade's combination rule instead of a discrimination based on specificity. @n
  * In the module BeliefsFromSensors, the options are now managed using flags, thus it should be easier to add and manage new options! @n
- * The implementation is totally mem-check free (checked with Valgrind) ! @n
+ * The implementation is totally mem-check free (checked with Valgrind)! @n
  *
  * @section v051_subsec V0.5.1
  * Addition of a new function to normalize the BF_BeliefFunctions. @n
@@ -272,7 +291,7 @@
  * No more warnings! (compiling well with -Wall -Wextra -Werror -pedantic) @n
  * In BeliefsFromSensors.h, a new define has been added to enable the use of different clocks for the temporization. It is useful when working on diverse OS implementing different clocks. @n
  * Some combination rules have been reimplemented to increase performance and this is much better ! (I got rid of the dirty code of the beginning of the project...) @n
- * The implementation is totally mem-check free (checked with Valgrind) ! @n
+ * The implementation is totally mem-check free (checked with Valgrind)! @n
  *
  * @section Version_contact Contact
  * Bastien Pietropaoli @n
@@ -422,3 +441,6 @@
  */
 
 #endif
+
+
+

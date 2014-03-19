@@ -5,25 +5,26 @@
  *      Author: arichez
  */
 
+/**
+ * This module contains the elements related to belief function combination.
+ *
+ * Different combination rules are implemented but one is free to implement some more.
+ *
+ * If you have no idea to what corresponds exactly a function, you should refer to the given references.
+ * @file BeliefCombinations.c
+ * @author Bastien Pietropaoli (bastien.pietropaoli@inria.fr)
+ * @brief CORE: Gives functions to combine belief functions.
+ */
+
+
+#include "BeliefCombinations.h"
+
+
 
 /**
  * @name Combination rules
  * @{
  */
-
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <math.h>
-
-#include "BeliefFunctions.h"
-#include "BeliefCombinations.h"
-#include "config.h"
-
-/* !!!!!!!!!!!!!!!!!!!!!!!!!!!!
-   !!! Operation on beliefs !!!
-   !!!!!!!!!!!!!!!!!!!!!!!!!!!!  */
-
 
 
 BF_BeliefFunction BF_fullDempsterCombination(const BF_BeliefFunction* m, const int nbM){
@@ -857,6 +858,15 @@ BF_BeliefFunction BF_combination(const BF_BeliefFunction m1, const BF_BeliefFunc
     }
 }
 
+/** @} */
+
+
+
+/**
+ * @name Operations using combinations
+ * @{
+ */
+
 
 float* BF_autoConflict(const BF_BeliefFunction m, const int maxDegree){
     float* voidMasses = NULL;
@@ -890,3 +900,7 @@ float* BF_autoConflict(const BF_BeliefFunction m, const int maxDegree){
 
 
 /** @} */
+
+
+
+

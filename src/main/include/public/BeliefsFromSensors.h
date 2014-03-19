@@ -20,9 +20,12 @@
 
 
 #include <time.h>
+#include <ctype.h>
+#include <errno.h>
 
-#include "Sets.h"
-#include "BeliefFunctions.h"
+#include "ReadDirectory.h"
+#include "ReadFile.h"
+#include "BeliefCombinations.h"
 
 /**
  * @section BFS_intro Introduction
@@ -31,8 +34,8 @@
  * For more details, please check those references. Anyway, I will try here to introduce the way it works.
  * The mass functions are built from raw sensor measures using predefined set of mass functions (cf figure).
  * 
- * @image html images/FunctionSet.jpg "Example of set of mass functions for a Phidget motion sensor connected to an USB Interface Kit and applied to the detection of presence."
- * @image latex images/FunctionSet.jpg "Example of set of mass functions for a Phidget motion sensor connected to an USB Interface Kit and applied to the detection of presence." width=8cm
+ * @image html ../images/FunctionSet.jpg "Example of set of mass functions for a Phidget motion sensor connected to an USB Interface Kit and applied to the detection of presence."
+ * @image latex ../images/FunctionSet.jpg "Example of set of mass functions for a Phidget motion sensor connected to an USB Interface Kit and applied to the detection of presence." width=8cm
  *
  * In the given example, whenever a raw sensor measure is received, the projection on this set gives 
  * the resulting mass function. For instance, with the given figure, if the motion
@@ -125,11 +128,11 @@
 #define BFS_VALUES_NAME "values"
 
 /**
- * @def WEIRD_NUMBER
+ * @def NO_MEASURE
  * A weird number to get a vacuous mass function when doing a projection if used as sensor measure.
  * It's usefull to handle easily the loss of measure !
  */
-#define WEIRD_NUMBER -1048576
+#define NO_MEASURE -1048576
 
 /**
  * @def CLOCK_ID
@@ -372,7 +375,7 @@ BF_BeliefFunction* BFS_getEvidence(const BFS_BeliefStructure bs, const char* con
  * Get the instant BF_BeliefFunction from a model of belief associated to a sensor.
  * Options are applied here.
  * @param BFS_SensorBeliefs The model of belief associated to the sensor
- * @param sensorMeasure The measure given by the sensor (if sensorMeasure == WEIRD_NUMBER, projection = vacuous + tempo discrimination)
+ * @param sensorMeasure The measure given by the sensor (if sensorMeasure == NO_MEASURE, projection = vacuous + tempo discrimination)
  * @param elementSize The number of digits in the representation of elements
  * @return The projection (the instant BF_BeliefFunction) associated to the sensor and its measure.
  */

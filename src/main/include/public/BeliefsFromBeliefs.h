@@ -18,16 +18,18 @@
 #ifndef DEF_BELIEFSFROMBELIEFS
 #define DEF_BELIEFSFROMBELIEFS
 
-#include "Sets.h"
 #include "BeliefFunctions.h"
+#include "ReadDirectory.h"
+#include "ReadFile.h"
+
 
 
 /**
  * @section BFB_intro Introduction
  * This module enables the building of belief functions from another belief function based on another frame of discernment.
  *
- * @image html images/Xzibit.jpg "What Xzibit thinks of this module."
- * @image latex images/Xzibit.jpg "What Xzibit thinks of this module." width=8cm
+ * @image html ../images/Xzibit.jpg "What Xzibit thinks of this module."
+ * @image latex ../images/Xzibit.jpg "What Xzibit thinks of this module." width=8cm
  *
  * The concept of this transformation is based on the paper "Propagating Belief Functions in Qualitative Markov Trees" by G. Shafer et al. (1987).
  * Using relations between frames or simply by dividing huge frames of discernment into subframes, it is possible to work on smaller frames and

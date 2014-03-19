@@ -18,6 +18,11 @@
 #ifndef DEF_SETS
 #define DEF_SETS
 
+#include <math.h>
+
+#include "ReadFile.h"
+#include "config.h"
+
 /**
  * @file Sets.h
  * @author Bastien Pietropaoli (bastien.pietropaoli@inria.fr)

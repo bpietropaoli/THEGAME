@@ -15,19 +15,8 @@
  */
 
 
-#include <stdio.h>
-#include <stdint.h>
-#include <stdlib.h>
-#include <string.h>
-#include <math.h>
-#include <ctype.h>
-#include <errno.h>
-
 #include "BeliefsFromSensors.h"
-#include "BeliefCombinations.h"
-#include "ReadDirectory.h"
-#include "ReadFile.h"
-#include "config.h"
+
 
 /**
  * @section BFS_intro Introduction
@@ -36,8 +25,8 @@
  * For more details, please check those references. Anyway, I will try here to introduce the way it works.
  * The mass functions are built from raw sensor measures using predefined set of mass functions (cf figure).
  * 
- * @image html images/FunctionSet.jpg "Example of set of mass functions for a Phidget motion sensor connected to an USB Interface Kit and applied to the detection of presence."
- * @image latex images/FunctionSet.jpg "Example of set of mass functions for a Phidget motion sensor connected to an USB Interface Kit and applied to the detection of presence." width=8cm
+ * @image html ../images/FunctionSet.jpg "Example of set of mass functions for a Phidget motion sensor connected to an USB Interface Kit and applied to the detection of presence."
+ * @image latex ../images/FunctionSet.jpg "Example of set of mass functions for a Phidget motion sensor connected to an USB Interface Kit and applied to the detection of presence." width=8cm
  *
  * In the given example, whenever a raw sensor measure is received, the projection on this set gives 
  * the resulting mass function. For instance, with the given figure, if the motion
@@ -472,7 +461,7 @@ BF_BeliefFunction BFS_getProjection(const BFS_SensorBeliefs sb, const double sen
     int l = 0;
     #endif
 	
-	if(sensorMeasure != WEIRD_NUMBER){
+	if(sensorMeasure != NO_MEASURE){
 		/*Memory allocation: */
 		projection.nbFocals = sb.nbFocal;
 		projection.focals = malloc(sizeof(BF_FocalElement) * sb.nbFocal);
@@ -549,7 +538,7 @@ BF_BeliefFunction BFS_getProjection(const BFS_SensorBeliefs sb, const double sen
         
         /*If not first measure: */
         if(sb.options[parameterIndex].util[1].bf.focals != NULL){
-        	if(sensorMeasure != WEIRD_NUMBER){
+        	if(sensorMeasure != NO_MEASURE){
 		        temp = BFS_temporization_fusion(sb.options[parameterIndex].util[1].bf, projection, 
 		                                 sb.options[parameterIndex].parameter, sb.options[parameterIndex].util[0].time, 
 		                                 &(sb.options[parameterIndex]));
