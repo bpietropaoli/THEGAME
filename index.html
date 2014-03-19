@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset='utf-8' />
+    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
+    <meta name="description" content="THE GAME : THeory of Evidence in a lanGuage Adapted for Many Embedded systems" />
+
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+
+    <title>THE GAME</title>
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          <a id="forkme_banner" href="https://github.com/bpietropaoli/THEGAME">View on GitHub</a>
+
+          <h1 id="project_title">THE GAME</h1>
+          <h2 id="project_tagline">THeory of Evidence in a lanGuage Adapted for Many Embedded systems</h2>
+
+            <section id="downloads">
+              <a class="zip_download_link" href="https://github.com/bpietropaoli/THEGAME/zipball/master">Download this project as a .zip file</a>
+              <a class="tar_download_link" href="https://github.com/bpietropaoli/THEGAME/tarball/master">Download this project as a tar.gz file</a>
+            </section>
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <h1>
+<a name="introduction" class="anchor" href="#introduction"><span class="octicon octicon-link"></span></a>Introduction</h1>
+
+<p>This little library implements the basics of the belief functions theory. There are also a few application modules in order to build belief functions from sensor measures, from other belief functions and from randomness. To run tests and a bench for speed of execution, please use the Tests module.</p>
+
+<p>If some errors occur anywhere when running the tests, please check the format of the files in data/beliefs/. If you're stuck anywhere, feel free to send me an email. Different combination rules are implemented to enable the use in the case of different theories. The source code is documented AND commented (most of the time) to facilitate its reading. It is also under the Apache License v2 (<a href="http://www.apache.org/licenses/LICENSE-2.0">http://www.apache.org/licenses/LICENSE-2.0</a>), thus, if any error/weird behaviour/bad coding is detected, please feel free to correct the source code and to notify me at one of the given email addresses given below.
+If something you need is missing and you do not want/cannot contribute to the development, send me an email with your request and I will see what I can do for you! This library is meant to be as useful as possible! Anyway, please read the doc and specifically the description of modules, it should explain what it does.</p>
+
+<p>This implementation of the basics of the belief functions theory has been created in order to test the applicability of this theory in specific cases. Thus, every part has not been developped yet! Anyway, a huge part of the work consisted in the optimization of the computations. Even if that's not perfert at all, a real effort has been done.</p>
+
+<p>What it does:</p>
+
+<ul>
+<li>Sets: creation and manipulation of sets (required for belief functions) and generation of powersets.</li>
+<li>Belief functions: manipulation, fusion/combination, characterization and decision making from belief functions.</li>
+</ul><p>The building of belief functions has been implemented in three cases:</p>
+
+<ul>
+<li>Using raw sensor measures –&gt; BeliefsFromSensors module</li>
+<li>Transforming belief functions –&gt; BeliefsFromBeliefs module</li>
+<li>Random generation of belief functions –&gt; BeliefsFromRandomness module</li>
+</ul><hr><h1>
+<a name="compiling" class="anchor" href="#compiling"><span class="octicon octicon-link"></span></a>Compiling</h1>
+
+<p>The Project needs cmake to be built.</p>
+
+<p>Before building, you can change the config of the library in order to add or remove some model checking for instance (but the current configuration should work fine most of the time).</p>
+
+<p>I advise to build it out of source directory as follow:</p>
+
+<pre><code>#create an out of source build dir
+mkdir build &amp;&amp; cd build
+#to enable debug use -DCMAKE_BUILD_TYPE=Debug
+cmake -DCMAKE_BUILD_TYPE=Release ..
+make
+</code></pre>
+
+<p>This will build the libraries (static and shared) in build/lib/Release.</p>
+
+<p>The given main in Tests.c launches a ton of tests to check if everything is okay. If you built as told before, you can launch the test program with "make test".</p>
+
+<p>If this is the first time you use this library, please have a look at the documentation or refer to the raw code given in Tests.c to see how the functions are used and called (a tutorial page is coming!).</p>
+
+<hr><h1>
+<a name="building-the-documentation" class="anchor" href="#building-the-documentation"><span class="octicon octicon-link"></span></a>Building the documentation</h1>
+
+<p>Building the documentation requires doxygen.
+To build the documentation :</p>
+
+<pre><code>cd doc
+doxygen Doxyfile
+</code></pre>
+
+<p>This will build the html documentation under doc/html.
+Please, check the documentation for the way to use this little library, 
+get the references and the version notes.
+The config.h file is used to customize what you need. Look for it!</p>
+
+<hr><h1>
+<a name="philosophy-of-the-implementation" class="anchor" href="#philosophy-of-the-implementation"><span class="octicon octicon-link"></span></a>Philosophy of the implementation</h1>
+
+<p>It seems important to me to give more precision on how to use this little library and how it has been implemented.</p>
+
+<p>The main idea in this library is that I don't want to lose any information at any time. Thus, all the functions that could modify mass functions create new ones instead! You have to free every new mass function that has been created. To create copies of mass function, there is a function called BF_copyBeliefFunction() which creates a hard copy of the given mass function. That is why most functions work with structures instead of pointers on structures.</p>
+
+<hr><h1>
+<a name="main-references" class="anchor" href="#main-references"><span class="octicon octicon-link"></span></a>Main References</h1>
+
+<ul>
+<li>A. Appriou - Formulation et traitement de l'incertain en analyse multi-senseurs - Quatorzieme Colloque GRETSI, Juan les Pins, 951-953 - 1993</li>
+<li>A. Appriou - Multisensor Signal Processing in the Framework of the Theory of Evidence - Application of Mathematical Signal Processing Techniques to Mission Systems, pages (5-1) (5 - 31), Research and Technology Organization - 1999</li>
+<li>A. Appriou - Approche generique de la gestion de l'incertain dans les processus de fusion multisenseur - Traitement du Signal 22, 307-319 - 2005</li>
+<li>L.-Z. Chen, W.-K. Shi, Y. Deng, Z.-F. Zhu - A new fusion approach based on distance of evidences - Journal of Zhejiang University Science 61(5), pg 476-482 - 2005</li>
+<li>D. Dubois &amp; H. Prade - Representation and combination of uncertainty with belief functions and possibility measures - Computational intelligence 4, 244-264 - 1988</li>
+<li>R. Haenni and N. Lehmann - Implementing belief function computations - International Journal of Intelligent Systems volume 18, pg 31-49 - 2003</li>
+<li>A. Martin - Modelisation et gestion du conflit dans la theorie des fonctions de croyance - These d'Habilitation a Diriger des Recherches de l'Universite Occidentale - 2009</li>
+<li>C.K. Murphy - Combining belief functions when evidence conflicts - Decision support systems 29 1-9 - 1999</li>
+<li>B. Pietropaoli, M. Dominici, F. Weis - Multi-sensor data fusion within the belief functions framework - In S. Balandin, Y. Koucheryavy, H. Hu (eds.) NEW2AN, Lecture Notes in Computer Science, vol. 6869, pp. 123-134. Springer - 2011</li>
+<li>B. Pietropaoli, M. Dominici, F. Weis - Belief Inference with Timed Evidence : Methodology and Application using Sensors in a Smart Home - Proceedings of Belief 2012, Compiegne, France, 9-11 May - 2012</li>
+<li>V. Ricquebourg, M. Delafosse, L. Delahoche, B. Marhic, A. Jolly-Desodt, D. Menga, - Fault Detection by Combining Redundant Sensors: a Conflict ApproachWithin the TBM Framework. In COGIS 2007, COGnitive systems with Interactive Sensors. Stanford University - 2007</li>
+<li>G. Shafer - A mathematical theory of evidence - Princeton University Press, Princeton, NJ, 1976</li>
+<li>Ph. Smets and R. Kruse - The Transferable Belief Model for Belief Representation - Smets Ph. and Motro A. eds. Uncertainty Management in information systems: from needs to solutions. UMIS Workshop, Puerto Andraix.Volume 2. pg 91-111 - 1993</li>
+<li>Ph. Smets - The transferable belief model for quantified belief representation - In D. M. Gabbay &amp; P. Smets (Eds.), Handbook of defeasible reasoning and uncertainty management - 1998</li>
+<li>Ph. Smets - Theories of Uncertainty - Handbook of fuzzy computing, Section B.1.1.2 - 1995</li>
+<li>P. Vannoorenberghe - Un etat de l'art sur les fonctions de croyance appliquees au traitement de l'information - 2002</li>
+<li>R.R. Yager - On the Dempster-Shafer framework and new combination rules - Information Sciences 41, 93-138 - 1987
+... and more I'm sure I forgot... (Anyway, you should find it in the doc of concerned functions if required...) In any case, this theory is HUGE and it is hard to cite everything you can find on it! To find more resources, you may refer to the Belief Functions and Applications Society (<a href="http://www.bfasociety.org/">http://www.bfasociety.org/</a>).</li>
+</ul><hr><h1>
+<a name="contact" class="anchor" href="#contact"><span class="octicon octicon-link"></span></a>Contact</h1>
+
+<p>Bastien Pietropaoli</p>
+
+<p>Email: <a href="mailto:bastien.pietropaoli@inria.fr">bastien.pietropaoli@inria.fr</a> or <a href="mailto:bastien.pietropaoli@gmail.com">bastien.pietropaoli@gmail.com</a></p>
+
+<p>Copyright 2011-2013, EDF. This software was developed with the collaboration of INRIA (Bastien Pietropaoli)</p>
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        <p class="copyright">THE GAME maintained by <a href="https://github.com/bpietropaoli">bpietropaoli</a></p>
+        <p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
+      </footer>
+    </div>
+
+    
+
+  </body>
+</html>
