@@ -1,9 +1,8 @@
 2 elements
 A
 B
-5 points
+4 points
 100 0
 200 0.15
-300 0.15
 400 0.15
 500 0
