@@ -353,13 +353,6 @@ void BF_freeBeliefFunction(BF_BeliefFunction* bf);
  */
 void BF_freeBeliefPoint(BF_FocalElement *bp);
 
-/**
- * Frees the memory used by a list (array contained by the list and elements
- * contained  by the array).
- * @param list List to free.
- */
-void BF_freeFocalElementList(BF_FocalElementList *list);
-
 /** @} */
 
 /* !!! Conversion into strings !!! */

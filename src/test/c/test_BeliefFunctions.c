@@ -11,6 +11,7 @@
 
 #include "BeliefFunctions.h"
 #include "BeliefsFromSensors.h"
+#include "BeliefDecisions.h"
 #include "unit_tests.h"
 
 
@@ -47,9 +48,9 @@ static void teardown() {
 
 START_TEST(getMaxMassReturnsTheRightValues) {
 	/* The max for the first evidence function should be 0.75 for {A}*/
-	BF_FocalElement element = BF_getMax(BF_M, evidences[0], 0,
+	BF_FocalElement element = BF_getMax(BF_m, evidences[0], 0,
 			beliefStructure.powerset);
-	float value = BF_M(evidences[0], element.element);
+	float value = BF_m(evidences[0], element.element);
 	ck_assert(Sets_equals(element.element, A, ATOM_NB));
 	assert_flt_equals(0.75f, value, BF_PRECISION);
 	BF_freeBeliefPoint(&element);
@@ -84,9 +85,9 @@ END_TEST
 
 START_TEST(getMinMassReturnsTheRightValues) {
 	/* The minimum focal element (i.e. > 0) for the first evidence function should be B with 0.1*/
-	BF_FocalElement element = BF_getMin(BF_M, evidences[0], 0,
+	BF_FocalElement element = BF_getMin(BF_m, evidences[0], 0,
 			beliefStructure.powerset);
-	float value = BF_M(evidences[0], element.element);
+	float value = BF_m(evidences[0], element.element);
 	ck_assert(Sets_equals(element.element, B, ATOM_NB));
 	assert_flt_equals(0.1f, value, BF_PRECISION);
 	BF_freeBeliefPoint(&element);
@@ -111,7 +112,7 @@ END_TEST
 
 START_TEST(getListMaxMassReturnsTheRightNumberOfValues) {
 	/* There should be two max for the second belief function */
-	BF_FocalElementList list = BF_getMaxList(BF_M, evidences[1], 0,
+	BF_FocalElementList list = BF_getMaxList(BF_m, evidences[1], 0,
 			beliefStructure.powerset);
 	ck_assert_int_eq(2, list.size);
 	BF_freeFocalElementList(&list);
@@ -119,7 +120,7 @@ START_TEST(getListMaxMassReturnsTheRightNumberOfValues) {
 END_TEST
 
 START_TEST(getListMaxMassReturnsTheRightFocals) {
-	BF_FocalElementList list = BF_getMaxList(BF_M, evidences[1], 0,
+	BF_FocalElementList list = BF_getMaxList(BF_m, evidences[1], 0,
 				beliefStructure.powerset);
 	int i;
 	for (i = 0; i < list.size; ++i) {
@@ -137,7 +138,7 @@ END_TEST
 
 START_TEST(getListMinMassReturnsTheRightNumberOfValues) {
 	/* There should be two min for the second belief function */
-	BF_FocalElementList list = BF_getMinList(BF_M, evidences[1], 0,
+	BF_FocalElementList list = BF_getMinList(BF_m, evidences[1], 0,
 					beliefStructure.powerset);
 	ck_assert_int_eq(2, list.size);
 	BF_freeFocalElementList(&list);
@@ -146,7 +147,7 @@ END_TEST
 
 START_TEST(getListMinMassReturnsTheRightFocals) {
 	/* There should be two min for the second belief function */
-	BF_FocalElementList list = BF_getMinList(BF_M, evidences[1], 0,
+	BF_FocalElementList list = BF_getMinList(BF_m, evidences[1], 0,
 					beliefStructure.powerset);
 	int i;
 	for(i = 0; i < list.size;++i) {
