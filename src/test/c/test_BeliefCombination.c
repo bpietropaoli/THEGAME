@@ -55,10 +55,10 @@ START_TEST(SmetsCombinationValuesAreOk) {
 	 * m(void) = 0.525
 	 * m(C) = 0
 	 */
-	assert_flt_equals(0.45f, BF_M(SmetsFusedBelief, A), BF_PRECISION);
-	assert_flt_equals(0.025f, BF_M(SmetsFusedBelief, B), BF_PRECISION);
-	assert_flt_equals(0.0f, BF_M(SmetsFusedBelief, C), BF_PRECISION);
-	assert_flt_equals(0.525f, BF_M(SmetsFusedBelief, VOID), BF_PRECISION);
+	assert_flt_equals(0.45f, BF_m(SmetsFusedBelief, A), BF_PRECISION);
+	assert_flt_equals(0.025f, BF_m(SmetsFusedBelief, B), BF_PRECISION);
+	assert_flt_equals(0.0f, BF_m(SmetsFusedBelief, C), BF_PRECISION);
+	assert_flt_equals(0.525f, BF_m(SmetsFusedBelief, VOID), BF_PRECISION);
 }
 END_TEST
 
@@ -71,9 +71,9 @@ START_TEST(DempsterCombinationValuesAreOk) {
 	 * m(AuB) = 0
 	 * m(C) = 0
 	 */
-	assert_flt_equals(0.45 / 0.475, BF_M(DempsterfusedBelief, A), BF_PRECISION);
-	assert_flt_equals(0.025 / 0.475, BF_M(DempsterfusedBelief, B), BF_PRECISION);
-	assert_flt_equals(0.0f, BF_M(DempsterfusedBelief, VOID), BF_PRECISION);
+	assert_flt_equals(0.45 / 0.475, BF_m(DempsterfusedBelief, A), BF_PRECISION);
+	assert_flt_equals(0.025 / 0.475, BF_m(DempsterfusedBelief, B), BF_PRECISION);
+	assert_flt_equals(0.0f, BF_m(DempsterfusedBelief, VOID), BF_PRECISION);
 }
 END_TEST
 

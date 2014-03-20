@@ -22,6 +22,7 @@
 #include "Tests.h"
 #include "config.h"
 #include "BeliefsFromSensors.h"
+#include "BeliefDecisions.h"
 
 /**
  * @file Tests.c
@@ -690,7 +691,7 @@ void Tests_tempo_specificity(){
 	bf = BFS_getProjection(bs.beliefs[0], 0, 2);
 	for(j = 0; j < bf.nbFocals; j++){
 		str = Sets_elementToString(bf.focals[j].element, bs.refList);
-		fprintf(f3,  "%d;%s;%f\n", 0, str, BF_M(bf, bf.focals[j].element));
+		fprintf(f3,  "%d;%s;%f\n", 0, str, BF_m(bf, bf.focals[j].element));
 		free(str);
 	}
 	BF_freeBeliefFunction(&bf);
@@ -698,7 +699,7 @@ void Tests_tempo_specificity(){
 	bf_temoin = BFS_getProjection(bs_temoin.beliefs[0], 0, 2);
 	for(j = 0; j < bf_temoin.nbFocals; j++){
 		str = Sets_elementToString(bf_temoin.focals[j].element, bs_temoin.refList);
-		fprintf(f2,  "%d;%s;%f\n", 0, str, BF_M(bf_temoin, bf_temoin.focals[j].element));
+		fprintf(f2,  "%d;%s;%f\n", 0, str, BF_m(bf_temoin, bf_temoin.focals[j].element));
 		free(str);
 	}
 	BF_freeBeliefFunction(&bf_temoin);
@@ -707,7 +708,7 @@ void Tests_tempo_specificity(){
 	bf = BFS_getProjection(bs.beliefs[0], 8*10, 2);
 	for(j = 0; j < bf.nbFocals; j++){
 		str = Sets_elementToString(bf.focals[j].element, bs.refList);
-		fprintf(f3,  "%d;%s;%f\n", 1, str, BF_M(bf, bf.focals[j].element));
+		fprintf(f3,  "%d;%s;%f\n", 1, str, BF_m(bf, bf.focals[j].element));
 		free(str);
 	}
 	BF_freeBeliefFunction(&bf);
@@ -715,7 +716,7 @@ void Tests_tempo_specificity(){
 	bf_temoin = BFS_getProjection(bs_temoin.beliefs[0], 8*10, 2);
 	for(j = 0; j < bf_temoin.nbFocals; j++){
 		str = Sets_elementToString(bf_temoin.focals[j].element, bs_temoin.refList);
-		fprintf(f2,  "%d;%s;%f\n", 1, str, BF_M(bf_temoin, bf_temoin.focals[j].element));
+		fprintf(f2,  "%d;%s;%f\n", 1, str, BF_m(bf_temoin, bf_temoin.focals[j].element));
 		free(str);
 	}
 	BF_freeBeliefFunction(&bf_temoin);
@@ -728,7 +729,7 @@ void Tests_tempo_specificity(){
 		bf = BFS_getProjection(bs.beliefs[0], 8*10, 2);
 		for(j = 0; j < bf.nbFocals; j++){
 			str = Sets_elementToString(bf.focals[j].element, bs.refList);
-			fprintf(f3,  "%d;%s;%f\n", i+2, str, BF_M(bf, bf.focals[j].element));
+			fprintf(f3,  "%d;%s;%f\n", i+2, str, BF_m(bf, bf.focals[j].element));
 			free(str);
 		}
 		BF_freeBeliefFunction(&bf);
@@ -736,7 +737,7 @@ void Tests_tempo_specificity(){
 		bf_temoin = BFS_getProjection(bs_temoin.beliefs[0], 8*10, 2);
 		for(j = 0; j < bf_temoin.nbFocals; j++){
 			str = Sets_elementToString(bf_temoin.focals[j].element, bs_temoin.refList);
-			fprintf(f2,  "%d;%s;%f\n", i+2, str, BF_M(bf_temoin, bf_temoin.focals[j].element));
+			fprintf(f2,  "%d;%s;%f\n", i+2, str, BF_m(bf_temoin, bf_temoin.focals[j].element));
 			free(str);
 		}
 		BF_freeBeliefFunction(&bf_temoin);
@@ -751,7 +752,7 @@ void Tests_tempo_specificity(){
 		bf = BFS_getProjection(bs.beliefs[0], 200 + 8*10, 2);
 		for(j = 0; j < bf.nbFocals; j++){
 			str = Sets_elementToString(bf.focals[j].element, bs.refList);
-			fprintf(f3,  "%d;%s;%f\n", i+12, str, BF_M(bf, bf.focals[j].element));
+			fprintf(f3,  "%d;%s;%f\n", i+12, str, BF_m(bf, bf.focals[j].element));
 			free(str);
 		}
 		BF_freeBeliefFunction(&bf);
@@ -759,7 +760,7 @@ void Tests_tempo_specificity(){
 		bf_temoin = BFS_getProjection(bs_temoin.beliefs[0], 200 + 8*10, 2);
 		for(j = 0; j < bf_temoin.nbFocals; j++){
 			str = Sets_elementToString(bf_temoin.focals[j].element, bs_temoin.refList);
-			fprintf(f2,  "%d;%s;%f\n", i+12, str, BF_M(bf_temoin, bf_temoin.focals[j].element));
+			fprintf(f2,  "%d;%s;%f\n", i+12, str, BF_m(bf_temoin, bf_temoin.focals[j].element));
 			free(str);
 		}
 		BF_freeBeliefFunction(&bf_temoin);
@@ -774,7 +775,7 @@ void Tests_tempo_specificity(){
 		bf = BFS_getProjection(bs.beliefs[0], 200 + 8*10, 2);
 		for(j = 0; j < bf.nbFocals; j++){
 		str = Sets_elementToString(bf.focals[j].element, bs.refList);
-			fprintf(f3,  "%d;%s;%f\n", i+22, str, BF_M(bf, bf.focals[j].element));
+			fprintf(f3,  "%d;%s;%f\n", i+22, str, BF_m(bf, bf.focals[j].element));
 			free(str);
 		}
 		BF_freeBeliefFunction(&bf);
@@ -782,7 +783,7 @@ void Tests_tempo_specificity(){
 		bf_temoin = BFS_getProjection(bs_temoin.beliefs[0], 200 + 8*10, 2);
 		for(j = 0; j < bf_temoin.nbFocals; j++){
 			str = Sets_elementToString(bf_temoin.focals[j].element, bs_temoin.refList);
-			fprintf(f2,  "%d;%s;%f\n", i+22, str, BF_M(bf_temoin, bf_temoin.focals[j].element));
+			fprintf(f2,  "%d;%s;%f\n", i+22, str, BF_m(bf_temoin, bf_temoin.focals[j].element));
 			free(str);
 		}
 		BF_freeBeliefFunction(&bf_temoin);
@@ -792,7 +793,7 @@ void Tests_tempo_specificity(){
 	bf = BFS_getProjection(bs.beliefs[0], 4*10, 2);
 	for(j = 0; j < bf.nbFocals; j++){
 		str = Sets_elementToString(bf.focals[j].element, bs.refList);
-		fprintf(f3,  "%d;%s;%f\n", 26, str, BF_M(bf, bf.focals[j].element));
+		fprintf(f3,  "%d;%s;%f\n", 26, str, BF_m(bf, bf.focals[j].element));
 		free(str);
 	}
 	BF_freeBeliefFunction(&bf);
@@ -800,7 +801,7 @@ void Tests_tempo_specificity(){
 	bf_temoin = BFS_getProjection(bs_temoin.beliefs[0], 4*10, 2);
 	for(j = 0; j < bf_temoin.nbFocals; j++){
 		str = Sets_elementToString(bf_temoin.focals[j].element, bs_temoin.refList);
-		fprintf(f2,  "%d;%s;%f\n", 26, str, BF_M(bf_temoin, bf_temoin.focals[j].element));
+		fprintf(f2,  "%d;%s;%f\n", 26, str, BF_m(bf_temoin, bf_temoin.focals[j].element));
 		free(str);
 	}
 	BF_freeBeliefFunction(&bf_temoin);
@@ -810,7 +811,7 @@ void Tests_tempo_specificity(){
 		bf = BFS_getProjection(bs.beliefs[0], 200 + 8*10, 2);
 		for(j = 0; j < bf.nbFocals; j++){
 			str = Sets_elementToString(bf.focals[j].element, bs.refList);
-			fprintf(f3,  "%d;%s;%f\n", i+27, str, BF_M(bf, bf.focals[j].element));
+			fprintf(f3,  "%d;%s;%f\n", i+27, str, BF_m(bf, bf.focals[j].element));
 			free(str);
 		}
 		BF_freeBeliefFunction(&bf);
@@ -818,7 +819,7 @@ void Tests_tempo_specificity(){
 		bf_temoin = BFS_getProjection(bs_temoin.beliefs[0], 200 + 8*10, 2);
 		for(j = 0; j < bf_temoin.nbFocals; j++){
 			str = Sets_elementToString(bf_temoin.focals[j].element, bs_temoin.refList);
-			fprintf(f2,  "%d;%s;%f\n", i+27, str, BF_M(bf_temoin, bf_temoin.focals[j].element));
+			fprintf(f2,  "%d;%s;%f\n", i+27, str, BF_m(bf_temoin, bf_temoin.focals[j].element));
 			free(str);
 		}
 		BF_freeBeliefFunction(&bf_temoin);
@@ -829,7 +830,7 @@ void Tests_tempo_specificity(){
 		bf = BFS_getProjection(bs.beliefs[0], 0, 2);
 		for(j = 0; j < bf.nbFocals; j++){
 			str = Sets_elementToString(bf.focals[j].element, bs.refList);
-			fprintf(f3,  "%d;%s;%f\n", i+32, str, BF_M(bf, bf.focals[j].element));
+			fprintf(f3,  "%d;%s;%f\n", i+32, str, BF_m(bf, bf.focals[j].element));
 			free(str);
 		}
 		BF_freeBeliefFunction(&bf);
@@ -837,7 +838,7 @@ void Tests_tempo_specificity(){
 		bf_temoin = BFS_getProjection(bs_temoin.beliefs[0], 0, 2);
 		for(j = 0; j < bf_temoin.nbFocals; j++){
 			str = Sets_elementToString(bf_temoin.focals[j].element, bs_temoin.refList);
-			fprintf(f2,  "%d;%s;%f\n", i+32, str, BF_M(bf_temoin, bf_temoin.focals[j].element));
+			fprintf(f2,  "%d;%s;%f\n", i+32, str, BF_m(bf_temoin, bf_temoin.focals[j].element));
 			free(str);
 		}
 		BF_freeBeliefFunction(&bf_temoin);
@@ -861,7 +862,7 @@ void Tests_tempo_specificity(){
 	bf = BFS_getProjection(bs.beliefs[0], 0, 2);
 	for(j = 0; j < bf.nbFocals; j++){
 		str = Sets_elementToString(bf.focals[j].element, bs.refList);
-		fprintf(f3,  "%d;%s;%f\n", 0, str, BF_M(bf, bf.focals[j].element));
+		fprintf(f3,  "%d;%s;%f\n", 0, str, BF_m(bf, bf.focals[j].element));
 		free(str);
 	}
 	BF_freeBeliefFunction(&bf);
@@ -869,7 +870,7 @@ void Tests_tempo_specificity(){
 	bf_temoin = BFS_getProjection(bs_temoin.beliefs[0], 0, 2);
 	for(j = 0; j < bf_temoin.nbFocals; j++){
 		str = Sets_elementToString(bf_temoin.focals[j].element, bs_temoin.refList);
-		fprintf(f2,  "%d;%s;%f\n", 0, str, BF_M(bf_temoin, bf_temoin.focals[j].element));
+		fprintf(f2,  "%d;%s;%f\n", 0, str, BF_m(bf_temoin, bf_temoin.focals[j].element));
 		free(str);
 	}
 	BF_freeBeliefFunction(&bf_temoin);
@@ -879,7 +880,7 @@ void Tests_tempo_specificity(){
 	bf = BFS_getProjection(bs.beliefs[0], 8*10, 2);
 	for(j = 0; j < bf.nbFocals; j++){
 		str = Sets_elementToString(bf.focals[j].element, bs.refList);
-		fprintf(f3,  "%d;%s;%f\n", 1, str, BF_M(bf, bf.focals[j].element));
+		fprintf(f3,  "%d;%s;%f\n", 1, str, BF_m(bf, bf.focals[j].element));
 		free(str);
 	}
 	BF_freeBeliefFunction(&bf);
@@ -887,7 +888,7 @@ void Tests_tempo_specificity(){
 	bf_temoin = BFS_getProjection(bs_temoin.beliefs[0], 8*10, 2);
 	for(j = 0; j < bf_temoin.nbFocals; j++){
 		str = Sets_elementToString(bf_temoin.focals[j].element, bs_temoin.refList);
-		fprintf(f2,  "%d;%s;%f\n", 1, str, BF_M(bf_temoin, bf_temoin.focals[j].element));
+		fprintf(f2,  "%d;%s;%f\n", 1, str, BF_m(bf_temoin, bf_temoin.focals[j].element));
 		free(str);
 	}
 	BF_freeBeliefFunction(&bf_temoin);
@@ -900,7 +901,7 @@ void Tests_tempo_specificity(){
 		bf = BFS_getProjection(bs.beliefs[0], 8*10, 2);
 		for(j = 0; j < bf.nbFocals; j++){
 			str = Sets_elementToString(bf.focals[j].element, bs.refList);
-			fprintf(f3,  "%d;%s;%f\n", i+2, str, BF_M(bf, bf.focals[j].element));
+			fprintf(f3,  "%d;%s;%f\n", i+2, str, BF_m(bf, bf.focals[j].element));
 			free(str);
 		}
 		BF_freeBeliefFunction(&bf);
@@ -908,7 +909,7 @@ void Tests_tempo_specificity(){
 		bf_temoin = BFS_getProjection(bs_temoin.beliefs[0], 8*10, 2);
 		for(j = 0; j < bf_temoin.nbFocals; j++){
 			str = Sets_elementToString(bf_temoin.focals[j].element, bs_temoin.refList);
-			fprintf(f2,  "%d;%s;%f\n", i+2, str, BF_M(bf_temoin, bf_temoin.focals[j].element));
+			fprintf(f2,  "%d;%s;%f\n", i+2, str, BF_m(bf_temoin, bf_temoin.focals[j].element));
 			free(str);
 		}
 		BF_freeBeliefFunction(&bf_temoin);
@@ -922,7 +923,7 @@ void Tests_tempo_specificity(){
 		bf = BFS_getProjection(bs.beliefs[0], 200 + 8*10, 2);
 		for(j = 0; j < bf.nbFocals; j++){
 			str = Sets_elementToString(bf.focals[j].element, bs.refList);
-			fprintf(f3,  "%d;%s;%f\n", i+12, str, BF_M(bf, bf.focals[j].element));
+			fprintf(f3,  "%d;%s;%f\n", i+12, str, BF_m(bf, bf.focals[j].element));
 			free(str);
 		}
 		BF_freeBeliefFunction(&bf);
@@ -930,7 +931,7 @@ void Tests_tempo_specificity(){
 		bf_temoin = BFS_getProjection(bs_temoin.beliefs[0], 200 + 8*10, 2);
 		for(j = 0; j < bf_temoin.nbFocals; j++){
 			str = Sets_elementToString(bf_temoin.focals[j].element, bs_temoin.refList);
-			fprintf(f2,  "%d;%s;%f\n", i+12, str, BF_M(bf_temoin, bf_temoin.focals[j].element));
+			fprintf(f2,  "%d;%s;%f\n", i+12, str, BF_m(bf_temoin, bf_temoin.focals[j].element));
 			free(str);
 		}
 		BF_freeBeliefFunction(&bf_temoin);
@@ -944,7 +945,7 @@ void Tests_tempo_specificity(){
 		bf = BFS_getProjection(bs.beliefs[0], 3*10, 2);
 		for(j = 0; j < bf.nbFocals; j++){
 			str = Sets_elementToString(bf.focals[j].element, bs.refList);
-			fprintf(f3,  "%d;%s;%f\n", i+22, str, BF_M(bf, bf.focals[j].element));
+			fprintf(f3,  "%d;%s;%f\n", i+22, str, BF_m(bf, bf.focals[j].element));
 			free(str);
 		}
 		BF_freeBeliefFunction(&bf);
@@ -952,7 +953,7 @@ void Tests_tempo_specificity(){
 		bf_temoin = BFS_getProjection(bs_temoin.beliefs[0], 3*10, 2);
 		for(j = 0; j < bf_temoin.nbFocals; j++){
 			str = Sets_elementToString(bf_temoin.focals[j].element, bs_temoin.refList);
-			fprintf(f2,  "%d;%s;%f\n", i+22, str, BF_M(bf_temoin, bf_temoin.focals[j].element));
+			fprintf(f2,  "%d;%s;%f\n", i+22, str, BF_m(bf_temoin, bf_temoin.focals[j].element));
 			free(str);
 		}
 		BF_freeBeliefFunction(&bf_temoin);
@@ -977,7 +978,7 @@ void Tests_tempo_specificity(){
 	bf = BFS_getProjection(bs.beliefs[0], 0, 2);
 	for(j = 0; j < bf.nbFocals; j++){
 		str = Sets_elementToString(bf.focals[j].element, bs.refList);
-		fprintf(f3,  "%d;%s;%f\n", 0, str, BF_M(bf, bf.focals[j].element));
+		fprintf(f3,  "%d;%s;%f\n", 0, str, BF_m(bf, bf.focals[j].element));
 		free(str);
 	}
 	BF_freeBeliefFunction(&bf);
@@ -985,7 +986,7 @@ void Tests_tempo_specificity(){
 	bf_temoin = BFS_getProjection(bs_temoin.beliefs[0], 0, 2);
 	for(j = 0; j < bf_temoin.nbFocals; j++){
 		str = Sets_elementToString(bf_temoin.focals[j].element, bs_temoin.refList);
-		fprintf(f2,  "%d;%s;%f\n", 0, str, BF_M(bf_temoin, bf_temoin.focals[j].element));
+		fprintf(f2,  "%d;%s;%f\n", 0, str, BF_m(bf_temoin, bf_temoin.focals[j].element));
 		free(str);
 	}
 	BF_freeBeliefFunction(&bf_temoin);
@@ -995,7 +996,7 @@ void Tests_tempo_specificity(){
 	bf = BFS_getProjection(bs.beliefs[0], 7*10, 2);
 	for(j = 0; j < bf.nbFocals; j++){
 		str = Sets_elementToString(bf.focals[j].element, bs.refList);
-		fprintf(f3,  "%d;%s;%f\n", 1, str, BF_M(bf, bf.focals[j].element));
+		fprintf(f3,  "%d;%s;%f\n", 1, str, BF_m(bf, bf.focals[j].element));
 		free(str);
 	}
 	BF_freeBeliefFunction(&bf);
@@ -1003,7 +1004,7 @@ void Tests_tempo_specificity(){
 	bf_temoin = BFS_getProjection(bs_temoin.beliefs[0], 7*10, 2);
 	for(j = 0; j < bf_temoin.nbFocals; j++){
 		str = Sets_elementToString(bf_temoin.focals[j].element, bs_temoin.refList);
-		fprintf(f2,  "%d;%s;%f\n", 1, str, BF_M(bf_temoin, bf_temoin.focals[j].element));
+		fprintf(f2,  "%d;%s;%f\n", 1, str, BF_m(bf_temoin, bf_temoin.focals[j].element));
 		free(str);
 	}
 	BF_freeBeliefFunction(&bf_temoin);
@@ -1016,7 +1017,7 @@ void Tests_tempo_specificity(){
 		bf = BFS_getProjection(bs.beliefs[0], 7*10, 2);
 		for(j = 0; j < bf.nbFocals; j++){
 			str = Sets_elementToString(bf.focals[j].element, bs.refList);
-			fprintf(f3,  "%d;%s;%f\n", i+2, str, BF_M(bf, bf.focals[j].element));
+			fprintf(f3,  "%d;%s;%f\n", i+2, str, BF_m(bf, bf.focals[j].element));
 			free(str);
 		}
 		BF_freeBeliefFunction(&bf);
@@ -1024,7 +1025,7 @@ void Tests_tempo_specificity(){
 		bf_temoin = BFS_getProjection(bs_temoin.beliefs[0], 7*10, 2);
 		for(j = 0; j < bf_temoin.nbFocals; j++){
 			str = Sets_elementToString(bf_temoin.focals[j].element, bs_temoin.refList);
-			fprintf(f2,  "%d;%s;%f\n", i+2, str, BF_M(bf_temoin, bf_temoin.focals[j].element));
+			fprintf(f2,  "%d;%s;%f\n", i+2, str, BF_m(bf_temoin, bf_temoin.focals[j].element));
 			free(str);
 		}
 		BF_freeBeliefFunction(&bf_temoin);
@@ -1038,7 +1039,7 @@ void Tests_tempo_specificity(){
 	bf = BFS_getProjection(bs.beliefs[0], 4*10, 2);
 	for(j = 0; j < bf.nbFocals; j++){
 		str = Sets_elementToString(bf.focals[j].element, bs.refList);
-		fprintf(f3,  "%d;%s;%f\n", 12, str, BF_M(bf, bf.focals[j].element));
+		fprintf(f3,  "%d;%s;%f\n", 12, str, BF_m(bf, bf.focals[j].element));
 		free(str);
 	}
 	BF_freeBeliefFunction(&bf);
@@ -1046,7 +1047,7 @@ void Tests_tempo_specificity(){
 	bf_temoin = BFS_getProjection(bs_temoin.beliefs[0], 4*10, 2);
 	for(j = 0; j < bf_temoin.nbFocals; j++){
 		str = Sets_elementToString(bf_temoin.focals[j].element, bs_temoin.refList);
-		fprintf(f2,  "%d;%s;%f\n", 12, str, BF_M(bf_temoin, bf_temoin.focals[j].element));
+		fprintf(f2,  "%d;%s;%f\n", 12, str, BF_m(bf_temoin, bf_temoin.focals[j].element));
 		free(str);
 	}
 	/*Fluctuation: */
@@ -1054,7 +1055,7 @@ void Tests_tempo_specificity(){
 	bf = BFS_getProjection(bs.beliefs[0], 3*10, 2);
 	for(j = 0; j < bf.nbFocals; j++){
 		str = Sets_elementToString(bf.focals[j].element, bs.refList);
-		fprintf(f3,  "%d;%s;%f\n", 13, str, BF_M(bf, bf.focals[j].element));
+		fprintf(f3,  "%d;%s;%f\n", 13, str, BF_m(bf, bf.focals[j].element));
 		free(str);
 	}
 	BF_freeBeliefFunction(&bf);
@@ -1062,7 +1063,7 @@ void Tests_tempo_specificity(){
 	bf_temoin = BFS_getProjection(bs_temoin.beliefs[0], 3*10, 2);
 	for(j = 0; j < bf_temoin.nbFocals; j++){
 		str = Sets_elementToString(bf_temoin.focals[j].element, bs_temoin.refList);
-		fprintf(f2,  "%d;%s;%f\n", 13, str, BF_M(bf_temoin, bf_temoin.focals[j].element));
+		fprintf(f2,  "%d;%s;%f\n", 13, str, BF_m(bf_temoin, bf_temoin.focals[j].element));
 		free(str);
 	}
 	BF_freeBeliefFunction(&bf_temoin);
@@ -1072,7 +1073,7 @@ void Tests_tempo_specificity(){
 		bf = BFS_getProjection(bs.beliefs[0], 7*10, 2);
 		for(j = 0; j < bf.nbFocals; j++){
 			str = Sets_elementToString(bf.focals[j].element, bs.refList);
-			fprintf(f3,  "%d;%s;%f\n", i+14, str, BF_M(bf, bf.focals[j].element));
+			fprintf(f3,  "%d;%s;%f\n", i+14, str, BF_m(bf, bf.focals[j].element));
 			free(str);
 		}
 		BF_freeBeliefFunction(&bf);
@@ -1080,7 +1081,7 @@ void Tests_tempo_specificity(){
 		bf_temoin = BFS_getProjection(bs_temoin.beliefs[0],  7*10, 2);
 		for(j = 0; j < bf_temoin.nbFocals; j++){
 			str = Sets_elementToString(bf_temoin.focals[j].element, bs_temoin.refList);
-			fprintf(f2,  "%d;%s;%f\n", i+14, str, BF_M(bf_temoin, bf_temoin.focals[j].element));
+			fprintf(f2,  "%d;%s;%f\n", i+14, str, BF_m(bf_temoin, bf_temoin.focals[j].element));
 			free(str);
 		}
 		BF_freeBeliefFunction(&bf_temoin);
@@ -1090,7 +1091,7 @@ void Tests_tempo_specificity(){
 	bf = BFS_getProjection(bs.beliefs[0], 200 + 4*10, 2);
 	for(j = 0; j < bf.nbFocals; j++){
 		str = Sets_elementToString(bf.focals[j].element, bs.refList);
-		fprintf(f3,  "%d;%s;%f\n", 22, str, BF_M(bf, bf.focals[j].element));
+		fprintf(f3,  "%d;%s;%f\n", 22, str, BF_m(bf, bf.focals[j].element));
 		free(str);
 	}
 	BF_freeBeliefFunction(&bf);
@@ -1098,7 +1099,7 @@ void Tests_tempo_specificity(){
 	bf_temoin = BFS_getProjection(bs_temoin.beliefs[0], 200 + 4*10, 2);
 	for(j = 0; j < bf_temoin.nbFocals; j++){
 		str = Sets_elementToString(bf_temoin.focals[j].element, bs_temoin.refList);
-		fprintf(f2,  "%d;%s;%f\n", 22, str, BF_M(bf_temoin, bf_temoin.focals[j].element));
+		fprintf(f2,  "%d;%s;%f\n", 22, str, BF_m(bf_temoin, bf_temoin.focals[j].element));
 		free(str);
 	}
 	BF_freeBeliefFunction(&bf_temoin);
@@ -1107,7 +1108,7 @@ void Tests_tempo_specificity(){
 	bf = BFS_getProjection(bs.beliefs[0], 200 + 3*10, 2);
 	for(j = 0; j < bf.nbFocals; j++){
 		str = Sets_elementToString(bf.focals[j].element, bs.refList);
-		fprintf(f3,  "%d;%s;%f\n", 23, str, BF_M(bf, bf.focals[j].element));
+		fprintf(f3,  "%d;%s;%f\n", 23, str, BF_m(bf, bf.focals[j].element));
 		free(str);
 	}
 	BF_freeBeliefFunction(&bf);
@@ -1115,7 +1116,7 @@ void Tests_tempo_specificity(){
 	bf_temoin = BFS_getProjection(bs_temoin.beliefs[0], 200 + 3*10, 2);
 	for(j = 0; j < bf_temoin.nbFocals; j++){
 		str = Sets_elementToString(bf_temoin.focals[j].element, bs_temoin.refList);
-		fprintf(f2,  "%d;%s;%f\n", 23, str, BF_M(bf_temoin, bf_temoin.focals[j].element));
+		fprintf(f2,  "%d;%s;%f\n", 23, str, BF_m(bf_temoin, bf_temoin.focals[j].element));
 		free(str);
 	}
 	BF_freeBeliefFunction(&bf_temoin);
@@ -1125,7 +1126,7 @@ void Tests_tempo_specificity(){
 		bf = BFS_getProjection(bs.beliefs[0], 7*10, 2);
 		for(j = 0; j < bf.nbFocals; j++){
 			str = Sets_elementToString(bf.focals[j].element, bs.refList);
-			fprintf(f3,  "%d;%s;%f\n", i+24, str, BF_M(bf, bf.focals[j].element));
+			fprintf(f3,  "%d;%s;%f\n", i+24, str, BF_m(bf, bf.focals[j].element));
 			free(str);
 		}
 		BF_freeBeliefFunction(&bf);
@@ -1133,7 +1134,7 @@ void Tests_tempo_specificity(){
 		bf_temoin = BFS_getProjection(bs_temoin.beliefs[0],  7*10, 2);
 		for(j = 0; j < bf_temoin.nbFocals; j++){
 			str = Sets_elementToString(bf_temoin.focals[j].element, bs_temoin.refList);
-			fprintf(f2,  "%d;%s;%f\n", i+24, str, BF_M(bf_temoin, bf_temoin.focals[j].element));
+			fprintf(f2,  "%d;%s;%f\n", i+24, str, BF_m(bf_temoin, bf_temoin.focals[j].element));
 			free(str);
 		}
 		BF_freeBeliefFunction(&bf_temoin);
@@ -1143,7 +1144,7 @@ void Tests_tempo_specificity(){
 	bf = BFS_getProjection(bs.beliefs[0], 200 + 7*10, 2);
 	for(j = 0; j < bf.nbFocals; j++){
 		str = Sets_elementToString(bf.focals[j].element, bs.refList);
-		fprintf(f3,  "%d;%s;%f\n", 32, str, BF_M(bf, bf.focals[j].element));
+		fprintf(f3,  "%d;%s;%f\n", 32, str, BF_m(bf, bf.focals[j].element));
 		free(str);
 	}
 	BF_freeBeliefFunction(&bf);
@@ -1151,7 +1152,7 @@ void Tests_tempo_specificity(){
 	bf_temoin = BFS_getProjection(bs_temoin.beliefs[0], 200 + 7*10, 2);
 	for(j = 0; j < bf_temoin.nbFocals; j++){
 		str = Sets_elementToString(bf_temoin.focals[j].element, bs_temoin.refList);
-		fprintf(f2,  "%d;%s;%f\n", 32, str, BF_M(bf_temoin, bf_temoin.focals[j].element));
+		fprintf(f2,  "%d;%s;%f\n", 32, str, BF_m(bf_temoin, bf_temoin.focals[j].element));
 		free(str);
 	}
 	/*Return of the normal state: */
@@ -1160,7 +1161,7 @@ void Tests_tempo_specificity(){
 		bf = BFS_getProjection(bs.beliefs[0], 7*10, 2);
 		for(j = 0; j < bf.nbFocals; j++){
 			str = Sets_elementToString(bf.focals[j].element, bs.refList);
-			fprintf(f3,  "%d;%s;%f\n", i+33, str, BF_M(bf, bf.focals[j].element));
+			fprintf(f3,  "%d;%s;%f\n", i+33, str, BF_m(bf, bf.focals[j].element));
 			free(str);
 		}
 		BF_freeBeliefFunction(&bf);
@@ -1168,7 +1169,7 @@ void Tests_tempo_specificity(){
 		bf_temoin = BFS_getProjection(bs_temoin.beliefs[0],  7*10, 2);
 		for(j = 0; j < bf_temoin.nbFocals; j++){
 			str = Sets_elementToString(bf_temoin.focals[j].element, bs_temoin.refList);
-			fprintf(f2,  "%d;%s;%f\n", i+33, str, BF_M(bf_temoin, bf_temoin.focals[j].element));
+			fprintf(f2,  "%d;%s;%f\n", i+33, str, BF_m(bf_temoin, bf_temoin.focals[j].element));
 			free(str);
 		}
 		BF_freeBeliefFunction(&bf_temoin);
@@ -1178,7 +1179,7 @@ void Tests_tempo_specificity(){
 	bf = BFS_getProjection(bs.beliefs[0], 200 + 10*10, 2);
 	for(j = 0; j < bf.nbFocals; j++){
 		str = Sets_elementToString(bf.focals[j].element, bs.refList);
-		fprintf(f3,  "%d;%s;%f\n", 42, str, BF_M(bf, bf.focals[j].element));
+		fprintf(f3,  "%d;%s;%f\n", 42, str, BF_m(bf, bf.focals[j].element));
 		free(str);
 	}
 	BF_freeBeliefFunction(&bf);
@@ -1186,7 +1187,7 @@ void Tests_tempo_specificity(){
 	bf_temoin = BFS_getProjection(bs_temoin.beliefs[0], 200 + 10*10, 2);
 	for(j = 0; j < bf_temoin.nbFocals; j++){
 		str = Sets_elementToString(bf_temoin.focals[j].element, bs_temoin.refList);
-		fprintf(f2,  "%d;%s;%f\n", 42, str, BF_M(bf_temoin, bf_temoin.focals[j].element));
+		fprintf(f2,  "%d;%s;%f\n", 42, str, BF_m(bf_temoin, bf_temoin.focals[j].element));
 		free(str);
 	}
 	/*Return of the normal state: */
@@ -1195,7 +1196,7 @@ void Tests_tempo_specificity(){
 		bf = BFS_getProjection(bs.beliefs[0], 7*10, 2);
 		for(j = 0; j < bf.nbFocals; j++){
 			str = Sets_elementToString(bf.focals[j].element, bs.refList);
-			fprintf(f3,  "%d;%s;%f\n", i+43, str, BF_M(bf, bf.focals[j].element));
+			fprintf(f3,  "%d;%s;%f\n", i+43, str, BF_m(bf, bf.focals[j].element));
 			free(str);
 		}
 		BF_freeBeliefFunction(&bf);
@@ -1203,7 +1204,7 @@ void Tests_tempo_specificity(){
 		bf_temoin = BFS_getProjection(bs_temoin.beliefs[0],  7*10, 2);
 		for(j = 0; j < bf_temoin.nbFocals; j++){
 			str = Sets_elementToString(bf_temoin.focals[j].element, bs_temoin.refList);
-			fprintf(f2,  "%d;%s;%f\n", i+43, str, BF_M(bf_temoin, bf_temoin.focals[j].element));
+			fprintf(f2,  "%d;%s;%f\n", i+43, str, BF_m(bf_temoin, bf_temoin.focals[j].element));
 			free(str);
 		}
 		BF_freeBeliefFunction(&bf_temoin);
@@ -1230,7 +1231,7 @@ void Tests_tempo_specificity(){
 	bf = BFS_getProjection(bs.beliefs[0], 0, 2);
 	for(j = 0; j < bf.nbFocals; j++){
 		str = Sets_elementToString(bf.focals[j].element, bs.refList);
-		fprintf(f3,  "%d;%s;%f\n", 0, str, BF_M(bf, bf.focals[j].element));
+		fprintf(f3,  "%d;%s;%f\n", 0, str, BF_m(bf, bf.focals[j].element));
 		free(str);
 	}
 	BF_freeBeliefFunction(&bf);
@@ -1238,7 +1239,7 @@ void Tests_tempo_specificity(){
 	bf_temoin = BFS_getProjection(bs_temoin.beliefs[0], 0, 2);
 	for(j = 0; j < bf_temoin.nbFocals; j++){
 		str = Sets_elementToString(bf_temoin.focals[j].element, bs_temoin.refList);
-		fprintf(f2,  "%d;%s;%f\n", 0, str, BF_M(bf_temoin, bf_temoin.focals[j].element));
+		fprintf(f2,  "%d;%s;%f\n", 0, str, BF_m(bf_temoin, bf_temoin.focals[j].element));
 		free(str);
 	}
 	BF_freeBeliefFunction(&bf_temoin);
@@ -1247,7 +1248,7 @@ void Tests_tempo_specificity(){
 	bf = BFS_getProjection(bs.beliefs[0], 8*10, 2);
 	for(j = 0; j < bf.nbFocals; j++){
 		str = Sets_elementToString(bf.focals[j].element, bs.refList);
-		fprintf(f3,  "%d;%s;%f\n", 1, str, BF_M(bf, bf.focals[j].element));
+		fprintf(f3,  "%d;%s;%f\n", 1, str, BF_m(bf, bf.focals[j].element));
 		free(str);
 	}
 	BF_freeBeliefFunction(&bf);
@@ -1255,7 +1256,7 @@ void Tests_tempo_specificity(){
 	bf_temoin = BFS_getProjection(bs_temoin.beliefs[0], 8*10, 2);
 	for(j = 0; j < bf_temoin.nbFocals; j++){
 		str = Sets_elementToString(bf_temoin.focals[j].element, bs_temoin.refList);
-		fprintf(f2,  "%d;%s;%f\n", 1, str, BF_M(bf_temoin, bf_temoin.focals[j].element));
+		fprintf(f2,  "%d;%s;%f\n", 1, str, BF_m(bf_temoin, bf_temoin.focals[j].element));
 		free(str);
 	}
 	BF_freeBeliefFunction(&bf_temoin);
@@ -1268,7 +1269,7 @@ void Tests_tempo_specificity(){
 		bf = BFS_getProjection(bs.beliefs[0], 8*10, 2);
 		for(j = 0; j < bf.nbFocals; j++){
 			str = Sets_elementToString(bf.focals[j].element, bs.refList);
-			fprintf(f3,  "%d;%s;%f\n", i+2, str, BF_M(bf, bf.focals[j].element));
+			fprintf(f3,  "%d;%s;%f\n", i+2, str, BF_m(bf, bf.focals[j].element));
 			free(str);
 		}
 		BF_freeBeliefFunction(&bf);
@@ -1276,7 +1277,7 @@ void Tests_tempo_specificity(){
 		bf_temoin = BFS_getProjection(bs_temoin.beliefs[0], 8*10, 2);
 		for(j = 0; j < bf_temoin.nbFocals; j++){
 			str = Sets_elementToString(bf_temoin.focals[j].element, bs_temoin.refList);
-			fprintf(f2,  "%d;%s;%f\n", i+2, str, BF_M(bf_temoin, bf_temoin.focals[j].element));
+			fprintf(f2,  "%d;%s;%f\n", i+2, str, BF_m(bf_temoin, bf_temoin.focals[j].element));
 			free(str);
 		}
 		BF_freeBeliefFunction(&bf_temoin);
@@ -1287,7 +1288,7 @@ void Tests_tempo_specificity(){
 	bf = BFS_getProjection(bs.beliefs[0], 0*10, 2);
 	for(j = 0; j < bf.nbFocals; j++){
 		str = Sets_elementToString(bf.focals[j].element, bs.refList);
-		fprintf(f3,  "%d;%s;%f\n", 12, str, BF_M(bf, bf.focals[j].element));
+		fprintf(f3,  "%d;%s;%f\n", 12, str, BF_m(bf, bf.focals[j].element));
 		free(str);
 	}
 	BF_freeBeliefFunction(&bf);
@@ -1295,14 +1296,14 @@ void Tests_tempo_specificity(){
 	bf_temoin = BFS_getProjection(bs_temoin.beliefs[0], 0*10, 2);
 	for(j = 0; j < bf_temoin.nbFocals; j++){
 		str = Sets_elementToString(bf_temoin.focals[j].element, bs_temoin.refList);
-		fprintf(f2,  "%d;%s;%f\n", 12, str, BF_M(bf_temoin, bf_temoin.focals[j].element));
+		fprintf(f2,  "%d;%s;%f\n", 12, str, BF_m(bf_temoin, bf_temoin.focals[j].element));
 		free(str);
 	}
 	usleep(250000/pow(2,2));
 	bf = BFS_getProjection(bs.beliefs[0], 0*10, 2);
 	for(j = 0; j < bf.nbFocals; j++){
 		str = Sets_elementToString(bf.focals[j].element, bs.refList);
-		fprintf(f3,  "%d;%s;%f\n", 13, str, BF_M(bf, bf.focals[j].element));
+		fprintf(f3,  "%d;%s;%f\n", 13, str, BF_m(bf, bf.focals[j].element));
 		free(str);
 	}
 	BF_freeBeliefFunction(&bf);
@@ -1310,7 +1311,7 @@ void Tests_tempo_specificity(){
 	bf_temoin = BFS_getProjection(bs_temoin.beliefs[0], 0*10, 2);
 	for(j = 0; j < bf_temoin.nbFocals; j++){
 		str = Sets_elementToString(bf_temoin.focals[j].element, bs_temoin.refList);
-		fprintf(f2,  "%d;%s;%f\n", 13, str, BF_M(bf_temoin, bf_temoin.focals[j].element));
+		fprintf(f2,  "%d;%s;%f\n", 13, str, BF_m(bf_temoin, bf_temoin.focals[j].element));
 		free(str);
 	}
 	
@@ -1320,7 +1321,7 @@ void Tests_tempo_specificity(){
 		bf = BFS_getProjection(bs.beliefs[0], 8*10, 2);
 		for(j = 0; j < bf.nbFocals; j++){
 			str = Sets_elementToString(bf.focals[j].element, bs.refList);
-			fprintf(f3,  "%d;%s;%f\n", i+14, str, BF_M(bf, bf.focals[j].element));
+			fprintf(f3,  "%d;%s;%f\n", i+14, str, BF_m(bf, bf.focals[j].element));
 			free(str);
 		}
 		BF_freeBeliefFunction(&bf);
@@ -1328,7 +1329,7 @@ void Tests_tempo_specificity(){
 		bf_temoin = BFS_getProjection(bs_temoin.beliefs[0], 8*10, 2);
 		for(j = 0; j < bf_temoin.nbFocals; j++){
 			str = Sets_elementToString(bf_temoin.focals[j].element, bs_temoin.refList);
-			fprintf(f2,  "%d;%s;%f\n", i+14, str, BF_M(bf_temoin, bf_temoin.focals[j].element));
+			fprintf(f2,  "%d;%s;%f\n", i+14, str, BF_m(bf_temoin, bf_temoin.focals[j].element));
 			free(str);
 		}
 		BF_freeBeliefFunction(&bf_temoin);
@@ -1340,7 +1341,7 @@ void Tests_tempo_specificity(){
 		bf = BFS_getProjection(bs.beliefs[0], 0, 2);
 		for(j = 0; j < bf.nbFocals; j++){
 			str = Sets_elementToString(bf.focals[j].element, bs.refList);
-			fprintf(f3,  "%d;%s;%f\n", i+22, str, BF_M(bf, bf.focals[j].element));
+			fprintf(f3,  "%d;%s;%f\n", i+22, str, BF_m(bf, bf.focals[j].element));
 			free(str);
 		}
 		BF_freeBeliefFunction(&bf);
@@ -1348,7 +1349,7 @@ void Tests_tempo_specificity(){
 		bf_temoin = BFS_getProjection(bs_temoin.beliefs[0], 0, 2);
 		for(j = 0; j < bf_temoin.nbFocals; j++){
 			str = Sets_elementToString(bf_temoin.focals[j].element, bs_temoin.refList);
-			fprintf(f2,  "%d;%s;%f\n", i+22, str, BF_M(bf_temoin, bf_temoin.focals[j].element));
+			fprintf(f2,  "%d;%s;%f\n", i+22, str, BF_m(bf_temoin, bf_temoin.focals[j].element));
 			free(str);
 		}
 		BF_freeBeliefFunction(&bf_temoin);
@@ -1400,7 +1401,7 @@ void Tests_tempo_fusion(){
 			bf = BFS_getProjection(bs.beliefs[0], 0, 2);
 			for(j = 0; j < bf.nbFocals; j++){
 				str = Sets_elementToString(bf.focals[j].element, bs.refList);
-				fprintf(f3,  "%d;%s;%f\n", 0, str, BF_M(bf, bf.focals[j].element));
+				fprintf(f3,  "%d;%s;%f\n", 0, str, BF_m(bf, bf.focals[j].element));
 				free(str);
 			}
 			BF_freeBeliefFunction(&bf);
@@ -1408,7 +1409,7 @@ void Tests_tempo_fusion(){
 			bf_temoin = BFS_getProjection(bs_temoin.beliefs[0], 0, 2);
 			for(j = 0; j < bf_temoin.nbFocals; j++){
 				str = Sets_elementToString(bf_temoin.focals[j].element, bs_temoin.refList);
-				fprintf(f2,  "%d;%s;%f\n", 0, str, BF_M(bf_temoin, bf_temoin.focals[j].element));
+				fprintf(f2,  "%d;%s;%f\n", 0, str, BF_m(bf_temoin, bf_temoin.focals[j].element));
 				free(str);
 			}
 			BF_freeBeliefFunction(&bf_temoin);
@@ -1417,7 +1418,7 @@ void Tests_tempo_fusion(){
 			bf = BFS_getProjection(bs.beliefs[0], k*10, 2);
 			for(j = 0; j < bf.nbFocals; j++){
 				str = Sets_elementToString(bf.focals[j].element, bs.refList);
-				fprintf(f3,  "%d;%s;%f\n", 1, str, BF_M(bf, bf.focals[j].element));
+				fprintf(f3,  "%d;%s;%f\n", 1, str, BF_m(bf, bf.focals[j].element));
 				free(str);
 			}
 			BF_freeBeliefFunction(&bf);
@@ -1425,7 +1426,7 @@ void Tests_tempo_fusion(){
 			bf_temoin = BFS_getProjection(bs_temoin.beliefs[0], k*10, 2);
 			for(j = 0; j < bf_temoin.nbFocals; j++){
 				str = Sets_elementToString(bf_temoin.focals[j].element, bs_temoin.refList);
-				fprintf(f2,  "%d;%s;%f\n", 1, str, BF_M(bf_temoin, bf_temoin.focals[j].element));
+				fprintf(f2,  "%d;%s;%f\n", 1, str, BF_m(bf_temoin, bf_temoin.focals[j].element));
 				free(str);
 			}
 			BF_freeBeliefFunction(&bf_temoin);
@@ -1439,7 +1440,7 @@ void Tests_tempo_fusion(){
 				bf = BFS_getProjection(bs.beliefs[0], k*10, 2);
 				for(j = 0; j < bf.nbFocals; j++){
 					str = Sets_elementToString(bf.focals[j].element, bs.refList);
-					fprintf(f3,  "%d;%s;%f\n", i+2, str, BF_M(bf, bf.focals[j].element));
+					fprintf(f3,  "%d;%s;%f\n", i+2, str, BF_m(bf, bf.focals[j].element));
 					free(str);
 				}
 				BF_freeBeliefFunction(&bf);
@@ -1447,7 +1448,7 @@ void Tests_tempo_fusion(){
 				bf_temoin = BFS_getProjection(bs_temoin.beliefs[0], k*10, 2);
 				for(j = 0; j < bf_temoin.nbFocals; j++){
 					str = Sets_elementToString(bf_temoin.focals[j].element, bs_temoin.refList);
-					fprintf(f2,  "%d;%s;%f\n", i+2, str, BF_M(bf_temoin, bf_temoin.focals[j].element));
+					fprintf(f2,  "%d;%s;%f\n", i+2, str, BF_m(bf_temoin, bf_temoin.focals[j].element));
 					free(str);
 				}
 				BF_freeBeliefFunction(&bf_temoin);
@@ -1462,7 +1463,7 @@ void Tests_tempo_fusion(){
 				bf = BFS_getProjection(bs.beliefs[0], 200 + k*10, 2);
 				for(j = 0; j < bf.nbFocals; j++){
 					str = Sets_elementToString(bf.focals[j].element, bs.refList);
-					fprintf(f3,  "%d;%s;%f\n", i+12, str, BF_M(bf, bf.focals[j].element));
+					fprintf(f3,  "%d;%s;%f\n", i+12, str, BF_m(bf, bf.focals[j].element));
 					free(str);
 				}
 				BF_freeBeliefFunction(&bf);
@@ -1470,7 +1471,7 @@ void Tests_tempo_fusion(){
 				bf_temoin = BFS_getProjection(bs_temoin.beliefs[0], 200 + k*10, 2);
 				for(j = 0; j < bf_temoin.nbFocals; j++){
 					str = Sets_elementToString(bf_temoin.focals[j].element, bs_temoin.refList);
-					fprintf(f2,  "%d;%s;%f\n", i+12, str, BF_M(bf_temoin, bf_temoin.focals[j].element));
+					fprintf(f2,  "%d;%s;%f\n", i+12, str, BF_m(bf_temoin, bf_temoin.focals[j].element));
 					free(str);
 				}
 				BF_freeBeliefFunction(&bf_temoin);
@@ -1486,7 +1487,7 @@ void Tests_tempo_fusion(){
 				bf = BFS_getProjection(bs.beliefs[0], 200 + k*10, 2);
 				for(j = 0; j < bf.nbFocals; j++){
 					str = Sets_elementToString(bf.focals[j].element, bs.refList);
-					fprintf(f3,  "%d;%s;%f\n", i+22, str, BF_M(bf, bf.focals[j].element));
+					fprintf(f3,  "%d;%s;%f\n", i+22, str, BF_m(bf, bf.focals[j].element));
 					free(str);
 				}
 				BF_freeBeliefFunction(&bf);
@@ -1494,7 +1495,7 @@ void Tests_tempo_fusion(){
 				bf_temoin = BFS_getProjection(bs_temoin.beliefs[0], 200 + k*10, 2);
 				for(j = 0; j < bf_temoin.nbFocals; j++){
 					str = Sets_elementToString(bf_temoin.focals[j].element, bs_temoin.refList);
-					fprintf(f2,  "%d;%s;%f\n", i+22, str, BF_M(bf_temoin, bf_temoin.focals[j].element));
+					fprintf(f2,  "%d;%s;%f\n", i+22, str, BF_m(bf_temoin, bf_temoin.focals[j].element));
 					free(str);
 				}
 				BF_freeBeliefFunction(&bf_temoin);
@@ -1503,7 +1504,7 @@ void Tests_tempo_fusion(){
 			bf = BFS_getProjection(bs.beliefs[0], k*10, 2);
 			for(j = 0; j < bf.nbFocals; j++){
 				str = Sets_elementToString(bf.focals[j].element, bs.refList);
-				fprintf(f3,  "%d;%s;%f\n", 26, str, BF_M(bf, bf.focals[j].element));
+				fprintf(f3,  "%d;%s;%f\n", 26, str, BF_m(bf, bf.focals[j].element));
 				free(str);
 			}
 			BF_freeBeliefFunction(&bf);
@@ -1511,7 +1512,7 @@ void Tests_tempo_fusion(){
 			bf_temoin = BFS_getProjection(bs_temoin.beliefs[0], k*10, 2);
 			for(j = 0; j < bf_temoin.nbFocals; j++){
 				str = Sets_elementToString(bf_temoin.focals[j].element, bs_temoin.refList);
-				fprintf(f2,  "%d;%s;%f\n", 26, str, BF_M(bf_temoin, bf_temoin.focals[j].element));
+				fprintf(f2,  "%d;%s;%f\n", 26, str, BF_m(bf_temoin, bf_temoin.focals[j].element));
 				free(str);
 			}
 			BF_freeBeliefFunction(&bf_temoin);
@@ -1522,7 +1523,7 @@ void Tests_tempo_fusion(){
 				bf = BFS_getProjection(bs.beliefs[0], 200 + k*10, 2);
 				for(j = 0; j < bf.nbFocals; j++){
 					str = Sets_elementToString(bf.focals[j].element, bs.refList);
-					fprintf(f3,  "%d;%s;%f\n", i+27, str, BF_M(bf, bf.focals[j].element));
+					fprintf(f3,  "%d;%s;%f\n", i+27, str, BF_m(bf, bf.focals[j].element));
 					free(str);
 				}
 				BF_freeBeliefFunction(&bf);
@@ -1530,7 +1531,7 @@ void Tests_tempo_fusion(){
 				bf_temoin = BFS_getProjection(bs_temoin.beliefs[0], 200 + k*10, 2);
 				for(j = 0; j < bf_temoin.nbFocals; j++){
 					str = Sets_elementToString(bf_temoin.focals[j].element, bs_temoin.refList);
-					fprintf(f2,  "%d;%s;%f\n", i+27, str, BF_M(bf_temoin, bf_temoin.focals[j].element));
+					fprintf(f2,  "%d;%s;%f\n", i+27, str, BF_m(bf_temoin, bf_temoin.focals[j].element));
 					free(str);
 				}
 				BF_freeBeliefFunction(&bf_temoin);
@@ -1546,7 +1547,7 @@ void Tests_tempo_fusion(){
 				bf = BFS_getProjection(bs.beliefs[0], 200 + k*10, 2);
 				for(j = 0; j < bf.nbFocals; j++){
 					str = Sets_elementToString(bf.focals[j].element, bs.refList);
-					fprintf(f3,  "%d;%s;%f\n", i+32, str, BF_M(bf, bf.focals[j].element));
+					fprintf(f3,  "%d;%s;%f\n", i+32, str, BF_m(bf, bf.focals[j].element));
 					free(str);
 				}
 				BF_freeBeliefFunction(&bf);
@@ -1554,7 +1555,7 @@ void Tests_tempo_fusion(){
 				bf_temoin = BFS_getProjection(bs_temoin.beliefs[0], 200 + k*10, 2);
 				for(j = 0; j < bf_temoin.nbFocals; j++){
 					str = Sets_elementToString(bf_temoin.focals[j].element, bs_temoin.refList);
-					fprintf(f2,  "%d;%s;%f\n", i+32, str, BF_M(bf_temoin, bf_temoin.focals[j].element));
+					fprintf(f2,  "%d;%s;%f\n", i+32, str, BF_m(bf_temoin, bf_temoin.focals[j].element));
 					free(str);
 				}
 				BF_freeBeliefFunction(&bf_temoin);
@@ -1564,7 +1565,7 @@ void Tests_tempo_fusion(){
 			bf = BFS_getProjection(bs.beliefs[0], 90, 2);
 			for(j = 0; j < bf.nbFocals; j++){
 				str = Sets_elementToString(bf.focals[j].element, bs.refList);
-				fprintf(f3,  "%d;%s;%f\n", 36, str, BF_M(bf, bf.focals[j].element));
+				fprintf(f3,  "%d;%s;%f\n", 36, str, BF_m(bf, bf.focals[j].element));
 				free(str);
 			}
 			BF_freeBeliefFunction(&bf);
@@ -1572,7 +1573,7 @@ void Tests_tempo_fusion(){
 			bf_temoin = BFS_getProjection(bs_temoin.beliefs[0], 90, 2);
 			for(j = 0; j < bf_temoin.nbFocals; j++){
 				str = Sets_elementToString(bf_temoin.focals[j].element, bs_temoin.refList);
-				fprintf(f2,  "%d;%s;%f\n", 36, str, BF_M(bf_temoin, bf_temoin.focals[j].element));
+				fprintf(f2,  "%d;%s;%f\n", 36, str, BF_m(bf_temoin, bf_temoin.focals[j].element));
 				free(str);
 			}
 			BF_freeBeliefFunction(&bf_temoin);
@@ -1583,7 +1584,7 @@ void Tests_tempo_fusion(){
 				bf = BFS_getProjection(bs.beliefs[0], 200 + k*10, 2);
 				for(j = 0; j < bf.nbFocals; j++){
 					str = Sets_elementToString(bf.focals[j].element, bs.refList);
-					fprintf(f3,  "%d;%s;%f\n", i+37, str, BF_M(bf, bf.focals[j].element));
+					fprintf(f3,  "%d;%s;%f\n", i+37, str, BF_m(bf, bf.focals[j].element));
 					free(str);
 				}
 				BF_freeBeliefFunction(&bf);
@@ -1591,7 +1592,7 @@ void Tests_tempo_fusion(){
 				bf_temoin = BFS_getProjection(bs_temoin.beliefs[0], 200 + k*10, 2);
 				for(j = 0; j < bf_temoin.nbFocals; j++){
 					str = Sets_elementToString(bf_temoin.focals[j].element, bs_temoin.refList);
-					fprintf(f2,  "%d;%s;%f\n", i+37, str, BF_M(bf_temoin, bf_temoin.focals[j].element));
+					fprintf(f2,  "%d;%s;%f\n", i+37, str, BF_m(bf_temoin, bf_temoin.focals[j].element));
 					free(str);
 				}
 				BF_freeBeliefFunction(&bf_temoin);
@@ -1627,7 +1628,7 @@ void Tests_tempo_fusion(){
 				bf = BFS_getProjection(bs.beliefs[0], k*10, 2);
 				for(j = 0; j < bf.nbFocals; j++){
 					str = Sets_elementToString(bf.focals[j].element, bs.refList);
-					fprintf(f3,  "%d;%s;%f\n", i+1, str, BF_M(bf, bf.focals[j].element));
+					fprintf(f3,  "%d;%s;%f\n", i+1, str, BF_m(bf, bf.focals[j].element));
 					free(str);
 				}
 				BF_freeBeliefFunction(&bf);
@@ -1635,7 +1636,7 @@ void Tests_tempo_fusion(){
 				bf_temoin = BFS_getProjection(bs_temoin.beliefs[0], k*10, 2);
 				for(j = 0; j < bf_temoin.nbFocals; j++){
 					str = Sets_elementToString(bf_temoin.focals[j].element, bs_temoin.refList);
-					fprintf(f2,  "%d;%s;%f\n", i+1, str, BF_M(bf_temoin, bf_temoin.focals[j].element));
+					fprintf(f2,  "%d;%s;%f\n", i+1, str, BF_m(bf_temoin, bf_temoin.focals[j].element));
 					free(str);
 				}
 				BF_freeBeliefFunction(&bf_temoin);
@@ -1666,7 +1667,7 @@ void Tests_tempo_fusion(){
 				bf = BFS_getProjection(bs.beliefs[0], k*10, 2);
 				for(j = 0; j < bf.nbFocals; j++){
 					str = Sets_elementToString(bf.focals[j].element, bs.refList);
-					fprintf(f3,  "%d;%s;%f\n", i+1, str, BF_M(bf, bf.focals[j].element));
+					fprintf(f3,  "%d;%s;%f\n", i+1, str, BF_m(bf, bf.focals[j].element));
 					free(str);
 				}
 				BF_freeBeliefFunction(&bf);
@@ -1674,7 +1675,7 @@ void Tests_tempo_fusion(){
 				bf_temoin = BFS_getProjection(bs_temoin.beliefs[0], k*10, 2);
 				for(j = 0; j < bf_temoin.nbFocals; j++){
 					str = Sets_elementToString(bf_temoin.focals[j].element, bs_temoin.refList);
-					fprintf(f2,  "%d;%s;%f\n", i+1, str, BF_M(bf_temoin, bf_temoin.focals[j].element));
+					fprintf(f2,  "%d;%s;%f\n", i+1, str, BF_m(bf_temoin, bf_temoin.focals[j].element));
 					free(str);
 				}
 				BF_freeBeliefFunction(&bf_temoin);
@@ -1682,10 +1683,10 @@ void Tests_tempo_fusion(){
 	
 			for(i = 15; i < 30; i++){
 				usleep(250000/pow(2,l));
-				bf = BFS_getProjection(bs.beliefs[0], WEIRD_NUMBER, 2);
+				bf = BFS_getProjection(bs.beliefs[0], NO_MEASURE, 2);
 				for(j = 0; j < bf.nbFocals; j++){
 					str = Sets_elementToString(bf.focals[j].element, bs.refList);
-					fprintf(f3,  "%d;%s;%f\n", i+1, str, BF_M(bf, bf.focals[j].element));
+					fprintf(f3,  "%d;%s;%f\n", i+1, str, BF_m(bf, bf.focals[j].element));
 					free(str);
 				}
 				BF_freeBeliefFunction(&bf);
@@ -1693,7 +1694,7 @@ void Tests_tempo_fusion(){
 				/*bf_temoin = BFS_getProjection(bs_temoin.beliefs[0], WEIRD_NUMBER, 2);
 				for(j = 0; j < bf_temoin.nbFocals; j++){
 					str = Sets_elementToString(bf_temoin.focals[j].element, bs_temoin.refList);
-					fprintf(f2,  "%d;%s;%f\n", i, str, BF_M(bf_temoin, bf_temoin.focals[j].element));
+					fprintf(f2,  "%d;%s;%f\n", i, str, BF_m(bf_temoin, bf_temoin.focals[j].element));
 					free(str);
 				}
 				BF_freeBeliefFunction(&bf_temoin);*/
@@ -1725,7 +1726,7 @@ void Tests_tempo_fusion(){
 				bf = BFS_getProjection(bs.beliefs[0], k*10, 2);
 				for(j = 0; j < bf.nbFocals; j++){
 					str = Sets_elementToString(bf.focals[j].element, bs.refList);
-					fprintf(f3,  "%d;%s;%f\n", i+1, str, BF_M(bf, bf.focals[j].element));
+					fprintf(f3,  "%d;%s;%f\n", i+1, str, BF_m(bf, bf.focals[j].element));
 					free(str);
 				}
 				BF_freeBeliefFunction(&bf);
@@ -1733,7 +1734,7 @@ void Tests_tempo_fusion(){
 				bf_temoin = BFS_getProjection(bs_temoin.beliefs[0], k*10, 2);
 				for(j = 0; j < bf_temoin.nbFocals; j++){
 					str = Sets_elementToString(bf_temoin.focals[j].element, bs_temoin.refList);
-					fprintf(f2,  "%d;%s;%f\n", i+1, str, BF_M(bf_temoin, bf_temoin.focals[j].element));
+					fprintf(f2,  "%d;%s;%f\n", i+1, str, BF_m(bf_temoin, bf_temoin.focals[j].element));
 					free(str);
 				}
 				BF_freeBeliefFunction(&bf_temoin);
@@ -1744,7 +1745,7 @@ void Tests_tempo_fusion(){
 				bf = BFS_getProjection(bs.beliefs[0], 200, 2);
 				for(j = 0; j < bf.nbFocals; j++){
 					str = Sets_elementToString(bf.focals[j].element, bs.refList);
-					fprintf(f3,  "%d;%s;%f\n", i+1, str, BF_M(bf, bf.focals[j].element));
+					fprintf(f3,  "%d;%s;%f\n", i+1, str, BF_m(bf, bf.focals[j].element));
 					free(str);
 				}
 				BF_freeBeliefFunction(&bf);
@@ -1752,7 +1753,7 @@ void Tests_tempo_fusion(){
 				bf_temoin = BFS_getProjection(bs_temoin.beliefs[0], 200, 2);
 				for(j = 0; j < bf_temoin.nbFocals; j++){
 					str = Sets_elementToString(bf_temoin.focals[j].element, bs_temoin.refList);
-					fprintf(f2,  "%d;%s;%f\n", i+1, str, BF_M(bf_temoin, bf_temoin.focals[j].element));
+					fprintf(f2,  "%d;%s;%f\n", i+1, str, BF_m(bf_temoin, bf_temoin.focals[j].element));
 					free(str);
 				}
 				BF_freeBeliefFunction(&bf_temoin);
@@ -1784,7 +1785,7 @@ void Tests_tempo_fusion(){
 				bf = BFS_getProjection(bs.beliefs[0], k*10, 2);
 				for(j = 0; j < bf.nbFocals; j++){
 					str = Sets_elementToString(bf.focals[j].element, bs.refList);
-					fprintf(f3,  "%d;%s;%f\n", i+1, str, BF_M(bf, bf.focals[j].element));
+					fprintf(f3,  "%d;%s;%f\n", i+1, str, BF_m(bf, bf.focals[j].element));
 					free(str);
 				}
 				BF_freeBeliefFunction(&bf);
@@ -1792,7 +1793,7 @@ void Tests_tempo_fusion(){
 				bf_temoin = BFS_getProjection(bs_temoin.beliefs[0], k*10, 2);
 				for(j = 0; j < bf_temoin.nbFocals; j++){
 					str = Sets_elementToString(bf_temoin.focals[j].element, bs_temoin.refList);
-					fprintf(f2,  "%d;%s;%f\n", i+1, str, BF_M(bf_temoin, bf_temoin.focals[j].element));
+					fprintf(f2,  "%d;%s;%f\n", i+1, str, BF_m(bf_temoin, bf_temoin.focals[j].element));
 					free(str);
 				}
 				BF_freeBeliefFunction(&bf_temoin);
@@ -1804,7 +1805,7 @@ void Tests_tempo_fusion(){
 			bf = BFS_getProjection(bs.beliefs[0], 200 + k*10, 2);
 			for(j = 0; j < bf.nbFocals; j++){
 				str = Sets_elementToString(bf.focals[j].element, bs.refList);
-				fprintf(f3,  "%d;%s;%f\n", i+1, str, BF_M(bf, bf.focals[j].element));
+				fprintf(f3,  "%d;%s;%f\n", i+1, str, BF_m(bf, bf.focals[j].element));
 				free(str);
 			}
 			BF_freeBeliefFunction(&bf);
@@ -1812,7 +1813,7 @@ void Tests_tempo_fusion(){
 			bf_temoin = BFS_getProjection(bs_temoin.beliefs[0], 200 + k*10, 2);
 			for(j = 0; j < bf_temoin.nbFocals; j++){
 				str = Sets_elementToString(bf_temoin.focals[j].element, bs_temoin.refList);
-				fprintf(f2,  "%d;%s;%f\n", i+1, str, BF_M(bf_temoin, bf_temoin.focals[j].element));
+				fprintf(f2,  "%d;%s;%f\n", i+1, str, BF_m(bf_temoin, bf_temoin.focals[j].element));
 				free(str);
 			}
 			BF_freeBeliefFunction(&bf_temoin);
@@ -1822,7 +1823,7 @@ void Tests_tempo_fusion(){
 				bf = BFS_getProjection(bs.beliefs[0], k*10, 2);
 				for(j = 0; j < bf.nbFocals; j++){
 					str = Sets_elementToString(bf.focals[j].element, bs.refList);
-					fprintf(f3,  "%d;%s;%f\n", i+1, str, BF_M(bf, bf.focals[j].element));
+					fprintf(f3,  "%d;%s;%f\n", i+1, str, BF_m(bf, bf.focals[j].element));
 					free(str);
 				}
 				BF_freeBeliefFunction(&bf);
@@ -1830,7 +1831,7 @@ void Tests_tempo_fusion(){
 				bf_temoin = BFS_getProjection(bs_temoin.beliefs[0], k*10, 2);
 				for(j = 0; j < bf_temoin.nbFocals; j++){
 					str = Sets_elementToString(bf_temoin.focals[j].element, bs_temoin.refList);
-					fprintf(f2,  "%d;%s;%f\n", i+1, str, BF_M(bf_temoin, bf_temoin.focals[j].element));
+					fprintf(f2,  "%d;%s;%f\n", i+1, str, BF_m(bf_temoin, bf_temoin.focals[j].element));
 					free(str);
 				}
 				BF_freeBeliefFunction(&bf_temoin);
@@ -1870,7 +1871,7 @@ void Tests_tempo_fusion(){
 				bf = BFS_getProjection(bs.beliefs[0], k*10, 2);
 				for(j = 0; j < bf.nbFocals; j++){
 					str = Sets_elementToString(bf.focals[j].element, bs.refList);
-					fprintf(f3,  "%d;%s;%f\n", i+1, str, BF_M(bf, bf.focals[j].element));
+					fprintf(f3,  "%d;%s;%f\n", i+1, str, BF_m(bf, bf.focals[j].element));
 					free(str);
 				}
 				BF_freeBeliefFunction(&bf);
@@ -1878,7 +1879,7 @@ void Tests_tempo_fusion(){
 				bf_temoin = BFS_getProjection(bs_temoin.beliefs[0], k*10, 2);
 				for(j = 0; j < bf_temoin.nbFocals; j++){
 					str = Sets_elementToString(bf_temoin.focals[j].element, bs_temoin.refList);
-					fprintf(f2,  "%d;%s;%f\n", i+1, str, BF_M(bf_temoin, bf_temoin.focals[j].element));
+					fprintf(f2,  "%d;%s;%f\n", i+1, str, BF_m(bf_temoin, bf_temoin.focals[j].element));
 					free(str);
 				}
 				BF_freeBeliefFunction(&bf_temoin);
@@ -1889,7 +1890,7 @@ void Tests_tempo_fusion(){
 				bf = BFS_getProjection(bs.beliefs[0], 200 + k*10, 2);
 				for(j = 0; j < bf.nbFocals; j++){
 					str = Sets_elementToString(bf.focals[j].element, bs.refList);
-					fprintf(f3,  "%d;%s;%f\n", i+1, str, BF_M(bf, bf.focals[j].element));
+					fprintf(f3,  "%d;%s;%f\n", i+1, str, BF_m(bf, bf.focals[j].element));
 					free(str);
 				}
 				BF_freeBeliefFunction(&bf);
@@ -1897,7 +1898,7 @@ void Tests_tempo_fusion(){
 				bf_temoin = BFS_getProjection(bs_temoin.beliefs[0], 200 + k*10, 2);
 				for(j = 0; j < bf_temoin.nbFocals; j++){
 					str = Sets_elementToString(bf_temoin.focals[j].element, bs_temoin.refList);
-					fprintf(f2,  "%d;%s;%f\n", i+1, str, BF_M(bf_temoin, bf_temoin.focals[j].element));
+					fprintf(f2,  "%d;%s;%f\n", i+1, str, BF_m(bf_temoin, bf_temoin.focals[j].element));
 					free(str);
 				}
 				BF_freeBeliefFunction(&bf_temoin);
@@ -1933,7 +1934,7 @@ void Tests_tempo_fusion(){
 					bf = BFS_getProjection(bs.beliefs[0], k*10, 2);
 					for(j = 0; j < bf.nbFocals; j++){
 						str = Sets_elementToString(bf.focals[j].element, bs.refList);
-						fprintf(f3,  "%d;%s;%f\n", i+1, str, BF_M(bf, bf.focals[j].element));
+						fprintf(f3,  "%d;%s;%f\n", i+1, str, BF_m(bf, bf.focals[j].element));
 						free(str);
 					}
 					BF_freeBeliefFunction(&bf);
@@ -1941,7 +1942,7 @@ void Tests_tempo_fusion(){
 					bf_temoin = BFS_getProjection(bs_temoin.beliefs[0], k*10, 2);
 					for(j = 0; j < bf_temoin.nbFocals; j++){
 						str = Sets_elementToString(bf_temoin.focals[j].element, bs_temoin.refList);
-						fprintf(f2,  "%d;%s;%f\n", i+1, str, BF_M(bf_temoin, bf_temoin.focals[j].element));
+						fprintf(f2,  "%d;%s;%f\n", i+1, str, BF_m(bf_temoin, bf_temoin.focals[j].element));
 						free(str);
 					}
 					BF_freeBeliefFunction(&bf_temoin);
@@ -1952,7 +1953,7 @@ void Tests_tempo_fusion(){
 					bf = BFS_getProjection(bs.beliefs[0], 200 + m*10, 2);
 					for(j = 0; j < bf.nbFocals; j++){
 						str = Sets_elementToString(bf.focals[j].element, bs.refList);
-						fprintf(f3,  "%d;%s;%f\n", i+1, str, BF_M(bf, bf.focals[j].element));
+						fprintf(f3,  "%d;%s;%f\n", i+1, str, BF_m(bf, bf.focals[j].element));
 						free(str);
 					}
 					BF_freeBeliefFunction(&bf);
@@ -1960,7 +1961,7 @@ void Tests_tempo_fusion(){
 					bf_temoin = BFS_getProjection(bs_temoin.beliefs[0], 200 + m*10, 2);
 					for(j = 0; j < bf_temoin.nbFocals; j++){
 						str = Sets_elementToString(bf_temoin.focals[j].element, bs_temoin.refList);
-						fprintf(f2,  "%d;%s;%f\n", i+1, str, BF_M(bf_temoin, bf_temoin.focals[j].element));
+						fprintf(f2,  "%d;%s;%f\n", i+1, str, BF_m(bf_temoin, bf_temoin.focals[j].element));
 						free(str);
 					}
 					BF_freeBeliefFunction(&bf_temoin);
@@ -1995,7 +1996,7 @@ void Tests_tempo_fusion(){
 					bf = BFS_getProjection(bs.beliefs[0], k*10, 2);
 					for(j = 0; j < bf.nbFocals; j++){
 						str = Sets_elementToString(bf.focals[j].element, bs.refList);
-						fprintf(f3,  "%d;%s;%f\n", i+1, str, BF_M(bf, bf.focals[j].element));
+						fprintf(f3,  "%d;%s;%f\n", i+1, str, BF_m(bf, bf.focals[j].element));
 						free(str);
 					}
 					BF_freeBeliefFunction(&bf);
@@ -2003,7 +2004,7 @@ void Tests_tempo_fusion(){
 					bf_temoin = BFS_getProjection(bs_temoin.beliefs[0], k*10, 2);
 					for(j = 0; j < bf_temoin.nbFocals; j++){
 						str = Sets_elementToString(bf_temoin.focals[j].element, bs_temoin.refList);
-						fprintf(f2,  "%d;%s;%f\n", i+1, str, BF_M(bf_temoin, bf_temoin.focals[j].element));
+						fprintf(f2,  "%d;%s;%f\n", i+1, str, BF_m(bf_temoin, bf_temoin.focals[j].element));
 						free(str);
 					}
 					BF_freeBeliefFunction(&bf_temoin);
@@ -2014,7 +2015,7 @@ void Tests_tempo_fusion(){
 					bf = BFS_getProjection(bs.beliefs[0], 200 + m*10, 2);
 					for(j = 0; j < bf.nbFocals; j++){
 						str = Sets_elementToString(bf.focals[j].element, bs.refList);
-						fprintf(f3,  "%d;%s;%f\n", i+1, str, BF_M(bf, bf.focals[j].element));
+						fprintf(f3,  "%d;%s;%f\n", i+1, str, BF_m(bf, bf.focals[j].element));
 						free(str);
 					}
 					BF_freeBeliefFunction(&bf);
@@ -2022,7 +2023,7 @@ void Tests_tempo_fusion(){
 					bf_temoin = BFS_getProjection(bs_temoin.beliefs[0], 200 + m*10, 2);
 					for(j = 0; j < bf_temoin.nbFocals; j++){
 						str = Sets_elementToString(bf_temoin.focals[j].element, bs_temoin.refList);
-						fprintf(f2,  "%d;%s;%f\n", i+1, str, BF_M(bf_temoin, bf_temoin.focals[j].element));
+						fprintf(f2,  "%d;%s;%f\n", i+1, str, BF_m(bf_temoin, bf_temoin.focals[j].element));
 						free(str);
 					}
 					BF_freeBeliefFunction(&bf_temoin);

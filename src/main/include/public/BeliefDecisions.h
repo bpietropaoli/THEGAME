@@ -18,7 +18,7 @@
 #ifndef DEF_BELIEFDECISIONS
 #define DEF_BELIEFDECISIONS
 
-#include "BeliefFunctions.c"
+#include "BeliefFunctions.h"
 
 /**
  * This module eases the decision making process by providing decision support functions.

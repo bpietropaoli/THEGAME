@@ -89,7 +89,7 @@ BF_BeliefFunction BF_DempsterCombination(const BF_BeliefFunction m1, const BF_Be
     }
     #endif
     emptySet = Sets_getEmptyElement(m1.elementSize);
-    voidMass = BF_M(combined, emptySet);
+    voidMass = BF_m(combined, emptySet);
     /*Normalize with the void mass:*/
     if(voidMass < 1 - BF_PRECISION){
         for(i = 0; i<combined.nbFocals; i++){
@@ -778,7 +778,7 @@ BF_BeliefFunction BF_fullChenCombination(const BF_BeliefFunction* m, const int n
         combined.focals[i].element = Sets_copyElement(focals.elements[i], size);
         combined.focals[i].beliefValue = 0;
         for(j = 0; j<nbM; j++){
-            combined.focals[i].beliefValue += cred[j] * BF_M(m[j], focals.elements[i]);
+            combined.focals[i].beliefValue += cred[j] * BF_m(m[j], focals.elements[i]);
         }
     }
     /*nbM-1 Dempster combinations: */
@@ -884,7 +884,7 @@ float* BF_autoConflict(const BF_BeliefFunction m, const int maxDegree){
     /*Initialization: */
     temp = BF_SmetsCombination(m, m);
     for(i = 0; i<maxDegree; i++){
-        voidMasses[i] = BF_M(temp, emptySet);
+        voidMasses[i] = BF_m(temp, emptySet);
         temp2 = temp;
         temp = BF_SmetsCombination(temp, m);
         BF_freeBeliefFunction(&temp2);

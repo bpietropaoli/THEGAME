@@ -339,7 +339,7 @@ BF_BeliefFunction BFB_believeFromBelief(const BFB_BeliefFromBelief bfb, const BF
 	
 	/*Process the empty set: */
 	emptyset = Sets_getEmptyElement(from.elementSize);
-	emptyMass = BF_M(from, emptyset);
+	emptyMass = BF_m(from, emptyset);
 	if(emptyMass > 0){
 		bf.focals = malloc(sizeof(BF_FocalElement));
 		DEBUG_CHECK_MALLOC(bf.focals);
