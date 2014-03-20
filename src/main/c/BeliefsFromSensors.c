@@ -43,7 +43,7 @@
  *
  * @section BFS_howto How to use this module
  * So, to build your sets of mass functions, you should do the following :
- * @li For each thing you want to compute, create a directory with the name you want in data/beliefsFromSensors/ (or the directory defined by BFS_PATH).
+ * @li For each thing you want to compute, create a directory with the name you want.
  * For example, if you want to compute a thing called "Presence" to determine if there is someone in a room or not, just call the directory "Presence".
  * @li In this directory, create a file called "values" (or with the name defined by BFS_VALUES_NAME) with on each line, the name of
  * one possible world (and no more line than necessary !)
@@ -114,7 +114,7 @@
  * @{
  */
 
-BFS_BeliefStructure BFS_loadBeliefStructure(const char* frameName){
+BFS_BeliefStructure BFS_loadBeliefStructure(const char* directory, const char* frameName){
     BFS_BeliefStructure bs = {NULL, {NULL,0}, {NULL,0}, {NULL,0}, NULL, 0};
     char path[MAX_SIZE_PATH];
     int* charsPerDir = NULL;
@@ -122,7 +122,7 @@ BFS_BeliefStructure BFS_loadBeliefStructure(const char* frameName){
     int i = 0;
 
     /*Test if the CA exists: */
-    strcpy(path, BFS_PATH);       /* The directory where to find the CAs */
+    strcpy(path, directory);       /* The directory where to find the CAs */
     strcat(path, frameName);      /* The name of the CA */
     if(ReadDir_isDirectory(path)){
         /*Copy the context attribute name: */
@@ -141,7 +141,7 @@ BFS_BeliefStructure BFS_loadBeliefStructure(const char* frameName){
         /*Create the powerset: */
         bs.powerset = Sets_createPowerSet(bs.possibleValues);
         /*Get the number of sensors: */
-        strcpy(path, BFS_PATH);     /* The directory where to find the CAs */
+        strcpy(path, directory);     /* The directory where to find the CAs */
         strcat(path, frameName);      /* The name of the CA */
         bs.nbSensors = ReadDir_countDirectories(path);
         /*Get the directories:*/
@@ -152,7 +152,7 @@ BFS_BeliefStructure BFS_loadBeliefStructure(const char* frameName){
         DEBUG_CHECK_MALLOC(bs.beliefs);
 
         for(i = 0; i<bs.nbSensors; i++){
-            strcpy(path, BFS_PATH);       /* The directory where to find the CAs */
+            strcpy(path, directory);       /* The directory where to find the CAs */
             strcat(path, frameName);      /* The name of the CA */
             strcat(path, "/");            /* Enter the directory... */
             strcat(path, directories[i]);         /* Name of the directory */

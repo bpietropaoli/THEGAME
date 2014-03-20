@@ -11,23 +11,25 @@
 #include "BeliefsFromSensors.h"
 #include "unit_tests.h"
 
+#define STRUCTURE_NAME "unittest"
 
 BFS_BeliefStructure beliefStructurePresence;
 
 static void setup(void) {
-	beliefStructurePresence = BFS_loadBeliefStructure("presence");
+	beliefStructurePresence = BFS_loadBeliefStructure(BELIEF_DEFINITION_PATH, STRUCTURE_NAME);
 }
 
 static void teardown(void) {
 	BFS_freeBeliefStructure(&beliefStructurePresence);
 }
 
+
+
 /*
  * Tests on belief structure
  * =========================
  *
- * The belief structure is about presence and includes 3 sensors (CO2, motion,
- * sound). Its value can be yes or no.
+ * The belief structure is the structure in the folder unittest.
  */
 
 static BFS_SensorBeliefs *getSensorBelief(BFS_BeliefStructure from,char *name) {
@@ -35,6 +37,16 @@ static BFS_SensorBeliefs *getSensorBelief(BFS_BeliefStructure from,char *name) {
 	for(i = 0; i < from.nbSensors; i++) {
 		if(0 == strcmp(from.beliefs[i].sensorType, name)) {
 			return &(from.beliefs[i]);
+		}
+	}
+	return NULL;
+}
+
+static BFS_PartOfBelief *getPartOfBelief(BFS_SensorBeliefs *sensorBelief, Sets_Element element) {
+	int i;
+	for (i = 0; i < sensorBelief->nbFocal; ++i) {
+		if(Sets_equals(sensorBelief->beliefOnElements[i].focalElement,element, ATOM_NB)) {
+			return &(sensorBelief->beliefOnElements[i]);
 		}
 	}
 	return NULL;
@@ -49,7 +61,7 @@ static BFS_SensorBeliefs *getSensorBelief(BFS_BeliefStructure from,char *name) {
 
 
 START_TEST(beliefStructureNameIsOk) {
-	ck_assert_str_eq("presence", beliefStructurePresence.frameName);
+	ck_assert_str_eq(STRUCTURE_NAME, beliefStructurePresence.frameName);
 }
 END_TEST
 
@@ -62,9 +74,10 @@ START_TEST(beliefStructureValuesAreOk) {
 	/* The reference list size should be 2 with "yes" and "no" as values.
 	 */
 	Sets_ReferenceList refList = beliefStructurePresence.refList;
-	ck_assert_int_eq(2, refList.card);
-	ck_assert_str_eq("yes", refList.values[0]);
-	ck_assert_str_eq("no", refList.values[1]);
+	ck_assert_int_eq(3, refList.card);
+	ck_assert_str_eq("A", refList.values[0]);
+	ck_assert_str_eq("B", refList.values[1]);
+	ck_assert_str_eq("C", refList.values[2]);
 }
 END_TEST
 
@@ -73,7 +86,7 @@ START_TEST(powersetCardsAreOk) {
 	 * powerset are stored in the order : {{void}, {yes}, {no}, {yes u no}}
 	 */
 	Sets_Set powerSet = beliefStructurePresence.powerset;
-	ck_assert_int_eq(4, powerSet.card);
+	ck_assert_int_eq(8, powerSet.card);
 	ck_assert_int_eq(0, powerSet.elements[0].card);
 	ck_assert_int_eq(1, powerSet.elements[1].card);
 	ck_assert_int_eq(1, powerSet.elements[2].card);
@@ -100,69 +113,78 @@ START_TEST(powersetValuesAreOk) {
 }
 END_TEST
 
-START_TEST(soundSensorOptionIsOk) {
+START_TEST(sensorOptionIsOk) {
 	/* In the test configuration, the sound sensor has no options */
-	checkOptionFlags(beliefStructurePresence, "sound", OP_NONE);
+	checkOptionFlags(beliefStructurePresence, "S1", OP_NONE);
+	checkOptionFlags(beliefStructurePresence, "S3", OP_TEMPO_FUSION);
+
 }
 END_TEST
 
-START_TEST(soundSensorNbFocalsIsOk) {
-	ck_assert_int_eq(2 ,getSensorBelief(beliefStructurePresence, "sound")->nbFocal);
+START_TEST(sensorNbFocalsIsOk) {
+	ck_assert_int_eq(4 ,getSensorBelief(beliefStructurePresence, "S1")->nbFocal);
 }
 END_TEST
 
-START_TEST(soundSensorYesValuesAreOk) {
+START_TEST(sensorValuesAreOk1) {
 	/*
-	 * Focal: {yes}
+	 * Focal: {A}
 	 * Points:
-	 *  - (0.000000, 0.000000)
-	 *  - (10.000000, 0.200000)
-	 *  - (30.000000, 0.800000)
-	 *  - (60.000000, 1.000000)
+	 * - (100, 0)
+	 * - (200, 0.25)
+	 * - (300, 0.75)
+	 * - (400, 0.25)
+	 * - (500, 0)
 	 */
-	BFS_SensorBeliefs *belief = getSensorBelief(beliefStructurePresence, "sound");
+	BFS_SensorBeliefs *belief = getSensorBelief(beliefStructurePresence, "S1");
+	BFS_PartOfBelief *focalBelief = getPartOfBelief(belief, A);
 
-	ck_assert_int_eq(4, belief->beliefOnElements[0].nbPts);
+	ck_assert_int_eq(5, focalBelief->nbPts);
 
-	assert_flt_equals(0, belief->beliefOnElements[0].points[0].sensorValue, 0.0);
-	assert_flt_equals(0, belief->beliefOnElements[0].points[0].belief, 0);
+	assert_flt_equals(100.0f, focalBelief->points[0].sensorValue, 0.0);
+	assert_flt_equals(0, focalBelief->points[0].belief, 0);
 
-	assert_flt_equals(10.0f, belief->beliefOnElements[0].points[1].sensorValue, 0);
-	assert_flt_equals(0.2f, belief->beliefOnElements[0].points[1].belief, 0);
+	assert_flt_equals(200.0f, focalBelief->points[1].sensorValue, 0);
+	assert_flt_equals(0.25f, focalBelief->points[1].belief, 0);
 
-	assert_flt_equals(30.0f, belief->beliefOnElements[0].points[2].sensorValue, 0);
-	assert_flt_equals(0.8f, belief->beliefOnElements[0].points[2].belief, 0);
+	assert_flt_equals(300.0f, focalBelief->points[2].sensorValue, 0);
+	assert_flt_equals(0.75f, focalBelief->points[2].belief, 0);
 
-	assert_flt_equals(60.0f, belief->beliefOnElements[0].points[3].sensorValue, 0);
-	assert_flt_equals(1.0f, belief->beliefOnElements[0].points[3].belief, 0);
+	assert_flt_equals(400.0f, focalBelief->points[3].sensorValue, 0);
+	assert_flt_equals(0.25f, focalBelief->points[3].belief, 0);
+
+	assert_flt_equals(500.0f, focalBelief->points[4].sensorValue, 0);
+	assert_flt_equals(0.0f, focalBelief->points[4].belief, 0);
 
 }
 END_TEST
 
-START_TEST(soundSensorYesUNoValuesAreOk) {
+START_TEST(sensorValuesAreOk2) {
 	/*
-	 * Focal: {yes u no}
+	 * Focal: {A,B}
 	 * Points:
-	 *  - (0.000000, 1.000000)
-	 *  - (10.000000, 0.800000)
-	 *  - (30.000000, 0.200000)
-	 *  - (60.000000, 0.000000)
+	 *  - (100.0, 0.0)
+	 *  - (200.0, 0.25)
+	 *  - (300.0, 0.75)
+	 *  - (400.0, 0.25)
+	 *  - (500.0, 0.0)
 	 */
-	BFS_SensorBeliefs *belief = getSensorBelief(beliefStructurePresence, "sound");
+	BFS_SensorBeliefs *belief = getSensorBelief(beliefStructurePresence, "S1");
+	BFS_PartOfBelief *focalBelief = getPartOfBelief(belief, AuB);
 
-	ck_assert_int_eq(4, belief->beliefOnElements[1].nbPts);
+	ck_assert_int_eq(4, focalBelief->nbPts);
 
-	assert_flt_equals(0, belief->beliefOnElements[1].points[0].sensorValue, 0);
-	assert_flt_equals(1.0f, belief->beliefOnElements[1].points[0].belief, 0);
+	assert_flt_equals(100.0f, focalBelief->points[0].sensorValue, 0);
+	assert_flt_equals(0.0f, focalBelief->points[0].belief, 0);
 
-	assert_flt_equals(10.0f, belief->beliefOnElements[1].points[1].sensorValue, 0);
-	assert_flt_equals(0.8f, belief->beliefOnElements[1].points[1].belief, 0);
+	assert_flt_equals(200.0f, focalBelief->points[1].sensorValue, 0);
+	assert_flt_equals(0.15f, focalBelief->points[1].belief, 0);
 
-	assert_flt_equals(30.0f, belief->beliefOnElements[1].points[2].sensorValue, 0);
-	assert_flt_equals(0.2f, belief->beliefOnElements[1].points[2].belief, 0);
+	assert_flt_equals(400.0f, focalBelief->points[2].sensorValue, 0);
+	assert_flt_equals(0.15f, focalBelief->points[2].belief, 0);
 
-	assert_flt_equals(60.0f, belief->beliefOnElements[1].points[3].sensorValue, 0);
-	assert_flt_equals(0.0f, belief->beliefOnElements[1].points[3].belief, 0);
+	assert_flt_equals(500.0f, focalBelief->points[3].sensorValue, 0);
+	assert_flt_equals(0.0f, focalBelief->points[3].belief, 0);
 
 }
 END_TEST
@@ -179,7 +201,7 @@ BF_FocalElement focalElementMinus20, focalElement5, focalElement60, focalElement
 BF_BeliefFunction beliefFunction5;
 
 static void setupProjection(void) {
-	beliefStructurePresence = BFS_loadBeliefStructure("presence");
+	beliefStructurePresence = BFS_loadBeliefStructure(BELIEF_DEFINITION_PATH, "presence");
 	soundBelief = getSensorBelief(beliefStructurePresence, "sound");
 	focalElementMinus20 = BFS_getBeliefValue(soundBelief->beliefOnElements[0], -20.0,
 	    		beliefStructurePresence.refList.card);
@@ -233,10 +255,10 @@ static TCase* createParsingTestcase() {
 	tcase_add_test(testCaseParsing, beliefStructureValuesAreOk);
 	tcase_add_test(testCaseParsing, powersetCardsAreOk);
 	tcase_add_test(testCaseParsing, powersetValuesAreOk);
-	tcase_add_test(testCaseParsing, soundSensorOptionIsOk);
-	tcase_add_test(testCaseParsing, soundSensorNbFocalsIsOk);
-	tcase_add_test(testCaseParsing, soundSensorYesValuesAreOk);
-	tcase_add_test(testCaseParsing, soundSensorYesUNoValuesAreOk);
+	tcase_add_test(testCaseParsing, sensorOptionIsOk);
+	tcase_add_test(testCaseParsing, sensorNbFocalsIsOk);
+	tcase_add_test(testCaseParsing, sensorValuesAreOk1);
+	tcase_add_test(testCaseParsing, sensorValuesAreOk2);
 	return testCaseParsing;
 }
 

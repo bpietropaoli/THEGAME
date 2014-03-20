@@ -26,6 +26,8 @@
 #include <stdlib.h>
 #include <unistd.h>
 
+#define BFS_PATH "./data/beliefsFromSensors/"
+
 /**
  * @file Tests.h
  * @author Bastien Pietropaoli (bastien.pietropaoli@inria.fr)

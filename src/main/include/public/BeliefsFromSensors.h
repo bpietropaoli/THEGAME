@@ -113,13 +113,6 @@
  *        from sensor measures.
  */
 
- /**
- * @def BFS_PATH
- * The path where belief models associated to sensors should
- * be placed.
- */
-#define BFS_PATH "./data/beliefsFromSensors/"
-
 /**
  * @def BFS_VALUES_NAME
  * The name of the file containing the possible values of
@@ -308,23 +301,24 @@ typedef struct BFS_BeliefStructure BFS_BeliefStructure;
 
 /**
  * Loads a belief structure from a directory. The directory must have
- * the frame of discernment name and should be in the directory defined
- * by BFS_PATH (if unchanged "./data/beliefsFromSensors/"). It may contain :
- * @li @c values A file with the different possible values for the
+ * the frame of discernment name and should be in the given directory.
+ * It may contain :
+ * - values A file with the different possible values for the
  *        frame of discernment (the name of this file is @link BFS_VALUES_NAME @endlink (if unchanged "values"). 
  *        See the function @link loadSet() @endlink for more information about the format of the file.
- * @li @c sensorType A bunch of subdirectories, each one with the name
+ * - sensorType A bunch of subdirectories, each one with the name
  *        of a specific type of sensor
- * @li @c beliefValues Each sensor type subdirectory may contain a collection
+ * - beliefValues Each sensor type subdirectory may contain a collection
  *        of files, each one corresponding to the beliefs associated to a specific
  *        value. The filenames aren't important at all. See the documentation of this module itself for
  *        more information about the format of the file.
+ * @param directory directory where the belief structure folder is.
  * @param frameName The name of the frame of discernment (Name of the directory to look for.)
  * @return The complete BFS_BeliefStructure containing all the beliefs that may be used
  *         to estimate the real world state. The BFS_BeliefStructure is empty if an error occurs.
  *         (The frameName attribute should be NULL in case of error.) Must be freed after use.
  */
-BFS_BeliefStructure BFS_loadBeliefStructure(const char* frameName);
+BFS_BeliefStructure BFS_loadBeliefStructure(const char * directory, const char* frameName);
 
 /**
  * Load sthe sensor beliefs from a directory. A bunch of files corresponding to the BFS_PartOfBelief
