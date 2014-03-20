@@ -79,7 +79,7 @@ START_TEST(getMaxBetPReturnsTheRightValues) {
 			beliefStructure.powerset);
 	float value = BF_betP(evidences[0], focalPoint.element);
 	assert_flt_equals(1.0f, value, BF_PRECISION);
-	ck_assert_msg(Sets_equals(focalPoint.element, Sets_union(A,B, ATOM_NB),ATOM_NB),
+	ck_assert_msg(Sets_equals(focalPoint.element, Sets_disjunction(A,B, ATOM_NB),ATOM_NB),
 			"BetP did not return AKA u BEA");
 }
 END_TEST

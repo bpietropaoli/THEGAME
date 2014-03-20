@@ -33,7 +33,7 @@ START_TEST(testUnion1) {
 	/*
 	 * union of A and B should give AuB
 	 */
-	Sets_Element setUnion = Sets_union(A, B, ATOM_NB);
+	Sets_Element setUnion = Sets_disjunction(A, B, ATOM_NB);
 	ck_assert_msg(Sets_equals(setUnion, AuB, ATOM_NB), "Sets_union(A,B) did not equal AuB");
 	Sets_freeElement(&setUnion);
 }
@@ -43,7 +43,7 @@ START_TEST(testUnion2) {
 	/*
 	 * union of AuB and C should give AuBuC
 	 */
-	Sets_Element setUnion = Sets_union(AuB, C, ATOM_NB);
+	Sets_Element setUnion = Sets_disjunction(AuB, C, ATOM_NB);
 	ck_assert_msg(Sets_equals(setUnion, AuBuC, ATOM_NB), "Sets_union(AuB,C) did not equal AuBuC");
 	Sets_freeElement(&setUnion);
 }
