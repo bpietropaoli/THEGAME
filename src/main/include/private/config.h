@@ -77,12 +77,12 @@
 	/* we check if we are using gcc. As using __func__ may not work with others
 	 * compilers (__func__ was introduced in C99). */
 	#define DEBUG_MALLOC_MESSAGE(var) \
-	fprintf(stderr,"debug - %s:%d malloc failed for " #var " in %s.\n" #var,\
+	fprintf(stderr,"debug - %s:%d malloc failed for " #var " in %s.\n",\
 				__FILE__, __LINE__, __func__)
 
 	#else /* __GNUC__ */
 		#define DEBUG_MALLOC_MESSAGE(var) \
-		fprintf(stderr,"debug - %s:%d malloc failed for " #var ".\n" #var, __FILE__, __LINE__)
+		fprintf(stderr,"debug - %s:%d malloc failed for " #var ".\n", __FILE__, __LINE__)
 	#endif
 
 	#define DEBUG_CHECK_MALLOC(var) if(NULL == (var)) { DEBUG_MALLOC_MESSAGE(var); }
