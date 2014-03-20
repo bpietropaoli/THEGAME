@@ -8,13 +8,15 @@
 # collaboration of INRIA            #
 # (Bastien Pietropaoli)             #
 # --------------------------------- #
-# Author:                           #
+# Authors:                          #
 # Bastien Pietropaoli               #
-#                                   #
 # Bastien.Pietropaoli@inria.fr      #
 # Bastien.Pietropaoli@gmail.com     #
 #                                   #
-# Last update: 24/02/2014           #
+# Aurélien Richez                   #
+# Aurelien.Richer@inria.fr          #
+#                                   #
+# Last update: 20/03/2014           #
 #####################################
 
 Compiling
@@ -39,13 +41,17 @@ This will build the libraries (static and shared) in build/lib/Release.
 
 The given main in Tests.c launches a ton of tests to check if everything is okay. 
 If you built as told before, you can launch the test program with `make test`.
+The tests can be build only if you have the package "check".
 
 Building the documentation
 ==========================
 
 Building the documentation requires doxygen and cmake. In your build directory,
 just call `make doc` after doing the steps described in the compiling part, 
-this will build your documentation in generatedDoc/html. 
+this will build your documentation in generatedDoc/html.
+There are images in the directory doc, just copy the directory "images" to the
+"generatedDoc" directory.
+To get to the homepage of the doc, open index.html.
 
 Please, check the documentation for the way to use this little library, 
 get the references and the version notes.

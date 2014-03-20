@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2013, EDF. This software was developed with the collaboration of INRIA (Bastien Pietropaoli)
+ * Copyright 2011-2014, EDF. This software was developed with the collaboration of INRIA (Bastien Pietropaoli)
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -292,6 +292,18 @@
  * In BeliefsFromSensors.h, a new define has been added to enable the use of different clocks for the temporization. It is useful when working on diverse OS implementing different clocks. @n
  * Some combination rules have been reimplemented to increase performance and this is much better ! (I got rid of the dirty code of the beginning of the project...) @n
  * The implementation is totally mem-check free (checked with Valgrind)! @n
+ *
+ * @section v06_subsec V0.6
+ * Many things have changed:
+ * @li Combination rules have been moved to a new module called BeliefCombinations.c/h
+ * @li Decision making support functions have been moved to a new module called BeliefDecisions.c/h
+ * @li New and more generic decision support functions are provided.
+ * @li Few things have been renamed properly
+ * @li unit_tests have been added
+ * @li sources have been sorted properly in directories
+ * @li You now have to specify a directory to load belief models for sensors
+ * @li The debug code has been cleaned (Thx Aurélien!)
+ * @li ... there are certainly things I forgot...
  *
  * @section Version_contact Contact
  * Bastien Pietropaoli @n
