@@ -199,17 +199,33 @@ END_TEST
 BFS_SensorBeliefs *soundBelief;
 BF_FocalElement focalElementMinus20, focalElement5, focalElement60, focalElement63;
 BF_BeliefFunction beliefFunction5;
+Sets_Element yesElement;
+int yesIndex = 0;
 
 static void setupProjection(void) {
 	beliefStructurePresence = BFS_loadBeliefStructure(BELIEF_DEFINITION_PATH, "presence");
 	soundBelief = getSensorBelief(beliefStructurePresence, "sound");
-	focalElementMinus20 = BFS_getBeliefValue(soundBelief->beliefOnElements[0], -20.0,
+	/* Building the yes element */
+	yesElement.values = malloc(sizeof(char) * 2);
+	yesElement.values[0] = 1;
+	yesElement.values[1] = 0;
+	yesElement.card = 1;
+	/* Find the corresponding index */
+	if(Sets_equals(yesElement, soundBelief->beliefOnElements[0].focalElement, 2)){
+		yesIndex = 0;
+	}
+	else {
+		yesIndex = 1;
+	}
+	/* Freeing the yes element */
+	free(yesElement.values);
+	focalElementMinus20 = BFS_getBeliefValue(soundBelief->beliefOnElements[yesIndex], -20.0,
 	    		beliefStructurePresence.refList.card);
-	focalElement5 = BFS_getBeliefValue(soundBelief->beliefOnElements[0], 5.0,
+	focalElement5 = BFS_getBeliefValue(soundBelief->beliefOnElements[yesIndex], 5.0,
 	    		beliefStructurePresence.refList.card);
-	focalElement60 = BFS_getBeliefValue(soundBelief->beliefOnElements[0], 60.0,
+	focalElement60 = BFS_getBeliefValue(soundBelief->beliefOnElements[yesIndex], 60.0,
 	    		beliefStructurePresence.refList.card);
-	focalElement63 = BFS_getBeliefValue(soundBelief->beliefOnElements[0], 63.0,
+	focalElement63 = BFS_getBeliefValue(soundBelief->beliefOnElements[yesIndex], 63.0,
     		beliefStructurePresence.refList.card);
 	beliefFunction5 = BFS_getProjection(*soundBelief, 5.0,
     		beliefStructurePresence.refList.card);
@@ -241,8 +257,14 @@ END_TEST
 
 
 START_TEST(ProjectionForSoundFocalValues) {
-	assert_flt_equals(0.1, beliefFunction5.focals[0].beliefValue, 0);
-	assert_flt_equals(0.9, beliefFunction5.focals[1].beliefValue, 0);
+	if(yesIndex == 0){
+		assert_flt_equals(0.1, beliefFunction5.focals[0].beliefValue, 0);
+		assert_flt_equals(0.9, beliefFunction5.focals[1].beliefValue, 0);
+	}
+	else {
+		assert_flt_equals(0.9, beliefFunction5.focals[0].beliefValue, 0);
+		assert_flt_equals(0.1, beliefFunction5.focals[1].beliefValue, 0);
+	}
 }
 END_TEST
 
