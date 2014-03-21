@@ -213,15 +213,12 @@
  *
  * @section contact_sec Contact
  * Bastien Pietropaoli @n
- * Ph.D. student @n
- * INRIA, Rennes - Bretagne Atlantique @n
- * ACES Team @n
  *
  * @b Email: @n
  * bastien.pietropaoli@inria.fr @n
  * bastien.pietropaoli@gmail.com @n
  *
- * Copyright 2011-2013, EDF. This software was developed with the collaboration of INRIA (Bastien Pietropaoli)
+ * Copyright 2011-2014, EDF. This software was developed with the collaboration of INRIA (Bastien Pietropaoli)
  */
 
 /** 
@@ -307,15 +304,12 @@
  *
  * @section Version_contact Contact
  * Bastien Pietropaoli @n
- * Ph.D. student @n
- * INRIA, Rennes - Bretagne Atlantique @n
- * ACES Team @n
  *
  * @b Email: @n
  * bastien.pietropaoli@inria.fr @n
  * bastien.pietropaoli@gmail.com @n
  *
- * Copyright 2011-2013, EDF. This software was developed with the collaboration of INRIA (Bastien Pietropaoli)
+ * Copyright 2011-2014, EDF. This software was developed with the collaboration of INRIA (Bastien Pietropaoli)
  */
  
 /**
@@ -332,15 +326,12 @@
  *
  * @section Todo_contact Contact
  * Bastien Pietropaoli @n
- * Ph.D. student @n
- * INRIA, Rennes - Bretagne Atlantique @n
- * ACES Team @n
  *
  * @b Email: @n
  * bastien.pietropaoli@inria.fr @n
  * bastien.pietropaoli@gmail.com @n
  *
- * Copyright 2011-2013, EDF. This software was developed with the collaboration of INRIA (Bastien Pietropaoli)
+ * Copyright 2011-2014, EDF. This software was developed with the collaboration of INRIA (Bastien Pietropaoli)
  */
  
 /**
@@ -351,15 +342,12 @@
  *
  * @section Origin_contact Contact
  * Bastien Pietropaoli @n
- * Ph.D. student @n
- * INRIA, Rennes - Bretagne Atlantique @n
- * ACES Team @n
  *
  * @b Email: @n
  * bastien.pietropaoli@inria.fr @n
  * bastien.pietropaoli@gmail.com @n
  *
- * Copyright 2011-2013, EDF. This software was developed with the collaboration of INRIA (Bastien Pietropaoli)
+ * Copyright 2011-2014, EDF. This software was developed with the collaboration of INRIA (Bastien Pietropaoli)
  */
  
 /**
@@ -374,16 +362,30 @@
  *
  * @section FAQ_contact Contact
  * Bastien Pietropaoli @n
- * Ph.D. student @n
- * INRIA, Rennes - Bretagne Atlantique @n
- * ACES Team @n
  *
  * @b Email: @n
  * bastien.pietropaoli@inria.fr @n
  * bastien.pietropaoli@gmail.com @n
  *
- * Copyright 2011-2013, EDF. This software was developed with the collaboration of INRIA (Bastien Pietropaoli)
+ * Copyright 2011-2014, EDF. This software was developed with the collaboration of INRIA (Bastien Pietropaoli)
  */
+ 
+/**
+ * @page Contributors_page Contributors
+ * Here is a list of contributors:
+ * @li Bastien Pietropaoli
+ * @li Aurélien Richez
+ *
+ * @section FAQ_contact Contact
+ * Bastien Pietropaoli @n
+ *
+ * @b Email: @n
+ * bastien.pietropaoli@inria.fr @n
+ * bastien.pietropaoli@gmail.com @n
+ *
+ * Copyright 2011-2014, EDF. This software was developed with the collaboration of INRIA (Bastien Pietropaoli)
+ */
+ 
  
 /**
  * @page Tuto_page Quick start and tutorial
@@ -441,15 +443,12 @@
  * 
  * @section Tuto_contact Contact
  * Bastien Pietropaoli @n
- * Ph.D. student @n
- * INRIA, Rennes - Bretagne Atlantique @n
- * ACES Team @n
  *
  * @b Email: @n
  * bastien.pietropaoli@inria.fr @n
  * bastien.pietropaoli@gmail.com @n
  *
- * Copyright 2011-2013, EDF. This software was developed with the collaboration of INRIA (Bastien Pietropaoli)
+ * Copyright 2011-2014, EDF. This software was developed with the collaboration of INRIA (Bastien Pietropaoli)
  */
 
 #endif
