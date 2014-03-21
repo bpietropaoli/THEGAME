@@ -77,16 +77,12 @@ make
 <hr><h1>
 <a name="building-the-documentation" class="anchor" href="#building-the-documentation"><span class="octicon octicon-link"></span></a>Building the documentation</h1>
 
-<p>Building the documentation requires doxygen.
-To build the documentation :</p>
-
-<pre><code>cd doc
-doxygen Doxyfile
-</code></pre>
-
-<p>This will build the html documentation under doc/html.
-Please, check the documentation for the way to use this little library, 
-get the references and the version notes.
+<p>Building the documentation requires doxygen and cmake. In your build directory,
+just call `make doc` after doing the steps described in the compiling part, 
+this will build your documentation in generatedDoc/html.
+There are images in the directory doc, just copy the directory "images" to the
+"generatedDoc" directory.
+To get to the homepage of the doc, open index.html.
 The config.h file is used to customize what you need. Look for it!</p>
 
 <hr><h1>
