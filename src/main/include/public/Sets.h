@@ -178,6 +178,13 @@ Sets_Element Sets_copyElement(const Sets_Element e, const int size);
 Sets_Element Sets_getEmptyElement(const int size);
 
 /**
+ * Creates the complete set as an Element.
+ * @param size The size of the complete set to create
+ * @return A complete Element. Must be freed after use.
+ */
+Sets_Element Sets_getCompleteElement(const int size);
+
+/**
  * Creates the opposite of the element e.
  * @param e The element whose opposite is required
  * @param size The size of the elements

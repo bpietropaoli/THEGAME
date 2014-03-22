@@ -57,7 +57,6 @@ BF_BeliefFunction BF_copyBeliefFunction(const BF_BeliefFunction m){
 
 BF_BeliefFunction BF_getVacuousBeliefFunction(const int elementSize){
 	BF_BeliefFunction vacuous = {NULL, 0, 0};
-	Sets_Element empty;
 	
 	vacuous.nbFocals = 1;
 	vacuous.focals = malloc(sizeof(BF_FocalElement ));
@@ -65,11 +64,8 @@ BF_BeliefFunction BF_getVacuousBeliefFunction(const int elementSize){
 
     vacuous.elementSize = elementSize;
 	
-	empty = Sets_getEmptyElement(elementSize);
-	vacuous.focals[0].element = Sets_getOpposite(empty, elementSize);
+	vacuous.focals[0].element = Sets_getCompleteElement(elementSize);
 	vacuous.focals[0].beliefValue = 1;
-	
-	Sets_freeElement(&empty);
 	
 	return vacuous;
 }
@@ -155,7 +151,7 @@ BF_BeliefFunction BF_conditioning(const BF_BeliefFunction m, const Sets_Element 
     /*Check if the belief function contain the void element:*/
     emptySet = Sets_getEmptyElement(m.elementSize);
     for(i = 0; i<m.nbFocals; i++){
-        if(Sets_equals(m.focals[i].element, emptySet, m.elementSize)){
+        if(m.focals[i].element.card == 0){
             containVoid = 1;
         }
     }
@@ -248,7 +244,7 @@ BF_BeliefFunction BF_weakening(const BF_BeliefFunction m, const float alpha){
     emptySet = Sets_getEmptyElement(m.elementSize);
     /*Check if the function contain the void element:*/
     for(i = 0; i<m.nbFocals; i++){
-        if(Sets_equals(m.focals[i].element, emptySet, m.elementSize)){
+        if(m.focals[i].element.card == 0){
             containVoid = 1;
             voidIndex = i;
         }
@@ -311,7 +307,7 @@ BF_BeliefFunction BF_discounting(const BF_BeliefFunction m, const float alpha){
     int containComplete = 0, completeIndex = 0;
     int i = 0;
     float sum = 0, realAlpha = 0;
-    Sets_Element emptySet, complete;
+    Sets_Element complete;
     
     if(alpha >= 1){
     	realAlpha = 1;
@@ -323,13 +319,11 @@ BF_BeliefFunction BF_discounting(const BF_BeliefFunction m, const float alpha){
     	realAlpha = alpha;
     }
 
-    /*Get void: */
-    emptySet = Sets_getEmptyElement(m.elementSize);
     /*Get the complete set: */
-    complete = Sets_getOpposite(emptySet, m.elementSize);
+    complete = Sets_getCompleteElement(m.elementSize);
     /*Check if the function contain the complete set element: */
     for(i = 0; i<m.nbFocals; i++){
-        if(Sets_equals(m.focals[i].element, complete, m.elementSize)){
+        if(m.focals[i].element.card == m.elementSize){
             containComplete = 1;
             completeIndex = i;
         }
@@ -369,7 +363,6 @@ BF_BeliefFunction BF_discounting(const BF_BeliefFunction m, const float alpha){
     }
 
     /*Deallocate: */
-    Sets_freeElement(&emptySet);
     Sets_freeElement(&complete);
 
     #ifdef CHECK_SUM
@@ -459,19 +452,13 @@ float BF_m(const BF_BeliefFunction m, const Sets_Element e){
 float BF_bel(const BF_BeliefFunction m, const Sets_Element e){
     float cred = 0;
     int i = 0;
-    Sets_Element emptySet;
-
-    /*Get void: */
-    emptySet = Sets_getEmptyElement(m.elementSize);
+    
     /*Compute: */
     for(i = 0; i<m.nbFocals; i++){
-        if(Sets_isSubset(m.focals[i].element, e, m.elementSize) && !Sets_equals(m.focals[i].element, emptySet, m.elementSize)){
+        if(Sets_isSubset(m.focals[i].element, e, m.elementSize) && m.focals[i].element.card > 0){
             cred += m.focals[i].beliefValue;
         }
     }
-
-    /*Deallocate: */
-    Sets_freeElement(&emptySet);
 
     return cred;
 }
@@ -481,22 +468,16 @@ float BF_bel(const BF_BeliefFunction m, const Sets_Element e){
 float BF_pl(const BF_BeliefFunction m, const Sets_Element e){
     float plaus = 0;
     int i = 0;
-    Sets_Element emptySet;
     Sets_Element conj;
 
-    /*Get void: */
-    emptySet = Sets_getEmptyElement(m.elementSize);
     /*Compute: */
     for(i = 0; i<m.nbFocals; i++){
         conj = Sets_conjunction(m.focals[i].element, e, m.elementSize);
-        if(!Sets_equals(conj, emptySet, m.elementSize)){
+        if(conj.card > 0){
             plaus += m.focals[i].beliefValue;
         }
         Sets_freeElement(&conj);
     }
-    /*Deallocate: */
-    Sets_freeElement(&emptySet);
-
     return plaus;
 }
 
@@ -521,20 +502,15 @@ float BF_betP(const BF_BeliefFunction m, const Sets_Element e){
     float proba = 0;
     int i = 0;
     Sets_Element conj;
-    Sets_Element emptySet;
-
-    /*Get void: */
-    emptySet = Sets_getEmptyElement(m.elementSize);
+    
     /*Compute: */
     for(i = 0; i<m.nbFocals; i++){
-        if(!Sets_equals(m.focals[i].element, emptySet, m.elementSize)){
+        if(m.focals[i].element.card > 0){
             conj = Sets_conjunction(e, m.focals[i].element, m.elementSize);
             proba += m.focals[i].beliefValue * conj.card / m.focals[i].element.card;
             Sets_freeElement(&conj);
         }
     }
-    /*Deallocate: */
-    Sets_freeElement(&emptySet);
 
     return proba;
 }
@@ -555,18 +531,13 @@ float BF_betP(const BF_BeliefFunction m, const Sets_Element e){
 float BF_specificity(const BF_BeliefFunction m){
     float spec = 0;
     int i = 0;
-    Sets_Element emptySet;
-
-    /*Get void: */
-    emptySet = Sets_getEmptyElement(m.elementSize);
+    
     /*Computation: */
     for(i = 0; i<m.nbFocals; i++){
-        if(!Sets_equals(m.focals[i].element, emptySet, m.elementSize)){
+        if(m.focals[i].element.card > 0){
             spec += m.focals[i].beliefValue / m.focals[i].element.card;
         }
     }
-    /*Deallocation: */
-    Sets_freeElement(&emptySet);
 
     return spec;
 }
@@ -576,18 +547,14 @@ float BF_specificity(const BF_BeliefFunction m){
 float BF_nonSpecificity(const BF_BeliefFunction m){
     float nonSpe = 0;
     int i = 0;
-    Sets_Element emptySet;
-
-    /*Get void: */
-    emptySet = Sets_getEmptyElement(m.elementSize);
+   	
     /*Computation: */
     for(i = 0; i<m.nbFocals; i++){
-        if(!Sets_equals(m.focals[i].element, emptySet, m.elementSize)){
+        if(m.focals[i].element.card > 0){
             nonSpe += m.focals[i].beliefValue * log(m.focals[i].element.card) / log(2);
         }
     }
-    /*Deallocation: */
-    Sets_freeElement(&emptySet);
+    
     return nonSpe;
 }
 
@@ -612,7 +579,8 @@ float BF_distance(const BF_BeliefFunction m1, const BF_BeliefFunction m2){
     float **matrix = NULL;
     int i = 0, j = 0;
     BF_BeliefFunction diff;
-    Sets_Element emptySet, conj, disj;
+    /*Sets_Element emptySet, conj, disj;*/
+    Sets_Element conj, disj;
 	
 	#ifdef CHECK_COMPATIBILITY
     if(m1.elementSize != m2.elementSize){
@@ -621,7 +589,7 @@ float BF_distance(const BF_BeliefFunction m1, const BF_BeliefFunction m2){
     #endif
 	
     /*Get void: */
-    emptySet = Sets_getEmptyElement(m1.elementSize);
+    /*emptySet = Sets_getEmptyElement(m1.elementSize); */
 
     /*Get differences between the two functions: */
     diff = BF_difference(m1, m2);
@@ -635,7 +603,8 @@ float BF_distance(const BF_BeliefFunction m1, const BF_BeliefFunction m2){
         DEBUG_CHECK_MALLOC(matrix);
 
         for(j = 0; j<diff.nbFocals; j++){
-            if(!Sets_equals(diff.focals[i].element, emptySet, m1.elementSize) || !Sets_equals(diff.focals[j].element, emptySet, m1.elementSize)){
+            /*if(!Sets_equals(diff.focals[i].element, emptySet, m1.elementSize) || !Sets_equals(diff.focals[j].element, emptySet, m1.elementSize)){ */
+            if(diff.focals[i].element.card > 0 || diff.focals[j].element.card > 0){
                 disj = Sets_disjunction(diff.focals[i].element, diff.focals[j].element, m1.elementSize);
                 conj = Sets_conjunction(diff.focals[i].element, diff.focals[j].element, m1.elementSize);
                 matrix[i][j] = (float)conj.card / (float)disj.card;
@@ -669,7 +638,7 @@ float BF_distance(const BF_BeliefFunction m1, const BF_BeliefFunction m2){
         free(matrix[i]);
     }
     free(matrix);
-    Sets_freeElement(&emptySet);
+    /*Sets_freeElement(&emptySet); */
     BF_freeBeliefFunction(&diff);
 
     return dist;

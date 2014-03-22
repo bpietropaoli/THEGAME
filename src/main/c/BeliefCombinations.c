@@ -102,7 +102,7 @@ BF_BeliefFunction BF_DempsterCombination(const BF_BeliefFunction m1, const BF_Be
     /*Normalize with the void mass:*/
     if(voidMass < 1 - BF_PRECISION){
         for(i = 0; i<combined.nbFocals; i++){
-            if(!Sets_equals(combined.focals[i].element, emptySet, m1.elementSize)){
+            if(combined.focals[i].element.card > 0){
                 combined.focals[i].beliefValue *= 1.0 / (1.0 - voidMass);
             }
             else {
@@ -338,7 +338,7 @@ BF_BeliefFunction BF_fullYagerCombination(const BF_BeliefFunction* m, const int 
 
 BF_BeliefFunction BF_YagerCombination(const BF_BeliefFunction m1, const BF_BeliefFunction m2){
     BF_BeliefFunction combined = {NULL, 0, 0}, smets = {NULL, 0, 0};
-    Sets_Element complete, emptySet;
+    Sets_Element complete;
     int i = 0, addComplete = 1, completeIndex = -1, voidIndex = -1;
 
 	#ifdef CHECK_COMPATIBILITY
@@ -347,9 +347,8 @@ BF_BeliefFunction BF_YagerCombination(const BF_BeliefFunction m1, const BF_Belie
     }
     #endif
 
-    /*Get void and the complete set:*/
-    emptySet = Sets_getEmptyElement(m1.elementSize);
-    complete = Sets_getOpposite(emptySet, m1.elementSize);
+    /*Get the complete set:*/
+    complete = Sets_getCompleteElement(m1.elementSize);
     /*Get the Smets combination:*/
     smets = BF_SmetsCombination(m1, m2);
     #ifdef CHECK_SUM
@@ -359,11 +358,11 @@ BF_BeliefFunction BF_YagerCombination(const BF_BeliefFunction m1, const BF_Belie
     #endif
     /*Check if the complete set is a focal element:*/
     for(i = 0; i<smets.nbFocals; i++){
-        if(Sets_equals(smets.focals[i].element, complete, m1.elementSize)){
+        if(smets.focals[i].element.card == m1.elementSize){
             addComplete = 0;
             completeIndex = i;
         }
-        if(Sets_equals(smets.focals[i].element, emptySet, m1.elementSize)){
+        if(smets.focals[i].element.card == 0){
             voidIndex = i;
         }
     }
@@ -394,7 +393,6 @@ BF_BeliefFunction BF_YagerCombination(const BF_BeliefFunction m1, const BF_Belie
 		combined.focals[voidIndex].beliefValue = 0;
 	}
     /*Deallocation:*/
-    Sets_freeElement(&emptySet);
     Sets_freeElement(&complete);
     BF_freeBeliefFunction(&smets);
 
@@ -454,7 +452,7 @@ BF_BeliefFunction BF_fullDuboisPradeCombination(const BF_BeliefFunction* m, cons
 
 BF_BeliefFunction BF_DuboisPradeCombination(const BF_BeliefFunction m1, const BF_BeliefFunction m2){
     BF_BeliefFunction combined;
-    Sets_Element newFocal, emptySet;
+    Sets_Element newFocal;
     int i = 0, j = 0, k = 0, index = -1;
 
 	#ifdef CHECK_COMPATIBILITY
@@ -463,8 +461,6 @@ BF_BeliefFunction BF_DuboisPradeCombination(const BF_BeliefFunction m1, const BF
     }
     #endif
 
-    /*Get void:*/
-    emptySet = Sets_getEmptyElement(m1.elementSize);
     /*Initialize the belief function:*/
     combined.nbFocals = 0;
     combined.focals = NULL;
@@ -475,7 +471,7 @@ BF_BeliefFunction BF_DuboisPradeCombination(const BF_BeliefFunction m1, const BF
     		/* Conjunction */
     		newFocal = Sets_conjunction(m1.focals[i].element, m2.focals[j].element, combined.elementSize);
     		/* If empty intersection, then disjunction */
-    		if(Sets_equals(newFocal, emptySet, combined.elementSize)){
+    		if(newFocal.card == 0){
     			Sets_freeElement(&newFocal);
     			newFocal = Sets_disjunction(m1.focals[i].element, m2.focals[j].element, combined.elementSize);
     		}
@@ -500,8 +496,6 @@ BF_BeliefFunction BF_DuboisPradeCombination(const BF_BeliefFunction m1, const BF
     		Sets_freeElement(&newFocal);
     	}
     }
-    /*Deallocate:*/
-    Sets_freeElement(&emptySet);
 
     #ifdef CHECK_SUM
     if(BF_checkSum(combined)){

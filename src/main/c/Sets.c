@@ -283,6 +283,23 @@ Sets_Element Sets_getEmptyElement(const int size){
     return emptySet;
 }
 
+Sets_Element Sets_getCompleteElement(const int size){
+	Sets_Element complete = {NULL, 0};
+    int i = 0;
+
+    /*Allocate memory: */
+    complete.values = malloc(sizeof(char) * size);
+    DEBUG_CHECK_MALLOC(complete.values);
+
+    /*Put ones: */
+    for(i = 0; i < size; i++){
+        complete.values[i] = 1;
+    }
+    complete.card = size;
+
+    return complete;
+}
+
 Sets_Element Sets_getOpposite(const Sets_Element e, const int size){
     Sets_Element opposite = {NULL, 0};
     int i = 0;
