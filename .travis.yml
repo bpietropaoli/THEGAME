@@ -1,0 +1,10 @@
+language: c
+compiler: gcc
+install :
+ - sudo apt-get update -qq
+ - sudo apt-get install -y check
+script: 
+ - mkdir build && cd build
+ - cmake -DCMAKE_BUILD_TYPE=Debug .. && make
+ - if [ -f Testing/Temporary/LastTest.log ]; then cat Testing/Temporary/LastTest.log; fi
+ - if [ -f Testing/Temporary/LastTestsFailed.log ]; then cat Testing/Temporary/LastTestsFailed.log; fi
