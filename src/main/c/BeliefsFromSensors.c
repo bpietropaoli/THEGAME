@@ -641,7 +641,10 @@ BF_BeliefFunction BFS_temporization_specificity(const BF_BeliefFunction oldOne, 
     		break;
     	}
     }
-    #endif
+	#else /* DEBUG */
+    clock_gettime(CLOCK_ID, &newTime);
+    #endif /* DEBUG */
+
     
     /*Compute the alpha factor:     */   
     timeDiff = (newTime.tv_sec + (float)newTime.tv_nsec/1000000000) - (oldTime.tv_sec + (float)oldTime.tv_nsec/1000000000);
@@ -685,7 +688,9 @@ BF_BeliefFunction BFS_temporization_fusion(const BF_BeliefFunction oldOne, const
     		break;
     	}
     }
-    #endif
+	#else /* DEBUG */
+    clock_gettime(CLOCK_ID, &newTime);
+    #endif /* DEBUG */
     
     /*Compute the alpha factor:   */     
     timeDiff = (newTime.tv_sec + (float)newTime.tv_nsec/1000000000) - (oldTime.tv_sec + (float)oldTime.tv_nsec/1000000000);
