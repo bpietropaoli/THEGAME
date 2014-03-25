@@ -7,8 +7,6 @@ add_executable(
 	${src_thegame_test}
 )
 
-file(COPY src/test/resources/data DESTINATION .)
-
 include_directories(src/test/include)
 
 target_link_libraries(test-thegame THEGAME)
@@ -35,10 +33,13 @@ if(CHECK_FOUND)
     thegame_add_test(test_BeliefFunctions)
     thegame_add_test(test_BeliefCombination)
 
-    add_custom_target(unit_test ALL  ctest --output-on-failure
-        DEPENDS THEGAME ${test_binaries}
-        COMMENT "\n\n   ===== TESTS =====   \n\n"
-        )    
+    add_custom_target(unit_test ALL 
+    cmake -E remove_directory ${CMAKE_BINARY_DIR}/data
+    COMMAND cmake -E copy_directory ${CMAKE_SOURCE_DIR}/src/test/resources/data ${CMAKE_BINARY_DIR}/data
+    COMMAND ctest --output-on-failure
+    DEPENDS THEGAME ${test_binaries}
+    COMMENT "\n\n   ===== TESTS =====   \n\n"
+    )    
 
 else(CHECK_FOUND)
     message(WARNING "Check library not found, no test will be executed")

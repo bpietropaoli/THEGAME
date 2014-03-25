@@ -1,0 +1,7 @@
+3 element
+A
+B
+C
+2 points
+100 0.5
+500 1.0

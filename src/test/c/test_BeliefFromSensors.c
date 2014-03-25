@@ -23,20 +23,20 @@
 
 #include <stdlib.h>
 #include <check.h>
+#include <unistd.h>
 
 #include "BeliefsFromSensors.h"
 #include "unit_tests.h"
 
-#define STRUCTURE_NAME "unittest"
 
-BFS_BeliefStructure beliefStructurePresence;
+BFS_BeliefStructure beliefStructure;
 
 static void setup(void) {
-	beliefStructurePresence = BFS_loadBeliefStructure(BELIEF_DEFINITION_PATH, STRUCTURE_NAME);
+	beliefStructure = BFS_loadBeliefStructure(BELIEF_DEFINITION_PATH, STRUCTURE_NAME);
 }
 
 static void teardown(void) {
-	BFS_freeBeliefStructure(&beliefStructurePresence);
+	BFS_freeBeliefStructure(&beliefStructure);
 }
 
 
@@ -92,19 +92,19 @@ static float valueFor(BF_BeliefFunction function, Sets_Element element) {
 
 
 START_TEST(beliefStructureNameIsOk) {
-	ck_assert_str_eq(STRUCTURE_NAME, beliefStructurePresence.frameName);
+	ck_assert_str_eq(STRUCTURE_NAME, beliefStructure.frameName);
 }
 END_TEST
 
 START_TEST(beliefStructureSensorNbIsOk) {
-	ck_assert_int_eq(3, beliefStructurePresence.nbSensors);
+	ck_assert_int_eq(4, beliefStructure.nbSensors);
 }
 END_TEST
 
 START_TEST(beliefStructureValuesAreOk) {
 	/* The reference list size should be 2 with "yes" and "no" as values.
 	 */
-	Sets_ReferenceList refList = beliefStructurePresence.refList;
+	Sets_ReferenceList refList = beliefStructure.refList;
 	ck_assert_int_eq(3, refList.card);
 	ck_assert_str_eq("A", refList.values[0]);
 	ck_assert_str_eq("B", refList.values[1]);
@@ -116,7 +116,7 @@ START_TEST(powersetCardsAreOk) {
 	/*
 	 * powerset are stored in the order : {{void}, {yes}, {no}, {yes u no}}
 	 */
-	Sets_Set powerSet = beliefStructurePresence.powerset;
+	Sets_Set powerSet = beliefStructure.powerset;
 	ck_assert_int_eq(8, powerSet.card);
 	ck_assert_int_eq(0, powerSet.elements[0].card);
 	ck_assert_int_eq(1, powerSet.elements[1].card);
@@ -127,7 +127,7 @@ END_TEST
 
 START_TEST(powersetValuesAreOk) {
 	/* Values are boolean tables [yes, no]. */
-	Sets_Set powerSet = beliefStructurePresence.powerset;
+	Sets_Set powerSet = beliefStructure.powerset;
 
 	/* for void, the table should be [0,0] */
 	ck_assert_int_eq(0, powerSet.elements[0].values[0]);
@@ -146,14 +146,14 @@ END_TEST
 
 START_TEST(sensorOptionIsOk) {
 	/* In the test configuration, the sound sensor has no options */
-	checkOptionFlags(beliefStructurePresence, "S1", OP_NONE);
-	checkOptionFlags(beliefStructurePresence, "S3", OP_TEMPO_FUSION);
+	checkOptionFlags(beliefStructure, "S1", OP_NONE);
+	checkOptionFlags(beliefStructure, "S3", OP_TEMPO_SPECIFICITY);
 
 }
 END_TEST
 
 START_TEST(sensorNbFocalsIsOk) {
-	ck_assert_int_eq(4 ,getSensorBelief(beliefStructurePresence, "S1")->nbFocal);
+	ck_assert_int_eq(4 ,getSensorBelief(beliefStructure, "S1")->nbFocal);
 }
 END_TEST
 
@@ -167,7 +167,7 @@ START_TEST(sensorValuesAreOk1) {
 	 * - (400, 0.25)
 	 * - (500, 0)
 	 */
-	BFS_SensorBeliefs *belief = getSensorBelief(beliefStructurePresence, "S1");
+	BFS_SensorBeliefs *belief = getSensorBelief(beliefStructure, "S1");
 	BFS_PartOfBelief *focalBelief = getPartOfBelief(belief, A);
 
 	ck_assert_int_eq(5, focalBelief->nbPts);
@@ -200,7 +200,7 @@ START_TEST(sensorValuesAreOk2) {
 	 *  - (400.0, 0.25)
 	 *  - (500.0, 0.0)
 	 */
-	BFS_SensorBeliefs *belief = getSensorBelief(beliefStructurePresence, "S1");
+	BFS_SensorBeliefs *belief = getSensorBelief(beliefStructure, "S1");
 	BFS_PartOfBelief *focalBelief = getPartOfBelief(belief, AuB);
 
 	ck_assert_int_eq(4, focalBelief->nbPts);
@@ -233,26 +233,26 @@ BF_BeliefFunction beliefFunction150;
 Sets_Element yesElement;
 
 static void setupProjection(void) {
-	beliefStructurePresence = BFS_loadBeliefStructure(BELIEF_DEFINITION_PATH, STRUCTURE_NAME);
-	belief = getSensorBelief(beliefStructurePresence, "S1");
+	beliefStructure = BFS_loadBeliefStructure(BELIEF_DEFINITION_PATH, STRUCTURE_NAME);
+	belief = getSensorBelief(beliefStructure, "S1");
 
 	BFS_PartOfBelief *beliefForA = getPartOfBelief(belief, A);
 
 	focalElementMinus20 = BFS_getBeliefValue(*beliefForA, -20.0,
-	    		beliefStructurePresence.refList.card);
+	    		beliefStructure.refList.card);
 	focalElement150 = BFS_getBeliefValue(*beliefForA, 150.0,
-	    		beliefStructurePresence.refList.card);
+	    		beliefStructure.refList.card);
 	focalElement300 = BFS_getBeliefValue(*beliefForA, 300.0,
-	    		beliefStructurePresence.refList.card);
+	    		beliefStructure.refList.card);
 	focalElement550 = BFS_getBeliefValue(*beliefForA, 550.0,
-    		beliefStructurePresence.refList.card);
+    		beliefStructure.refList.card);
 	beliefFunction150 = BFS_getProjection(*belief, 150.0,
-    		beliefStructurePresence.refList.card);
+    		beliefStructure.refList.card);
 	BF_cleanBeliefFunction(&beliefFunction150);
 }
 
 static void teardownProjection(void) {
-	BFS_freeBeliefStructure(&beliefStructurePresence);
+	BFS_freeBeliefStructure(&beliefStructure);
     BF_freeBeliefPoint(&focalElementMinus20);
     BF_freeBeliefPoint(&focalElement150);
     BF_freeBeliefPoint(&focalElement300);
@@ -284,6 +284,25 @@ START_TEST(ProjectionFocalValues) {
 }
 END_TEST
 
+START_TEST(testTempoSpecificity) {
+	BFS_SensorBeliefs *beliefS3 = getSensorBelief(beliefStructure,"S3");
+	BF_BeliefFunction function = BFS_getProjection(*beliefS3, 100, ATOM_NB);
+	BF_freeBeliefFunction(&function);
+	function = BFS_getProjectionElapsedTime(*beliefS3, NO_MEASURE, ATOM_NB, 0.5);
+	assert_flt_equals(0.5, valueFor(function, A), BF_PRECISION);
+
+}
+END_TEST
+
+START_TEST(testTempoFusion) {
+	BFS_SensorBeliefs *beliefS4 = getSensorBelief(beliefStructure,"S4");
+	BF_BeliefFunction function = BFS_getProjection(*beliefS4, 100, ATOM_NB);
+	BF_freeBeliefFunction(&function);
+	function = BFS_getProjectionElapsedTime(*beliefS4, 100, ATOM_NB, 0.5);
+	assert_flt_equals(0.625, valueFor(function, A), BF_PRECISION);
+
+}
+END_TEST
 
 static TCase* createParsingTestcase() {
 	TCase* testCaseParsing = tcase_create("Parsing");
@@ -306,6 +325,8 @@ static TCase* createBeliefProjectionsTestCase() {
 	tcase_add_test(testCaseProjections, beliefValueForA);
 	tcase_add_test(testCaseProjections, ProjectionFocalNb);
 	tcase_add_test(testCaseProjections, ProjectionFocalValues);
+	tcase_add_test(testCaseProjections, testTempoSpecificity);
+	tcase_add_test(testCaseProjections, testTempoFusion);
 
 	return testCaseProjections;
 
