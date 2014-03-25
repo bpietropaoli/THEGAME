@@ -425,6 +425,7 @@ BFS_PartOfBelief BFS_loadPartOfBelief(const char* fileName, const Sets_Reference
  * @{
  */
 
+
 BF_BeliefFunction* BFS_getEvidence(const BFS_BeliefStructure bs,
 		const char* const * const sensorTypes, const double* sensorMeasures, const int nbMeasures){
     BF_BeliefFunction* evidences = NULL;
@@ -771,54 +772,38 @@ BF_FocalElement BFS_getBeliefValue(const BFS_PartOfBelief pob, const double sens
  * @{
  */
 
+static float getElapsedTime(const struct timespec oldTime) {
+    struct timespec newTime;
+	#ifdef DEBUG
+	int error = 0;
+	error = clock_gettime(CLOCK_ID, &newTime);
+	if(error){
+		switch(errno){
+			case EFAULT:
+				printf("debug: In BFS_temporization_specificity(), the clock had a problem...\n");
+				printf("debug: \"tp points outside the accessible address space\"\n");
+				break;
+			case EINVAL:
+				printf("debug: In BFS_temporization_specificity(), the clock had a problem...\n");
+				printf("debug: \"The clock_id specified is not supported on this system.\"\n");
+			break;
+		}
+	}
+	#else /* DEBUG */
+	clock_gettime(CLOCK_ID, &newTime);
+	#endif /* DEBUG */
+
+	/*Compute the alpha factor:   */
+	return (newTime.tv_sec + (float)newTime.tv_nsec/1000000000) - (oldTime.tv_sec + (float)oldTime.tv_nsec/1000000000);
+
+}
+
 
 BF_BeliefFunction BFS_temporization_specificity(const BF_BeliefFunction oldOne,
 		const BF_BeliefFunction newOne, const float timeFactor, const struct timespec oldTime,
 		BFS_Option* op){
-    float alpha = 0, timeDiff = 0;
-    BF_BeliefFunction temp = {NULL, 0, 0};
-    BF_BeliefFunction result = {NULL, 0, 0};
-    struct timespec newTime;
-    #ifdef DEBUG
-    int error = 0;
-    
-    /*Get the new time: */
-    error = clock_gettime(CLOCK_ID, &newTime);
-    if(error){
-    	switch(errno){
-    		case EFAULT: 
-    			printf("debug: In BFS_temporization_specificity(), the clock had a problem...\n");
-    			printf("debug: \"tp points outside the accessible address space\"\n");
-    			break;
-    		case EINVAL: 
-    			printf("debug: In BFS_temporization_specificity(), the clock had a problem...\n");
-    			printf("debug: \"The clk_id specified is not supported on this system.\"\n");
-    		break;
-    	}
-    }
-	#else /* DEBUG */
-    clock_gettime(CLOCK_ID, &newTime);
-    #endif /* DEBUG */
-
-    
-    /*Compute the alpha factor:     */   
-    timeDiff = (newTime.tv_sec + (float)newTime.tv_nsec/1000000000) - (oldTime.tv_sec + (float)oldTime.tv_nsec/1000000000);
-    alpha = timeDiff / timeFactor;
-    /*Discount: */
-    temp = BF_discounting(oldOne, alpha);
-    /*Compare specificity: */
-    if(BF_specificity(newOne) > BF_specificity(temp)){
-        BF_freeBeliefFunction(&(op->util[1].bf));
-        op->util[1].bf = BF_copyBeliefFunction(newOne);
-        op->util[0].time = newTime;
-        result = BF_copyBeliefFunction(newOne);
-    }
-    else {
-        result = BF_copyBeliefFunction(temp);
-    }
-    BF_freeBeliefFunction(&temp);
-    
-    return result;
+    return BFS_temporization_specificityElapsedTime(oldOne, newOne, timeFactor, op,
+    		getElapsedTime(oldTime));
 }
 
 BF_BeliefFunction BFS_temporization_specificityElapsedTime(const BF_BeliefFunction oldOne,
@@ -845,55 +830,11 @@ BF_BeliefFunction BFS_temporization_specificityElapsedTime(const BF_BeliefFuncti
     return result;
 }
 
-
 BF_BeliefFunction BFS_temporization_fusion(const BF_BeliefFunction oldOne,
 		const BF_BeliefFunction newOne, const float timeFactor, const struct timespec oldTime,
 		BFS_Option* op){
-	float alpha = 0, timeDiff = 0;
-    BF_BeliefFunction temp = {NULL, 0, 0};
-    BF_BeliefFunction result = {NULL, 0, 0};
-    struct timespec newTime;
-    #ifdef DEBUG
-    int error = 0;
-
-    /*Get the new time: */
-    error = clock_gettime(CLOCK_ID, &newTime);
-    if(error){
-    	switch(errno){
-    		case EFAULT:
-    			printf("debug: In BFS_temporization_specificity(), the clock had a problem...\n");
-    			printf("debug: \"tp points outside the accessible address space\"\n");
-    			break;
-    		case EINVAL:
-    			printf("debug: In BFS_temporization_specificity(), the clock had a problem...\n");
-    			printf("debug: \"The clock_id specified is not supported on this system.\"\n");
-    		break;
-    	}
-    }
-	#else /* DEBUG */
-    clock_gettime(CLOCK_ID, &newTime);
-    #endif /* DEBUG */
-
-    /*Compute the alpha factor:   */
-    timeDiff = (newTime.tv_sec + (float)newTime.tv_nsec/1000000000) - (oldTime.tv_sec + (float)oldTime.tv_nsec/1000000000);
-    alpha = timeDiff / timeFactor;
-    /*If the new one corresponds to a loss of evidence:*/
-    if(newOne.focals == NULL){
-    	return BF_discounting(oldOne, alpha);
-    }
-    /*Discount: */
-    temp = BF_discounting(oldOne, alpha);
-    /*Fuse the discounted old one with the new one: */
-    result = BF_DuboisPradeCombination(temp, newOne);
-    /*Clean as combination may create multiple elements...*/
-    /*BF_cleanBeliefFunction(&result);*/
-    /*Save: */
-    BF_freeBeliefFunction(&(op->util[1].bf));
-    op->util[1].bf = BF_copyBeliefFunction(result);
-    op->util[0].time = newTime;
-    BF_freeBeliefFunction(&temp);
-
-    return result;
+    return BFS_temporization_fusionElapsedTime(oldOne, newOne, timeFactor, op,
+    		getElapsedTime(oldTime));
 }
 
 BF_BeliefFunction BFS_temporization_fusionElapsedTime(const BF_BeliefFunction oldOne,
