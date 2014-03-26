@@ -43,6 +43,7 @@
 #define SENSOR_NB 2
 #define ATOM_NB 3
 #define BELIEF_DEFINITION_PATH "./data/beliefsFromSensors/"
+#define STRUCTURE_NAME "unittest"
 
 
 #define SET_ELEMENT_DECLARE(name, val1, val2, val3) \

@@ -363,17 +363,55 @@ BFS_PartOfBelief BFS_loadPartOfBelief(const char* fileName, const Sets_Reference
  * @param nbMeasures The number of measures (and of elements in sensorTypes)
  * @return The list of BeliefFunctions associated to the sensors
  */
-BF_BeliefFunction* BFS_getEvidence(const BFS_BeliefStructure bs, const char* const * const sensorTypes, const double* sensorMeasures, const int nbMeasures);
+BF_BeliefFunction* BFS_getEvidence(const BFS_BeliefStructure bs,
+		const char* const * const sensorTypes, const double* sensorMeasures, const int nbMeasures);
+
+/**
+ * Generates the BF_BeliefFunctions from the BFS_BeliefStructure and
+ * a set of sensor measures. If a sensor does not correspond to anything
+ * given in the model (BFS_BeliefStructure), then a vacuous mass function is
+ * returned for this sensor. This function takes the elapsed time as a parameter
+ * and does use use real time (and time stored in the belief structure) for the
+ * temporizations.
+ * @param bs The belief structure to use
+ * @param sensorTypes The types of sensors giving data (table of Strings)
+ * @param sensorMeasures The set of measures given by sensors
+ * @param nbMeasures The number of measures (and of elements in sensorTypes)
+ * @param elapsedTime The time since the last set of sensor measure
+ * @return The list of BeliefFunctions associated to the sensors
+ */
+BF_BeliefFunction* BFS_getEvidenceElapsedTime(const BFS_BeliefStructure bs,
+		const char* const * const sensorTypes, const double* sensorMeasures, const int nbMeasures,
+		const float elapsedTime);
 
 /**
  * Get the instant BF_BeliefFunction from a model of belief associated to a sensor.
- * Options are applied here.
- * @param BFS_SensorBeliefs The model of belief associated to the sensor
+ * Options are applied here. The timing used for the temporization options will
+ * the real time.
+ * @param sensorBelief The model of belief associated to the sensor
  * @param sensorMeasure The measure given by the sensor (if sensorMeasure == NO_MEASURE, projection = vacuous + tempo discrimination)
  * @param elementSize The number of digits in the representation of elements
  * @return The projection (the instant BF_BeliefFunction) associated to the sensor and its measure.
  */
-BF_BeliefFunction BFS_getProjection(const BFS_SensorBeliefs sb, const double sensorMeasure, const int elementSize);
+BF_BeliefFunction BFS_getProjection(const BFS_SensorBeliefs sensorBelief, const double sensorMeasure,
+		const int elementSize);
+
+/**
+ * Gets the BF_BeliefFunction from a model of belief associated to a sensor.
+ * Options are applied. The difference between this function and
+ * BFS_getProjection() is the elapsedTime parameter. This parameter allows to
+ * manually specify in seconds how much time was elapsed between this
+ * sensor measure and the previous sensor measure. The date contained by the
+ * sensor belief will be ignored and the given elapsed time will be used to
+ * compute temporization options.
+ * @param sensorBelief The model of belief associated to the sensor
+ * @param sensorMeasure The measure given by the sensor (if sensorMeasure == NO_MEASURE, projection = vacuous + tempo discrimination)
+ * @param elementSize The number of digits in the representation of elements
+ * @param elapsedTime time since the last sensor measure in seconds
+ * @return The projection (the instant BF_BeliefFunction) associated to the sensor and its measure.
+ */
+BF_BeliefFunction BFS_getProjectionElapsedTime(const BFS_SensorBeliefs sensorBelief,
+		const double sensorMeasure, const int elementSize, const float elapsedTime);
 
 /**
  * Get the belief value associated to a specific possible value of the
@@ -395,8 +433,9 @@ BF_FocalElement BFS_getBeliefValue(const BFS_PartOfBelief pob, const double sens
  */
 
 /**
- * Applies the discrimination of temporization based on the specificity of the discounted old belief function
- * (cf Pietropaoli et al. - Belief Inference with Timed Evidence - 2012).
+ * Applies the discrimination of temporization based on the specificity of the
+ * discounted old belief function (cf Pietropaoli et al. - Belief Inference with
+ * Timed Evidence - 2012). This function uses real time for discounting.
  * @param oldOne The old BF_BeliefFunction
  * @param newOne The last BF_BeliefFunction corresponding to the last received measure (or vacuous if not receive)
  * @param timeFactor The factor used to discount over time (linear discount over time for now)
@@ -404,12 +443,33 @@ BF_FocalElement BFS_getBeliefValue(const BFS_PartOfBelief pob, const double sens
  * @param op A pointer to the temporization option to store the needed data
  * @return The BF_BeliefFunction after the temporization has been applied (must be freed after use).
  */
-BF_BeliefFunction BFS_temporization_specificity(const BF_BeliefFunction oldOne, const BF_BeliefFunction newOne, const float timeFactor, const struct timespec oldTime, BFS_Option* op);
+BF_BeliefFunction BFS_temporization_specificity(const BF_BeliefFunction oldOne,
+		const BF_BeliefFunction newOne, const float timeFactor, const struct timespec oldTime,
+		BFS_Option* op);
 
 /**
- * Applies a temporization of belief based on a discounting of the old belief plus a combination with the new belief
- * using the Dubois & Prade's combination rule (the combination occurs only if the given belief function correspond
- * to a new measure, otherwise, only discounting is applied).
+ * Applies the discrimination of temporization based on the specificity of the
+ * discounted old belief function (cf Pietropaoli et al. - Belief Inference with
+ * Timed Evidence - 2012). The difference between this function and
+ * BFS_temporization_specificity() is that the elapsed time is given as a
+ * parameter, instead of using real time.
+ *
+ * @param oldOne The old BF_BeliefFunction
+ * @param newOne The last BF_BeliefFunction corresponding to the last received measure (or vacuous if not receive)
+ * @param timeFactor The factor used to discount over time (linear discount over time for now)
+ * @param op A pointer to the temporization option to store the needed data
+ * @param elapsedTime time since the last measure in seconds
+ * @return The BF_BeliefFunction after the temporization has been applied (must be freed after use).
+ */
+BF_BeliefFunction BFS_temporization_specificityElapsedTime(const BF_BeliefFunction oldOne,
+		const BF_BeliefFunction newOne, const float timeFactor, BFS_Option* op,
+		const float elapsedTime);
+
+/**
+ * Applies a temporization of belief based on a discounting of the old belief
+ * plus a combination with the new belief using the Dubois & Prade's combination
+ * rule (the combination occurs only if the given belief function correspond to
+ * a new measure, otherwise, only discounting is applied).
  * @param oldOne The old BF_BeliefFunction
  * @param newOne The last BF_BeliefFunction corresponding to the last received measure (if newOne.focals == NULL, then it only applies discounting)
  * @param timeFactor The factor used to discount over time (linear discount over time for now)
@@ -417,8 +477,29 @@ BF_BeliefFunction BFS_temporization_specificity(const BF_BeliefFunction oldOne, 
  * @param op A pointer to the temporization option to store the needed data
  * @return The BF_BeliefFunction after the temporization has been applied (must be freed after use).
  */
-BF_BeliefFunction BFS_temporization_fusion(const BF_BeliefFunction oldOne, const BF_BeliefFunction newOne, const float timeFactor, const struct timespec oldTime, BFS_Option* op);
+BF_BeliefFunction BFS_temporization_fusion(const BF_BeliefFunction oldOne,
+		const BF_BeliefFunction newOne, const float timeFactor, const struct timespec oldTime,
+		BFS_Option* op);
 
+/**
+ * Applies a temporization of belief based on a discounting of the old belief
+ * plus a combination with the new belief using the Dubois & Prade's combination
+ * rule (the combination occurs only * if the given belief function correspond
+ * to a new measure, otherwise, only discounting is applied). While
+ * BFS_temporization_fusion() uses real time, this function takes as a parameter
+ * the elapsed time instead of the old date. This allow to use an external
+ * function to measure time or use the library in a simulation.
+ * @param oldOne The old BF_BeliefFunction
+ * @param newOne The last BF_BeliefFunction corresponding to the last received measure (if newOne.focals == NULL, then it only applies discounting)
+ * @param timeFactor The factor used to discount over time (linear discount over time for now)
+ * @param oldTime The time at which the old BF_BeliefFunction has been built
+ * @param op A pointer to the temporization option to store the needed data
+ * @param elapsedTime time since the last measure in seconds
+ * @return The BF_BeliefFunction after the temporization has been applied (must be freed after use).
+ */
+BF_BeliefFunction BFS_temporization_fusionElapsedTime(const BF_BeliefFunction oldOne,
+		const BF_BeliefFunction newOne, const float timeFactor, BFS_Option* op,
+		const float elapsedTime);
 /** @} */
 
 /* !!! Deallocate memory given to beliefs !!! */

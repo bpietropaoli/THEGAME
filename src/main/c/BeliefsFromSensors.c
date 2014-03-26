@@ -425,7 +425,9 @@ BFS_PartOfBelief BFS_loadPartOfBelief(const char* fileName, const Sets_Reference
  * @{
  */
 
-BF_BeliefFunction* BFS_getEvidence(const BFS_BeliefStructure bs, const char* const * const sensorTypes, const double* sensorMeasures, const int nbMeasures){
+
+BF_BeliefFunction* BFS_getEvidence(const BFS_BeliefStructure bs,
+		const char* const * const sensorTypes, const double* sensorMeasures, const int nbMeasures){
     BF_BeliefFunction* evidences = NULL;
     int i = 0, j = 0, in = 0;
 
@@ -450,7 +452,36 @@ BF_BeliefFunction* BFS_getEvidence(const BFS_BeliefStructure bs, const char* con
     return evidences;
 }
 
-BF_BeliefFunction BFS_getProjection(const BFS_SensorBeliefs sb, const double sensorMeasure, const int elementSize){
+BF_BeliefFunction* BFS_getEvidenceElapsedTime(const BFS_BeliefStructure bs,
+		const char* const * const sensorTypes, const double* sensorMeasures, const int nbMeasures,
+		const float elapsedTime) {
+    BF_BeliefFunction* evidences = NULL;
+    int i = 0, j = 0, in = 0;
+
+    /*Memory allocation: */
+    evidences = malloc(sizeof(BF_BeliefFunction) * nbMeasures);
+    DEBUG_CHECK_MALLOC(evidences);
+
+    /*Get the functions: */
+    for(i = 0; i<nbMeasures; i++){
+    	in = 0;
+        for(j = 0; j<bs.nbSensors; j++){
+            if(strcmp(bs.beliefs[j].sensorType, sensorTypes[i]) == 0){
+                evidences[i] = BFS_getProjectionElapsedTime(bs.beliefs[j], sensorMeasures[i],
+                		bs.refList.card, elapsedTime);
+                in = 1;
+            }
+        }
+        if(!in){
+        	evidences[i] = BF_getVacuousBeliefFunction(bs.refList.card);
+        }
+    }
+
+    return evidences;
+}
+
+BF_BeliefFunction BFS_getProjection(const BFS_SensorBeliefs sb, const double sensorMeasure,
+		const int elementSize) {
     BF_BeliefFunction projection = {NULL, 0, 0};
     BF_BeliefFunction temp = {NULL, 0, 0};
     BF_BeliefFunction noMeasure = {NULL, 0, 0};
@@ -580,6 +611,129 @@ BF_BeliefFunction BFS_getProjection(const BFS_SensorBeliefs sb, const double sen
     return projection;
 }
 
+BF_BeliefFunction BFS_getProjectionElapsedTime(const BFS_SensorBeliefs sensorBelief,
+		const double sensorMeasure, const int elementSize, float elapsedTime) {
+	BF_BeliefFunction projection = {NULL, 0, 0};
+	BF_BeliefFunction temp = {NULL, 0, 0};
+	double modifiedMeasure = 0;
+	int parameterIndex = 0;
+	int i = 0;
+	#ifdef CHECK_SUM
+	int l = 0;
+	#endif
+
+	if(sensorMeasure != NO_MEASURE){
+		/*Memory allocation: */
+		projection.nbFocals = sensorBelief.nbFocal;
+		projection.focals = malloc(sizeof(BF_FocalElement) * sensorBelief.nbFocal);
+		DEBUG_CHECK_MALLOC(projection.focals);
+
+		projection.elementSize = elementSize;
+		/*
+		 * Apply variation option if required :
+		 */
+		if(sensorBelief.optionFlags & OP_VARIATION){
+			/*Find the option index: */
+			for(i = 0; i < sensorBelief.nbOptions; i++){
+				if(sensorBelief.options[i].type & OP_VARIATION){
+					parameterIndex = i;
+				}
+			}
+			/*Modify measure = average variation from previous measures: */
+			for(i = 0; i < sensorBelief.options[parameterIndex].parameter; i++){
+				modifiedMeasure += sensorMeasure - sensorBelief.options[parameterIndex].util[i].measure;
+			}
+			modifiedMeasure /= sensorBelief.options[parameterIndex].parameter;
+			/*Save measure: */
+			for(i = 1; i < sensorBelief.options[parameterIndex].parameter; i++){
+				sensorBelief.options[parameterIndex].util[i].measure = sensorBelief.options[parameterIndex].util[i-1].measure;
+			}
+			sensorBelief.options[parameterIndex].util[0].measure = sensorMeasure;
+		}
+		else{
+			modifiedMeasure = sensorMeasure;
+		}
+
+		/*
+		 * Get the projection :
+		 */
+		for(i = 0; i < projection.nbFocals; i++){
+			projection.focals[i] = BFS_getBeliefValue(sensorBelief.beliefOnElements[i], modifiedMeasure, elementSize);
+		}
+	}
+	else {
+		projection = BF_getVacuousBeliefFunction(elementSize);
+	}
+
+	/*
+	 * Apply the temporization if required :
+	 */
+	if(sensorBelief.optionFlags & OP_TEMPO_SPECIFICITY){
+		/*Get the option index: */
+		for(i = 0; i < sensorBelief.nbOptions; i++){
+			if(sensorBelief.options[i].type & OP_TEMPO_SPECIFICITY){
+				parameterIndex = i;
+			}
+		}
+
+		/*If not first measure: */
+		if(sensorBelief.options[parameterIndex].util[1].bf.focals != NULL){
+			temp = BFS_temporization_specificityElapsedTime(
+					sensorBelief.options[parameterIndex].util[1].bf, projection,
+					sensorBelief.options[parameterIndex].parameter,
+					&(sensorBelief.options[parameterIndex]), elapsedTime);
+			BF_freeBeliefFunction(&projection);
+			projection = temp;
+		/*First measure: */
+		}else{
+			sensorBelief.options[parameterIndex].util[1].bf = BF_copyBeliefFunction(projection);
+		}
+	}
+	else if(sensorBelief.optionFlags & OP_TEMPO_FUSION){
+		/*Get the option index: */
+		for(i = 0; i < sensorBelief.nbOptions; i++){
+			if(sensorBelief.options[i].type & OP_TEMPO_FUSION){
+				parameterIndex = i;
+			}
+		}
+
+		/*If not first measure: */
+		if(sensorBelief.options[parameterIndex].util[1].bf.focals != NULL){
+			temp = BFS_temporization_fusionElapsedTime(sensorBelief.options[parameterIndex].util[1].bf,
+					projection, sensorBelief.options[parameterIndex].parameter,
+					&(sensorBelief.options[parameterIndex]), elapsedTime);
+			BF_freeBeliefFunction(&projection);
+			projection = temp;
+		/*First measure: */
+		}else{
+			sensorBelief.options[parameterIndex].util[1].bf = BF_copyBeliefFunction(projection);
+		}
+	}
+
+	#ifdef CHECK_SUM
+	if(BF_checkSum(projection)){
+		printf("debug: Sensor type = %s\n", sensorBelief.sensorType);
+		printf("debug: Sensor measure = %f\n", sensorMeasure);
+		printf("debug: in BFS_getProjection(), the sum is not equal to 1.\ndebug: There may be a problem in the model.\n");
+		printf("debug: Resulting belief function:\n");
+		for(i = 0; i < projection.nbFocals; i++){
+			printf("debug: ");
+			for(l = 0; l < elementSize; l++){
+				printf("%d", projection.focals[i].element.values[l]);
+			}
+			printf(" : %f\n", projection.focals[i].beliefValue);
+		}
+	}
+	#endif
+	#ifdef CHECK_VALUES
+	if(BF_checkValues(projection)){
+		printf("debug: in BFS_getProjection(), at least one value is not valid!\n");
+	}
+	#endif
+
+	return projection;
+}
+
 BF_FocalElement BFS_getBeliefValue(const BFS_PartOfBelief pob, const double sensorMeasure, const int elementSize){
     BF_FocalElement point = {{NULL, 0}, 0};
     int i = 0;
@@ -618,83 +772,79 @@ BF_FocalElement BFS_getBeliefValue(const BFS_PartOfBelief pob, const double sens
  * @{
  */
 
+static float getElapsedTime(const struct timespec oldTime) {
+    struct timespec newTime;
+	#ifdef DEBUG
+	int error = 0;
+	error = clock_gettime(CLOCK_ID, &newTime);
+	if(error){
+		switch(errno){
+			case EFAULT:
+				printf("debug: In BFS_temporization_specificity(), the clock had a problem...\n");
+				printf("debug: \"tp points outside the accessible address space\"\n");
+				break;
+			case EINVAL:
+				printf("debug: In BFS_temporization_specificity(), the clock had a problem...\n");
+				printf("debug: \"The clock_id specified is not supported on this system.\"\n");
+			break;
+		}
+	}
+	#else /* DEBUG */
+	clock_gettime(CLOCK_ID, &newTime);
+	#endif /* DEBUG */
 
-BF_BeliefFunction BFS_temporization_specificity(const BF_BeliefFunction oldOne, const BF_BeliefFunction newOne, const float timeFactor, const struct timespec oldTime, BFS_Option* op){
-    float alpha = 0, timeDiff = 0;
+	/*Compute the alpha factor:   */
+	return (newTime.tv_sec + (float)newTime.tv_nsec/1000000000) - (oldTime.tv_sec + (float)oldTime.tv_nsec/1000000000);
+
+}
+
+
+BF_BeliefFunction BFS_temporization_specificity(const BF_BeliefFunction oldOne,
+		const BF_BeliefFunction newOne, const float timeFactor, const struct timespec oldTime,
+		BFS_Option* op){
+    return BFS_temporization_specificityElapsedTime(oldOne, newOne, timeFactor, op,
+    		getElapsedTime(oldTime));
+}
+
+BF_BeliefFunction BFS_temporization_specificityElapsedTime(const BF_BeliefFunction oldOne,
+		const BF_BeliefFunction newOne, const float timeFactor, BFS_Option* op, float elapsedTime) {
+    float alpha = 0;
     BF_BeliefFunction temp = {NULL, 0, 0};
     BF_BeliefFunction result = {NULL, 0, 0};
-    struct timespec newTime;
-    #ifdef DEBUG
-    int error = 0;
-    
-    /*Get the new time: */
-    error = clock_gettime(CLOCK_ID, &newTime);
-    if(error){
-    	switch(errno){
-    		case EFAULT: 
-    			printf("debug: In BFS_temporization_specificity(), the clock had a problem...\n");
-    			printf("debug: \"tp points outside the accessible address space\"\n");
-    			break;
-    		case EINVAL: 
-    			printf("debug: In BFS_temporization_specificity(), the clock had a problem...\n");
-    			printf("debug: \"The clk_id specified is not supported on this system.\"\n");
-    		break;
-    	}
-    }
-	#else /* DEBUG */
-    clock_gettime(CLOCK_ID, &newTime);
-    #endif /* DEBUG */
 
-    
-    /*Compute the alpha factor:     */   
-    timeDiff = (newTime.tv_sec + (float)newTime.tv_nsec/1000000000) - (oldTime.tv_sec + (float)oldTime.tv_nsec/1000000000);
-    alpha = timeDiff / timeFactor;
+    /*Compute the alpha factor:     */
+    alpha = elapsedTime / timeFactor;
     /*Discount: */
     temp = BF_discounting(oldOne, alpha);
     /*Compare specificity: */
     if(BF_specificity(newOne) > BF_specificity(temp)){
         BF_freeBeliefFunction(&(op->util[1].bf));
         op->util[1].bf = BF_copyBeliefFunction(newOne);
-        op->util[0].time = newTime;
         result = BF_copyBeliefFunction(newOne);
     }
     else {
         result = BF_copyBeliefFunction(temp);
     }
     BF_freeBeliefFunction(&temp);
-    
+
     return result;
 }
 
-BF_BeliefFunction BFS_temporization_fusion(const BF_BeliefFunction oldOne, const BF_BeliefFunction newOne, const float timeFactor, const struct timespec oldTime, BFS_Option* op){
-	float alpha = 0, timeDiff = 0;
+BF_BeliefFunction BFS_temporization_fusion(const BF_BeliefFunction oldOne,
+		const BF_BeliefFunction newOne, const float timeFactor, const struct timespec oldTime,
+		BFS_Option* op){
+    return BFS_temporization_fusionElapsedTime(oldOne, newOne, timeFactor, op,
+    		getElapsedTime(oldTime));
+}
+
+BF_BeliefFunction BFS_temporization_fusionElapsedTime(const BF_BeliefFunction oldOne,
+		const BF_BeliefFunction newOne, const float timeFactor, BFS_Option* op, float elapsedTime) {
+	float alpha = 0;
     BF_BeliefFunction temp = {NULL, 0, 0};
     BF_BeliefFunction result = {NULL, 0, 0};
-    struct timespec newTime;
-    #ifdef DEBUG
-    int error = 0;
-    
-    /*Get the new time: */
-    error = clock_gettime(CLOCK_ID, &newTime);
-    if(error){
-    	switch(errno){
-    		case EFAULT: 
-    			printf("debug: In BFS_temporization_specificity(), the clock had a problem...\n");
-    			printf("debug: \"tp points outside the accessible address space\"\n");
-    			break;
-    		case EINVAL: 
-    			printf("debug: In BFS_temporization_specificity(), the clock had a problem...\n");
-    			printf("debug: \"The clock_id specified is not supported on this system.\"\n");
-    		break;
-    	}
-    }
-	#else /* DEBUG */
-    clock_gettime(CLOCK_ID, &newTime);
-    #endif /* DEBUG */
     
     /*Compute the alpha factor:   */     
-    timeDiff = (newTime.tv_sec + (float)newTime.tv_nsec/1000000000) - (oldTime.tv_sec + (float)oldTime.tv_nsec/1000000000);
-    alpha = timeDiff / timeFactor;
+    alpha = elapsedTime / timeFactor;
     /*If the new one corresponds to a loss of evidence:*/
     if(newOne.focals == NULL){
     	return BF_discounting(oldOne, alpha);
@@ -708,7 +858,6 @@ BF_BeliefFunction BFS_temporization_fusion(const BF_BeliefFunction oldOne, const
     /*Save: */
     BF_freeBeliefFunction(&(op->util[1].bf));
     op->util[1].bf = BF_copyBeliefFunction(result);
-    op->util[0].time = newTime;
     BF_freeBeliefFunction(&temp);
     
     return result;

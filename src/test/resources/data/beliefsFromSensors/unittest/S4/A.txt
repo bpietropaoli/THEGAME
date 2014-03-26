@@ -1,0 +1,5 @@
+1 element
+A
+2 points
+100 0.5
+500 0.0
