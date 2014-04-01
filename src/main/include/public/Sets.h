@@ -103,6 +103,14 @@ typedef struct Sets_Set Sets_Set;
  */
 Sets_ReferenceList Sets_loadRefList(const char* filename);
 
+/**
+ * Creates a reference list of possible values from an array.
+ * @param values values used in the reference list. this array will be copied.
+ * @param size size of the array
+ * @return the new ReferenceList, it should be freed with Sets_freeReferenceList()
+ */
+Sets_ReferenceList Sets_createRefListFromArray(const char* const * values, int size);
+
 /** @} */
 
 

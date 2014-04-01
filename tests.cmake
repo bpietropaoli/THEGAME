@@ -30,6 +30,7 @@ if(CHECK_FOUND)
     
     thegame_add_test(test_Sets)
     thegame_add_test(test_BeliefFromSensors)
+        thegame_add_test(test_BeliefFromSensorsCreation)
     thegame_add_test(test_BeliefFunctions)
     thegame_add_test(test_BeliefCombination)
 

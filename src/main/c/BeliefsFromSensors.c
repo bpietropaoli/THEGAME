@@ -109,6 +109,166 @@
    !!! Creation of beliefs !!!
    !!!!!!!!!!!!!!!!!!!!!!!!!!! */
 
+
+/**
+ * @name Manually creating a model
+ * @{
+ */
+
+BFS_BeliefStructure BFS_createBeliefStructure(const char* name, const char * const * possibleValues,
+		int size) {
+	BFS_BeliefStructure beliefStructure;
+	beliefStructure.frameName = strdup(name);
+	beliefStructure.refList = Sets_createRefListFromArray(possibleValues, size);
+	beliefStructure.powerset = Sets_generatePowerSet(size);
+	beliefStructure.possibleValues = Sets_createSetFromRefList(beliefStructure.refList);
+	beliefStructure.nbSensors = 0;
+	beliefStructure.beliefs = NULL;
+	return beliefStructure;
+}
+
+void BFS_putSensorBelief(BFS_BeliefStructure *beliefStructure,
+		__attribute__((unused))const BFS_SensorBeliefs sensorBelief) {
+	BFS_SensorBeliefs *newSensorBelief;
+	newSensorBelief = realloc(beliefStructure->beliefs,
+			sizeof(BFS_SensorBeliefs) * (beliefStructure->nbSensors + 1));
+	newSensorBelief[beliefStructure->nbSensors] = sensorBelief;
+	beliefStructure->beliefs = newSensorBelief;
+	beliefStructure->nbSensors++;
+
+}
+
+BFS_SensorBeliefs BFS_createSensorBeliefs(const char* sensorType) {
+	BFS_SensorBeliefs sensorBeliefs;
+	sensorBeliefs.sensorType = strdup(sensorType);
+	sensorBeliefs.optionFlags = OP_NONE;
+	sensorBeliefs.nbOptions = 0;
+	sensorBeliefs.nbFocal = 0;
+	sensorBeliefs.options = NULL;
+	sensorBeliefs.beliefOnElements = NULL;
+	return sensorBeliefs;
+}
+
+static BFS_Option BFS_createOption(BFS_OptionFlags flag, float param) {
+	BFS_Option option;
+	option.parameter = param;
+	option.type = flag;
+
+	switch(flag) {
+	case OP_TEMPO_FUSION:
+	case OP_TEMPO_SPECIFICITY:
+		option.util = malloc(sizeof(BFS_Option) * 2);
+		clock_gettime(CLOCK_ID, &(option.util[0].time));
+		option.util[1].bf.nbFocals = 0;
+		option.util[1].bf.focals = NULL;
+		option.util[1].bf.elementSize = 0;
+		option.type = OP_TEMPO_SPECIFICITY;
+		break;
+	case OP_VARIATION:
+		option.util = calloc(param, sizeof(BFS_Option));
+		option.parameter = (int)param;
+		break;
+	case OP_NONE:
+		break;
+	}
+	return option;
+}
+
+void BFS_addOption(BFS_SensorBeliefs *sensorBeliefs, BFS_OptionFlags flag, float param) {
+	BFS_Option option = BFS_createOption(flag, param);
+	BFS_Option *options;
+	if(OP_NONE == flag) return;
+
+	options= realloc(sensorBeliefs->options, sizeof(BFS_Option) * (sensorBeliefs->nbOptions + 1));
+	DEBUG_CHECK_MALLOC(options);
+
+	sensorBeliefs->optionFlags |= flag;
+	options[sensorBeliefs->nbOptions] = option;
+	sensorBeliefs->options = options;
+	sensorBeliefs->nbOptions++;
+}
+
+static BFS_PartOfBelief BFS_createPartOfBelief(Sets_Element elem, int elemSize,
+		float sensorValue, float mass) {
+	BFS_PartOfBelief newPartofBelief;
+	newPartofBelief.focalElement = Sets_copyElement(elem, elemSize);
+	newPartofBelief.nbPts = 1;
+	newPartofBelief.points = malloc(sizeof(BFS_Point));
+	newPartofBelief.points[0].belief = mass;
+	newPartofBelief.points[0].sensorValue = sensorValue;
+
+	return newPartofBelief;
+}
+
+static void insertNewFocal(BFS_SensorBeliefs* sensorBeliefs, const Sets_Element elem,
+		int elemSize, float sensorValue, float mass) {
+
+	BFS_PartOfBelief *newPartofBeliefs = realloc(sensorBeliefs->beliefOnElements,
+			sizeof(BFS_PartOfBelief) * (sensorBeliefs->nbFocal + 1));
+	DEBUG_CHECK_MALLOC(newPartofBeliefs);
+
+	sensorBeliefs->beliefOnElements = newPartofBeliefs;
+	newPartofBeliefs[sensorBeliefs->nbFocal] = BFS_createPartOfBelief(elem,
+			elemSize, sensorValue, mass);
+	sensorBeliefs->nbFocal++;
+}
+
+static BFS_PartOfBelief * getPartOfBelief(BFS_SensorBeliefs *sensorBeliefs,
+		const Sets_Element elem, int elemSize) {
+	int i = 0;
+
+	for (i = 0; i < sensorBeliefs->nbFocal; ++i) {
+		if(Sets_equals(sensorBeliefs->beliefOnElements[i].focalElement, elem, elemSize)) {
+			return &(sensorBeliefs->beliefOnElements[i]);
+		}
+	}
+	return NULL;
+}
+
+static void insertExistingFocal(BFS_PartOfBelief *existingBelief, float sensorValue, float mass) {
+	int i = 0;
+	BFS_Point *newPoints = realloc(existingBelief->points,
+			sizeof(BFS_Point) * (existingBelief->nbPts) + 1);
+	DEBUG_CHECK_MALLOC(newPoints);
+
+	/*
+	 * Insert the belief in the right place.
+	 */
+	for (i = existingBelief->nbPts - 1; i >= 0; --i) {
+		if(newPoints[i].sensorValue > sensorValue) {
+			newPoints[i+1] = newPoints[i];
+		}
+		else {
+			newPoints[i+1].belief = mass;
+			newPoints[i+1].sensorValue = sensorValue;
+			break;
+		}
+	}
+	if(-1 == i) {
+		newPoints[0].belief = mass;
+		newPoints[0].sensorValue = sensorValue;
+	}
+
+	existingBelief->points = newPoints;
+	existingBelief->nbPts++;
+}
+
+void BFS_addPointTosensorBelief(BFS_SensorBeliefs *sensorBeliefs, const Sets_Element elem,
+		int elemSize, float sensorValue, float mass) {
+	BFS_PartOfBelief *existingBelief = getPartOfBelief(sensorBeliefs, elem, elemSize);
+
+	if(NULL == existingBelief) {/* this is a new element */
+		insertNewFocal(sensorBeliefs, elem, elemSize, sensorValue, mass);
+	}
+	else {
+		insertExistingFocal(existingBelief, sensorValue, mass);
+	}
+}
+/**
+ * @}
+ */
+
+
 /**
  * @name Loading a model
  * @{
