@@ -28,7 +28,7 @@
 
 #define assert_flt_equals(expected, actual, precision) \
 		ck_assert_msg(fabs((float)expected - (float)actual) <= precision, \
-		"error - expected: %f; actual: %f", expected, actual)
+		"error - expected: %f; actual: %f", (float)expected, (float)actual)
 /*
  * Data for the test. We use the structure defined in
  * data/beliefFromSensors/unittest

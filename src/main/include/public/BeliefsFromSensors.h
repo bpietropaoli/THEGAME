@@ -294,6 +294,82 @@ typedef struct BFS_BeliefStructure BFS_BeliefStructure;
 
 /* !!! Creation of beliefs !!! */
 
+
+/**
+ * @name Manually creating a model
+ * @{
+ */
+
+/**
+ * Creates an empty belief structure.
+ * @param name the name of the structure
+ * @param possibleValues the possible worlds for our frame of discernment.
+ * @param size size of the array possibleValues
+ * @return the new BFS_BeliefStrucure, must be freed after use.
+ */
+BFS_BeliefStructure BFS_createBeliefStructure(const char* name, const char* const * possibleValues,
+		int size);
+
+/**
+ * Puts the sensor belief model inside the belief structure. The sensor belief
+ * is not copied so you should not free it afterward (it will be freed with the
+ * belief structure). Besides, you should not add the same sensor belief model
+ * to several belief structures for the same reason.
+ * @param beliefStructure belief structure which will be modified.
+ * @param sensorBelief sensor belief which will be put in the structure.
+ */
+void BFS_putSensorBelief(BFS_BeliefStructure *beliefStructure,
+		const BFS_SensorBeliefs sensorBelief);
+
+/**
+ * Create a new empty sensor belief with no focal element. This sensor belief
+ * should be filled with BFS_addPointTosensorBelief() and BFS_addOption(). The
+ * new BFS_SensorBeliefs is generally inserted in a BFS_BeliefStructure with
+ * BFS_putSensorBelief(). In any other case, it should be freed with
+ * BFS_freeSensorBeliefs().
+ * @param sensorType name of the sensor.
+ * @return the new BFS_SensorBeliefs
+ */
+BFS_SensorBeliefs BFS_createSensorBeliefs(const char* sensorType);
+
+/**
+ * Copy an existing sensor belief with a new name. The created BFS_SensorBeliefs
+ * will be exactly the same with the given name. The memory will be reallocated
+ * for the new belief. The new name should be different than the original name.
+ * as for BFS_createSensorBeliefs(), the new BFS_SensorBeliefs is generally
+ * inserted in a BFS_BeliefStructure with BFS_putSensorBelief(). In any other
+ * case, it should be freed with BFS_freeSensorBeliefs().
+ * @param toCopy BFS_SensorBeliefs which will be copied.
+ * @param elementSize number of possible worlds for the frame of discernment.
+ * @param newSensorName new name for the sensorType.
+ * @return The new BFS_SensorBeliefs.
+ */
+BFS_SensorBeliefs BFS_copySensorBelief(const BFS_SensorBeliefs toCopy, int elementSize, const char* newSensorName);
+
+/**
+ * Add an option to a sensorBeliefs, such as tempo specificity, tempo fusion or
+ * variation.
+ * @param sensorBeliefs pointer to the sensor belief we want to modify.
+ * @param flag option flag to add
+ * @param param parameter for the option
+ */
+void BFS_addOption(BFS_SensorBeliefs *sensorBeliefs, BFS_OptionFlags flag, float param);
+
+/**
+ * Adds a point to the belief function set contained in the structure.
+ * @param sensorBeliefs pointer to the sensor belief we want to modify.
+ * @param elem element on which the belief value will apply
+ * @param elemSize size of elem
+ * @param sensorValue value for which the belief value will apply
+ * @param mass resulting mass for the sensor value.
+ */
+void BFS_addPointTosensorBelief(BFS_SensorBeliefs *sensorBeliefs, Sets_Element elem, int elemSize,
+		float sensorValue, float mass);
+
+/**
+ * @}
+ */
+
 /**
  * @name Loading a model
  * @{
@@ -344,6 +420,7 @@ BFS_SensorBeliefs BFS_loadSensorBeliefs(const char* sensorType, const char* path
  * @return A BFS_PartOfBelief to be freed after use.
  */
 BFS_PartOfBelief BFS_loadPartOfBelief(const char* fileName, const Sets_ReferenceList rl);
+
 
 /** @} */
 

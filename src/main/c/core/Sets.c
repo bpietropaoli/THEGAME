@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-
+#include <string.h>
 
 #include "Sets.h"
 
@@ -78,6 +78,20 @@ Sets_ReferenceList Sets_loadRefList(const char* fileName){
     free(lines);
 
     return loadedList;
+}
+
+Sets_ReferenceList Sets_createRefListFromArray(const char* const * values, int size) {
+	Sets_ReferenceList refList;
+	int i = 0;
+	refList.card = 0;
+	refList.values = malloc(sizeof(char**) * size);
+	DEBUG_CHECK_MALLOC_OR_RETURN(refList.values, refList);
+
+	refList.card = size;
+	for (i = 0; i < size; ++i) {
+		refList.values[i] = strdup(values[i]);
+	}
+	return refList;
 }
 
 /** @} */

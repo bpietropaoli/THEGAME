@@ -30,8 +30,14 @@ if(CHECK_FOUND)
     
     thegame_add_test(test_Sets)
     thegame_add_test(test_BeliefFromSensors)
+        thegame_add_test(test_BeliefFromSensorsCreation)
     thegame_add_test(test_BeliefFunctions)
     thegame_add_test(test_BeliefCombination)
+    
+    if(LIBXML2_FOUND)
+        thegame_add_test(test_XmlBeliefFromSensors)
+        target_link_libraries(test_XmlBeliefFromSensors THEGAME-xml)
+    endif(LIBXML2_FOUND)
 
     add_custom_target(unit_test ALL 
     cmake -E remove_directory ${CMAKE_BINARY_DIR}/data

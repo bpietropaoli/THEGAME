@@ -27,9 +27,18 @@
 #include "Sets.h"
 #include "unit_tests.h"
 
+START_TEST(testCreationFromArray){
+	const char *worlds[] = {"A", "B", "C"};
+	Sets_ReferenceList refList = Sets_createRefListFromArray(worlds, 3);
+	ck_assert_int_eq(3, refList.card);
+	ck_assert_str_eq("A", refList.values[0]);
+	ck_assert_str_eq("B", refList.values[1]);
+	ck_assert_str_eq("C", refList.values[2]);
+	Sets_freeReferenceList(&refList);
+}
+END_TEST
 
-
-START_TEST(testUnion1) {
+START_TEST(testDisjunction1) {
 	/*
 	 * union of A and B should give AuB
 	 */
@@ -39,7 +48,7 @@ START_TEST(testUnion1) {
 }
 END_TEST
 
-START_TEST(testUnion2) {
+START_TEST(testDisjunction2) {
 	/*
 	 * union of AuB and C should give AuBuC
 	 */
@@ -50,11 +59,17 @@ START_TEST(testUnion2) {
 END_TEST
 
 Suite *createSuite(void) {
-	Suite *suite = suite_create("BeliefFunctions");
+	Suite *suite = suite_create("Sets");
+
+	TCase *testCaseCreation = tcase_create("Creation");
+	tcase_add_test(testCaseCreation, testCreationFromArray);
+
 	TCase* testCaseManipulation = tcase_create("Manipulation");
-	tcase_add_test(testCaseManipulation, testUnion1);
-	tcase_add_test(testCaseManipulation, testUnion2);
-	;
+	tcase_add_test(testCaseManipulation, testDisjunction1);
+	tcase_add_test(testCaseManipulation, testDisjunction2);
+
+
+	suite_add_tcase(suite, testCaseCreation);
 	suite_add_tcase(suite, testCaseManipulation);
 	return suite;
 }
