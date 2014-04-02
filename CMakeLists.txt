@@ -6,6 +6,8 @@ set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${PROJECT_SOURCE_DIR}/cmake/Modules/
 
 file(GLOB_RECURSE src_thegame src/main/c/core/*.c)
 
+file(GLOB_RECURSE src_thegame_xml src/main/c/xml/*.c)
+
 include_directories(src/main/include/public src/main/include/private)
 
 set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wall")
@@ -32,6 +34,26 @@ set_target_properties(
     COMPILE_FLAGS ${thegame_compile_flags}
     OUTPUT_NAME THEGAME
 )
+
+
+
+find_package(LibXml2)
+
+if(LIBXML2_FOUND)
+
+    add_library(THEGAME-xml SHARED ${src_thegame_xml})
+    include_directories(${LIBXML2_INCLUDE_DIR})
+    target_link_libraries(THEGAME-xml THEGAME ${LIBXML2_LIBRARIES})
+    set_target_properties(
+    
+    THEGAME-xml
+    PROPERTIES
+    COMPILE_FLAGS ${thegame_compile_flags}
+    )
+    
+else(LIBXML2_FOUND)
+    message(WARNING "libxml2 not found, cannot compile THEGAME-xml.")
+endif(LIBXML2_FOUND)
 
 # ====== documentation ======
 
