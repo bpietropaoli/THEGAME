@@ -149,6 +149,34 @@ BFS_SensorBeliefs BFS_createSensorBeliefs(const char* sensorType) {
 	return sensorBeliefs;
 }
 
+static void copyOptions(const BFS_SensorBeliefs toCopy, BFS_SensorBeliefs *newBelief) {
+	int i;
+	for (i = 0; i < toCopy.nbOptions; ++i) {
+		BFS_addOption(newBelief, toCopy.options[i].type, toCopy.options[i].parameter);
+	}
+}
+
+void copyPoints(const BFS_SensorBeliefs toCopy, int elementSize, BFS_SensorBeliefs* newBelief) {
+	int i = 0;
+	for (i = 0; i < toCopy.nbFocal; ++i) {
+		int j;
+		for (j = 0; j < toCopy.beliefOnElements[i].nbPts; ++j) {
+			BFS_PartOfBelief currentPartOfBelief = toCopy.beliefOnElements[i];
+			BFS_Point currentPoint = currentPartOfBelief.points[j];
+			BFS_addPointTosensorBelief(&*newBelief,
+					currentPartOfBelief.focalElement, elementSize,
+					currentPoint.sensorValue, currentPoint.belief);
+		}
+	}
+}
+
+BFS_SensorBeliefs BFS_copySensorBelief(const BFS_SensorBeliefs toCopy, int elementSize, const char* newSensorName) {
+	BFS_SensorBeliefs newBelief = BFS_createSensorBeliefs(newSensorName);
+	copyOptions(toCopy, &newBelief);
+	copyPoints(toCopy, elementSize, &newBelief);
+	return newBelief;
+}
+
 static BFS_Option BFS_createOption(BFS_OptionFlags flag, float param) {
 	BFS_Option option;
 	option.parameter = param;
@@ -162,7 +190,6 @@ static BFS_Option BFS_createOption(BFS_OptionFlags flag, float param) {
 		option.util[1].bf.nbFocals = 0;
 		option.util[1].bf.focals = NULL;
 		option.util[1].bf.elementSize = 0;
-		option.type = OP_TEMPO_SPECIFICITY;
 		break;
 	case OP_VARIATION:
 		option.util = calloc(param, sizeof(BFS_Option));
@@ -228,7 +255,7 @@ static BFS_PartOfBelief * getPartOfBelief(BFS_SensorBeliefs *sensorBeliefs,
 static void insertExistingFocal(BFS_PartOfBelief *existingBelief, float sensorValue, float mass) {
 	int i = 0;
 	BFS_Point *newPoints = realloc(existingBelief->points,
-			sizeof(BFS_Point) * (existingBelief->nbPts) + 1);
+			sizeof(BFS_Point) * (existingBelief->nbPts + 1));
 	DEBUG_CHECK_MALLOC(newPoints);
 
 	/*

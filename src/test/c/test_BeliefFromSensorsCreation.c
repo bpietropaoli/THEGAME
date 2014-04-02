@@ -195,6 +195,62 @@ START_TEST(sensorBeliefContainsValuesInTheRightOrder) {
 }
 END_TEST
 
+BFS_SensorBeliefs sensorBeliefsCopy;
+
+static void copySetup() {
+	sensorBeliefs = BFS_createSensorBeliefs("S1");
+	addPoints(&sensorBeliefs);
+	BFS_addOption(&sensorBeliefs, OP_TEMPO_FUSION, 3.0);
+	sensorBeliefsCopy = BFS_copySensorBelief(sensorBeliefs, ATOM_NB, "copyOfS1");
+}
+
+static void copyTearDown() {
+	BFS_freeSensorBeliefs(&sensorBeliefs);
+}
+
+START_TEST(sensorBeliefCopyHasRightName) {
+	ck_assert_str_eq("copyOfS1", sensorBeliefsCopy.sensorType);
+}
+END_TEST
+
+START_TEST(sensorBeliefCopyHasRightOptions) {
+	ck_assert_int_eq(sensorBeliefs.optionFlags , sensorBeliefsCopy.optionFlags);
+}
+END_TEST
+
+START_TEST(sensorBeliefCopyContainsTheRightValueNb) {
+	ck_assert_int_eq(sensorBeliefs.beliefOnElements[0].nbPts, sensorBeliefsCopy.beliefOnElements[0].nbPts);
+}
+END_TEST
+
+START_TEST(sensorBeliefCopyContainsTheRightValues) {
+	assert_flt_equals(sensorBeliefsCopy.beliefOnElements[0].points[0].sensorValue,
+			sensorBeliefs.beliefOnElements[0].points[0].sensorValue, 0);
+	assert_flt_equals(sensorBeliefsCopy.beliefOnElements[0].points[1].sensorValue,
+			sensorBeliefs.beliefOnElements[0].points[1].sensorValue, 0);
+}
+END_TEST
+
+
+START_TEST(sensorBeliefCopyContainsTheRightMasses) {
+	assert_flt_equals(sensorBeliefsCopy.beliefOnElements[0].points[0].belief,
+			sensorBeliefs.beliefOnElements[0].points[0].belief, 0);
+	assert_flt_equals(sensorBeliefsCopy.beliefOnElements[0].points[1].belief,
+			sensorBeliefs.beliefOnElements[0].points[1].belief, 0);
+}
+END_TEST
+
+static TCase* createSensorBeliefCopyTestCase() {
+	TCase* testCase = tcase_create("SensorBeliefCopy");
+	tcase_add_checked_fixture(testCase, copySetup, copyTearDown);
+	tcase_add_test(testCase, sensorBeliefCopyHasRightName);
+	tcase_add_test(testCase, sensorBeliefCopyHasRightOptions);
+	tcase_add_test(testCase, sensorBeliefCopyContainsTheRightValueNb);
+	tcase_add_test(testCase, sensorBeliefCopyContainsTheRightValues);
+	tcase_add_test(testCase, sensorBeliefCopyContainsTheRightMasses);
+	return testCase;
+}
+
 static TCase* createSensorBeliefTestCase() {
 	TCase* testCase = tcase_create("SensorBeliefCreation");
 	tcase_add_checked_fixture(testCase, createSensorBelief, cleanSensorBelief);
@@ -232,6 +288,7 @@ Suite *createSuite(void) {
 	Suite *suite = suite_create("beliefFromSensors");
 	suite_add_tcase(suite, createBeliefStructureTestCase());
 	suite_add_tcase(suite, createSensorBeliefTestCase());
+	suite_add_tcase(suite, createSensorBeliefCopyTestCase());
 	return suite;
 }
 
