@@ -19,6 +19,10 @@
 # Last update: 20/03/2014           #
 #####################################
 
+This little library implements the basics of the belief functions theory. There are also a few application modules in order to build belief functions from sensor measures, from other belief functions and from randomness. To run tests and a bench for speed of execution, please use the Tests module.
+
+Keywords:BFT, Theory of Evidence, Dempster-Shafer's theory.
+
 Compiling
 =========
 
